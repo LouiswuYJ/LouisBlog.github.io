@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。
+View拿不到controller裡的方法一般在rails裡，view拿不到controlle"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day26: Rails中的view_helper"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。
+View拿不到controller裡的方法一般在rails裡，view拿不到controlle"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day26: Rails中的view_helper - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day26: Rails中的view_helper</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-10-09
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p><img src="https://i.imgur.com/xvFLI1W.png" alt=""></p>
+<p>在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。</p>
+<h2 id="View拿不到controller裡的方法"><a href="#View拿不到controller裡的方法" class="headerlink" title="View拿不到controller裡的方法"></a>View拿不到controller裡的方法</h2><p>一般在rails裡，view拿不到controller裡的方法，只能拿到對應的action的實體變數，這時候我們就需要用到helper來將方法寫給view使用。</p>
+<p>helper的目的是要寫一段ruby code 協助整理資訊，並且可以做兩件事：</p>
+<ol>
+<li>在view頁面使用時就可直接使用</li>
+<li>也可 include 至 controller使用</li>
+</ol>
+<blockquote>
+<p>簡單來說，只要寫在helper裡的方法，view與comtroller都可以取用。</p>
+</blockquote>
+<p>最近寫專案有寫到購物車，每一個使用者擁有一台車，如果在每次想要撈使用者購物車的資料都要 <code>current_user.cart</code> 的方法去找感覺很麻煩，何不就自己寫個 <code>current_cart</code> 呢？</p>
+<p>解決方式有兩個：</p>
+<ol>
+<li>直接寫在helper</li>
+<li>方法寫在controller輸出給helper</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#_navbar.html.erb</span><br><span class="line">#加入</span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> "購物車(#&#123;<span class="attr">current_cart.items.count</span>&#125;)", "#" %&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/1ONJ9F8.png" alt=""></p>
+<p>噴出找不到方法 <code>current_cart</code>，因為還沒寫嘛！</p>
+<h2 id="直接寫在helper"><a href="#直接寫在helper" class="headerlink" title="直接寫在helper"></a>直接寫在helper</h2><h3 id="讓view取得helper方法"><a href="#讓view取得helper方法" class="headerlink" title="讓view取得helper方法"></a>讓view取得helper方法</h3><p>在寫helper之前，要先注意命名的對應，檔名如果是products_helper.rb，則檔案內的 module 後就得寫 ProductsHelper，跟 controller 的命名對應規則是一樣的。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#app/helpers/products_helper.rb</span></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">ProductsHelper</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @cart = @cart <span class="params">||</span> Cart.from_hash(session[<span class="symbol">:cart123</span>])</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果有車就用這台車，如果沒車就給他一台名叫 <code>cart123</code>的車並存在session，此時的 <code>product.html.erb</code> 就可以使用 <code>current_cart</code> 了。</p>
+<p>如果也想讓controller用</p>
+<h3 id="讓controller取得helper方法"><a href="#讓controller取得helper方法" class="headerlink" title="讓controller取得helper方法"></a>讓controller取得helper方法</h3><p>畢竟剛剛寫的helper是個模組，直接 include 進來就好了。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#products_controller.rb</span></span><br><span class="line"><span class="keyword">include</span> ProductsHelper</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法寫在controller輸出給helper"><a href="#方法寫在controller輸出給helper" class="headerlink" title="方法寫在controller輸出給helper"></a>方法寫在controller輸出給helper</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#products_controller.rb</span></span><br><span class="line">helper_method <span class="symbol">:current_cart</span></span><br><span class="line"><span class="comment">#方法寫在這</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @cart = @cart <span class="params">||</span> Cart.from_hash(session[<span class="symbol">:cart123</span>])</span><br><span class="line">  <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>在controller加入 <code>helper_method :current_cart</code> 就可以使helper擁有這個方法，當然view也可以一起使用了。</p>
+<p>但如果將方法寫在controller，只有在特定 controller 可以用，如果要全部的controller都可用的話，可貼在最上層的controller：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#application_controller.rb</span></span><br><span class="line">helper_method <span class="symbol">:current_cart</span></span><br><span class="line"><span class="comment">#方法寫在這</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @cart = @cart <span class="params">||</span> Cart.from_hash(session[<span class="symbol">:cart123</span>])</span><br><span class="line">  <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="那我該用哪個方式？"><a href="#那我該用哪個方式？" class="headerlink" title="那我該用哪個方式？"></a>那我該用哪個方式？</h2><p>這兩種方式都是在讓views拿到controller裡面的方法，至於要選擇哪種方法的判斷標準：<br><strong>Contorller 用得多就寫在 Contorller，view 用得多就寫在 view</strong>。</p>
+<p>參考資料：<br><a href="https://railsbook.tw/chapters/15-layout-render-and-view-helper.html" target="_blank" rel="noopener">Layout, Render 與 View Helper</a></p>
+<blockquote>
+<p>“When you find your path, you must not be afraid. You need to have sufficient courage to make mistakes.”</p>
+<p>– Paulo Coelho, Novelist</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

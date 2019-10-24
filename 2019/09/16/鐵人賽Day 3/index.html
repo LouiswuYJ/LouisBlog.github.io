@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：
+
+覺得哇～原來寫程式也可以玩emoji(被打..)
+現在想起來還真的是蠢到不行，我想就算是新手也沒像我這麼單(愚)純(蠢)吧XD
+符號(Symbol)在Rails專案裡，我們常常看到冒號加上英文字母的用法，例如:name,age,party"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day 3: Ruby世界中的符號(Symbol)是什麼？與字串(String)有什麼差異？"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：
+
+覺得哇～原來寫程式也可以玩emoji(被打..)
+現在想起來還真的是蠢到不行，我想就算是新手也沒像我這麼單(愚)純(蠢)吧XD
+符號(Symbol)在Rails專案裡，我們常常看到冒號加上英文字母的用法，例如:name,age,party"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day 3: Ruby世界中的符號(Symbol)是什麼？與字串(String)有什麼差異？ - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day 3: Ruby世界中的符號(Symbol)是什麼？與字串(String)有什麼差異？</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-09-16
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：<br><img src="https://i.imgur.com/aT4BBK6.png" alt=""></p>
+<p><img src="https://i.imgur.com/PnKIdW5.png" alt=""></p>
+<p>覺得哇～原來寫程式也可以玩<a href="https://zh.wikipedia.org/wiki/%E7%B9%AA%E6%96%87%E5%AD%97" target="_blank" rel="noopener">emoji</a>(被打..)</p>
+<p>現在想起來還真的是蠢到不行，我想就算是新手也沒像我這麼單(愚)純(蠢)吧XD</p>
+<h1 id="符號-Symbol"><a href="#符號-Symbol" class="headerlink" title="符號(Symbol)"></a>符號(Symbol)</h1><p>在Rails專案裡，我們常常看到冒號加上英文字母的用法，例如<code>:name</code>,<code>age</code>,<code>party</code>,<code>policy</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clean_params</span></span></span><br><span class="line">    params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:party</span>, <span class="symbol">:policy</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>或是Hash</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">student = &#123;<span class="symbol">:name</span> =&gt; <span class="string">'Louis'</span>, <span class="symbol">:age</span> =&gt;<span class="string">'18'</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>冒號的後面其實也非必要加英文，你要變成<code>:やさしい</code>,<code>:帥哥</code>,<code>:123</code>也是會過的，只是在使用上很不方便且很少見，建議還是用英文字母就好。</p>
+<p>其實符號(Symbol)與變數(variable)的命名很像，只是符號前面有加冒號的差別而已。</p>
+<h3 id="有些人會認為，阿這東西不就記下來就好？幹嘛還要特別開一篇來寫？"><a href="#有些人會認為，阿這東西不就記下來就好？幹嘛還要特別開一篇來寫？" class="headerlink" title="有些人會認為，阿這東西不就記下來就好？幹嘛還要特別開一篇來寫？"></a>有些人會認為，阿這東西不就記下來就好？幹嘛還要特別開一篇來寫？</h3><p>符號在Ruby裡是很重要的存在，它並不只是像變數命名一樣，只是個’名字’的存在。可以想像成符號就是「有名字的物件」且「無法變更的字串(String)」。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">1</span>      <span class="comment">#數字物件</span></span><br><span class="line"></span><br><span class="line">x = <span class="string">'good'</span> <span class="comment">#字串物件</span></span><br><span class="line"></span><br><span class="line">x = <span class="symbol">:good</span>  <span class="comment">#符號物件</span></span><br></pre></td></tr></table></figure>
+<h1 id="字串-String-與符號-Symbol-有什麼不同？"><a href="#字串-String-與符號-Symbol-有什麼不同？" class="headerlink" title="字串(String)與符號(Symbol)有什麼不同？"></a>字串(String)與符號(Symbol)有什麼不同？</h1><h3 id="字串的內容可以被修正，但符號不行。"><a href="#字串的內容可以被修正，但符號不行。" class="headerlink" title="==字串的內容可以被修正，但符號不行。=="></a>==字串的內容可以被修正，但符號不行。==</h3><p>開啟irb來看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 改變字串</span><br><span class="line"></span><br><span class="line">2.6.3 :016 &gt; a = &apos;hello&apos;</span><br><span class="line"> =&gt; &quot;hello&quot;</span><br><span class="line">2.6.3 :017 &gt; a[0]</span><br><span class="line"> =&gt; &quot;h&quot;</span><br><span class="line">2.6.3 :018 &gt; b = :hello</span><br><span class="line"> =&gt; :hello</span><br><span class="line">2.6.3 :019 &gt; b[0]</span><br><span class="line"> =&gt; &quot;h&quot;</span><br><span class="line">2.6.3 :020 &gt; a[0] = &apos;f&apos;</span><br><span class="line"> =&gt; &quot;f&quot;</span><br><span class="line">2.6.3 :021 &gt; a</span><br><span class="line"> =&gt; &quot;fello&quot;         #字串的第一個字母&apos;h&apos;改成&apos;f&apos;</span><br><span class="line">2.6.3 :022 &gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 改變符號，出現error</span><br><span class="line"></span><br><span class="line">2.6.3 :022 &gt; b = :hello</span><br><span class="line"> =&gt; :hello</span><br><span class="line">2.6.3 :023 &gt; b[0]</span><br><span class="line"> =&gt; &quot;h&quot;</span><br><span class="line">2.6.3 :024 &gt; b[0] = &apos;f&apos;</span><br><span class="line"></span><br><span class="line">NoMethodError (undefined method `[]=&apos; for :hello:Symbol)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Symbol的效能比字串好"><a href="#Symbol的效能比字串好" class="headerlink" title="Symbol的效能比字串好"></a>Symbol的效能比字串好</h3><p>記憶體的存取方式也不同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 符號(Symbol)每次印出 :name 時，具有唯一性，佔用記憶體位址相同。</span><br><span class="line">2.6.3 :012 &gt; :name.object_id</span><br><span class="line"> =&gt; 88028</span><br><span class="line">2.6.3 :013 &gt; :name.object_id</span><br><span class="line"> =&gt; 88028</span><br><span class="line"> </span><br><span class="line"># 字串(String)每次印出&quot;name&quot;時，他的object_id都會不同，佔用的記憶體位址也不同。</span><br><span class="line">2.6.3 :014 &gt; &apos;name&apos;.object_id</span><br><span class="line"> =&gt; 70183486959360</span><br><span class="line">2.6.3 :015 &gt; &apos;name&apos;.object_id</span><br><span class="line"> =&gt; 70183486974200</span><br></pre></td></tr></table></figure>
+<p>每個Symbol產生時，在Ruby裡就會產生一個獨立的object_id，直到程式結束為止，而字串在每次產生的時候，都會產生一個新的object_id，這也是為何「字串的內容可以被修正，但符號不行。」的原因。</p>
+<p>也因為每次取用一次String，就得產生一個新的object_id，很佔用記憶體空間，Symbol則是直接取用一開始建立的object_id，所以字串的效能稍微差一點。</p>
+<h2 id="String可以轉成Symbol，Symbol也可以轉成String"><a href="#String可以轉成Symbol，Symbol也可以轉成String" class="headerlink" title="String可以轉成Symbol，Symbol也可以轉成String"></a>String可以轉成Symbol，Symbol也可以轉成String</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 字串轉成 Symbol</span><br><span class="line">2.6.3 :025 &gt; &apos;name&apos;.to_sym</span><br><span class="line"> =&gt; :name</span><br><span class="line"></span><br><span class="line"># Symbol 轉成字串</span><br><span class="line">2.6.3 :026 &gt; :name.to_s</span><br><span class="line"> =&gt; &quot;name&quot;</span><br></pre></td></tr></table></figure>
+
+
+<p>參考資料：<br><a href="https://pjchender.github.io/" target="_blank" rel="noopener">PJChen的私房菜</a><br><a href="https://kaochenlong.com/" target="_blank" rel="noopener">Ruby語法放大鏡</a></p>
+<blockquote>
+<p>“When there’s that moment of ‘Wow, I’m not really sure I can do this,’ and you push through those moments, that’s when you have a breakthrough.”</p>
+<p>— Marissa Mayer, CEO of Yahoo</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

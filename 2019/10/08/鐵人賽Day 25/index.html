@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？
+但這真的是我第一次接觸這個名詞腦袋中第一個浮現的畫面XD可能字真的太像了吧(還是只有我這樣覺得？)
+
+看來對我來說，不止中文字有這個問題，好像連英文單字都是…
+scope, scoop傻傻分不清楚(誤)
+Scope最近做專案常常發現，在撈資料"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day25: Rails中的一球冰淇淋 scope"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？
+但這真的是我第一次接觸這個名詞腦袋中第一個浮現的畫面XD可能字真的太像了吧(還是只有我這樣覺得？)
+
+看來對我來說，不止中文字有這個問題，好像連英文單字都是…
+scope, scoop傻傻分不清楚(誤)
+Scope最近做專案常常發現，在撈資料"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day25: Rails中的一球冰淇淋 scope - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day25: Rails中的一球冰淇淋 scope</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-10-08
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p><img src="https://i.imgur.com/wjqS1Dq.png" alt=""></p>
+<p>這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？</p>
+<p>但這真的是我第一次接觸這個名詞腦袋中第一個浮現的畫面XD<br>可能字真的太像了吧(還是只有我這樣覺得？)</p>
+<p><img src="https://i.imgur.com/xctRRHl.png" alt=""></p>
+<p>看來對我來說，不止中文字有這個問題，好像連英文單字都是…</p>
+<p>scope, scoop傻傻分不清楚(誤)</p>
+<h1 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h1><p>最近做專案常常發現，在撈資料的時候，常常一直點find點where一直點下去，但有發現有時候在同一個controller時，都在對特定Model做同一件事情，在Rails常常可以看到一個字<strong>DRY</strong>:</p>
+<blockquote>
+<p>Don’t Repeat Yourself</p>
+</blockquote>
+<p>為了能夠讓程式碼變得乾淨易讀且方便使用，我們就可以在該controller的Model寫<code>scope</code>。</p>
+<p>也許你會說，可一個一個寫也沒什麼不好啊？</p>
+<p>但如果今天需求變更(例如：原本出全部的資料改為撈價格小於100的資料)，那不就全站都需要跟著修改？非常不方便，所以這時候我們就需要用到<code>scope</code>。</p>
+<p>先來看個簡單的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>撈出所有Food Model的物件並依照建立時間排序，這時候如果要寫成scope來使用，就可以在Model寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>) &#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候的controller就可以這要取用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.show_all</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果後面的其他action也要做一樣的事情，就只要在Model名稱(此例為Food)後面加你寫 scope 的方法名稱就可以了。</p>
+<h3 id="小補充："><a href="#小補充：" class="headerlink" title="小補充："></a>小補充：</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  <span class="comment">#寫法一</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>) &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#寫法二</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">show_all</span></span></span><br><span class="line">    order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>寫法一與寫法二的效果是相同的，至於何時該用哪個，其實就是看個人偏好了，我自己的感覺，如果是條件簡單的話就用scope寫，如果是條件較複雜的話就用類別方法寫。</p>
+<h2 id="如果想帶參數"><a href="#如果想帶參數" class="headerlink" title="如果想帶參數"></a>如果想帶參數</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:cheap_price</span>, -&gt;(price) &#123; where(<span class="string">"price &lt; ?"</span>, price)&#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候controller就可以拿來用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.cheap_price(price)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="scope本身可以帶入scope-串接"><a href="#scope本身可以帶入scope-串接" class="headerlink" title="scope本身可以帶入scope(串接)"></a>scope本身可以帶入scope(串接)</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>).cheap_price(<span class="number">100</span>) &#125;</span><br><span class="line">  scope <span class="symbol">:cheap_price</span>, -&gt;(price) &#123; where(<span class="string">"price &lt; ?"</span>, price)&#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.show_price(price)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣的寫法就可以撈出價格小於 price 且按照建立時間排序了。</p>
+<p>參考資料：<br><a href="https://rails.ruby.tw/active_record_querying.html#%E4%BD%9C%E7%94%A8%E5%9F%9F" target="_blank" rel="noopener">Rails Guide</a><br><a href="https://mgleon08.github.io/blog/2015/12/20/ruby-on-rails-scopes/" target="_blank" rel="noopener">Ruby on Rails - Scopes</a><br><a href="https://railsbook.tw/chapters/16-model-basic.html#scope-and-class-method" target="_blank" rel="noopener">為你自己學Ruby on Rails</a></p>
+<blockquote>
+<p>“Every challenge, every adversity, contains within it the seeds of opportunity and growth.”</p>
+<p>– Roy Bennett, Politician</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

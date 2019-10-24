@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="上次透過簡單首頁、分頁製作了第一個rails專案，了解到其中MVC的運作原理及routes與controller之間的關聯性，這次我們將延續上次的內容添加一些功能，並透過CRUD 中（Create、 Read、 Update、 Delete）C跟R的流程來建立專案，U和D的部分就暫時有機會的時候再說"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day21: 簡易Rails實作(中)"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="上次透過簡單首頁、分頁製作了第一個rails專案，了解到其中MVC的運作原理及routes與controller之間的關聯性，這次我們將延續上次的內容添加一些功能，並透過CRUD 中（Create、 Read、 Update、 Delete）C跟R的流程來建立專案，U和D的部分就暫時有機會的時候再說"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day21: 簡易Rails實作(中) - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day21: 簡易Rails實作(中)</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-10-04
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>上次透過簡單首頁、分頁製作了第一個rails專案，了解到其中MVC的運作原理及routes與controller之間的關聯性，這次我們將延續上次的內容添加一些功能，並透過CRUD 中（Create、 Read、 Update、 Delete）C跟R的流程來建立專案，U和D的部分就暫時有機會的時候再說明了，現在就來做做看吧！</p>
+<h2 id="新增候選人至表單"><a href="#新增候選人至表單" class="headerlink" title="新增候選人至表單"></a>新增候選人至表單</h2><p>在new.html.erb檔案中，我們需要一個表單讓使用者輸入，輸入後把資料丟到我們想要去的地方，先來建立表單吧!</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>新增候選人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/candidates"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '回首頁', <span class="attr">candidates_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-primary</span> <span class="attr">btn-lg</span>'%&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中我們可以看到第3行的action指的是我們要將資料丟去哪裡，method則是丟出去的方法。</p>
+<p>(在終端機執行rails routes)</p>
+<p><img src="https://i.imgur.com/MKCMMBr.png" alt=""></p>
+<p>使用者填完表單並按送出後，會將資料丟去</p>
+<p><code>candidates POST / candidates(.:format) candidates#create</code>:<br>對<code>candidates(.:format)</code> 這個地方丟資料去<code>candidates#create</code>的時候，需要用 <code>post</code> 方法。<br>此例我們要丟去的位置是<code>create</code>，且要用<code>post</code>的方式丟出，所以可以看到第3行 <code>action=&quot;/candidate&quot; method=&quot;post&quot;</code> 的部分才要用<code>post</code>而不是<code>get</code>。</p>
+<p>此時的畫面長這樣:</p>
+<p><img src="https://i.imgur.com/i42vAtb.png" alt=""></p>
+<p>這時候如果我們隨便輸入東西並按下提交，會出現下圖:</p>
+<p><img src="https://i.imgur.com/O13Fhec.png" alt=""></p>
+<p>還記得上次的步驟嗎?<br>我們在controller根本還沒有給他方法，那它缺什麼，我們就給他什麼吧，回到 <code>candidates_controller.rb</code></p>
+<p><img src="https://i.imgur.com/xIFti8G.png" alt=""></p>
+<p>接下來應該大功告成了吧~至少應該可以按下提交後不會跳出錯誤了(灑花</p>
+<h3 id="BUT"><a href="#BUT" class="headerlink" title="BUT!!!!"></a>BUT!!!!</h3><p>人生就是有無限的BUT….</p>
+<h2 id="Rails-的預設防護"><a href="#Rails-的預設防護" class="headerlink" title="Rails 的預設防護"></a>Rails 的預設防護</h2><p><img src="https://i.imgur.com/zWZTyXs.png" alt=""></p>
+<p>照上次的經驗來看，應該是只要新增方法就至少不會跳出錯誤了，但這裡為何會出錯呢?</p>
+<p>原來是在rails裡面為了保護資料庫的安全，有個預設防護的機至給擋下來了。</p>
+<blockquote>
+<p>什麼是<a href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/586268/" target="_blank" rel="noopener">Token?</a></p>
+<p>生活情境:</p>
+<p>小菜走在士林夜市，買了一杯位在”門口”的60嵐的珍奶並拿了20號號碼牌，想說要等，就先進去走走晃晃，看到前方剛好有一家位在”轉角”的60嵐!!!天真的小菜異想天開，想說反正都是60嵐直接拿號碼牌去領也可以吧!? 好懶得走回去喔…</p>
+<p>跳到20號了!!!</p>
+<p>店員: 呃(os:又來個知日 阝章)….你這個號碼牌不是我們店的喔，所以不能給你珍奶。</p>
+<p>小菜難過的走在路上….<a href="https://www.google.com/search?rlz=1C1CHWL_zh-TWAU820AU820&biw=1280&bih=578&ei=JT1hXYrBGMLUsAfw0rnoAg&q=%E5%BE%9E%E5%89%8D%E6%9C%89%E4%B8%80%E5%80%8B%E4%BA%BA%E5%8F%AB%E5%B0%8F%E8%8F%9C%E4%BB%96%E8%B5%B0%E5%9C%A8%E8%B7%AF%E4%B8%8A+%E5%B0%B1%E8%A2%AB%E7%AB%AF%E8%B5%B0%E4%BA%86+&oq=%E5%BE%9E%E5%89%8D%E6%9C%89%E4%B8%80%E5%80%8B%E4%BA%BA%E5%8F%AB%E5%B0%8F%E8%8F%9C%E4%BB%96%E8%B5%B0%E5%9C%A8%E8%B7%AF%E4%B8%8A+%E5%B0%B1%E8%A2%AB%E7%AB%AF%E8%B5%B0%E4%BA%86+&gs_l=psy-ab.3...8402.8520..8793...0.0..0.316.316.3-1......0....1..gws-wiz.8xP0THHsmEY&ved=0ahUKEwjK54_6z5vkAhVCKuwKHXBpDi0Q4dUDCAo&uact=5" target="_blank" rel="noopener">就被端走了</a></p>
+</blockquote>
+<p>token有點像在做這件事，你手上的號碼牌顯示的店面，必須要跟領取的店面相同，才能夠拿到珍奶(我們要的結果)。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>新增候選人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/candidates"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"authenticity_token"</span> <span class="attr">value</span>=<span class="string">"&lt;%= form_authenticity_token %&gt;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '回首頁', <span class="attr">candidates_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-primary</span> <span class="attr">btn-lg</span>'%&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我們在 <code>new.html.erb</code> 檔案新增第5行，到開發者工具來檢視一下token:</p>
+<p><img src="https://i.imgur.com/rewhljc.png" alt=""></p>
+<p>紅色框線value的部分就是token的值，且每次重新整理都會更新一次。</p>
+<p>這樣一來，按下提交後就不會噴錯誤訊息囉，可是不覺得每次要做個送出資料的欄位就要打這一串很麻煩嗎?</p>
+<p>可以用上次介紹的 <code>form_for</code> 就可以省略複雜的那一行了，且rails會根據你在views的哪個檔案，自動幫你在button( <code>&lt;%= form.submit %&gt;</code>)中加入文字。(ex: Updated Candidate, Edit Candidate…)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">form_for</span>(物件) <span class="attr">do</span> |<span class="attr">form</span>| %&gt;</span></span><br><span class="line"></span><br><span class="line">   資料打在這裡</span><br><span class="line">   </span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="在Model建立表單"><a href="#在Model建立表單" class="headerlink" title="在Model建立表單"></a>在Model建立表單</h1><p>Rails有個方式可以使 <code>form_for</code> 表單綁在Model上，在終端機輸入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rails generate model Candidate name:string party:string age:<span class="built_in">integer</span> policy:text</span><br><span class="line"></span><br><span class="line">or 簡單一點的寫法 (預設就是string)</span><br><span class="line"></span><br><span class="line">rails g model Candidate name party age:<span class="built_in">integer</span> policy:text</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/QA21ghY.png" alt=""></p>
+<p><img src="https://i.imgur.com/4QUmpeQ.png" alt=""></p>
+<p><img src="https://i.imgur.com/woHTHG0.png" alt=""></p>
+<p>新增了兩個檔案:</p>
+<p>models下的<code>candidates.rb</code> 及 db&gt;migrate&gt;<code>*********_create_candidates.rb</code></p>
+<p>其中在<code>*********_create_candidates.rb</code>會建立name(型態:string)、party(型態:string)、age(型態:integer)、policy(型態:text)，後面的timestamp(created_at, updated_at)其實是內建的，用來紀錄提交時的時間點。</p>
+<p>(備註: Rails在資料庫建立資料表的時候，會帶一個預設的隱藏ID的欄位，且在上面不會顯示，如果不想要ID欄位的話可以再下指令去除。)</p>
+<p>到了這個步驟，其實並不是真正的建立表單了，我們只是告訴它，我有這個要建立表單的”計畫”，所以還需要在終端機輸入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rails db:migrate</span><br></pre></td></tr></table></figure>
+
+<p>才是告知”請按照這個計畫執行”。</p>
+<p>如果此時再 rails db:migrate一次，並不會發生任何事，因為已經建立好了就辦法再更改，如果要更改已建立的檔案只有兩種方式:</p>
+<p>建立一個新的表單並”存檔”後，再rails db:migrate一次。<br>rails db:rollback， 但請盡量少用，除非非常確定，否則用了rollback後沒辦法再回復。</p>
+<p>之後再開schema.rb就可以確認是否是你要的結果了。</p>
+<p><img src="https://i.imgur.com/BN2jfxg.png" alt=""></p>
+<h1 id="完成表單"><a href="#完成表單" class="headerlink" title="完成表單"></a>完成表單</h1><p>接著在 new.html.erb 透過 form_for將表單完成後如下:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>新增候選人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">form_for</span>(<span class="attr">Candidate.new</span>) <span class="attr">do</span> |<span class="attr">form</span>| %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"candidate_field"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">%=</span> <span class="attr">form.label</span> <span class="attr">:name</span>, '姓名' %&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">%=</span> <span class="attr">form.text_field</span> <span class="attr">:name</span> %&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"candidate_field"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">%=</span> <span class="attr">form.label</span> <span class="attr">:party</span>, '黨派' %&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">%=</span> <span class="attr">form.text_field</span> <span class="attr">:party</span> %&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"candidate_field"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">%=</span> <span class="attr">form.label</span> <span class="attr">:age</span>, '年紀' %&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">%=</span> <span class="attr">form.text_field</span> <span class="attr">:age</span> %&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"candidate_field"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">%=</span> <span class="attr">form.label</span> <span class="attr">:policy</span>, '政策' %&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">%=</span> <span class="attr">form.text_area</span> <span class="attr">:policy</span> %&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">form.submit</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '回首頁', <span class="attr">candidates_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-primary</span> <span class="attr">btn-lg</span>'%&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/cLLYl0L.png" alt=""></p>
+<p>其中的 <code>Candidate.new</code> 是從Models裡的 <code>candidate.rb</code> 來的，但html.erb檔盡量用來做”印出內容”的事情就好，故我們不會希望在這裡用<code>Candidate.new</code> 來產生方法。</p>
+<p><img src="https://i.imgur.com/VozvSvB.png" alt=""></p>
+<p>在 <code>candidates_controller.rb</code> 裡的new method建立一個實體變數 <code>@candidate</code> ，接著寫入至 <code>new.html.erb</code> 裡面取代原來的<code>Candidate.new</code> 。</p>
+<h2 id="新增候選人資料"><a href="#新增候選人資料" class="headerlink" title="新增候選人資料"></a>新增候選人資料</h2><p>此時按下create並不會產生任何事情，因為在controller裡的create method沒有寫任何東西，寫入下列程式至<code>create</code>:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CandidatesController</span> &lt; ApplicationController</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">new</span></span></span><br><span class="line">    @candidate = Candidate.new</span><br><span class="line">  <span class="keyword">end</span>  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    render <span class="symbol">html:</span> params</span><br><span class="line">  <span class="keyword">end</span>  </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>來看看 <code>html: params</code> 印出的內容</p>
+<blockquote>
+<p>{“utf8”=&gt;”✓”, “authenticity_token”=&gt;”0OHbZ7WkDs8NsrNHK2s7Dd9BxkITn/qegeFtUcMmE5ANKKiaxmRCOiPuChEAoKh4ho/taDYBB7GvIhTG0a1IHw==”, “candidate”=&gt;{“name”=&gt;”Louis”, “party”=&gt;”none”, “age”=&gt;”20”, “policy”=&gt;”Rails is Good”}, “commit”=&gt;”Create Candidate”, “controller”=&gt;”candidates”, “action”=&gt;”create”}</p>
+</blockquote>
+<p>剛剛輸入的資料就這樣全部已hash的方式印出來了，假設我們今天要取”name”裡面的value，我們可以這樣做:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">render <span class="symbol">html:</span>params[<span class="string">"candidate"</span>] </span><br><span class="line">印出 &#123;<span class="string">"name"</span>=&gt;<span class="string">"Louis"</span>, <span class="string">"party"</span>=&gt;<span class="string">""</span>, <span class="string">"age"</span>=&gt;<span class="string">""</span>, <span class="string">"policy"</span>=&gt;<span class="string">""</span>&#125;</span><br><span class="line"></span><br><span class="line">render <span class="symbol">html:</span>params[<span class="string">"candidate"</span>][<span class="string">"name"</span>]</span><br><span class="line">印出 Louis</span><br></pre></td></tr></table></figure>
+
+<h2 id="寫入資料庫"><a href="#寫入資料庫" class="headerlink" title="寫入資料庫"></a>寫入資料庫</h2><p><code>create</code> 的方法中可以用@candidate.save 來儲存使用者輸入的資料。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CandidatesController</span> &lt; ApplicationController</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">new</span></span></span><br><span class="line">    @candidate = Candidate.new</span><br><span class="line">  <span class="keyword">end</span>  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    <span class="comment">#params["candidate"]印出的是&#123;"name"=&gt;"Louis", "party"=&gt;"", "age"=&gt;"", "policy"=&gt;""&#125;</span></span><br><span class="line">    @candidate = Candidate.new(params[<span class="string">"candidate"</span>])</span><br><span class="line">    <span class="keyword">if</span> @candidate.save</span><br><span class="line">      render <span class="symbol">html:</span> <span class="string">'ok'</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="comment">#render html: 'error'</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span>  </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果儲存成功，印出ok，因為還沒寫入false的條件，故先暫時不管。</p>
+<p>輸入資料按下create之後，就出現錯誤了…..</p>
+<p><img src="https://i.imgur.com/WShpXd6.png" alt=""></p>
+<h2 id="Rails的另一個預設防護-Strong-Parameters"><a href="#Rails的另一個預設防護-Strong-Parameters" class="headerlink" title="Rails的另一個預設防護: Strong Parameters"></a>Rails的另一個預設防護: Strong Parameters</h2><p>為了避免有心人士在填資料時，偷塞參數或惡搞資料庫，造成安全問題，所以在使用者輸入資料要進資料庫的同時，利用permit來過濾並設定那些資料是可以進資料庫哪些不行。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CandidatesController</span> &lt; ApplicationController</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">new</span></span></span><br><span class="line">    @candidate = Candidate.new</span><br><span class="line">  <span class="keyword">end</span>  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    clean_params = params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span>)</span><br><span class="line">    @candidate = Candidate.new(clean_params)</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> @candidate.save</span><br><span class="line">      render <span class="symbol">html:</span> <span class="string">'ok'</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      render <span class="symbol">html:</span> <span class="string">'error'</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span>  </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">clean_params = params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span>)</span><br><span class="line"></span><br><span class="line">params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>) =&gt; 就是找到<span class="string">"candidate"</span>=&gt;&#123;<span class="string">"name"</span>=&gt;<span class="string">"Louis"</span>, <span class="string">"party"</span>=&gt;<span class="string">"none"</span>, <span class="string">"age"</span>=&gt;<span class="string">"20"</span>, <span class="string">"policy"</span>=&gt;<span class="string">"Rails is Good"</span>&#125;, <span class="string">"commit"</span>=&gt;<span class="string">"Create Candidate"</span>, <span class="string">"controller"</span>=&gt;<span class="string">"candidates"</span>, <span class="string">"action"</span>=&gt;<span class="string">"create"</span>&#125;</span><br><span class="line"></span><br><span class="line">.permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span>) =&gt; 允許<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span> 輸入的參數可以進入資料庫</span><br></pre></td></tr></table></figure>
+
+<p>就可以正常執行了。(印出ok)</p>
+<hr>
+<p>礙於篇幅….好像只能先講到這，我們明天再繼續了。</p>
+<p>參考資料：</p>
+<p><a href="https://railsbook.tw/chapters/12-controllers.html" target="_blank" rel="noopener">為你自己學Ruby on Rails</a></p>
+<blockquote>
+<p>“Flaming enthusiasm, backed up by horse sense and persistence, is the quality that most frequently makes for success.”</p>
+<p>— Dale Carnegie, Motivational Expert</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

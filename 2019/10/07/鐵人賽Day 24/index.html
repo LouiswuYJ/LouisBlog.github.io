@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。
+find找出單一筆資料，且只能透過id去搜尋。
+12#找出id為1的購物車Cart.find(1)
+對應的SQL:
+1Cart Load (0.4ms)  SELECT  &#34;carts&#34;.* FROM &#34;ca"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day24: Rails中的find? find_by? where?"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。
+find找出單一筆資料，且只能透過id去搜尋。
+12#找出id為1的購物車Cart.find(1)
+對應的SQL:
+1Cart Load (0.4ms)  SELECT  &#34;carts&#34;.* FROM &#34;ca"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day24: Rails中的find? find_by? where? - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day24: Rails中的find? find_by? where?</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-10-07
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p><img src="https://i.imgur.com/ZInCbYJ.png" alt=""></p>
+<p>在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。</p>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>找出單一筆資料，且只能透過id去搜尋。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找出id為1的購物車</span></span><br><span class="line">Cart.find(1)</span><br></pre></td></tr></table></figure>
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cart Load (0.4ms)  SELECT  <span class="string">"carts"</span>.* FROM <span class="string">"carts"</span> WHERE <span class="string">"carts"</span>.<span class="string">"id"</span> = <span class="variable">$1</span> LIMIT <span class="variable">$2</span>  [[<span class="string">"id"</span>, 1], [<span class="string">"LIMIT"</span>, 1]]</span><br></pre></td></tr></table></figure>
+
+<p>如果查詢不到該筆資料，就會回傳一個<code>ActiveRecord::RecordNotFound</code>的例外訊息，還記得之前的文章有提過例外處理的方法嗎？</p>
+<p>這時候就可以用<code>begin..rescue</code>來捕捉：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_cart</span></span></span><br><span class="line">   <span class="keyword">begin</span></span><br><span class="line">     @cart = Cart.find(params[<span class="symbol">:id</span>])</span><br><span class="line">   <span class="keyword">rescue</span></span><br><span class="line">     redirect_to carts_path, <span class="symbol">notice:</span> <span class="string">"沒有這台購物車喔"</span></span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line"> <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果找不到cart的話，就會直接執行rescue下的程式碼。</p>
+<p>若要找多筆資料又堅持用find，find()裡面還可以塞陣列：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">products = Product.find([2, 5])      <span class="comment"># 等同於 Client.find(2, 5)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#找id是2跟id是5的product</span></span><br></pre></td></tr></table></figure>
+<h2 id="find-by"><a href="#find-by" class="headerlink" title="find_by"></a>find_by</h2><p>找出單一筆資料，且可以透過自訂條件去搜尋。</p>
+<p><img src="https://i.imgur.com/1KOYaOX.png" alt=""></p>
+<p>找出id為5的食物:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Food.find_by(id: 5)</span><br><span class="line"></span><br><span class="line"><span class="comment">#等同於Food.find(5)</span></span><br></pre></td></tr></table></figure>
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food Load (0.4ms)  SELECT  <span class="string">"foods"</span>.* FROM <span class="string">"foods"</span> WHERE <span class="string">"foods"</span>.<span class="string">"id"</span> = <span class="variable">$1</span> LIMIT <span class="variable">$2</span>  [[<span class="string">"id"</span>, 5], [<span class="string">"LIMIT"</span>, 1]]</span><br></pre></td></tr></table></figure>
+
+
+<p>找id是2的使用者擁有的食物：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food.find_by(user_id: 2)</span><br></pre></td></tr></table></figure>
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food Load (0.2ms)  SELECT  <span class="string">"foods"</span>.* FROM <span class="string">"foods"</span> WHERE <span class="string">"foods"</span>.<span class="string">"user_id"</span> = <span class="variable">$1</span> LIMIT <span class="variable">$2</span>  [[<span class="string">"user_id"</span>, 2], [<span class="string">"LIMIT"</span>, 1]]</span><br></pre></td></tr></table></figure>
+
+<p>這裡可以注意的是，如果找不到該筆資料的話，<code>find_by</code>方法會回傳的值是<code>nil</code>而不是例外訊息。</p>
+<p><img src="https://i.imgur.com/190Aeer.png" alt=""></p>
+<p>若使用find_by方法撈資料但還是想要有回傳<code>ActiveRecord::RecordNotFound</code>，可以在find_by後面加個驚嘆號<code>!</code></p>
+<p><img src="https://i.imgur.com/jDBnzwK.png" alt=""></p>
+<p>就可以看到回傳的值不是<code>nil</code>而是可以捕捉的例外訊息了。</p>
+<h2 id="where"><a href="#where" class="headerlink" title="where"></a>where</h2><p>找出多筆資料，且可以透過自訂條件去搜尋，即代表了 SQL 語法 WHERE 的部分。</p>
+<p>條件可以是<strong>字串</strong>、<strong>陣列</strong>、或是 <strong>Hash</strong>。</p>
+<h3 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h3><p>如果我們要找的 orders_count 不是固定的值，則帶入變數<code>params[:orders]</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Client.where(<span class="string">"orders_count = ?"</span>, params[:orders])</span><br></pre></td></tr></table></figure>
+
+<p>根據Rails API文件：</p>
+<blockquote>
+<p>直接將變數插入條件字串裡，不論變數是什麼，都會直接存到資料庫裡。這表示從惡意使用者傳來的變數，會直接存到資料庫。這麼做是把資料庫放在風險裡不管啊！一旦有人知道，可以隨意將任何字串插入資料庫裡，就可以做任何想做的事。</p>
+</blockquote>
+<h3 id="絕對不要直接將變數插入條件字串裡。"><a href="#絕對不要直接將變數插入條件字串裡。" class="headerlink" title="絕對不要直接將變數插入條件字串裡。"></a>絕對不要直接將變數插入條件字串裡。</h3><h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p>找id是2的使用者全部擁有的食物：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food.where(user_id: 10)</span><br></pre></td></tr></table></figure>
+
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food Load (0.4ms)  SELECT <span class="string">"foods"</span>.* FROM <span class="string">"foods"</span> WHERE <span class="string">"foods"</span>.<span class="string">"user_id"</span> = <span class="variable">$1</span>  [[<span class="string">"user_id"</span>, 10]]</span><br></pre></td></tr></table></figure>
+
+<p>若找不到該筆資料，則會回傳<code>#&lt;ActiveRecord::Relation []&gt;</code>。</p>
+<p>參考資料：<br><a href="http://justineyeah-blog.logdown.com/posts/1814190-jd-store-find-find-by-where-in-rails" target="_blank" rel="noopener">JD store find/find_by/where in Rails</a><br><a href="https://rails.ruby.tw/active_record_querying.html" target="_blank" rel="noopener">Active Record 查詢</a><br><a href="https://pjchender.github.io/2018/02/25/rails-active-record-query%EF%BC%88model-%E8%B3%87%E6%96%99%E6%9F%A5%E8%A9%A2%EF%BC%89/" target="_blank" rel="noopener">[Rails] Active Record Query（SQL Query）</a><br><a href="https://railsbook.tw/chapters/16-model-basic.html" target="_blank" rel="noopener">Model 基本操作</a></p>
+<blockquote>
+<p>“Most of our obstacles would melt away if instead of cowering before them we should make up our minds to walk boldly through them.”</p>
+<p>— Orison Marden, Writer</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

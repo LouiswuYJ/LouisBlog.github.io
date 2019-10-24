@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="上次講到了Strong Parameters，今天我們就從Flash開始吧！
+快閃訊息flash
+在按下按鈕後，應該要有個訊息出現告知使用者是否有成功或失敗，並且只出現一次，這就是快閃訊息做的事。在這個專案，我們希望如果 create 成功，會將網頁導向 首頁 並印出 “新增候選人成功!!”，反之若"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day22: 簡易Rails實作(下)"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="上次講到了Strong Parameters，今天我們就從Flash開始吧！
+快閃訊息flash
+在按下按鈕後，應該要有個訊息出現告知使用者是否有成功或失敗，並且只出現一次，這就是快閃訊息做的事。在這個專案，我們希望如果 create 成功，會將網頁導向 首頁 並印出 “新增候選人成功!!”，反之若"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day22: 簡易Rails實作(下) - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day22: 簡易Rails實作(下)</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-10-05
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>上次講到了Strong Parameters，今天我們就從Flash開始吧！</p>
+<h2 id="快閃訊息flash"><a href="#快閃訊息flash" class="headerlink" title="快閃訊息flash"></a>快閃訊息flash</h2><p><img src="https://i.imgur.com/tjW0Pjy.png" alt=""></p>
+<p>在按下按鈕後，應該要有個訊息出現告知使用者是否有成功或失敗，並且只出現一次，這就是快閃訊息做的事。<br>在這個專案，我們希望如果 create 成功，會將網頁導向 首頁 並印出 “新增候選人成功!!”，反之若失敗，則印出”新增候選人失敗!!” (一樣false還沒寫入)</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#上略 </span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    clean_params = params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span>)</span><br><span class="line">    @candidate = Candidate.new(clean_params)</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> @candidate.save</span><br><span class="line">      flash[<span class="symbol">:notice</span>] = <span class="string">"新增候選人成功!!"</span>         <span class="comment">#第7~8行可直接寫成 redirect_to root_path, notice: "新增候選人成功!!"</span></span><br><span class="line">      redirect_to root_path</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      flash[<span class="symbol">:notice</span>] = <span class="string">"新增候選人失敗!!"</span>         <span class="comment">#第10~11行可直接寫成 redirect_to root_path, notice: "新增候選人失敗!!"</span></span><br><span class="line">      redirect_to root_path</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span>  </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#並在index.html.erb檔加入</span></span><br><span class="line"></span><br><span class="line">&lt;%= flash[<span class="symbol">:notice</span>] %&gt;   印出<span class="string">"新增候選人成功!"</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/59ON3bS.png" alt=""></p>
+<h2 id="首頁印出候選人列表"><a href="#首頁印出候選人列表" class="headerlink" title="首頁印出候選人列表"></a>首頁印出候選人列表</h2><p>想要在首頁做事情，那當然是去 <code>index</code> 做事，首先針對 candidate_controller.rb 裡的 index method寫入:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@candidates = Candidate.all</span><br><span class="line"></span><br><span class="line">注意<span class="symbol">:</span>這裡的實體變數故意列為<span class="string">"複數"</span>，因為是撈出全部候選人的資料</span><br></pre></td></tr></table></figure>
+
+<p>去抓所有使用者輸入的資料。<br>再來到 <code>index.html.erb</code> 利用each迴圈印出所有候選人的”姓名”。</p>
+<p><img src="https://i.imgur.com/dzMqxuK.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">flash</span>[<span class="attr">:notice</span>] %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>首頁:候選人列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># <span class="tag">&lt;<span class="name">%%</span>&gt;</span>不顯示在頁面</span><br><span class="line">#<span class="tag">&lt;<span class="name">=%%</span>&gt;</span>要顯示在頁面上</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">candidates.each</span> <span class="attr">do</span> |<span class="attr">candidate</span>| %&gt;</span>     #注意是@candidate"s"</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">candidate.name</span> %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '新增候選人', <span class="attr">new_candidate_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-danger</span> <span class="attr">btn-lg</span>' %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="驗證資料"><a href="#驗證資料" class="headerlink" title="驗證資料"></a>驗證資料</h2><p>人打字總偶爾有肥手指、眼睛業障或看錯欄位的狀況發生，所以每個輸入的資料都需要做進一步的認證才能進入資料庫。</p>
+<p>(總不可能候選人只有3歲吧!!!?)</p>
+<p>還記得剛剛寫的 <code>if else</code> 判斷總是忽略 <code>false</code> 的話怎麼辦對吧? 如果不寫入以下程式碼的話，永遠不會進入到 <code>else</code> 的判斷，到 candidate.rb 裡新增:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Candidate</span> &lt; ApplicationRecord</span></span><br><span class="line">  validates <span class="symbol">:name</span>, <span class="symbol">presence:</span> <span class="literal">true</span>  </span><br><span class="line">  <span class="comment">#腦補眼鏡</span></span><br><span class="line">  <span class="comment">#validates (:name, &#123;presence: true&#125;)  </span></span><br><span class="line">  </span><br><span class="line">  validates <span class="symbol">:age</span>, <span class="symbol">numericality:</span> &#123; <span class="symbol">greater_than_or_equal_to:</span> <span class="number">40</span> &#125;</span><br><span class="line">  <span class="comment">#腦補眼鏡</span></span><br><span class="line">  <span class="comment">#validates (:age, &#123;numericality: &#123; &#123;greater_than_or_equal_to: 40&#125; &#125;&#125;)</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>姓名欄位: 有資料才會會回傳true ; 年紀欄位: 必須大於或等於40歲<br>其實我們再 <code>create</code> 中的 <code>if else</code> 判斷式寫的較不人性化，若今天使用者打錯某字跳出”新增候選人失敗!!”，回到新增頁面後竟然還要重新打字，是不是太麻煩了? 所以我們要修正<code>else</code>後的輸出方式:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CandidatesController</span> &lt; ApplicationController</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">    @candidate = Candidate.all</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">new</span></span></span><br><span class="line">    @candidate = Candidate.new</span><br><span class="line">  <span class="keyword">end</span>  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    clean_params = params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span>)</span><br><span class="line">    @candidate = Candidate.new(clean_params)</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> @candidate.save</span><br><span class="line">      flash[<span class="symbol">:notice</span>] = <span class="string">"新增候選人成功!"</span></span><br><span class="line">      redirect_to root_path</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="comment">#原來寫法:flash[:notice] = "新增候選人失敗!"</span></span><br><span class="line">      <span class="comment">#原來寫法:redirect_to root_path</span></span><br><span class="line">      render <span class="symbol">:new</span>  <span class="comment"># 借new.html.erb這個檔案，並不是上方的new方法!!!</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span>  </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>就解決了如果打錯字回到頁面後文字被洗掉的問題。</p>
+<h2 id="哪裡輸入錯誤"><a href="#哪裡輸入錯誤" class="headerlink" title="哪裡輸入錯誤?"></a>哪裡輸入錯誤?</h2><p>若輸入錯誤的話，總要告訴使用者是哪裡輸入錯誤吧?<br>new.html.erb內新增判斷式，就會印出Rails內建的<code>full_messages</code>資料庫訊息:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>新增候選人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> @<span class="attr">candidate.errors.any</span>? %&gt;</span>   #.errors.any? =&gt;有錯誤嗎?</span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">candidate.errors.full_messages.each</span> <span class="attr">do</span> |<span class="attr">message</span>| %&gt;</span> # .full_messages =&gt; Rails內建的錯誤訊息資料庫</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">message</span> %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">form_for</span>(@<span class="attr">candidate</span>) <span class="attr">do</span> |<span class="attr">form</span>| %&gt;</span></span><br><span class="line">#下略....</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看候選人詳細資料"><a href="#查看候選人詳細資料" class="headerlink" title="查看候選人詳細資料"></a>查看候選人詳細資料</h2><p>當然在看候選人的時候不可能只看名字吧?所以我們要做一個只要點選候選人姓名，就轉至候選人資料的頁面。<br>index.html.erb頁面:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#index.html.erb</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">flash</span>[<span class="attr">:notice</span>] %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>首頁:候選人列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&lt;ul&gt;</span></span><br><span class="line"><span class="comment">  &lt;% @candidate.each do |candidate| %&gt;</span></span><br><span class="line"><span class="comment">    &lt;li&gt;&lt;%= candidate.name %&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment">  &lt;% end %&gt;</span></span><br><span class="line"><span class="comment">&lt;/ul&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">candidate.each</span> <span class="attr">do</span> |<span class="attr">candidate</span>| %&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--路徑需查 rails routes --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> <span class="attr">candidate.name</span>, <span class="attr">candidate_path</span>(<span class="attr">candidate.id</span>) %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '新增候選人', <span class="attr">new_candidate_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-danger</span> <span class="attr">btn-lg</span>' %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/RzaZytg.png" alt=""></p>
+<p>就會是可以點選的狀態了，能夠預期若按下候選人姓名會發生什麼事嗎?</p>
+<p><img src="https://i.imgur.com/ca6Ldn5.png" alt=""></p>
+<p>因為我們還沒有建立在 show 方法:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span></span></span><br><span class="line">    @candidate = Candidate.find_by(<span class="symbol">id:</span> params[<span class="symbol">:id</span>])  </span><br><span class="line">    <span class="comment">#Candidate.find_by =&gt; Rails內建尋找相對應資料的方法</span></span><br><span class="line">    <span class="comment">#腦補眼鏡(&#123;id: params[:id]&#125;)</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>({id: params[:id]}) :取<code>params</code>內key是<code>:id</code>的value當作外面<code>id:</code>的value<br>聽起來很像繞口令，讓我們一步一步拆開來看。</p>
+<p>params本身是Hash的資料型態，也就是上面有敘述過的一大串資料:</p>
+<blockquote>
+<p>{“utf8”=&gt;”✓”, “authenticity_token”=&gt;”0OHbZ7WkDs8NsrNHK2s7Dd9BxkITn/qegeFtUcMmE5ANKKiaxmRCOiPuChEAoKh4ho/taDYBB7GvIhTG0a1IHw==”, “candidate”=&gt;{“name”=&gt;”Louis”, “party”=&gt;”none”, “age”=&gt;”20”, “policy”=&gt;”Rails is Good”}, “commit”=&gt;”Create Candidate”, “controller”=&gt;”candidates”, “action”=&gt;”create”}</p>
+</blockquote>
+<p>上面有講過個例子，若我要拿到Louis，我需要寫<code>params[&#39;candidate&#39;][&#39;name&#39;]</code> 才能拿到對吧?</p>
+<blockquote>
+<p>params[‘candidate’][‘name’]<br>            ↓　　　　　↓<br>      ({   id:     　params[:id]}) </p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">假設 params = &#123; <span class="symbol">id:</span> <span class="number">5</span>, <span class="symbol">email:</span> <span class="string">'kk@5xruby.tw'</span>, <span class="symbol">name:</span> <span class="string">'Louis'</span> &#125;</span><br><span class="line">find_by(<span class="symbol">id:</span> params[<span class="symbol">:id</span>], <span class="symbol">email:</span> params[<span class="symbol">:email</span>], <span class="symbol">name:</span> params[<span class="symbol">:name</span>])</span><br><span class="line">find_by(        <span class="number">5</span>      ,      kk@5xruby.tw    ,     Louis          )</span><br><span class="line"></span><br><span class="line">這樣可以找到在候選人表格裡「id 是 <span class="number">5</span>，而且 email 是 kk@5xruby.tw，而且 name 是 Louis」的候選人</span><br></pre></td></tr></table></figure>
+
+<p>這樣對應著看，應該有比較容易理解吧!!</p>
+<p>但還是會出現錯誤(笑</p>
+<p><img src="https://i.imgur.com/JVlrNje.png" alt=""></p>
+<p>記得也要在views建立 show.html.erb</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> @<span class="attr">candidate</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.name</span> %&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>黨派: <span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.party</span>%&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>年紀: <span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.age</span>%&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>政見: <span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.policy</span>%&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">else</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>沒有這個人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/Tlc2w1n.png" alt=""></p>
+<p>就終於完成了簡易CRUD中的C跟R…</p>
+<h5 id="腦細胞少10-，皺褶增加0-001"><a href="#腦細胞少10-，皺褶增加0-001" class="headerlink" title="腦細胞少10%，皺褶增加0.001%"></a>腦細胞少10%，皺褶增加0.001%</h5><p>參考資料：</p>
+<p><a href="https://railsbook.tw/chapters/13-crud-part-1.html" target="_blank" rel="noopener">為你自己學Ruby on Rails</a></p>
+<blockquote>
+<p>“The difference in winning and losing is most often…not quitting.”</p>
+<p>— Walt Disney, Producer</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

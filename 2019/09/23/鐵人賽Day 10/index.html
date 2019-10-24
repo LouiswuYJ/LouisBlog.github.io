@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="最近的rails專案裡，看到了這行：
+1@cart = @cart || Cart.from_hash(session[:cart9527])
+
+剛開始真的看不懂這段到底在幹嘛，為了想釐清觀念就查了一下資料，結果越查越多….而且方向還越來越偏XD
+至於為什麼要特別寫這篇呢？我們已經知道Ruby中的等"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day10: Ruby中的Conditional Assignment Operator: x ||= y(or-equals)"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="最近的rails專案裡，看到了這行：
+1@cart = @cart || Cart.from_hash(session[:cart9527])
+
+剛開始真的看不懂這段到底在幹嘛，為了想釐清觀念就查了一下資料，結果越查越多….而且方向還越來越偏XD
+至於為什麼要特別寫這篇呢？我們已經知道Ruby中的等"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day10: Ruby中的Conditional Assignment Operator: x ||= y(or-equals) - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day10: Ruby中的Conditional Assignment Operator: x ||= y(or-equals)</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-09-23
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>最近的rails專案裡，看到了這行：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@cart = @cart <span class="params">||</span> Cart.from_hash(session[<span class="symbol">:cart9527</span>])</span><br></pre></td></tr></table></figure>
+
+<p>剛開始真的看不懂這段到底在幹嘛，為了想釐清觀念就查了一下資料，結果越查越多….而且方向還越來越偏XD</p>
+<p>至於為什麼要特別寫這篇呢？我們已經知道Ruby中的等於是指派(Assign)的意思，那不就跟x += 1 等同於 x = x + 1而已嗎？</p>
+<p><img src="https://i.imgur.com/yjGHJqf.png" alt=""><br><a href="https://www.oreilly.com/library/view/the-ruby-programming/9780596516178/ch04s05.html" target="_blank" rel="noopener">圖片來源</a></p>
+<h3 id="x-y-不是-x-x-y"><a href="#x-y-不是-x-x-y" class="headerlink" title="x ||= y 不是 x = x || y"></a><code>x ||= y 不是 x = x || y</code></h3><p><del>難道這就是傳說中的Ruby界的WTF moment嗎？</del></p>
+<p>那 x ||= y到底是什麼？</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x <span class="params">||</span>= y</span><br><span class="line"></span><br><span class="line"><span class="comment">#expansion應該長</span></span><br><span class="line">x <span class="params">||</span> x = y</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>If <strong>x</strong> is not initialized, false, nil or undefined, then evaluate <strong>y</strong> and set a to the result.</p>
+</blockquote>
+<p>如果x尚未被初始化、false或nil及undefined，x 等於 y(換句話說:y會指派給x)，其他情況下，x值不變。</p>
+<p>所以:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@cart = @cart <span class="params">||</span> Cart.from_hash(session[<span class="symbol">:cart9527</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#跟下面程式碼不相同</span></span><br><span class="line"></span><br><span class="line">@cart <span class="params">||</span>= Cart.from_hash(session[<span class="symbol">:cart9527</span>])</span><br></pre></td></tr></table></figure>
+<p>@cart現在是nil，第一圈會找Cart.from_hash(session[:cart9527])指派給@cart，第二圈因為@cart已經有值，故會將值指向自己。</p>
+<p>再來看看幾個例子：</p>
+<h4 id="x被指派為nil或false"><a href="#x被指派為nil或false" class="headerlink" title="x被指派為nil或false"></a>x被指派為nil或false</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="literal">nil</span> <span class="comment"># 或 x = false</span></span><br><span class="line">y = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">puts x <span class="params">||</span>= y  <span class="comment"># =&gt; x原本是nil，印出 x = 10</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="x被指派為2"><a href="#x被指派為2" class="headerlink" title="x被指派為2"></a>x被指派為2</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span></span><br><span class="line">y = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">puts x <span class="params">||</span>= y     <span class="comment"># =&gt; x原本是2，印出 x = 2</span></span><br><span class="line">puts x <span class="params">||</span> x = y  <span class="comment"># =&gt; 2</span></span><br><span class="line">puts x = x <span class="params">||</span> y  <span class="comment"># =&gt; 2</span></span><br></pre></td></tr></table></figure>
+
+<p>剛剛才說，”x ||= y 不是 x = x || y“，那上面例子的第6行怎麼還會印出2?</p>
+<p><img src="https://i.imgur.com/olpNY40.png" alt=""></p>
+<h2 id="竟然是曾經的熱門議題？"><a href="#竟然是曾經的熱門議題？" class="headerlink" title="竟然是曾經的熱門議題？"></a>竟然是曾經的熱門議題？</h2><p>這個議題在約10年前討(爭)論(辯)的非常熱烈，可看下圖有人將所有的討論串做整理，最多有500多人在討論，有興趣的朋友可以點進去<a href="(https://www.ruby-forum.com/t/the-definitive-list-of-or-equal-threads-and-pages/136446)">連結</a>看看在吵些什麼XD<br><img src="https://i.imgur.com/azTJnCC.png" alt=""></p>
+<p>最噁心的討論就像這樣：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sample1</span></span><br><span class="line">a <span class="params">||</span>= b</span><br><span class="line"></span><br><span class="line"><span class="comment">#sample2</span></span><br><span class="line">a <span class="params">||</span> a = b</span><br><span class="line"></span><br><span class="line"><span class="comment">#sample3</span></span><br><span class="line">a ? a : a = b</span><br><span class="line"></span><br><span class="line"><span class="comment">#sample4</span></span><br><span class="line"><span class="keyword">if</span> a <span class="keyword">then</span></span><br><span class="line">  a </span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  a = b </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#sample5</span></span><br><span class="line">a = a <span class="params">||</span> b</span><br><span class="line"></span><br><span class="line"><span class="comment">#sample6</span></span><br><span class="line">a = a ? a : b</span><br><span class="line"></span><br><span class="line"><span class="comment">#sample7</span></span><br><span class="line"><span class="keyword">if</span> a <span class="keyword">then</span></span><br><span class="line">  a = a </span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">  a = b </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>a || a = b, a ? a : a = b, if a then a else a = b end, and if a then a = a else a = b end will throw an error if a is undefined, whereas a ||= b and a = a || b will not. Also, a || a = b, a ? a : a = b, if a then a else a = b end, a = a ? a : b, and if a then a = a else a = b end evaluate a twice when a is truthy, whereas a ||= b and a = a || b do not. </p>
+</blockquote>
+<p>看得我頭都暈了…且已經超過我能理解的範圍</p>
+<h2 id="總結："><a href="#總結：" class="headerlink" title="總結："></a>總結：</h2><h3 id="x-y"><a href="#x-y" class="headerlink" title="x ||= y"></a>x ||= y</h3><h3 id="If-x-is-not-initialized-or-if-it-is-set-to-nil-or-false-set-it-with-the-value-of-y"><a href="#If-x-is-not-initialized-or-if-it-is-set-to-nil-or-false-set-it-with-the-value-of-y" class="headerlink" title="If x is not initialized (or if it is set to nil or false), set it with the value of y."></a>If x is not initialized (or if it is set to nil or false), set it with the value of y.</h3><p>如果x尚未被初始化、false或nil及undefined，則 x 等於 y (換句話說:y會指派給x)，其他情況下，x值不變。</p>
+<p>參考資料：<br><a href="https://medium.com/@josh.pann/conditional-assignment-operator-in-ruby-ac0ebc740ced" target="_blank" rel="noopener">Conditional Assignment Operator in Ruby
+</a><a href="https://groups.google.com/forum/#!topic/comp.lang.ruby/y1Maaqk_Q7c" target="_blank" rel="noopener">Please explain nuances of ||=</a><br><a href="https://stackoverflow.com/questions/995593/what-does-or-equals-mean-in-ruby/14697343" target="_blank" rel="noopener">What does ||= (or-equals) mean in Ruby?</a><br><a href="https://www.ruby-forum.com/t/the-definitive-list-of-or-equal-threads-and-pages/136446" target="_blank" rel="noopener">The definitive list of ||= (OR Equal) threads and pages</a><br><a href="https://stackoverflow.com/questions/34736116/difference-between-a-a-b-and-a-b" target="_blank" rel="noopener">Difference between a = a || b and a ||= b</a><br><a href="https://www.oreilly.com/library/view/the-ruby-programming/9780596516178/ch04s05.html" target="_blank" rel="noopener">Assignments</a><br><a href="https://davidablack.net/dablog.html#2008/3/25/a-short-circuit-edge-case" target="_blank" rel="noopener">A short-circuit (||=) edge case</a><br><a href="https://ithelp.ithome.com.tw/articles/10200997" target="_blank" rel="noopener">超級經典面試題: Ruby的 a ||= b (or-equals)是什麼意思呢?</a></p>
+<blockquote>
+<p>“The man who can drive himself further once the effort gets painful is the man who will win.”</p>
+<p>— Roger Bannister, Runner</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

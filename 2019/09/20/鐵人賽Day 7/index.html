@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="之前的文章有提過一句話「在Ruby裡，幾乎所有的東西都是物件」，這是否也代表每一行我們所打的code是否都屬於物件呢？
+self在Ruby是一個非常特別的存在，且永遠指向目前正在執行的物件，換句話說，就是self會根據現在放在哪個context(class、method..)的不同，指的當下就是物件"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day7: Ruby裡的self是什麼？"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="之前的文章有提過一句話「在Ruby裡，幾乎所有的東西都是物件」，這是否也代表每一行我們所打的code是否都屬於物件呢？
+self在Ruby是一個非常特別的存在，且永遠指向目前正在執行的物件，換句話說，就是self會根據現在放在哪個context(class、method..)的不同，指的當下就是物件"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day7: Ruby裡的self是什麼？ - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day7: Ruby裡的self是什麼？</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-09-20
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p><img src="https://i.imgur.com/zCYMgTN.png" alt=""></p>
+<p>之前的文章有提過一句話「在Ruby裡，幾乎所有的東西都是物件」，這是否也代表每一行我們所打的code是否都屬於物件呢？</p>
+<p><code>self</code>在Ruby是一個非常特別的存在，且永遠指向目前正在執行的物件，換句話說，就是<code>self</code>會根據現在放在哪個context(class、method..)的不同，指的當下就是物件自己。</p>
+<p>這樣描述還是很模糊的感覺，下面會用幾個例子去理解<code>self</code>放在不同context的時候，會長什麼樣子。</p>
+<h3 id="Top-Level-Context"><a href="#Top-Level-Context" class="headerlink" title="Top Level Context"></a>Top Level Context</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"Louis"</span></span><br><span class="line">puts <span class="string">"Name is: <span class="subst">#&#123;name&#125;</span>"</span></span><br><span class="line">puts <span class="string">"Self is: <span class="subst">#&#123;<span class="keyword">self</span>&#125;</span>"</span></span><br><span class="line">puts <span class="string">"Self class is: <span class="subst">#&#123;<span class="keyword">self</span>.<span class="keyword">class</span>&#125;</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt;</span></span><br><span class="line"><span class="comment"># Name is: Louis</span></span><br><span class="line"><span class="comment"># Self is: main</span></span><br><span class="line"><span class="comment"># Self class is: Object</span></span><br></pre></td></tr></table></figure>
+
+<p>這裡可以看到<code>self</code>是個main物件，且main物件是類別Object下的實體，如果用程式碼寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Object</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">reflect</span></span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">main = Object.new   <span class="comment">#main大概是這種感覺</span></span><br></pre></td></tr></table></figure>
+<h3 id="self在實體方法-instance-method-與類別方法-class-method"><a href="#self在實體方法-instance-method-與類別方法-class-method" class="headerlink" title="self在實體方法(instance method)與類別方法(class method)"></a>self在實體方法(instance method)與類別方法(class method)</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Louis</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say</span></span></span><br><span class="line">    puts <span class="keyword">self</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">say</span></span></span><br><span class="line">    puts <span class="keyword">self</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#實體方法</span></span><br><span class="line">kk = Louis.new</span><br><span class="line">kk.say    <span class="comment"># =&gt; 此時的self為Louis class所產生的實體 &lt;Louis:0x00007fad048259e8&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#類別方法</span></span><br><span class="line">Louis.say <span class="comment"># =&gt; 此時的self為Louis class本身</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="類別定義-class-definition"><a href="#類別定義-class-definition" class="headerlink" title="類別定義(class definition)"></a>類別定義(class definition)</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Louis</span></span></span><br><span class="line">    puts <span class="string">"Self is: <span class="subst">#&#123;<span class="keyword">self</span>&#125;</span>"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; Self is: Louis</span></span><br></pre></td></tr></table></figure>
+<p>此時的self為Louis class本身 =&gt; Louis</p>
+<h3 id="模組定義-Module-definition"><a href="#模組定義-Module-definition" class="headerlink" title="模組定義(Module definition)"></a>模組定義(Module definition)</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Group</span></span></span><br><span class="line">  puts <span class="string">"Self inside Group is: <span class="subst">#&#123;<span class="keyword">self</span>&#125;</span>"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; Self inside Group is: Group</span></span><br></pre></td></tr></table></figure>
+
+<p>此時的self為module Group本身 =&gt; Group</p>
+<h3 id="模組裡包類別-module-including-class"><a href="#模組裡包類別-module-including-class" class="headerlink" title="模組裡包類別(module including class)"></a>模組裡包類別(module including class)</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Group</span></span></span><br><span class="line">  puts <span class="string">"Self inside Group is: <span class="subst">#&#123;<span class="keyword">self</span>&#125;</span>"</span> </span><br><span class="line">  <span class="comment"># =&gt; Self inside Group is: Group</span></span><br><span class="line">  </span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Louis</span></span></span><br><span class="line">    puts <span class="string">"Self inside Group is: <span class="subst">#&#123;<span class="keyword">self</span>&#125;</span>"</span></span><br><span class="line">    <span class="comment"># =&gt; Self inside Group is: Group::Louis</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>這裡的class是包在module裡面，所以這裡的self是Group::Louis</p>
+<h3 id="繼承-inheritance-時的self"><a href="#繼承-inheritance-時的self" class="headerlink" title="繼承(inheritance)時的self"></a>繼承(inheritance)時的self</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Lion</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say</span></span></span><br><span class="line">    puts <span class="keyword">self</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pig</span> &lt; Lion</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">ponpon = Pig.new</span><br><span class="line">ponpon.say  <span class="comment"># =&gt; #&lt;Pig:0x00007fcb8801ca38&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此時的self為Pig class所產生的實體 </p>
+<h3 id="引入模組-include-module-時的self"><a href="#引入模組-include-module-時的self" class="headerlink" title="引入模組(include module)時的self"></a>引入模組(include module)時的self</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Pig</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say</span></span></span><br><span class="line">    puts <span class="keyword">self</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Lion</span></span></span><br><span class="line">  <span class="keyword">include</span> Pig</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">mufasa = Lion.new</span><br><span class="line">mufasa.say  <span class="comment"># =&gt; #&lt;Lion:0x00007fa502824390&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此時的self為Lion class所產生的實體 </p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ol>
+<li>在實體方法、繼承、引入模組都使用了實體方法，所以此時的self都為該類別所產生的實體。</li>
+<li>在類別方法、類別定義、模組定義時，self都為該類別、模組本身。</li>
+<li>在模組裡包類別時，self為”模組::類別“。</li>
+</ol>
+<p>參考資料：<br><a href="https://airbrake.io/blog/ruby/self-ruby-overview" target="_blank" rel="noopener">Self in Ruby:A Comprehensive Overview</a><br><a href="https://www.honeybadger.io/blog/ruby-self-cheat-sheet/" target="_blank" rel="noopener">Understanding <code>self</code> in Ruby</a><br><a href="https://medium.com/@sgg2123/vs-self-in-ruby-1d4d88170" target="_blank" rel="noopener">@/@@ vs. self in Ruby</a><br><a href="https://codequizzes.wordpress.com/2014/04/23/rubys-main-object-top-level-context/" target="_blank" rel="noopener">Ruby’s Main Object (Top Level Context)</a><br><a href="http://karoten512.hatenablog.com/entry/2017/10/22/231319" target="_blank" rel="noopener">Rubyのselfが微妙に意味がわからなかったので、様々な文脈（トップレベル、class定義内、method定義内、module定義内）で出力してみた</a><br><a href="https://medium.com/@icelandcheng/ruby-%E4%B8%AD%E7%9A%84self%E8%AE%8A%E6%95%B8%E4%BB%A5%E5%8F%8A%E6%87%89%E7%94%A8-647664af2b6a" target="_blank" rel="noopener">Ruby 中的self變數以及應用</a></p>
+<blockquote>
+<p>“Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.”</p>
+<p>— Thomas Edison, Inventor</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

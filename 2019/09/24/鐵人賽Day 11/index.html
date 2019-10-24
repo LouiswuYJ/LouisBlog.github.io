@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="在最近的練習中，只有印象自己大量的在用attr_reader :somthing，在完成這篇文章前，我完全不知道其實它就是getter method…
+關於setter就真的更陌生了，也有在專案或練習的時候有用到，但也一樣完全不知道其實在用的就是setter method，所以決定寫個一篇文章來釐清"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day11: Ruby中的Getter及Setter?"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="在最近的練習中，只有印象自己大量的在用attr_reader :somthing，在完成這篇文章前，我完全不知道其實它就是getter method…
+關於setter就真的更陌生了，也有在專案或練習的時候有用到，但也一樣完全不知道其實在用的就是setter method，所以決定寫個一篇文章來釐清"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day11: Ruby中的Getter及Setter? - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day11: Ruby中的Getter及Setter?</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-09-24
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>在最近的練習中，只有印象自己大量的在用<code>attr_reader :somthing</code>，在完成這篇文章前，我完全不知道其實它就是getter method…</p>
+<p>關於setter就真的更陌生了，也有在專案或練習的時候有用到，但也一樣完全不知道其實在用的就是setter method，所以決定寫個一篇文章來釐清一下觀念。</p>
+<h2 id="Ruby沒有「屬性-property-attribute-」"><a href="#Ruby沒有「屬性-property-attribute-」" class="headerlink" title="Ruby沒有「屬性(property/attribute)」"></a>Ruby沒有「屬性(property/attribute)」</h2><p>Ruby沒有屬性這件事，跟其他程式語言不一樣，下面的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">my.event</span><br><span class="line"><span class="comment">#其實原型是</span></span><br><span class="line">my.event()</span><br><span class="line"></span><br><span class="line">my.event = <span class="string">"something"</span></span><br><span class="line"><span class="comment">#其實原型是</span></span><br><span class="line">my.event=(<span class="string">"something"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>my.event看起來像是在my上讀取event的屬性，但它實際是執行了my.event()方法，只是括號可以適時省略，相同的my.event=(“something”)也是同樣道理。</p>
+<h2 id="什麼是getter-method"><a href="#什麼是getter-method" class="headerlink" title="什麼是getter method?"></a>什麼是getter method?</h2><p>就英文直翻getter method是「取得(get)的方法」的意思，在Ruby裡指的就是取出實體變數(instance variable)的方法。</p>
+<p>如果class裡沒有getter method，就無法取出在class內實體變數的值。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Favorite</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(event)</span></span></span><br><span class="line">    @event = event</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">my = Favorite.new(<span class="string">'Badminton'</span>)</span><br><span class="line">puts my.event</span><br></pre></td></tr></table></figure>
+<p>會印出錯誤訊息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">undefined local variable or method `badminton&apos; for main:Object (NameError)</span><br></pre></td></tr></table></figure>
+
+<p>可以看得出來，my這個實體拿不到class裡的實體變數@event，如果要拿到@event的話，必須給它一個getter method。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Favorite</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(event)</span></span></span><br><span class="line">    @event = event</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">event</span>    <span class="comment">#getter method</span></span></span><br><span class="line">    @event</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">my = Favorite.new(<span class="string">'Badminton'</span>)   </span><br><span class="line">puts my.event  <span class="comment"># =&gt; Badminton</span></span><br></pre></td></tr></table></figure>
+
+<p>龍哥說，工程師都很懶惰，如果每次要取實體變數的值都要寫一次getter method不是很麻煩嗎？</p>
+<h3 id="attr-reader"><a href="#attr-reader" class="headerlink" title="attr_reader"></a>attr_reader</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Favorite</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:event</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(event)</span></span></span><br><span class="line">    @event = event</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def event     #getter method</span></span><br><span class="line">  <span class="comment">#   <span class="doctag">@event</span></span></span><br><span class="line">  <span class="comment"># end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">my = Favorite.new <span class="string">'Badminton'</span></span><br><span class="line">puts my.event</span><br></pre></td></tr></table></figure>
+
+<p>在class內加入<code>attr_reader :event</code>就自動幫你產生寫了第8~10行。</p>
+<h2 id="什麼是setter-method"><a href="#什麼是setter-method" class="headerlink" title="什麼是setter method?"></a>什麼是setter method?</h2><p>就英文直翻setter method是「指派(assign)的方法」的意思，在Ruby裡指的就是指派實體變數(instance variable)的方法。</p>
+<p>如果class裡沒有setter method，就無法派在class內實體變數的值。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Favorite</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:event</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(event)</span></span></span><br><span class="line">    @event = event</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def event     #getter method</span></span><br><span class="line">  <span class="comment">#   <span class="doctag">@event</span></span></span><br><span class="line">  <span class="comment"># end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">my = Favorite.new(<span class="string">'Badminton'</span>)   </span><br><span class="line">puts my.event  <span class="comment"># =&gt; Badminton</span></span><br><span class="line">puts my.event = <span class="string">"Pasta"</span></span><br></pre></td></tr></table></figure>
+
+<p>會印出錯誤訊息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">undefined local variable or method `badminton&apos; for main:Object (NameError)</span><br></pre></td></tr></table></figure>
+
+<p>可以看得出來，my這個實體做event方法時，如果要直接指派event方法內部的實體變數@event為”Pasta”，必須給它一個setter method。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Favorite</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:event</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(event)</span></span></span><br><span class="line">    @event = event</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def event        #getter method</span></span><br><span class="line">  <span class="comment">#   <span class="doctag">@event</span></span></span><br><span class="line">  <span class="comment"># end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">event=</span> <span class="title">food</span>    <span class="comment">#setter method</span></span></span><br><span class="line">    @event = food</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">my = Favorite.new(<span class="string">'Badminton'</span>)   </span><br><span class="line">puts my.event           <span class="comment"># =&gt; Badminton</span></span><br><span class="line">puts my.event=(<span class="string">"Pasta"</span>) <span class="comment"># =&gt; Pasta</span></span><br></pre></td></tr></table></figure>
+
+<p>等等….為什麼方法名稱有個等於又帶括號？</p>
+<h3 id="Ruby魔法糖-括號可適時的省略"><a href="#Ruby魔法糖-括號可適時的省略" class="headerlink" title="Ruby魔法糖? - 括號可適時的省略"></a>Ruby魔法糖? - 括號可適時的省略</h3><p>Rub6定義方法時，等號跟其他字元都可以當作是名字的一部分，只是規定上必須放在最後面。</p>
+<p>所以可以將<code>event=(food)</code>解讀一下：event= 是方法名稱，帶有參數food</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">event=(food)  </span><br><span class="line"></span><br><span class="line"><span class="comment">#括號可適時的省略</span></span><br><span class="line">event=food</span><br><span class="line"></span><br><span class="line"><span class="comment">#可適時加入空白字元</span></span><br><span class="line">event = food</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Favorite</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:event</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(event)</span></span></span><br><span class="line">    @event = event</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def event     #getter method</span></span><br><span class="line">  <span class="comment">#   <span class="doctag">@event</span></span></span><br><span class="line">  <span class="comment"># end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">event=</span> <span class="title">food</span> <span class="comment">#括號可適時的省略   #setter method</span></span></span><br><span class="line">    @event = food</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">my = Favorite.new(<span class="string">'Badminton'</span>)   </span><br><span class="line">puts my.event           <span class="comment"># =&gt; Badminton</span></span><br><span class="line">puts my.event = <span class="string">"Pasta"</span> <span class="comment"># =&gt; Pasta      #括號可適時的省略並加入空白字元</span></span><br></pre></td></tr></table></figure>
+
+<p>還好工程師都很懶惰再一次，這裏也可以寫成attr的方式。</p>
+<h3 id="attr-writer"><a href="#attr-writer" class="headerlink" title="attr_writer"></a>attr_writer</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Favorite</span></span></span><br><span class="line">  <span class="keyword">attr_reader</span> <span class="symbol">:event</span></span><br><span class="line">  <span class="keyword">attr_writer</span> <span class="symbol">:event</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(event)</span></span></span><br><span class="line">    @event = event</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def event         #getter method</span></span><br><span class="line">  <span class="comment">#   <span class="doctag">@event</span></span></span><br><span class="line">  <span class="comment"># end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def event= food   #setter method</span></span><br><span class="line">  <span class="comment">#   <span class="doctag">@event</span> = food</span></span><br><span class="line">  <span class="comment"># end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">my = Favorite.new(<span class="string">'Badminton'</span>)   </span><br><span class="line">puts my.event           <span class="comment"># =&gt; Badminton</span></span><br><span class="line">puts my.event = <span class="string">"Pasta"</span> <span class="comment"># =&gt; Pasta</span></span><br></pre></td></tr></table></figure>
+
+<p>在class內加入<code>attr_writer :event</code>就自動幫你產生寫了第13~15行。</p>
+<p>還好偉大的<del>懶惰</del>工程師們，覺得如果要再多個實體變數的話，就得要再寫<code>attr_reader</code>跟<code>attr_writer</code>的方式來取得跟指派，實在太麻煩了…</p>
+<h2 id="attr-accessor"><a href="#attr-accessor" class="headerlink" title="attr_accessor"></a>attr_accessor</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Favorite</span></span></span><br><span class="line">  <span class="comment"># attr_reader :event</span></span><br><span class="line">  <span class="comment"># attr_writer :event</span></span><br><span class="line">  <span class="comment"># attr_reader :price</span></span><br><span class="line">  <span class="comment"># attr_writer :price</span></span><br><span class="line">  <span class="keyword">attr_accessor</span> <span class="symbol">:event</span>, <span class="symbol">:price</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(event, price)</span></span></span><br><span class="line">    @event = event</span><br><span class="line">    @price = price</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def event         #getter method</span></span><br><span class="line">  <span class="comment">#   <span class="doctag">@event</span></span></span><br><span class="line">  <span class="comment"># end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># def event= food   #setter method</span></span><br><span class="line">  <span class="comment">#   <span class="doctag">@event</span> = food</span></span><br><span class="line">  <span class="comment"># end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">my = Favorite.new(<span class="string">'Badminton'</span>, <span class="string">"$200"</span>)  </span><br><span class="line">my.event = <span class="string">"Volleyball"</span></span><br><span class="line">my.price = <span class="string">"$300"</span></span><br><span class="line">puts my.event           <span class="comment"># =&gt; Volleyball</span></span><br><span class="line">puts my.price           <span class="comment"># =&gt; $300</span></span><br></pre></td></tr></table></figure>
+
+<p>在class內加入<code>attr_accessor :event, :price</code>就自動幫你產生寫了第2~5行。</p>
+<p>這也是為何我們在rails專案裡，可以用<strong>點</strong>的方式取值的概念，例如：第5~10行，在rails裡的Active Record(MVC的M (Model))，會自動建立<code>attr_accessor :foods</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%</span> @<span class="attr">foods.each</span> <span class="attr">do</span> |<span class="attr">food</span>| %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">      名稱：<span class="tag">&lt;<span class="name">%=</span> <span class="attr">food.title</span>%&gt;</span></span><br><span class="line">      數量：<span class="tag">&lt;<span class="name">%=</span> <span class="attr">food.quantity</span>%&gt;</span></span><br><span class="line">      可領取時間：<span class="tag">&lt;<span class="name">%=</span> <span class="attr">food.pickup_time</span>%&gt;</span></span><br><span class="line">      原價：<span class="tag">&lt;<span class="name">%=</span> <span class="attr">food.origin_price</span>%&gt;</span></span><br><span class="line">      救援價：<span class="tag">&lt;<span class="name">%=</span> <span class="attr">food.discount_price</span>%&gt;</span></span><br><span class="line">      描述：<span class="tag">&lt;<span class="name">%=</span> <span class="attr">food.description</span>%&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%end%</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ol>
+<li>getter method: <strong>取出</strong>實體變數(instance variable)的方法。</li>
+<li>setter method: <strong>指派</strong>實體變數(instance variable)的方法。</li>
+<li><code>attr_reader</code> + <code>attr_writer</code> = <code>attr_accessor</code></li>
+</ol>
+<p>參考資料：<br><a href="https://medium.com/@rondwalker22/how-getter-setter-methods-work-in-ruby-c5f5da07f99" target="_blank" rel="noopener">How getter/setter methods work in Ruby</a><br><a href="https://dev.to/k_penguin_sato/ruby-getters-and-setters-1p30#what-is-a-getter-method" target="_blank" rel="noopener">Ruby Getters and Setters</a><br><a href="https://kaochenlong.com/2015/03/21/attr_accessor/" target="_blank" rel="noopener">Ruby 語法放大鏡之「attr_accessor 是幹嘛的?</a></p>
+<blockquote>
+<p>“The conditions of conquest are always easy. We have but to toil awhile, endure awhile, believe always, and never turn back.”</p>
+<p>— Lucius Annaeus Seneca, Philosopher</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

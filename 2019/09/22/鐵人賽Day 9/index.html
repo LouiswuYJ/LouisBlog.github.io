@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="圖片來源
+前面有提過，Ruby是一門相當徹底的物件導向語言，幾乎所有的東西都是物件，但block除外。要改變物件的狀態，在ruby最常見的方式就是.method，要拿這個method來用，就要從class內來存取，這個行為就是「存取控制」。
+
+物件（object） = 狀態（state） + 行為（"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Day9: Ruby的三種存取控制Public, Private, Protected"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="圖片來源
+前面有提過，Ruby是一門相當徹底的物件導向語言，幾乎所有的東西都是物件，但block除外。要改變物件的狀態，在ruby最常見的方式就是.method，要拿這個method來用，就要從class內來存取，這個行為就是「存取控制」。
+
+物件（object） = 狀態（state） + 行為（"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Hexo"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Day9: Ruby的三種存取控制Public, Private, Protected - Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Day9: Ruby的三種存取控制Public, Private, Protected</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-09-22
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/鐵人賽/">#鐵人賽</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p><img src="https://i.imgur.com/qHDe6Du.jpg" alt=""><br><a href="https://www.pinterest.com/pin/35254809565990906" target="_blank" rel="noopener">圖片來源</a></p>
+<p>前面有提過，Ruby是一門相當徹底的物件導向語言，幾乎所有的東西都是物件，但block除外。要改變物件的狀態，在ruby最常見的方式就是.method，要拿這個method來用，就要從class內來存取，這個行為就是「存取控制」。</p>
+<blockquote>
+<p>物件（object） = 狀態（state） + 行為（behavior)</p>
+</blockquote>
+<p>來看最簡單的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Disney</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">feel</span></span></span><br><span class="line">    puts <span class="string">"I feel very happy"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">you = Disney.new</span><br><span class="line">you.feel <span class="comment"># =&gt; I feel very happy</span></span><br></pre></td></tr></table></figure>
+
+<p>you.feel這個東西看起來沒什麼特別，但在Ruby的解讀，會像有一個you物件，對它發送了一個「訊息」（message）feel，而這個you就是訊息的「接收者」（receiver）。</p>
+<p>一般來說，<code>public</code>的存取是Ruby已預設好的。就像上面例子，如果在方法上面沒有特別寫是哪種存取方式的話，那就是會是預設的<code>public</code>。</p>
+<p>用程式碼來看看三種控制：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Disney</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">feel</span></span></span><br><span class="line">    puts <span class="string">"I feel very happy"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">eat</span></span></span><br><span class="line">    puts <span class="string">"I wanna have some popcorn"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  protected</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">watch</span></span></span><br><span class="line">    puts <span class="string">"I wanna watch the show"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">you = Disney.new</span><br><span class="line">you.feel   <span class="comment"># =&gt; I feel very happy</span></span><br><span class="line">you.eat    <span class="comment"># =&gt; NoMethodError</span></span><br><span class="line">you.watch  <span class="comment"># =&gt; NoMethodError</span></span><br></pre></td></tr></table></figure>
+<p>另一種存取控制的寫法，寫在定義之後：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Disney</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">feel</span></span></span><br><span class="line">    puts <span class="string">"I feel very happy"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">eat</span></span></span><br><span class="line">    puts <span class="string">"I wanna have some popcorn"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">watch</span></span></span><br><span class="line">    puts <span class="string">"I wanna watch the show"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  </span><br><span class="line">  protected <span class="symbol">:eat</span></span><br><span class="line">  private <span class="symbol">:watch</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">you = Disney.new</span><br><span class="line">you.feel   <span class="comment"># =&gt; I feel very happy</span></span><br><span class="line">you.eat    <span class="comment"># =&gt; NoMethodError</span></span><br><span class="line">you.watch  <span class="comment"># =&gt; NoMethodError</span></span><br></pre></td></tr></table></figure>
+
+<p>至於兩種寫法其實並沒有差別，我自己是比較偏向第一種方式，因為第二種感覺比較容易跟rails搞混，例如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">has_many <span class="symbol">:users</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Private"><a href="#Private" class="headerlink" title="Private"></a>Private</h2><p>在各個程式語言都有存取控制的設計，private在其他語言被定義為「只有在類別內部才能被存取」，但在Ruby這裡的定義有點不太一樣：</p>
+<blockquote>
+<p>不能在外部呼叫，也不能明確的指出「接收者」（receiver）</p>
+</blockquote>
+<p>翻譯蒟蒻：若要呼叫private的方法時，前面不可以加小數點。<br>(備註：外部的定義不包含繼承的子類別)</p>
+<p>上面例子因為eat方法是private method，所以向you(receiver)發送eat訊息(message)會出現NoMethodError。</p>
+<h3 id="但private真的那麼private嗎？"><a href="#但private真的那麼private嗎？" class="headerlink" title="但private真的那麼private嗎？"></a>但private真的那麼private嗎？</h3><p>如果定義上不能在receiver前加小數點，那我改成其他形式總行吧？</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">you = Disney.new</span><br><span class="line">you.feel   <span class="comment"># =&gt; I feel very happy</span></span><br><span class="line">you.send(<span class="symbol">:eat</span>) <span class="comment"># =&gt; I wanna have some popcorn</span></span><br></pre></td></tr></table></figure>
+
+<p>send是Ruby內建的方法，這邊只是把:eat當作參數送給you而已，指出接收者的是send方法而不是private method的eat，並沒有違反”不能明確的指出「接收者」的規定”，所以這也是Ruby跟其他程式語言在private定義不同的地方。</p>
+<h2 id="Protected"><a href="#Protected" class="headerlink" title="Protected"></a>Protected</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Disney</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">feel</span></span></span><br><span class="line">    puts <span class="string">"I feel very happy"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">eat</span></span></span><br><span class="line">    puts <span class="string">"I wanna have some popcorn"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  protected</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">watch</span></span></span><br><span class="line">    puts <span class="string">"I wanna watch the show"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marvel</span> &lt; Disney</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">marvel_watch</span></span></span><br><span class="line">    watch</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">marvel_self_watch</span></span></span><br><span class="line">    <span class="keyword">self</span>.watch</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">iron = Marvel.new</span><br><span class="line">iron.marvel_watch       <span class="comment"># =&gt; I wanna watch the show</span></span><br><span class="line">iron.marvel_self_watch  <span class="comment"># =&gt; I wanna watch the show</span></span><br></pre></td></tr></table></figure>
+
+<p>以繼承的類別Marvel來看，在父類別的protected method，不管用的是<code>watch</code>或<code>self.watch</code>都可以順利印出來。</p>
+<blockquote>
+<p>不能在外部呼叫，但可以明確的指出「接收者」（receiver）</p>
+</blockquote>
+<p>那如果改用private method呢？</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Disney</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">feel</span></span></span><br><span class="line">    puts <span class="string">"I feel very happy"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">eat</span></span></span><br><span class="line">    puts <span class="string">"I wanna have some popcorn"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  protected</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">watch</span></span></span><br><span class="line">    puts <span class="string">"I wanna watch the show"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marvel</span> &lt; Disney</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">marvel_eat</span></span></span><br><span class="line">    eat</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">marvel_self_eat</span></span></span><br><span class="line">    <span class="keyword">self</span>.eat</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">iron = Marvel.new</span><br><span class="line">iron.marvel_eat       <span class="comment"># =&gt; I wanna have some popcorn</span></span><br><span class="line">iron.marvel_self_eat  <span class="comment"># =&gt; NoMethodError</span></span><br></pre></td></tr></table></figure>
+
+<p>最後一行會印出錯誤，是因為private method不能明確的指出「接收者」。</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ol>
+<li>三種方法都可以在類別內部呼叫。</li>
+<li>private：不能在外部呼叫，也不能明確的指出「接收者」（receiver）。</li>
+<li>protected：不能在外部呼叫，但可以明確的指出「接收者」（receiver）。</li>
+</ol>
+<p>參考資料：<br><a href="https://medium.com/@tjoye20/ruby-access-control-basics-public-vs-private-vs-protected-methods-7788b26e04a7" target="_blank" rel="noopener">Ruby Access Control Basics: Public vs Private vs Protected methods</a><br><a href="http://rubylearning.com/satishtalim/ruby_access_control.html" target="_blank" rel="noopener">Ruby Access Control</a><br><a href="https://railsbook.tw/chapters/08-ruby-basic-4.html" target="_blank" rel="noopener">類別（Class）與模組（Module）</a><br><a href="https://ithelp.ithome.com.tw/articles/10200397" target="_blank" rel="noopener">Ruby三種存取限制: Public, Protected, Private</a><br><a href="https://medium.com/@eggyy1224/ruby-public-protected-%E8%88%87-private-bd4a5832a0c8" target="_blank" rel="noopener">Ruby: public, protected 與 private</a></p>
+<blockquote>
+<p>“Success is falling nine times and getting up ten.”</p>
+<p>— Jon Bon Jovi, Musician</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
