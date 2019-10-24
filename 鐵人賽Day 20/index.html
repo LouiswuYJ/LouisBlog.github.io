@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="鐵人賽," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Louis Wu" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：">
+<meta name="keywords" content="鐵人賽">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day20: 簡易Rails實作(上)">
+<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020&#x2F;index.html">
+<meta property="og:site_name" content="Louis Wu">
+<meta property="og:description" content="在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;Pmy0rCh.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;xuSCyik.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;qqJ4rG8.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;W6ty2NU.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;vev7ekj.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;0rQWk3A.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;4wcbTUc.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;0tz8JhD.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;tFtIi8s.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;qhJJPAH.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;jmE6M2W.png">
+<meta property="og:updated_time" content="2019-10-24T11:40:15.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;Pmy0rCh.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://louiswuyj.site/鐵人賽Day 20/"/>
+
+
+
+
+
+  <title>Day20: 簡易Rails實作(上) | Louis Wu</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Louis Wu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stressed is just desserts if you can reverse.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://louiswuyj.site/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Louis Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Louis Wu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Day20: 簡易Rails實作(上)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-03T12:10:40+08:00">
+                2019-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：</p>
+<a id="more"></a>
+
+<blockquote>
+<p>在檔案區命名：snakecase     ex: candidate_controller<br>在檔案內命名：camelcase     ex: CandidateController<br>且“檔案名稱”與“類別名稱”必須相同，才不會在執行的時候出現error</p>
+</blockquote>
+<h2 id="什麼是MVC-Model、View、Controller"><a href="#什麼是MVC-Model、View、Controller" class="headerlink" title="什麼是MVC(Model、View、Controller)?"></a>什麼是MVC(Model、View、Controller)?</h2><p>在開始建立Rails之前，我們需要先了解<a href="https://railsbook.tw/chapters/10-mvc.html" target="_blank" rel="noopener">什麼是MVC</a></p>
+<p>MVC架構：由Route開始，到Controller結束。</p>
+<ol>
+<li>瀏覽器依據資源(resources)的設定，經由Route去找到Controller中，對應的action(method)。</li>
+<li>視需要透過Model向資料庫取得資料後，處理完再與對應的View(.html.erb)做結合。</li>
+<li>View處理完後再回傳給Controller，Controller再將結果轉交給瀏覽器。</li>
+</ol>
+<h2 id="建立Rails專案"><a href="#建立Rails專案" class="headerlink" title="建立Rails專案"></a>建立Rails專案</h2><p>在Terminal輸入，就會自動產生rails專案。（前提是要先安裝好Rails）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rails new 專案名稱</span><br></pre></td></tr></table></figure>
+<p>在這次的例子，我們試著產生一個名叫myvote的Rails檔案。</p>
+<h3 id="routes-rb"><a href="#routes-rb" class="headerlink" title="routes.rb"></a>routes.rb</h3><p>在Vscode開啟資料夾，用command+P尋找檔案“routes.rb”，並寫入：</p>
+<ol>
+<li>Rails 提供的 resources</li>
+<li>根目錄(首頁) candidates，且裡面有個方法index</li>
+</ol>
+<p><img src="https://i.imgur.com/Pmy0rCh.png" alt=""></p>
+<p>第2行：產生8種條路徑</p>
+<p><img src="https://i.imgur.com/xuSCyik.png" alt=""></p>
+<p>第3行：根目錄裡有個方法index</p>
+<p>備註：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root <span class="string">'candidates#index'</span></span><br><span class="line">get <span class="string">'/'</span>, to <span class="string">'candidates#index'</span></span><br><span class="line"><span class="comment">#因為是根目錄，以上兩種寫法都可以接受。</span></span><br></pre></td></tr></table></figure>
+
+<p>在此時在Terminal執行Rails：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rails server 或 rails s</span><br></pre></td></tr></table></figure>
+
+<p>至網址輸入localhost:3000(Terminal會寫3000)出現以下畫面:</p>
+<p><img src="https://i.imgur.com/qqJ4rG8.png" alt=""></p>
+<p>找不到method，故要建立一個給它。</p>
+<h2 id="建立Method"><a href="#建立Method" class="headerlink" title="建立Method"></a>建立Method</h2><p>在app &gt; controllers中新增檔案 “檔名_controller.rb” (此例檔名為candidates，需與你要連結的檔案名稱一樣)，並建立class 、繼承最原始的檔案“ApplicationController”：（其實此例的def index暫時不寫也沒關係）</p>
+<p><img src="https://i.imgur.com/W6ty2NU.png" alt=""></p>
+<p>但這樣還不夠，因為Rails的遊戲規則是要從views裡面找檔案，所以必須還要再 views 資料夾新增一個candidates資料夾，並建立 index.html.erb：</p>
+<p><img src="https://i.imgur.com/vev7ekj.png" alt=""></p>
+<p>才能印出：</p>
+<p><img src="https://i.imgur.com/0rQWk3A.png" alt=""></p>
+<p>基本上這樣就完成最最最基礎的第一步了(此例index裡沒寫東西只是因為要當範例而已，請原諒我沒放東西(跪)）</p>
+<h2 id="讓他稍微可以動"><a href="#讓他稍微可以動" class="headerlink" title="讓他稍微可以動"></a>讓他稍微可以動</h2><p>在index.html.erb加點東西：</p>
+<p><img src="https://i.imgur.com/4wcbTUc.png" alt=""></p>
+<blockquote>
+<p>Prefix :new_cadidates</p>
+</blockquote>
+<p>還記得剛剛的rails routes嗎？其中的new功能Rails已經有幫我們定義好的Prefix名字了</p>
+<p><img src="https://i.imgur.com/0tz8JhD.png" alt=""></p>
+<p>_path:產生相對應的路徑網址（站內路徑）-&gt; ／candidates</p>
+<p>*另一種方式：</p>
+<p>＿url:產生完整網址 -&gt; <a href="https://www.xxxx.com/candidates，在寄發mail的時候較常使用" target="_blank" rel="noopener">https://www.xxxx.com/candidates，在寄發mail的時候較常使用</a>)</p>
+<p>套用Bootstrap，套用方式可見<a href="https://medium.com/@louiswu0327/%E5%9C%A8rails%E8%A3%9Dboostrap%E5%A5%97%E4%BB%B6-fcb742a10376" target="_blank" rel="noopener">這篇</a>。</p>
+<h2 id="等等！！！views裡沒有new這個檔案啊！！？"><a href="#等等！！！views裡沒有new這個檔案啊！！？" class="headerlink" title="等等！！！views裡沒有new這個檔案啊！！？"></a>等等！！！views裡沒有new這個檔案啊！！？</h2><p>所以要記得在views &gt; candidates 裡再新增一個new.html.erb檔</p>
+<p><img src="https://i.imgur.com/tFtIi8s.png" alt=""></p>
+<p>這樣一來就可以有作用囉!!</p>
+<p><img src="https://i.imgur.com/qhJJPAH.png" alt=""></p>
+<p><img src="https://i.imgur.com/jmE6M2W.png" alt=""></p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>Rails這只是第一步而已，雖然現在有很多指令可以快速產出以上步驟做出的東西(scaffold)，但畢竟在使用套件之前，能夠先了解如何手刻及其背後觀念跟原理是非常重要的。</p>
+<p>也許文章內容寫的不正確也缺乏系統，也或許幾年後回來看自己寫的這篇文章會覺得”WTF這什麼鬼!!?”</p>
+<p>參考資料：<br><a href="https://railsbook.tw/chapters/11-routes.html#restful-routes" target="_blank" rel="noopener">為你自己學 Ruby on Rails</a></p>
+<blockquote>
+<p>“The pro is the person who has all the hassles, obstacles, and disappointing frustrations that everyone else has, yet continues to persist, does the job, and makes it look easy.”</p>
+<p>— David Cooper, Sales Trainer</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 鐵人賽</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" rel="next" title="Day19: Rails中神奇的spring stop">
+                <i class="fa fa-chevron-left"></i> Day19: Rails中神奇的spring stop
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/" rel="prev" title="Day21: 簡易Rails實作(中)">
+                Day21: 簡易Rails實作(中) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/img.jpg"
+                alt="Louis Wu" />
+            
+              <p class="site-author-name" itemprop="name">Louis Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LouiswuYJ" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:louiswu0327@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什麼是MVC-Model、View、Controller"><span class="nav-number">1.</span> <span class="nav-text">什麼是MVC(Model、View、Controller)?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立Rails專案"><span class="nav-number">2.</span> <span class="nav-text">建立Rails專案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#routes-rb"><span class="nav-number">2.1.</span> <span class="nav-text">routes.rb</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立Method"><span class="nav-number">3.</span> <span class="nav-text">建立Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讓他稍微可以動"><span class="nav-number">4.</span> <span class="nav-text">讓他稍微可以動</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#等等！！！views裡沒有new這個檔案啊！！？"><span class="nav-number">5.</span> <span class="nav-text">等等！！！views裡沒有new這個檔案啊！！？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#總結"><span class="nav-number">6.</span> <span class="nav-text">總結</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Louis Wu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

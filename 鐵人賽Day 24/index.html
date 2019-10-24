@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="鐵人賽," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Louis Wu" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。 find找出單一筆資料，且只能透過id去搜尋。">
+<meta name="keywords" content="鐵人賽">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day24: Rails中的find? find_by? where?">
+<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024&#x2F;index.html">
+<meta property="og:site_name" content="Louis Wu">
+<meta property="og:description" content="在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。 find找出單一筆資料，且只能透過id去搜尋。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;ZInCbYJ.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;1KOYaOX.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;190Aeer.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;jDBnzwK.png">
+<meta property="og:updated_time" content="2019-10-24T11:39:08.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;ZInCbYJ.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://louiswuyj.site/鐵人賽Day 24/"/>
+
+
+
+
+
+  <title>Day24: Rails中的find? find_by? where? | Louis Wu</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Louis Wu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stressed is just desserts if you can reverse.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://louiswuyj.site/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Louis Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Louis Wu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Day24: Rails中的find? find_by? where?</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T12:10:40+08:00">
+                2019-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.imgur.com/ZInCbYJ.png" alt=""></p>
+<p>在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。</p>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>找出單一筆資料，且只能透過id去搜尋。</p>
+<a id="more"></a>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找出id為1的購物車</span></span><br><span class="line">Cart.find(1)</span><br></pre></td></tr></table></figure>
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cart Load (0.4ms)  SELECT  <span class="string">"carts"</span>.* FROM <span class="string">"carts"</span> WHERE <span class="string">"carts"</span>.<span class="string">"id"</span> = <span class="variable">$1</span> LIMIT <span class="variable">$2</span>  [[<span class="string">"id"</span>, 1], [<span class="string">"LIMIT"</span>, 1]]</span><br></pre></td></tr></table></figure>
+
+<p>如果查詢不到該筆資料，就會回傳一個<code>ActiveRecord::RecordNotFound</code>的例外訊息，還記得之前的文章有提過例外處理的方法嗎？</p>
+<p>這時候就可以用<code>begin..rescue</code>來捕捉：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_cart</span></span></span><br><span class="line">   <span class="keyword">begin</span></span><br><span class="line">     @cart = Cart.find(params[<span class="symbol">:id</span>])</span><br><span class="line">   <span class="keyword">rescue</span></span><br><span class="line">     redirect_to carts_path, <span class="symbol">notice:</span> <span class="string">"沒有這台購物車喔"</span></span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line"> <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果找不到cart的話，就會直接執行rescue下的程式碼。</p>
+<p>若要找多筆資料又堅持用find，find()裡面還可以塞陣列：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">products = Product.find([2, 5])      <span class="comment"># 等同於 Client.find(2, 5)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#找id是2跟id是5的product</span></span><br></pre></td></tr></table></figure>
+<h2 id="find-by"><a href="#find-by" class="headerlink" title="find_by"></a>find_by</h2><p>找出單一筆資料，且可以透過自訂條件去搜尋。</p>
+<p><img src="https://i.imgur.com/1KOYaOX.png" alt=""></p>
+<p>找出id為5的食物:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Food.find_by(id: 5)</span><br><span class="line"></span><br><span class="line"><span class="comment">#等同於Food.find(5)</span></span><br></pre></td></tr></table></figure>
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food Load (0.4ms)  SELECT  <span class="string">"foods"</span>.* FROM <span class="string">"foods"</span> WHERE <span class="string">"foods"</span>.<span class="string">"id"</span> = <span class="variable">$1</span> LIMIT <span class="variable">$2</span>  [[<span class="string">"id"</span>, 5], [<span class="string">"LIMIT"</span>, 1]]</span><br></pre></td></tr></table></figure>
+
+
+<p>找id是2的使用者擁有的食物：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food.find_by(user_id: 2)</span><br></pre></td></tr></table></figure>
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food Load (0.2ms)  SELECT  <span class="string">"foods"</span>.* FROM <span class="string">"foods"</span> WHERE <span class="string">"foods"</span>.<span class="string">"user_id"</span> = <span class="variable">$1</span> LIMIT <span class="variable">$2</span>  [[<span class="string">"user_id"</span>, 2], [<span class="string">"LIMIT"</span>, 1]]</span><br></pre></td></tr></table></figure>
+
+<p>這裡可以注意的是，如果找不到該筆資料的話，<code>find_by</code>方法會回傳的值是<code>nil</code>而不是例外訊息。</p>
+<p><img src="https://i.imgur.com/190Aeer.png" alt=""></p>
+<p>若使用find_by方法撈資料但還是想要有回傳<code>ActiveRecord::RecordNotFound</code>，可以在find_by後面加個驚嘆號<code>!</code></p>
+<p><img src="https://i.imgur.com/jDBnzwK.png" alt=""></p>
+<p>就可以看到回傳的值不是<code>nil</code>而是可以捕捉的例外訊息了。</p>
+<h2 id="where"><a href="#where" class="headerlink" title="where"></a>where</h2><p>找出多筆資料，且可以透過自訂條件去搜尋，即代表了 SQL 語法 WHERE 的部分。</p>
+<p>條件可以是<strong>字串</strong>、<strong>陣列</strong>、或是 <strong>Hash</strong>。</p>
+<h3 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h3><p>如果我們要找的 orders_count 不是固定的值，則帶入變數<code>params[:orders]</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Client.where(<span class="string">"orders_count = ?"</span>, params[:orders])</span><br></pre></td></tr></table></figure>
+
+<p>根據Rails API文件：</p>
+<blockquote>
+<p>直接將變數插入條件字串裡，不論變數是什麼，都會直接存到資料庫裡。這表示從惡意使用者傳來的變數，會直接存到資料庫。這麼做是把資料庫放在風險裡不管啊！一旦有人知道，可以隨意將任何字串插入資料庫裡，就可以做任何想做的事。</p>
+</blockquote>
+<h3 id="絕對不要直接將變數插入條件字串裡。"><a href="#絕對不要直接將變數插入條件字串裡。" class="headerlink" title="絕對不要直接將變數插入條件字串裡。"></a>絕對不要直接將變數插入條件字串裡。</h3><h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p>找id是2的使用者全部擁有的食物：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food.where(user_id: 10)</span><br></pre></td></tr></table></figure>
+
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food Load (0.4ms)  SELECT <span class="string">"foods"</span>.* FROM <span class="string">"foods"</span> WHERE <span class="string">"foods"</span>.<span class="string">"user_id"</span> = <span class="variable">$1</span>  [[<span class="string">"user_id"</span>, 10]]</span><br></pre></td></tr></table></figure>
+
+<p>若找不到該筆資料，則會回傳<code>#&lt;ActiveRecord::Relation []&gt;</code>。</p>
+<p>參考資料：<br><a href="http://justineyeah-blog.logdown.com/posts/1814190-jd-store-find-find-by-where-in-rails" target="_blank" rel="noopener">JD store find/find_by/where in Rails</a><br><a href="https://rails.ruby.tw/active_record_querying.html" target="_blank" rel="noopener">Active Record 查詢</a><br><a href="https://pjchender.github.io/2018/02/25/rails-active-record-query%EF%BC%88model-%E8%B3%87%E6%96%99%E6%9F%A5%E8%A9%A2%EF%BC%89/" target="_blank" rel="noopener">[Rails] Active Record Query（SQL Query）</a><br><a href="https://railsbook.tw/chapters/16-model-basic.html" target="_blank" rel="noopener">Model 基本操作</a></p>
+<blockquote>
+<p>“Most of our obstacles would melt away if instead of cowering before them we should make up our minds to walk boldly through them.”</p>
+<p>— Orison Marden, Writer</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 鐵人賽</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/" rel="next" title="Day23: Rails中的N+1問題">
+                <i class="fa fa-chevron-left"></i> Day23: Rails中的N+1問題
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/" rel="prev" title="Day25: Rails中的一球冰淇淋 scope">
+                Day25: Rails中的一球冰淇淋 scope <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/img.jpg"
+                alt="Louis Wu" />
+            
+              <p class="site-author-name" itemprop="name">Louis Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LouiswuYJ" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:louiswu0327@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#find"><span class="nav-number">1.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-by"><span class="nav-number">2.</span> <span class="nav-text">find_by</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#where"><span class="nav-number">3.</span> <span class="nav-text">where</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#陣列"><span class="nav-number">3.1.</span> <span class="nav-text">陣列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#絕對不要直接將變數插入條件字串裡。"><span class="nav-number">3.2.</span> <span class="nav-text">絕對不要直接將變數插入條件字串裡。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash"><span class="nav-number">3.3.</span> <span class="nav-text">Hash</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Louis Wu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
