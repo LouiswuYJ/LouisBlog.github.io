@@ -1,276 +1,805 @@
 <!DOCTYPE html>
-<html lang="en">
 
-<!-- Head tag -->
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
 <head>
-
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-    <!--Description-->
-
-    
-
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="John Doe"/>
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="Hexo"/>
-    
-
-    <!--Open Graph Description-->
-    
-
-    <!--Open Graph Site Name-->
-        <meta property="og:site_name" content="Hexo"/>
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="website"/>
-    
-
-    <!--Page Cover-->
-    
-    
-        <meta property="og:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
-    
-
-        <meta name="twitter:card" content="summary_large_image"/>
-
-    
-
-    
-        <meta name="twitter:image" content="http://yoursite.comhttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg"/>
-    
-
-    <!-- Title -->
-    
-    <title>page - Hexo</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
-
-    <!-- Google Analytics -->
-    
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
 
 
-    <!-- favicon -->
-    
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Louis">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;4&#x2F;index.html">
+<meta property="og:site_name" content="Louis">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/4/"/>
+
+
+
+
+
+  <title>Louis</title>
+  
+
+
+
+
+
+
+
 
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
-<body>
+  
+  
+    
+  
 
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Configurable Title</a>
-        </div>
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                
-                    <li>
-                        <a href="/">
-                            
-                                Home
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/tags">
-                            
-                                Tags
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/categories">
-                            
-                                Categories
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank" rel="noopener">
-                            
-                                <i class="fa fa-github fa-stack-2x"></i>
-                            
-                        </a>
-                    </li>
-                
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Louis</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <!-- /.container -->
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
 </nav>
 
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
-<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Hexo</h1>
-                    <hr class="small">
-                    <span class="subheading"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
             
-                <div class="post-preview">
-    <a href="/2019/08/16/5xRuby：滿一個月 copy/">
-        <h2 class="post-title">
-            5xRuby：滿一個月
-        </h2>
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88%20copy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Louis">
+    </span>
+
+    
+      <header class="post-header">
+
         
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
         
-        2019-08-16
-    </p>
-</div>
-<hr>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/16/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88%20copy/" itemprop="url">5xRuby：滿一個月</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
             
-                <div class="post-preview">
-    <a href="/2019/08/15/寫javascript-資料結構初體驗 copy/">
-        <h2 class="post-title">
-            寫javascript-資料結構初體驗
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2019-08-15
-    </p>
-</div>
-<hr>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-16T12:10:40+08:00">
+                2019-08-16
+              </time>
             
 
-            <ul class="pager">
-    
-        <li class="previous"><a href="/page/3/">&larr;  Newer Posts</a></li>
-    
-    
-</ul>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="啟程"><a href="#啟程" class="headerlink" title="啟程"></a>啟程</h1><p>還記得07/15開課當天，早上還在東京趕飛機的我，匆匆忙忙在下課前一小時衝進教室，滿頭大汗地隨便抓個位置坐在教室裡，根本不敢相信自己真的正式準備踏入這圈子了，心情既興奮又擔心，但既然都已經下定決心要挑戰，不管最後的結果如何，自己的選擇，就要對自己負責，不畏挫折踏實努力的走完這三個月的精實訓練，看看自己的最大能耐會走到多遠吧！</p>
+<h1 id="過程"><a href="#過程" class="headerlink" title="過程"></a>過程</h1><blockquote>
+<p>第一週：</p>
+</blockquote>
+<p>還記得第一週龍哥教的Ruby，以及Amos教的html，除了一開始的Git有遇到一些挫折，其他的部分還算得心應手，畢竟之前算有在AC線上課程自學一個月….</p>
+<p>ＢＵＴ！！！</p>
+<p>人生就是會有個BUT，沒想到前一個月的自學量，在短短一週的資訊量就被超過的連車尾燈都看不到，果不其然是名副其實的精實營，且作業方面就讓我深刻的體會到，身為工程師的日常生活就是在不停的挫折、不停的戰鬥中，獲得成就感。</p>
+<blockquote>
+<p>第二週：</p>
+</blockquote>
+<p>CSS及Ruby的雙重轟炸，我目前最大的挫折大概就是死在這週。CSS選取器選半天選不到、float用半天排不好版，Ruby的實體方法、類別方法的觀念理解、Class繼承等等等….在這週的作業，完全被打的體無完膚，一個Ruby題目像題目像下圖：</p>
+<p><img src="https://i.imgur.com/5MxyR5q.png" alt=""></p>
+<p>我就跟他耗了將近三小時！！！而且還沒寫出結果，再看CSS題目：</p>
+<p><img src="https://i.imgur.com/0RahpPm.png" alt=""></p>
+<p>花費時間也超過3小時，現在回頭看當時的自己，真的是很嫩呢XD</p>
+<p><img src="https://i.imgur.com/H6R8J1D.jpg" alt=""><br><img src="https://i.imgur.com/TNqKya1.jpg" alt=""></p>
+<p>還好有了老爸Matz桑的信心喊話，以前當晚在Pic Collage參加的Ruby Conf-pre party，與來自台灣及各國的大神聊天後，對自己稍微又有了點動力繼續走下去。最後終於憑著強大的心臟(其實是無知!?)到處撞牆，就這樣讓我撞到了第三週。</p>
+<blockquote>
+<p>第三週</p>
+</blockquote>
+<p>這週的CSS終於學了display:inline-block的方式切版，終於可以站拋棄float了(撒花)，以及絕對定位、相對定位等，這些雖然是個好用的工具，但其背後的真的很吃觀念，還好老師非常重視“觀念推導”而非只是教我們死記。但寫作業的部分就…才知道上課聽得懂，跟實際拿來用完全是兩馬子事啊…</p>
+<p><a href="https://codepen.io/LouisYJ/pen/jONqzmd" target="_blank" rel="noopener">https://codepen.io/LouisYJ/pen/jONqzmd</a></p>
+<p>這份作業就花了我近18小時的時間，真的切到很崩潰…花那麼多時間主要是因為第一次是純用float切版，後強迫自己用inline-block再切一次，確認觀念及工具是否真的都會用了。<br>雖然切的很崩潰，但算是第一次寫到有成就的moment。</p>
+<p>但……</p>
+<p>這週的Ruby又讓我崩潰了……Module、Block、namespace、rake等等等，又一堆的新觀念要導入，作業上再度花了近10小時才產出。而且龍哥從這次的作業繳交方式，從原本只要錄影自己打code的過程就好，還要再加上自己的聲音，一邊寫code一邊講解。</p>
+<p>剛開始其實還蠻排斥這種方式，但後來其實很感謝當時的自己還是花時間嘗試去做“講解”這件事，畢竟如果我能夠邊coding邊說明，代表我真的懂觀念且已經可以融會貫通了(吧)。花了很多時間寫作業，但也慢慢找到自己的節奏及成就感。</p>
+<blockquote>
+<p>第四週</p>
+</blockquote>
+<p>很快的來到了Amos課的最後一週，終於把大絕招flex交給我們了XD，用起來真的是非常舒服，但只維持了一天的成就感，隔天立馬被RWD打死….</p>
+<p>天哪！！！原來我們切版還要顧慮到不同裝置(手機、平板、電腦)的尺寸(直看、橫看)去客制那個裝置的版，我一直以爲那是電腦自動調整的(超天真)…Amos從最傳統的尺寸計算(大崩潰)，到用calc計算(中崩潰)，到最後的用隔線系統(小崩潰)，看都看得懂，實際應用又是另一回事。</p>
+<p>為了能夠讓我們熟悉業界常用的方式，Amos一次出了14個切版作業，一直到現在我都還沒寫完，只能維持一日切一版的節奏慢慢前進，但確實在不斷不斷的練習之下，有發現自己的經驗值似乎在不知不覺中已慢慢提升，切版的速度越來越快且選取器及命名也越來越清楚，過程中有挫折，但似乎也漸漸習慣了。</p>
+<p>最後一堂的Boostrap，原來有那麼好用的東西!!!!!有點我們之前到底在學什麼的感覺XD，但樣板是樣板，未來的客戶需求不可能都靠樣板去套就解決，故還是要有一定的手刻切版基礎，才能將樣板跟手刻版做好平衡。</p>
+<p>Ruby不知道是開竅了還是靈感乍現!?這兩次近30題的作業，不能說是寫得得心應手，但挫折感明顯比前幾週少非常多，且速度也快多了，雖然常常被龍哥說：</p>
+<blockquote>
+<p>”在Ruby裡還有更簡單的方法“</p>
+</blockquote>
+<p>但至少我寫出結果來了(誤)</p>
+<p>有時候其實會懷疑，過度依賴Ruby的method是不是件好事？所以在每次寫完作業後，有時間我會刻意讓自己去用土炮的方式完成作業，多訓練自己的邏輯思維，讓自己未來若跨到其他語言系，不會因為沒有method可用就躺平在那吃土(笑)<br>(這週五颱風假賺到一天自習，可能這也是壓力比較可以調適的原因!?)</p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>第一天的自己，經過了這一個月的訓練，明顯感覺得到自己的進步，但其實不能夠因此自滿，班上的強者實在太多了，既然怎麼追都追不上，那就跟自己比較吧～</p>
+<p>心態調適真的很重要，未來進這行一定是在無盡的挫折跟成就感間不停徘徊，還好在自己心裡層面很低潮的時候，身邊總是有人願意拉我一把告訴我要堅持下去，我算是幸福的吧！</p>
+<p>我不知道後面兩個月過後，是否能夠順利的轉職成功，但至少能夠確認的是：</p>
+<h1 id="”我覺得寫程式還蠻有趣的。“"><a href="#”我覺得寫程式還蠻有趣的。“" class="headerlink" title="”我覺得寫程式還蠻有趣的。“"></a>”我覺得寫程式還蠻有趣的。“</h1>
+          
+        
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/%E5%AF%ABjavascript-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%88%9D%E9%AB%94%E9%A9%97%20copy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Louis">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/15/%E5%AF%ABjavascript-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%88%9D%E9%AB%94%E9%A9%97%20copy/" itemprop="url">寫javascript-資料結構初體驗</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-15T12:10:40+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>五倍的課程進行將近一個月，終於有了第一次有小組討論XD<br>從來沒接觸過資料結構的我們，從老師訂的題目”購物車“開始發想：</p>
+<h2 id="我們討論經過的步驟："><a href="#我們討論經過的步驟：" class="headerlink" title="我們討論經過的步驟："></a>我們討論經過的步驟：</h2><p>1.列出所有購物車會有的功能<br>2.將同種類的進行分類<br>3.將重複的功能刪除<br>4.列出進入購物車選單後的順序流程<br>5.不會變動的功能與會變動的功能進行分類<br>6.會有value的用Objuect，不用特別輸入value的用Array<br>7.寫成code</p>
+<h2 id="所以產出了以下基本結果："><a href="#所以產出了以下基本結果：" class="headerlink" title="所以產出了以下基本結果："></a>所以產出了以下基本結果：</h2><p>購物車：<br>{帳號、密碼}<br>購物車 {商品名稱、金額、特價、數量、尺寸、顏色、折扣{購物金、活動優惠、紅利折抵}、總件數<br>推薦商品、瀏覽紀錄}<br>待買清單<br>追蹤清單<br>商城規範<br>會員資料 {姓名、信箱、電話、地址、會員等級}<br>配送方式 {超商: 運費、宅配: 運費、郵局: 運費、面交: 免運費}<br>付款方式 [ATM、信用卡、貨到付款、第三方支付]<br>發票載具 [二聯、三聯、捐贈、電子發票]<br>訂單編號<br>(123代表型態是number, 0.7代表型態是float)</p>
+<h2 id="寫成code後產出以下結果："><a href="#寫成code後產出以下結果：" class="headerlink" title="寫成code後產出以下結果："></a>寫成code後產出以下結果：</h2><p><img src="https://i.imgur.com/uW38JGf.png" alt=""></p>
+<h2 id="泰安老師的評語："><a href="#泰安老師的評語：" class="headerlink" title="泰安老師的評語："></a>泰安老師的評語：</h2><p>1.第3行，問題零：<br>Ans: 最外面已經let card了，裡面的key要避免使用同樣名稱的命名。<br>2.第4行～第12行，問題一：<br>問：item這裡只有一個，如果今天有多個item的話，這樣子的資料結構可以寫在哪裡呢？<br>(我在台上空氣凝結…)<br>Ans: 這種寫法基本上可說是設計錯誤，應該會如下圖寫，用Array包住Object才能夠在資料上儲存多筆item。</p>
+<p><img src="https://i.imgur.com/CDDuftF.png" alt=""></p>
+<p>3.第13行，問題二：<br>問：那個總金額是…?直接輸入字串？<br>Ans:關於要做運算的事情，不需要寫在資料結構裡面，只要再外面用function運算完後再輸入回去就好。</p>
+<p><img src="https://i.imgur.com/7C4eIMK.png" alt=""></p>
+<p>4.第16行~第17行，問題三：<br>問：商品名稱跟瀏覽紀錄..?一個字串？<br>Ans:同問題一，應有多筆資料的儲存應用Array包住Object。</p>
+<p><img src="https://i.imgur.com/KY2qGTe.png" alt=""></p>
+<p>5.第20行～第21行，第22行～第27行，問題四：<br>Ans:同問題一，應有多筆資料的儲存應用Array包住Object。</p>
+<p><img src="https://i.imgur.com/zVaMpEG.png" alt=""></p>
+<p>補充：在item的部分，其實並不是你在Array裡寫幾個Object，就只能在購物車裡放幾個不同item，而是一開始的資料其實是個空陣列，當使用者按下”加入購物車”後，才會傳入一個資料進入Array。</p>
+<h1 id="結論："><a href="#結論：" class="headerlink" title="結論："></a>結論：</h1><p>1.若是同樣的東西，卻需要有多筆的時候，使用Array包住裡面的資料。<br>2.若只有單筆需要帶入key跟value的時候，使用Object。(第２９行)<br>3.避免key的命名與外部的變數名稱相同。<br>當然就算這樣設定，這樣的資料結構其實也還算是有問題的，但藉由此例大概可以對第一次寫資料結構的我們，有了一些些感受跟體驗。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/img.jpg"
+                alt="John Doe" />
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
 </div>
 
 
-
-    <!-- Footer -->
-    <hr />
-
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-
-                    
-
-                    
-                        <li>
-                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-
-                    
-
-                    
-                </ul>
-                <p class="copyright text-muted">&copy; 2019 John Doe<br></p>
-                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
-                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
-            </div>
-        </div>
-    </div>
-</footer>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
-    <!-- After footer scripts -->
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
     
-<!-- jQuery -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
-<!-- Bootstrap -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
 
-<!-- Gallery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+  </div>
 
-<!-- Disqus Comments -->
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
 
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
 
 </body>
-
 </html>
