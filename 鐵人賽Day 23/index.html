@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Louis Wu">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;x2SP56l.png">
-<meta property="og:updated_time" content="2019-10-24T11:39:13.883Z">
+<meta property="og:updated_time" content="2019-10-30T16:05:05.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;x2SP56l.png">
 
@@ -329,7 +329,7 @@
 <p>再一筆一筆印出來：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.erb.html --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">products.each</span> <span class="attr">do</span> |<span class="attr">product</span>| %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">product.user.name</span>%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">product.title</span>%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">product.price</span>%&gt;</span></span><br><span class="line">    ....</span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br></pre></td></tr></table></figure>
 <p>乍看之下好像很合理，如果說只有一筆product要查這樣寫沒問題，但一個網站怎麼可能只有一筆資料？</p>
-<p>若今天要找出product的擁有者、名字及價錢有10筆。在迭代每筆資料時，依邊呼叫 query 來從 Prdoduct 資料表中取資料，就會產生 10 + 1 次 query，其中後面的 1 指的是 User資料數量。</p>
+<p>若今天要找出product的擁有者、名字及價錢有10筆。在迭代每筆資料時，一邊呼叫 query 來從 Prdoduct 資料表中取資料，就會產生 10 + 1 次 query，其中後面的 1 指的是 User資料數量。</p>
 <p>資料的存取是rails的弱項，所以在設計時能夠避免 N+1問題就避免，將資料存取相關的事交給擅長的資料庫就好。</p>
 <h2 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h2><p>拿上面例子來看，會產生 10+1筆的資料存取，我們可以用includes的方式將所有資料在資料第一次存取時就“一次查完“因此在controller的部份我們可以這樣寫：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#products_controller.rb</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @products = Product.includes(<span class="symbol">:user</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
