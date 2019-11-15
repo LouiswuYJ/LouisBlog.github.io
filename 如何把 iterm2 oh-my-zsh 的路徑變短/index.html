@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="鐵人賽," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="keywords" content="鐵人賽">
+<meta name="description" content="若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。 查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。 步驟1. 找到 .oh-my-zsh&#x2F;themes 資料夾1open ~&#x2F;.oh-my-zsh&#x2F;themes  步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)看個人習慣要用vim開還是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Day23: Rails中的N+1問題">
-<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023&#x2F;index.html">
+<meta property="og:title" content="如何把 iterm2 oh-my-zsh 的路徑變短">
+<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD&#x2F;index.html">
 <meta property="og:site_name" content="Louis Wu">
+<meta property="og:description" content="若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。 查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。 步驟1. 找到 .oh-my-zsh&#x2F;themes 資料夾1open ~&#x2F;.oh-my-zsh&#x2F;themes  步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)看個人習慣要用vim開還是">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;x2SP56l.png">
-<meta property="og:updated_time" content="2019-11-02T13:53:03.844Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;4PaQBqx.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;cPwh3Sr.png">
+<meta property="og:updated_time" content="2019-11-15T14:11:04.064Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;x2SP56l.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;4PaQBqx.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://louiswuyj.site/鐵人賽Day 23/"/>
+  <link rel="canonical" href="https://louiswuyj.site/如何把 iterm2 oh-my-zsh 的路徑變短/"/>
 
 
 
 
 
-  <title>Day23: Rails中的N+1問題 | Louis Wu</title>
+  <title>如何把 iterm2 oh-my-zsh 的路徑變短 | Louis Wu</title>
   
 
 
@@ -243,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://louiswuyj.site/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/">
+    <link itemprop="mainEntityOfPage" href="https://louiswuyj.site/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Louis Wu">
@@ -260,7 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Day23: Rails中的N+1問題</h1>
+          <h1 class="post-title" itemprop="name headline">如何把 iterm2 oh-my-zsh 的路徑變短</h1>
         
 
         <div class="post-meta">
@@ -272,8 +274,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T12:10:40+08:00">
-                2019-10-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-15T12:10:40+08:00">
+                2019-11-15
               </time>
             
 
@@ -310,43 +312,21 @@
       
 
       
-        <p><img src="https://i.imgur.com/x2SP56l.png" alt=""></p>
-<a id="more"></a>
+        <p>若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。</p>
+<p>查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。</p>
+<h3 id="步驟1-找到-oh-my-zsh-themes-資料夾"><a href="#步驟1-找到-oh-my-zsh-themes-資料夾" class="headerlink" title="步驟1. 找到 .oh-my-zsh/themes 資料夾"></a>步驟1. 找到 .oh-my-zsh/themes 資料夾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.oh-my-zsh/themes</span><br></pre></td></tr></table></figure>
 
-<p>Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原因，造成在資料庫查詢的時候浪費許多記憶體，大部分的 ORM 預設使用 lazy-loading，一筆資料的查詢就會產生一筆 query，拖累了資料庫的效能。因此將預設的 lazy-loading 改成 Eager-loading 就可以解決N+1問題。</p>
-<p>其中 Eager-loading在 rails 提供了4種方式：</p>
-<ul>
-<li>preload</li>
-<li>eagerload </li>
-<li>includes </li>
-<li>joins</li>
-</ul>
-<p>這篇就拿最常見的inclundes及joins來討論。</p>
-<p>我們先建立兩個Model分別為<code>user.rb</code>及<code>product.rb</code>且為一對多關係：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#user.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ApplicationRecord</span></span><br><span class="line">  has_many <span class="symbol">:products</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#product.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span> &lt; ApplicationRecord</span></span><br><span class="line">  belongs_to <span class="symbol">:user</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>controller先將所有的Pdoduct撈出：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#products_controller.rb</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @products = Product.all</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>再一筆一筆印出來：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.erb.html --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">products.each</span> <span class="attr">do</span> |<span class="attr">product</span>| %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">product.user.name</span>%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">product.title</span>%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">product.price</span>%&gt;</span></span><br><span class="line">    ....</span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br></pre></td></tr></table></figure>
-<p>乍看之下好像很合理，如果說只有一筆product要查這樣寫沒問題，但一個網站怎麼可能只有一筆資料？</p>
-<p>若今天要找出product的擁有者、名字及價錢有10筆。在迭代每筆資料時，一邊呼叫 query 來從 Prdoduct 資料表中取資料，就會產生 10 + 1 次 query，其中後面的 1 指的是 User資料數量。</p>
-<p>資料的存取是rails的弱項，所以在設計時能夠避免 N+1問題就避免，將資料存取相關的事交給擅長的資料庫就好。</p>
-<h2 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h2><p>拿上面例子來看，會產生 10+1筆的資料存取，我們可以用includes的方式將所有資料在資料第一次存取時就“一次查完“因此在controller的部份我們可以這樣寫：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#products_controller.rb</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @products = Product.includes(<span class="symbol">:user</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔"><a href="#步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔" class="headerlink" title="步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)"></a>步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)</h3><p>看個人習慣要用vim開還是一般的文字編輯器都可以:</p>
+<h3 id="步驟3-找到-prompt-dir-並加入數字"><a href="#步驟3-找到-prompt-dir-並加入數字" class="headerlink" title="步驟3. 找到 prompt_dir() 並加入數字"></a>步驟3. 找到 prompt_dir() 並加入數字</h3><p>原始:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>再 query 的部分就只會查詢2筆了。</p>
-<h2 id="joins與includes的差別"><a href="#joins與includes的差別" class="headerlink" title="joins與includes的差別"></a>joins與includes的差別</h2><p>:joins 使用 SQL 的 INNER JOIN 方法，不會真的把關聯的資料取出來。如果只是想要篩選結果，或是觀察關聯物件的某些屬性質，那麼使用 :joins 是最有效率的。不過有一點要注意，如果你想要做的事是存取關聯物件本身，那麼 :joins 還是會造成 N+1 問題。</p>
-<p>主要差別在於：</p>
-<ol>
-<li>join主要用於過濾model之間的關係，但對查詢筆數來說並無太大幫助</li>
-<li>include主要用於將大量資料在同一筆查詢內一次查好</li>
-</ol>
-<p>參考資料：</p>
-<p>部分內容擷取自以下連結<br><a href="https://blog.bigbinary.com/2013/07/01/preload-vs-eager-load-vs-joins-vs-includes.html" target="_blank" rel="noopener">Preload, Eagerload, Includes and Joins</a><br><a href="https://ithelp.ithome.com.tw/articles/10161667" target="_blank" rel="noopener">Rails使用include和join避免 N+1 queries</a><br><a href="https://medium.com/@jinghua.shih/rails-activerecord-%E6%95%88%E8%83%BD%E5%84%AA%E5%8C%96-%E4%B8%8A-%E9%97%9C%E8%81%AF%E6%9F%A5%E8%A9%A2-75ca79f510b3" target="_blank" rel="noopener">[Rails] N+1 Queries Problem</a><br><a href="https://rails.ruby.tw/active_record_querying.html" target="_blank" rel="noopener">Rails API</a></p>
-<blockquote>
-<p>“Tests are a gift. And great tests are a great gift. To fail the test is a misfortune. But to refuse the test is to refuse the gift, and something worse, more &gt;irrevocable, than misfortune.”</p>
-<p>– Lois McMaster Bujold, writer</p>
-</blockquote>
+<h4 id="數字1-代表顯示1層"><a href="#數字1-代表顯示1層" class="headerlink" title="數字1: 代表顯示1層"></a>數字1: 代表顯示1層</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line"><span class="comment"># prompt_segment blue $CURRENT_FG '%~'</span></span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%1~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/4PaQBqx.png" alt=""></p>
+<h4 id="數字2-代表顯示2層"><a href="#數字2-代表顯示2層" class="headerlink" title="數字2: 代表顯示2層"></a>數字2: 代表顯示2層</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line"><span class="comment"># prompt_segment blue $CURRENT_FG '%~'</span></span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%2~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/cPwh3Sr.png" alt=""></p>
+<p>以此類推</p>
+<p>參考資料：<br><a href="https://medium.com/@shandou/how-to-shorten-zsh-prompt-oh-my-zsh-14185f3e7ab7" target="_blank" rel="noopener">How to shorten zsh prompt (oh my zsh)</a></p>
 
       
     </div>
@@ -362,12 +342,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 鐵人賽</a>
-          
-        </div>
-      
 
       
       
@@ -377,8 +351,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/" rel="next" title="Day22: 簡易Rails實作(下)">
-                <i class="fa fa-chevron-left"></i> Day22: 簡易Rails實作(下)
+              <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/" rel="next" title="Day30: 我竟然完賽了？">
+                <i class="fa fa-chevron-left"></i> Day30: 我竟然完賽了？
               </a>
             
           </div>
@@ -386,10 +360,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/" rel="prev" title="Day24: Rails中的find? find_by? where?">
-                Day24: Rails中的find? find_by? where? <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -539,7 +509,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#includes"><span class="nav-number">1.</span> <span class="nav-text">includes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#joins與includes的差別"><span class="nav-number">2.</span> <span class="nav-text">joins與includes的差別</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#步驟1-找到-oh-my-zsh-themes-資料夾"><span class="nav-number">1.</span> <span class="nav-text">步驟1. 找到 .oh-my-zsh/themes 資料夾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔"><span class="nav-number">2.</span> <span class="nav-text">步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步驟3-找到-prompt-dir-並加入數字"><span class="nav-number">3.</span> <span class="nav-text">步驟3. 找到 prompt_dir() 並加入數字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#數字1-代表顯示1層"><span class="nav-number">3.1.</span> <span class="nav-text">數字1: 代表顯示1層</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#數字2-代表顯示2層"><span class="nav-number">3.2.</span> <span class="nav-text">數字2: 代表顯示2層</span></a></li></ol></li></ol></div>
             
 
           </div>

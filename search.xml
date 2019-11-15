@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>如何把 iterm2 oh-my-zsh 的路徑變短</title>
+    <url>/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/</url>
+    <content><![CDATA[<p>若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。</p>
+<p>查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。</p>
+<h3 id="步驟1-找到-oh-my-zsh-themes-資料夾"><a href="#步驟1-找到-oh-my-zsh-themes-資料夾" class="headerlink" title="步驟1. 找到 .oh-my-zsh/themes 資料夾"></a>步驟1. 找到 .oh-my-zsh/themes 資料夾</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open ~/.oh-my-zsh/themes</span><br></pre></td></tr></table></figure>
+
+<h3 id="步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔"><a href="#步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔" class="headerlink" title="步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)"></a>步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)</h3><p>看個人習慣要用vim開還是一般的文字編輯器都可以:</p>
+<h3 id="步驟3-找到-prompt-dir-並加入數字"><a href="#步驟3-找到-prompt-dir-並加入數字" class="headerlink" title="步驟3. 找到 prompt_dir() 並加入數字"></a>步驟3. 找到 prompt_dir() 並加入數字</h3><p>原始:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="數字1-代表顯示1層"><a href="#數字1-代表顯示1層" class="headerlink" title="數字1: 代表顯示1層"></a>數字1: 代表顯示1層</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line"><span class="comment"># prompt_segment blue $CURRENT_FG '%~'</span></span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%1~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/4PaQBqx.png" alt=""></p>
+<h4 id="數字2-代表顯示2層"><a href="#數字2-代表顯示2層" class="headerlink" title="數字2: 代表顯示2層"></a>數字2: 代表顯示2層</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line"><span class="comment"># prompt_segment blue $CURRENT_FG '%~'</span></span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%2~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/cPwh3Sr.png" alt=""></p>
+<p>以此類推</p>
+<p>參考資料：<br><a href="https://medium.com/@shandou/how-to-shorten-zsh-prompt-oh-my-zsh-14185f3e7ab7" target="_blank" rel="noopener">How to shorten zsh prompt (oh my zsh)</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Day30: 我竟然完賽了？</title>
     <url>/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/</url>
     <content><![CDATA[<p>在這裡，我要感謝我的父母#%#$@!@^&amp;（誤</p>
@@ -1589,7 +1609,7 @@
   </entry>
   <entry>
     <title>5xRuby：滿一個月</title>
-    <url>/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88%20copy/</url>
+    <url>/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88/</url>
     <content><![CDATA[<h1 id="啟程"><a href="#啟程" class="headerlink" title="啟程"></a>啟程</h1><p>還記得07/15開課當天，早上還在東京趕飛機的我，匆匆忙忙在下課前一小時衝進教室，滿頭大汗地隨便抓個位置坐在教室裡，根本不敢相信自己真的正式準備踏入這圈子了，心情既興奮又擔心，但既然都已經下定決心要挑戰，不管最後的結果如何，自己的選擇，就要對自己負責，不畏挫折踏實努力的走完這三個月的精實訓練，看看自己的最大能耐會走到多遠吧！</p>
 <h1 id="過程"><a href="#過程" class="headerlink" title="過程"></a>過程</h1><blockquote>
 <p>第一週：</p>
