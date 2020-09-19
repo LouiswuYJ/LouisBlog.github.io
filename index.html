@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Page 1 | Louis Wu</title>
+  <title>Louis Wu&#39;s BLOG's Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Louis Wu">
+  <meta name="description" content="Stressed is just desserts if you can reverse.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Louis Wu&#39;s BLOG">
 <meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;index.html">
-<meta property="og:site_name" content="Louis Wu">
+<meta property="og:site_name" content="Louis Wu&#39;s BLOG">
+<meta property="og:description" content="Stressed is just desserts if you can reverse.">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Louis Wu" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Louis Wu&#39;s BLOG" type="application/atom+xml">
   
   <link rel="icon" href="/css/images/favicon.ico">
   
@@ -30,7 +32,7 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
+
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
@@ -53,19 +55,21 @@
   
 
 
-<header id="allheader" class="site-header" role="banner" 
+<header id="allheader" class="site-header" role="banner"
    >
   <div class="clearfix container">
       <div class="site-branding">
 
           <h1 class="site-title">
             
-              <a href="/" title="Louis Wu" rel="home"> Louis Wu </a>
+              <a href="/" title="Louis Wu&#39;s BLOG" rel="home"> Louis Wu&#39;s BLOG </a>
             
           </h1>
+
           
+            <div class="site-description">Stressed is just desserts if you can reverse.</div>
           
-            
+
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
             <a class="nav-close">Close</a>
@@ -76,8 +80,6 @@
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
                     
@@ -92,7 +94,6 @@
 
   <div id="container">
     <div id="wrap">
-            
       <div id="content" class="outer">
         
           <section id="main">
@@ -117,27 +118,23 @@
 	  <time datetime="2019-11-15T04:10:40.000Z" itemprop="datePublished">November 15, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。</p>
-<p>查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。</p>
-<h3 id="步驟1-找到-oh-my-zsh-themes-資料夾"><a href="#步驟1-找到-oh-my-zsh-themes-資料夾" class="headerlink" title="步驟1. 找到 .oh-my-zsh/themes 資料夾"></a>步驟1. 找到 .oh-my-zsh/themes 資料夾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.oh-my-zsh/themes</span><br></pre></td></tr></table></figure>
+        
 
-<h3 id="步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔"><a href="#步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔" class="headerlink" title="步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)"></a>步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)</h3><p>看個人習慣要用vim開還是一般的文字編輯器都可以:</p>
-<h3 id="步驟3-找到-prompt-dir-並加入數字"><a href="#步驟3-找到-prompt-dir-並加入數字" class="headerlink" title="步驟3. 找到 prompt_dir() 並加入數字"></a>步驟3. 找到 prompt_dir() 並加入數字</h3><p>原始:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。
+查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。
 
-<h4 id="數字1-代表顯示1層"><a href="#數字1-代表顯示1層" class="headerlink" title="數字1: 代表顯示1層"></a>數字1: 代表顯示1層</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line"><span class="comment"># prompt_segment blue $CURRENT_FG '%~'</span></span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%1~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/4PaQBqx.png" alt=""></p>
-<h4 id="數字2-代表顯示2層"><a href="#數字2-代表顯示2層" class="headerlink" title="數字2: 代表顯示2層"></a>數字2: 代表顯示2層</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line"><span class="comment"># prompt_segment blue $CURRENT_FG '%~'</span></span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%2~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.imgur.com/cPwh3Sr.png" alt=""></p>
-<p>以此類推</p>
-<p>參考資料：<br><a href="https://medium.com/@shandou/how-to-shorten-zsh-prompt-oh-my-zsh-14185f3e7ab7" target="_blank" rel="noopener">How to shorten zsh prompt (oh my zsh)</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/#more">Read More →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -173,30 +170,23 @@
 	  <time datetime="2019-10-13T04:10:40.000Z" itemprop="datePublished">October 13, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在這裡，我要感謝我的父母#%#$@!@^&amp;（誤</p>
-<p>看第1天的“參賽起始文”，還清楚記得發文當下的感覺：</p>
-<h3 id="“我自己真的能做到嗎？”"><a href="#“我自己真的能做到嗎？”" class="headerlink" title="“我自己真的能做到嗎？”"></a>“我自己真的能做到嗎？”</h3><p>寫到了第30天，真的不敢相信自己竟然真的完賽了!? 過程中真的頗痛苦，但好像已經默默的養成每天早上起來看文件的習慣，說進步嗎..?</p>
-<p>或許有、或許沒有，至少證實了一句話：</p>
-<blockquote>
-<p>「時間就像擠乳溝，硬擠一下就有了。」</p>
-</blockquote>
-<p>這30篇文章有很多可以改進跟修正的地方(尤其廢文)，還好這次是報名自我挑戰組，心態上也比較不一樣，也許明年挑戰Mordern Web組的時候又是另一個挑戰跟態度了吧！(什麼..你竟然還想再挑戰？)</p>
-<p>這次雖然有完賽，其實不能說都是靠自己的力量，回頭想想，如果沒有身邊夥伴的互相鼓勵跟支持，我覺得只靠我自己是不可能完賽的，很感謝他們。</p>
-<p>說到夥伴們就覺得感慨，在五倍這邊也只剩下不到一週的時間就要結束了，雖然這裡是鐵人賽，但就像第1天說的，就當是寫給自己看的。</p>
-<p>如果沒有“某菜”每天的嘴砲注入點活力，也許我不會走到現在。<br>如果沒有“某叔”在CRUD時耐心教我，我想我應該早就放棄了。<br>如果沒有“某聰”對於程式的求知慾，我想我對於寫程式應該不會感到有興趣。<br>如果沒有“某凡”逆流而上的態度，我應該早就被壓力擊垮了。<br>如果沒有“某尼”的強大，我就不會意識到自己離車尾燈還有多麼遙遠。</p>
-<p><strong>(夥伴、饅頭真的真的在這行很重要啊!!!)</strong></p>
-<p>五倍Astrocamp跟鐵人賽的結束，只是一個「進入新手村」開始，我才剛創建好角色準備踏入而已，期許自己幾年後回頭看看現在的自己會忍不住大噴一番XD</p>
-<p>鐵人賽，我們明年見！</p>
-<blockquote>
-<p>“Would you like me to give you a formula for success? It’s quite simple, really. Double your rate of failure. You’re thinking of failure as the enemy of success. But it isn’t at all… You can be discouraged by failure – or you can learn from it. So go ahead and make mistakes. Make all you can. Because, remember that’s where you’ll find success. On the far side.”</p>
-<p>– Thomas J. Watson, Founder of IBM</p>
-</blockquote>
+        
 
+          
+          <div class="entry-summary">
+          在這裡，我要感謝我的父母#%#$@!@^&amp;（誤
+看第1天的“參賽起始文”，還清楚記得發文當下的感覺：
+
+        
+          <p class="article-more-link">
+            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/#more">Read More →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -235,7 +225,7 @@
 	  <time datetime="2019-10-12T04:10:40.000Z" itemprop="datePublished">October 12, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -248,7 +238,7 @@
 
         
           <p class="article-more-link">
-            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/#more">Continue Reading →</a>
+            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/#more">Read More →</a>
           </p>
         </div>
       
@@ -289,7 +279,7 @@
 	  <time datetime="2019-10-11T04:10:40.000Z" itemprop="datePublished">October 11, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -304,7 +294,7 @@
 
         
           <p class="article-more-link">
-            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/#more">Continue Reading →</a>
+            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/#more">Read More →</a>
           </p>
         </div>
       
@@ -345,7 +335,7 @@
 	  <time datetime="2019-10-10T04:10:40.000Z" itemprop="datePublished">October 10, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -354,11 +344,12 @@
 
           
           <div class="entry-summary">
-          圖片來源
+          
+在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的application_controller.rb來取用。
 
         
           <p class="article-more-link">
-            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/#more">Continue Reading →</a>
+            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/#more">Read More →</a>
           </p>
         </div>
       
@@ -399,7 +390,7 @@
 	  <time datetime="2019-10-09T04:10:40.000Z" itemprop="datePublished">October 9, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -409,10 +400,11 @@
           
           <div class="entry-summary">
           
+在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。
 
         
           <p class="article-more-link">
-            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/#more">Continue Reading →</a>
+            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/#more">Read More →</a>
           </p>
         </div>
       
@@ -453,7 +445,7 @@
 	  <time datetime="2019-10-08T04:10:40.000Z" itemprop="datePublished">October 8, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -467,7 +459,7 @@
 
         
           <p class="article-more-link">
-            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/#more">Continue Reading →</a>
+            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/#more">Read More →</a>
           </p>
         </div>
       
@@ -508,7 +500,7 @@
 	  <time datetime="2019-10-07T04:10:40.000Z" itemprop="datePublished">October 7, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -523,7 +515,7 @@ find找出單一筆資料，且只能透過id去搜尋。
 
         
           <p class="article-more-link">
-            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/#more">Continue Reading →</a>
+            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/#more">Read More →</a>
           </p>
         </div>
       
@@ -564,7 +556,7 @@ find找出單一筆資料，且只能透過id去搜尋。
 	  <time datetime="2019-10-06T04:10:40.000Z" itemprop="datePublished">October 6, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -574,10 +566,11 @@ find找出單一筆資料，且只能透過id去搜尋。
           
           <div class="entry-summary">
           
+Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原因，造成在資料庫查詢的時候浪費許多記憶體，大部分的 ORM 預設使用 lazy-loading，一筆資料的查詢就會產生一筆 query，拖累了資料庫的效能。
 
         
           <p class="article-more-link">
-            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/#more">Continue Reading →</a>
+            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/#more">Read More →</a>
           </p>
         </div>
       
@@ -618,7 +611,7 @@ find找出單一筆資料，且只能透過id去搜尋。
 	  <time datetime="2019-10-05T04:10:40.000Z" itemprop="datePublished">October 5, 2019</time>
 	</a>
 
-       
+      
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -632,7 +625,7 @@ find找出單一筆資料，且只能透過id去搜尋。
 
         
           <p class="article-more-link">
-            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/#more">Continue Reading →</a>
+            <a href="/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/#more">Read More →</a>
           </p>
         </div>
       
@@ -692,7 +685,7 @@ find找出單一筆資料，且只能透過id去搜尋。
             POSTS: 'Posts',
             PAGES: 'Pages',
             CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            // TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -720,6 +713,9 @@ find找出單一筆資料，且只能透過id去搜尋。
 
    		
    			<li><a href="https://www.linkedin.com/in/louis-wu-177719194/" target="_blank" rel="noopener" title="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li> 
+
+   		
+   			<li><a href="" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
 
    		
    		</ul>
@@ -869,8 +865,6 @@ find找出單一筆資料，且只能透過id去搜尋。
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
     <a href="/about" class="mobile-nav-link">About</a>
   
 </nav> -->
@@ -879,16 +873,7 @@ find找出單一筆資料，且只能透過id去搜尋。
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2020 Louis Wu All Rights Reserved.
-        
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+	      &copy; 2020 Louis Wu&#39;s BLOG All Rights Reserved.
       </div>
   </div>
 </footer>
@@ -906,12 +891,9 @@ find找出單一筆資料，且只能透過id去搜尋。
 
     <!-- headerblur min height -->
     
-    
+
 </script>
     
-<div style="display: none;">
-  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-</div>
 
 <!-- mathjax config similar to math.stackexchange -->
 
@@ -957,16 +939,6 @@ find找出單一筆資料，且只能透過id去搜尋。
 
 
 
-
-
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
 
 
 

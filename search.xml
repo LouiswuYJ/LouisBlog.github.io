@@ -5,6 +5,8 @@
     <url>/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/</url>
     <content><![CDATA[<p>若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。</p>
 <p>查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。</p>
+<a id="more"></a>
+
 <h3 id="步驟1-找到-oh-my-zsh-themes-資料夾"><a href="#步驟1-找到-oh-my-zsh-themes-資料夾" class="headerlink" title="步驟1. 找到 .oh-my-zsh/themes 資料夾"></a>步驟1. 找到 .oh-my-zsh/themes 資料夾</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open ~/.oh-my-zsh/themes</span><br></pre></td></tr></table></figure>
 
 <h3 id="步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔"><a href="#步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔" class="headerlink" title="步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)"></a>步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)</h3><p>看個人習慣要用vim開還是一般的文字編輯器都可以:</p>
@@ -25,6 +27,8 @@
     <url>/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/</url>
     <content><![CDATA[<p>在這裡，我要感謝我的父母#%#$@!@^&amp;（誤</p>
 <p>看第1天的“參賽起始文”，還清楚記得發文當下的感覺：</p>
+<a id="more"></a>
+
 <h3 id="“我自己真的能做到嗎？”"><a href="#“我自己真的能做到嗎？”" class="headerlink" title="“我自己真的能做到嗎？”"></a>“我自己真的能做到嗎？”</h3><p>寫到了第30天，真的不敢相信自己竟然真的完賽了!? 過程中真的頗痛苦，但好像已經默默的養成每天早上起來看文件的習慣，說進步嗎..?</p>
 <p>或許有、或許沒有，至少證實了一句話：</p>
 <blockquote>
@@ -53,7 +57,7 @@
 <a id="more"></a>
 
 <h2 id="Active-Storage"><a href="#Active-Storage" class="headerlink" title="Active Storage"></a>Active Storage</h2><blockquote>
-<p>Active Storage可以將文件上傳到Amazon S3，Google Cloud Storage或Microsoft Azure Storage等雲存儲服務，並將這些文件附加到Active Record。 </p>
+<p>Active Storage可以將文件上傳到Amazon S3，Google Cloud Storage或Microsoft Azure Storage等雲存儲服務，並將這些文件附加到Active Record。</p>
 <p>它是一個可以用於開發或測試的服務，並可將文件進行備份和遷移。</p>
 <p>其中，使用Active Storage，可以使用ImageMagick轉換圖像上傳，上傳非圖像或圖像（如PDF或影片）的檔案，並可任意從文件中存取。</p>
 <p>by Rails Guide-Active Storage Overview</p>
@@ -73,7 +77,7 @@
 <p>其實在schema裡是看不到avatar這個欄位，可以想成是“虛擬欄位的概念”。</p>
 <p><img src="https://i.imgur.com/0NelClW.png" alt=""></p>
 <p>如果要做個可以上傳的表單的話，可以利用 form_for來實現：</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#<span class="doctag">@foods</span> = Food.all</span></span><br><span class="line">&lt;%= form_for(@foods) <span class="keyword">do</span> <span class="params">|form|</span> %&gt;</span><br><span class="line"></span><br><span class="line">  &lt;%= form.label <span class="symbol">:avatar</span>, <span class="string">'檔案上傳'</span>, </span><br><span class="line">  &lt;%= form.file_field <span class="symbol">:avatar%&gt;</span></span><br><span class="line"><span class="comment">#下略  </span></span><br><span class="line">&lt;% <span class="keyword">end</span> %&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#<span class="doctag">@foods</span> = Food.all</span></span><br><span class="line">&lt;%= form_for(@foods) <span class="keyword">do</span> <span class="params">|form|</span> %&gt;</span><br><span class="line"></span><br><span class="line">  &lt;%= form.label <span class="symbol">:avatar</span>, <span class="string">'檔案上傳'</span>,</span><br><span class="line">  &lt;%= form.file_field <span class="symbol">:avatar%&gt;</span></span><br><span class="line"><span class="comment">#下略</span></span><br><span class="line">&lt;% <span class="keyword">end</span> %&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="Strong-parameter"><a href="#Strong-parameter" class="headerlink" title="Strong parameter"></a>Strong parameter</h4><p>只要是丟資料到網站上，都需要permit才可以，故要在params的地方也要記得要加上:avatar去permit。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clean_params</span></span></span><br><span class="line">  params.<span class="keyword">require</span>(<span class="symbol">:food</span>).permit(<span class="symbol">:title</span>, <span class="symbol">:address</span>, <span class="symbol">:phone</span>, <span class="symbol">:quantity</span>, <span class="symbol">:origin_price</span>, <span class="symbol">:discount_price</span>, <span class="symbol">:pickup_time</span>, <span class="symbol">:picture</span>, <span class="symbol">:description</span>, <span class="symbol">:endup_time</span>, <span class="symbol">:avatar</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
@@ -84,10 +88,10 @@
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">food.avatar.attached?</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回傳boolean值</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="一個食物多個檔案"><a href="#一個食物多個檔案" class="headerlink" title="一個食物多個檔案"></a>一個食物多個檔案</h2><p>差異其實只有兩個：</p>
-<p>改成has_many_attached </p>
+<p>改成has_many_attached</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line"> <span class="comment">#has_one_attached :avatar</span></span><br><span class="line">  has_many_attached <span class="symbol">:avatars</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
-<p>改成陣列型式avatars:[] </p>
+<p>改成陣列型式avatars:[]</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clean_params</span></span></span><br><span class="line">  params.<span class="keyword">require</span>(<span class="symbol">:food</span>).permit(<span class="symbol">:title</span>, <span class="symbol">:address</span>, <span class="symbol">:phone</span>, <span class="symbol">:quantity</span>, <span class="symbol">:origin_price</span>, <span class="symbol">:discount_price</span>, <span class="symbol">:pickup_time</span>, <span class="symbol">:picture</span>, <span class="symbol">:description</span>, <span class="symbol">:endup_time</span>, <span class="symbol">avatars:</span>[])</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
 <p>關於“新增檔案”及“確定是否有附加檔案”的方式是一樣的，只是記得avatar要用複數形式(avatars)</p>
@@ -127,7 +131,7 @@
 <p>HTTPS是加密網站，使用上囉嗦(每次都要輸入帳密)但設定上簡單。<br>SSH則是公鑰跟私鑰，但這設定上要key一些指令，這不是此次討論的範圍，有興趣請點<a href="https://git-scm.com/book/zh-tw/v1/%E4%BC%BA%E6%9C%8D%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%96%8B%E9%87%91%E9%91%B0" target="_blank" rel="noopener">這裡</a>設定。</p>
 </blockquote>
 <p>Create a new repository 顧名思義就是直接產生一個新的專案，而 Push an exisiting repository 意思是與直接本地端的專案做版控，此次我們選擇後者。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/LouiswuYJ/testing.git</span><br><span class="line">     遠端   新增 代名詞                   位置</span><br><span class="line">-&gt; 將本地端的git版本整包與GitHub上連結</span><br><span class="line"></span><br><span class="line">git push -u origin master</span><br><span class="line">             代名詞  分支  </span><br><span class="line">-&gt; 新增一個代名詞節點，這裡的-u 代表設定上線(upstream)，把自己本地端的分支(master)推到網站上，且u設定一次之後，orign 就已經變成預設值，所以以後只要git push 即可。</span><br><span class="line"></span><br><span class="line">git remote -v</span><br><span class="line">-&gt;查看remote狀況</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/LouiswuYJ/testing.git</span><br><span class="line">     遠端   新增 代名詞                   位置</span><br><span class="line">-&gt; 將本地端的git版本整包與GitHub上連結</span><br><span class="line"></span><br><span class="line">git push -u origin master</span><br><span class="line">             代名詞  分支</span><br><span class="line">-&gt; 新增一個代名詞節點，這裡的-u 代表設定上線(upstream)，把自己本地端的分支(master)推到網站上，且u設定一次之後，orign 就已經變成預設值，所以以後只要git push 即可。</span><br><span class="line"></span><br><span class="line">git remote -v</span><br><span class="line">-&gt;查看remote狀況</span><br></pre></td></tr></table></figure>
 
 <p>再開始之前，先隨便找一個有git版控的檔案，若沒有的話再建一個就好。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">開終端機到指定資料夾後:</span><br><span class="line">git init    -&gt; 初始化</span><br><span class="line">touch 檔案  -&gt;新增檔案</span><br><span class="line">git add .  -&gt;將全部檔案 add</span><br><span class="line">git commit -m &quot;自訂&quot; -&gt;commit後產生第一個分支</span><br></pre></td></tr></table></figure>
@@ -137,7 +141,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/LouiswuYJ/testing.git</span><br><span class="line">$ git push -u origin master</span><br><span class="line">Enumerating objects: 5, done.</span><br><span class="line">Counting objects: 100% (5/5), done.</span><br><span class="line">Delta compression using up to 4 threads</span><br><span class="line">Compressing objects: 100% (3/3), done.</span><br><span class="line">Writing objects: 100% (5/5), 407 bytes | 135.00 KiB/s, done.</span><br><span class="line">Total 5 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://github.com/LouiswuYJ/testing.git</span><br><span class="line">* [new branch]      master -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://i.imgur.com/3v9qw0k.png" alt=""></p>
-<h2 id="git-push-從本地推上遠端"><a href="#git-push-從本地推上遠端" class="headerlink" title="git push (從本地推上遠端)"></a>git push (從本地推上遠端)</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br><span class="line">git push -f </span><br><span class="line">直接檔案蓋掉全部，建議要用之前最好先告知你的其他團隊成員，不然就...</span><br></pre></td></tr></table></figure>
+<h2 id="git-push-從本地推上遠端"><a href="#git-push-從本地推上遠端" class="headerlink" title="git push (從本地推上遠端)"></a>git push (從本地推上遠端)</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br><span class="line">git push -f</span><br><span class="line">直接檔案蓋掉全部，建議要用之前最好先告知你的其他團隊成員，不然就...</span><br></pre></td></tr></table></figure>
 
 <p>新增了檔案03.html並commit後push到Github，本地端的 master 分支，推上GitHub origin 這個遠端節點，並且在遠端形成一個 master 分支，原本GitHub上的2個commit就變3個了。</p>
 <p><img src="https://i.imgur.com/mVaySeB.png" alt=""></p>
@@ -170,10 +174,10 @@
   <entry>
     <title>Day27: Rails關心你的胖Model - concern</title>
     <url>/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/</url>
-    <content><![CDATA[<p><img src="https://i.imgur.com/2zmCaE9.png" alt=""><br><a href="https://devshirts.co/products/fat-models-skinny-controllers" target="_blank" rel="noopener">圖片來源</a></p>
+    <content><![CDATA[<p><img src="https://i.imgur.com/2zmCaE9.png" alt=""></p>
+<p>在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的<code>application_controller.rb</code>來取用。</p>
 <a id="more"></a>
 
-<p>在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的<code>application_controller.rb</code>來取用。</p>
 <p>已正在進行的專案為例，每個User有一台購物車，除了devise給我們現有的<code>current_user</code>之外，我想在寫個<code>current_cart</code>給每個controller用，此時就可以把定義<code>current_cart</code>的方法寫在<code>application_controller.rb</code>。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ActionController::Base</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @current_cart <span class="params">||</span>= Cart.find_or_create_by(<span class="symbol">user:</span> current_user)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
@@ -200,9 +204,9 @@
     <title>Day26: Rails中的view_helper</title>
     <url>/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/xvFLI1W.png" alt=""></p>
+<p>在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。</p>
 <a id="more"></a>
 
-<p>在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。</p>
 <h2 id="View拿不到controller裡的方法"><a href="#View拿不到controller裡的方法" class="headerlink" title="View拿不到controller裡的方法"></a>View拿不到controller裡的方法</h2><p>一般在rails裡，view拿不到controller裡的方法，只能拿到對應的action的實體變數，這時候我們就需要用到helper來將方法寫給view使用。</p>
 <p>helper的目的是要寫一段ruby code 協助整理資訊，並且可以做兩件事：</p>
 <ol>
@@ -363,14 +367,12 @@
     <title>Day23: Rails中的N+1問題</title>
     <url>/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/x2SP56l.png" alt=""></p>
-<a id="more"></a>
-
-<p>Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原因，造成在資料庫查詢的時候浪費許多記憶體，大部分的 ORM 預設使用 lazy-loading，一筆資料的查詢就會產生一筆 query，拖累了資料庫的效能。因此將預設的 lazy-loading 改成 Eager-loading 就可以解決N+1問題。</p>
+<p>Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原因，造成在資料庫查詢的時候浪費許多記憶體，大部分的 ORM 預設使用 lazy-loading，一筆資料的查詢就會產生一筆 query，拖累了資料庫的效能。<a id="more"></a>因此將預設的 lazy-loading 改成 Eager-loading 就可以解決N+1問題。</p>
 <p>其中 Eager-loading在 rails 提供了4種方式：</p>
 <ul>
 <li>preload</li>
-<li>eagerload </li>
-<li>includes </li>
+<li>eagerload</li>
+<li>includes</li>
 <li>joins</li>
 </ul>
 <p>這篇就拿最常見的inclundes及joins來討論。</p>
@@ -1583,7 +1585,7 @@
   </entry>
   <entry>
     <title>鐵人賽Day 1: 參賽起始文</title>
-    <url>/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201%20/</url>
+    <url>/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/</url>
     <content><![CDATA[<p>其實自認自己是個對文字有恐懼的人，更別說是寫文章了。算是給自己的一次挑戰，並養成將學到的新知識轉換成文字的習慣，除了能幫助自己回頭看學習的歷程當筆記用外，也許也能夠幫助一些人吧（應該吧？</p>
 <a id="more"></a>
 
