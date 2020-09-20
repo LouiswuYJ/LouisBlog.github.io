@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Louis Wu&#39;s BLOG's Blog</title>
+  <title>Louis&#39;s BLOG's Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="鐵人賽" />
@@ -16,15 +16,15 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day4: Block程式碼區塊及Proc, Lambda差異">
 <meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204&#x2F;index.html">
-<meta property="og:site_name" content="Louis Wu&#39;s BLOG">
+<meta property="og:site_name" content="Louis&#39;s BLOG">
 <meta property="og:description" content="Block in Basketball">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;rPG1IaY.png">
-<meta property="og:updated_time" content="2019-10-24T11:41:37.878Z">
+<meta property="og:updated_time" content="2020-09-20T04:57:07.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;rPG1IaY.png">
   
-    <link rel="alternate" href="/atom.xml" title="Louis Wu&#39;s BLOG" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Louis&#39;s BLOG" type="application/atom+xml">
   
   <link rel="icon" href="/LouiswuYJ.github.io/css/images/favicon.ico">
   
@@ -90,7 +90,7 @@
 
           <h1 class="site-title">
             
-              <a href="/LouiswuYJ.github.io/" title="Louis Wu&#39;s BLOG" rel="home"> Louis Wu&#39;s BLOG </a>
+              <a href="/LouiswuYJ.github.io/" title="Louis&#39;s BLOG" rel="home"> Louis&#39;s BLOG </a>
             
           </h1>
 
@@ -174,16 +174,16 @@
 <p>==注意!!!==</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Proc.new &#123; <span class="keyword">return</span> ... &#125;</span><br></pre></td></tr></table></figure>
 <p>return請不要寫在Proc的Block裡，否則程式碼執行到這段後就會停止(return完後立即停止)，不會繼續往下走。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">proc_airline</span></span></span><br><span class="line">  p <span class="string">"strat from TPE"</span></span><br><span class="line">    airline_proc = Proc.new &#123; <span class="keyword">return</span> <span class="string">"Eva airline"</span> &#125;</span><br><span class="line">    airline_proc.call</span><br><span class="line">  p <span class="string">"has arrived NRT"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">  p proc_airline</span><br><span class="line">    <span class="comment">#印出"strat from TPE" </span></span><br><span class="line">    <span class="comment">#   "Eva airline"</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#"has arrived NRT"不會印出，因為在第3行就停止了。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">proc_airline</span></span></span><br><span class="line">  p <span class="string">"strat from TPE"</span></span><br><span class="line">    airline_proc = Proc.new &#123; <span class="keyword">return</span> <span class="string">"Eva airline"</span> &#125;</span><br><span class="line">    airline_proc.call</span><br><span class="line">  p <span class="string">"has arrived NRT"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">  p proc_airline</span><br><span class="line">    <span class="comment">#印出"strat from TPE"</span></span><br><span class="line">    <span class="comment">#   "Eva airline"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#"has arrived NRT"不會印出，因為在第3行就停止了。</span></span><br></pre></td></tr></table></figure>
 <h3 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h3><p>有點類似匿名函式</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方式一：</span></span><br><span class="line">calculator = lambda &#123;<span class="params">|num|</span> puts num * <span class="number">2</span>&#125;</span><br><span class="line">calculator.call(<span class="number">5</span>) <span class="comment">#印出 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#方式二：</span></span><br><span class="line">calculator = -&gt; (n) &#123;puts n * <span class="number">2</span>&#125;</span><br><span class="line">calculator.call(<span class="number">5</span>) <span class="comment">#印出 10</span></span><br></pre></td></tr></table></figure>
 
 
 <h2 id="Proc與Lambda的差異"><a href="#Proc與Lambda的差異" class="headerlink" title="Proc與Lambda的差異"></a>Proc與Lambda的差異</h2><p>這樣比較起來，兩個東西看起來真的非常相似，但他們之間還是有一點點的差異存在，我們來看以下例子：</p>
 <h3 id="差異1"><a href="#差異1" class="headerlink" title="差異1."></a>差異1.</h3><p><strong>若block預期有參數要帶入，Lambda的call不給參數會出現錯誤，Proc的call則不會出錯而是會回傳<code>nil</code></strong></p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lambda = -&gt; (name) &#123; puts <span class="string">"Hello <span class="subst">#&#123;name&#125;</span>"</span> &#125;</span><br><span class="line">lambda.call(<span class="string">"Ruby"</span>)  <span class="comment">#印出 Hello Ruby</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">proc = Proc.new &#123; <span class="params">|name|</span> puts <span class="string">"Hello <span class="subst">#&#123;name&#125;</span>"</span> &#125;  </span><br><span class="line">proc.call(<span class="string">"Ruby"</span>)    <span class="comment">#印出 Hello Ruby</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lambda = -&gt; (name) &#123; puts <span class="string">"Hello <span class="subst">#&#123;name&#125;</span>"</span> &#125;</span><br><span class="line">lambda.call(<span class="string">"Ruby"</span>)  <span class="comment">#印出 Hello Ruby</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">proc = Proc.new &#123; <span class="params">|name|</span> puts <span class="string">"Hello <span class="subst">#&#123;name&#125;</span>"</span> &#125;</span><br><span class="line">proc.call(<span class="string">"Ruby"</span>)    <span class="comment">#印出 Hello Ruby</span></span><br></pre></td></tr></table></figure>
 <p>目前看起來都很正常，但再看下面：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lambda.call()        </span><br><span class="line"><span class="comment">#出現error:wrong number of arguments (given 0, expected 1) (ArgumentError)</span></span><br><span class="line"></span><br><span class="line">proc.call()     <span class="comment">#印出 Hello</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lambda.call()</span><br><span class="line"><span class="comment">#出現error:wrong number of arguments (given 0, expected 1) (ArgumentError)</span></span><br><span class="line"></span><br><span class="line">proc.call()     <span class="comment">#印出 Hello</span></span><br></pre></td></tr></table></figure>
 
 <p>Lambda函式若有預期要傳入參數但call卻沒有給的話，會直接跳出錯誤訊息，Proc後的call雖然也沒有給參數，程式還是可以過的，因為Proc會自動給<code>nil</code></p>
 <h3 id="差異2"><a href="#差異2" class="headerlink" title="差異2."></a>差異2.</h3><p>Proc的block裡若有return，會直接終止程式不繼續往下走，Lambda則不影響，會完整跑完程式。</p>
@@ -268,7 +268,7 @@
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2020 Louis Wu&#39;s BLOG All Rights Reserved.
+	      &copy; 2020 Louis&#39;s BLOG All Rights Reserved.
       </div>
   </div>
 </footer>
