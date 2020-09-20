@@ -415,7 +415,7 @@ body {
 .article-meta {
   margin: 7px 0 20px;
   color: #a6a6a6;
-  text-align: center;
+  text-align: left;
   font-family: Oswald, "Microsoft Yahei", Arial, Helvetica, sans-serif;
   font-size: 0.9em;
 }
@@ -469,7 +469,7 @@ body {
 }
 .article-header h1 {
   margin: 0 0 3px 0;
-  font-size: 1.6em;
+  font-size: 2.2em;
   line-height: 1.2;
   font-weight: bold;
 }
@@ -493,6 +493,7 @@ a.article-title:hover {
 }
 .article-entry {
   color: #333;
+  font-size: 18.2px;
   padding: 0;
 }
 .article-entry:before,
@@ -655,7 +656,8 @@ a.article-title:hover {
   margin-top: 0;
 }
 .article-more-link {
-  text-align: center;
+  text-align: left;
+  font-size: 23px;
 }
 .article-more-link a {
   color: #1fa0ae;
