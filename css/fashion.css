@@ -613,7 +613,7 @@ object {
 	font-size: .9em;
 	font-weight: 300;
 	font-family: Oswald,"Microsoft Yahei", Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	}
 .entry-meta a {
 	color: #a6a6a6;
@@ -645,9 +645,9 @@ object {
 .entry-content {
 	margin: 0 0 30px;
 	}
-.entry-summary {
+/* .entry-summary {
 	margin: 0 0 30px;
-	}
+	} */
 .entry-footer {
 	clear: both;
 	padding: 8px 0;
