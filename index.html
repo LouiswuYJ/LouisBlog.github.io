@@ -150,26 +150,59 @@
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。</p>
+<p>查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。</p>
+<h3 id="步驟1-找到-oh-my-zsh-themes-資料夾"><a href="#步驟1-找到-oh-my-zsh-themes-資料夾" class="headerlink" title="步驟1. 找到 .oh-my-zsh/themes 資料夾"></a>步驟1. 找到 .oh-my-zsh/themes 資料夾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.oh-my-zsh/themes</span><br></pre></td></tr></table></figure>
+
+<h3 id="步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔"><a href="#步驟2-打開-themes-資料夾底下的-agnoster-zsh-theme-文件檔" class="headerlink" title="步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)"></a>步驟2. 打開 themes 資料夾底下的 agnoster.zsh-theme (文件檔)</h3><p>看個人習慣要用vim開還是一般的文字編輯器都可以:</p>
+<h3 id="步驟3-找到-prompt-dir-並加入數字"><a href="#步驟3-找到-prompt-dir-並加入數字" class="headerlink" title="步驟3. 找到 prompt_dir() 並加入數字"></a>步驟3. 找到 prompt_dir() 並加入數字</h3><p>原始:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="數字1-代表顯示1層"><a href="#數字1-代表顯示1層" class="headerlink" title="數字1: 代表顯示1層"></a>數字1: 代表顯示1層</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line"><span class="comment"># prompt_segment blue $CURRENT_FG '%~'</span></span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%1~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/4PaQBqx.png" alt=""></p>
+<h4 id="數字2-代表顯示2層"><a href="#數字2-代表顯示2層" class="headerlink" title="數字2: 代表顯示2層"></a>數字2: 代表顯示2層</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dir: current working directory</span></span><br><span class="line"><span class="function"><span class="title">prompt_dir</span></span>() &#123;</span><br><span class="line"><span class="comment"># prompt_segment blue $CURRENT_FG '%~'</span></span><br><span class="line">  prompt_segment blue <span class="variable">$CURRENT_FG</span> <span class="string">'%2~'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/cPwh3Sr.png" alt=""></p>
+<p>以此類推</p>
+<p>參考資料：<br><a href="https://medium.com/@shandou/how-to-shorten-zsh-prompt-oh-my-zsh-14185f3e7ab7" target="_blank" rel="noopener">How to shorten zsh prompt (oh my zsh)</a></p>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。</p>
+<p>查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。</p>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/">開發相關</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/iterm2/" rel="tag">iterm2</a></li></ul> -->
@@ -221,27 +254,62 @@
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>在這裡，我要感謝我的父母#%#$@!@^&amp;（誤</p>
+<p>看第1天的“參賽起始文”，還清楚記得發文當下的感覺：</p>
+<h3 id="“我自己真的能做到嗎？”"><a href="#“我自己真的能做到嗎？”" class="headerlink" title="“我自己真的能做到嗎？”"></a>“我自己真的能做到嗎？”</h3><p>寫到了第30天，真的不敢相信自己竟然真的完賽了!? 過程中真的頗痛苦，但好像已經默默的養成每天早上起來看文件的習慣，說進步嗎..?</p>
+<p>或許有、或許沒有，至少證實了一句話：</p>
+<blockquote>
+<p>「時間就像擠乳溝，硬擠一下就有了。」</p>
+</blockquote>
+<p>這30篇文章有很多可以改進跟修正的地方(尤其廢文)，還好這次是報名自我挑戰組，心態上也比較不一樣，也許明年挑戰Mordern Web組的時候又是另一個挑戰跟態度了吧！(什麼..你竟然還想再挑戰？)</p>
+<p>這次雖然有完賽，其實不能說都是靠自己的力量，回頭想想，如果沒有身邊夥伴的互相鼓勵跟支持，我覺得只靠我自己是不可能完賽的，很感謝他們。</p>
+<p>說到夥伴們就覺得感慨，在五倍這邊也只剩下不到一週的時間就要結束了，雖然這裡是鐵人賽，但就像第1天說的，就當是寫給自己看的。</p>
+<p>如果沒有“某菜”每天的嘴砲注入點活力，也許我不會走到現在。<br>如果沒有“某叔”在CRUD時耐心教我，我想我應該早就放棄了。<br>如果沒有“某聰”對於程式的求知慾，我想我對於寫程式應該不會感到有興趣。<br>如果沒有“某凡”逆流而上的態度，我應該早就被壓力擊垮了。<br>如果沒有“某尼”的強大，我就不會意識到自己離車尾燈還有多麼遙遠。</p>
+<p><strong>(夥伴、饅頭真的真的在這行很重要啊!!!)</strong></p>
+<p>五倍Astrocamp跟鐵人賽的結束，只是一個「進入新手村」開始，我才剛創建好角色準備踏入而已，期許自己幾年後回頭看看現在的自己會忍不住大噴一番XD</p>
+<p>鐵人賽，我們明年見！</p>
+<blockquote>
+<p>“Would you like me to give you a formula for success? It’s quite simple, really. Double your rate of failure. You’re thinking of failure as the enemy of success. But it isn’t at all… You can be discouraged by failure – or you can learn from it. So go ahead and make mistakes. Make all you can. Because, remember that’s where you’ll find success. On the far side.”</p>
+<p>– Thomas J. Watson, Founder of IBM</p>
+</blockquote>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          在這裡，我要感謝我的父母#%#$@!@^&amp;（誤
-看第1天的“參賽起始文”，還清楚記得發文當下的感覺：
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>在這裡，我要感謝我的父母#%#$@!@^&amp;（誤</p>
+<p>看第1天的“參賽起始文”，還清楚記得發文當下的感覺：</p>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -302,26 +370,98 @@
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近做專案遇到了上傳檔案的問題，想針對這個主題簡單的做個介紹。</p>
+<h2 id="Active-Storage"><a href="#Active-Storage" class="headerlink" title="Active Storage"></a>Active Storage</h2><blockquote>
+<p>Active Storage可以將文件上傳到Amazon S3，Google Cloud Storage或Microsoft Azure Storage等雲存儲服務，並將這些文件附加到Active Record。</p>
+<p>它是一個可以用於開發或測試的服務，並可將文件進行備份和遷移。</p>
+<p>其中，使用Active Storage，可以使用ImageMagick轉換圖像上傳，上傳非圖像或圖像（如PDF或影片）的檔案，並可任意從文件中存取。</p>
+<p>by Rails Guide-Active Storage Overview</p>
+</blockquote>
+<p>據 Rails 官方文件說明，Active Storage 是在 Rails 5.2版後才推出的功能，在它之前似乎多數人都使用 Paperclip 及 CarrierWave，這次將會已上傳圖片為例來做說明。</p>
+<p>在開始之前，得先在終端機執行以下指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rails active_storage:install</span><br><span class="line">rails db:migrate</span><br></pre></td></tr></table></figure>
+
+<p>第一行會產生兩個table的migration：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This migration comes from active_storage (originally 20170806125915)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateActiveStorageTables</span> &lt; ActiveRecord::Migration[5.2]</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">change</span></span></span><br><span class="line">    create_table <span class="symbol">:active_storage_blobs</span> <span class="keyword">do</span> <span class="params">|t|</span></span><br><span class="line">      t.string   <span class="symbol">:key</span>,        <span class="symbol">null:</span> <span class="literal">false</span></span><br><span class="line">      t.string   <span class="symbol">:filename</span>,   <span class="symbol">null:</span> <span class="literal">false</span></span><br><span class="line">      t.string   <span class="symbol">:content_type</span></span><br><span class="line">      t.text     <span class="symbol">:metadata</span></span><br><span class="line">      t.bigint   <span class="symbol">:byte_size</span>,  <span class="symbol">null:</span> <span class="literal">false</span></span><br><span class="line">      t.string   <span class="symbol">:checksum</span>,   <span class="symbol">null:</span> <span class="literal">false</span></span><br><span class="line">      t.datetime <span class="symbol">:created_at</span>, <span class="symbol">null:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      t.index [ <span class="symbol">:key</span> ], <span class="symbol">unique:</span> <span class="literal">true</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    create_table <span class="symbol">:active_storage_attachments</span> <span class="keyword">do</span> <span class="params">|t|</span></span><br><span class="line">      t.string     <span class="symbol">:name</span>,     <span class="symbol">null:</span> <span class="literal">false</span></span><br><span class="line">      t.references <span class="symbol">:record</span>,   <span class="symbol">null:</span> <span class="literal">false</span>, <span class="symbol">polymorphic:</span> <span class="literal">true</span>, <span class="symbol">index:</span> <span class="literal">false</span></span><br><span class="line">      t.references <span class="symbol">:blob</span>,     <span class="symbol">null:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      t.datetime <span class="symbol">:created_at</span>, <span class="symbol">null:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      t.index [ <span class="symbol">:record_type</span>, <span class="symbol">:record_id</span>, <span class="symbol">:name</span>, <span class="symbol">:blob_id</span> ], <span class="symbol">name:</span> <span class="string">"index_active_storage_attachments_uniqueness"</span>, <span class="symbol">unique:</span> <span class="literal">true</span></span><br><span class="line">      t.foreign_key <span class="symbol">:active_storage_blobs</span>, <span class="symbol">column:</span> <span class="symbol">:blob_id</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>db:migrate之後，就可以看到 schema.rb 已新增兩個 table：</p>
+<p><code>active_storage_blobs</code>: 存放附檔資訊<br><code>active_storage_attachments</code>: 存放附檔和 model 的關聯</p>
+<p>其中附加檔案的方式有分成一個 model 一個檔案或甚至多個檔案，我們先已有個food model舉例：</p>
+<h2 id="一個食物一個檔案"><a href="#一個食物一個檔案" class="headerlink" title="一個食物一個檔案"></a>一個食物一個檔案</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  has_one_attached <span class="symbol">:avatar</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>其實在schema裡是看不到avatar這個欄位，可以想成是“虛擬欄位的概念”。</p>
+<p><img src="https://i.imgur.com/0NelClW.png" alt=""></p>
+<p>如果要做個可以上傳的表單的話，可以利用 form_for來實現：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#<span class="doctag">@foods</span> = Food.all</span></span><br><span class="line">&lt;%= form_for(@foods) <span class="keyword">do</span> <span class="params">|form|</span> %&gt;</span><br><span class="line"></span><br><span class="line">  &lt;%= form.label <span class="symbol">:avatar</span>, <span class="string">'檔案上傳'</span>,</span><br><span class="line">  &lt;%= form.file_field <span class="symbol">:avatar%&gt;</span></span><br><span class="line"><span class="comment">#下略</span></span><br><span class="line">&lt;% <span class="keyword">end</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Strong-parameter"><a href="#Strong-parameter" class="headerlink" title="Strong parameter"></a>Strong parameter</h4><p>只要是丟資料到網站上，都需要permit才可以，故要在params的地方也要記得要加上:avatar去permit。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clean_params</span></span></span><br><span class="line">  params.<span class="keyword">require</span>(<span class="symbol">:food</span>).permit(<span class="symbol">:title</span>, <span class="symbol">:address</span>, <span class="symbol">:phone</span>, <span class="symbol">:quantity</span>, <span class="symbol">:origin_price</span>, <span class="symbol">:discount_price</span>, <span class="symbol">:pickup_time</span>, <span class="symbol">:picture</span>, <span class="symbol">:description</span>, <span class="symbol">:endup_time</span>, <span class="symbol">:avatar</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>要新增檔案可以用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">food.avatar.attach(params[<span class="symbol">:avatar</span>])</span><br></pre></td></tr></table></figure>
+
+<p>若要確定是否有附加檔案的話，可以用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">food.avatar.attached?</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回傳boolean值</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="一個食物多個檔案"><a href="#一個食物多個檔案" class="headerlink" title="一個食物多個檔案"></a>一個食物多個檔案</h2><p>差異其實只有兩個：</p>
+<p>改成has_many_attached</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line"> <span class="comment">#has_one_attached :avatar</span></span><br><span class="line">  has_many_attached <span class="symbol">:avatars</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>改成陣列型式avatars:[]</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clean_params</span></span></span><br><span class="line">  params.<span class="keyword">require</span>(<span class="symbol">:food</span>).permit(<span class="symbol">:title</span>, <span class="symbol">:address</span>, <span class="symbol">:phone</span>, <span class="symbol">:quantity</span>, <span class="symbol">:origin_price</span>, <span class="symbol">:discount_price</span>, <span class="symbol">:pickup_time</span>, <span class="symbol">:picture</span>, <span class="symbol">:description</span>, <span class="symbol">:endup_time</span>, <span class="symbol">avatars:</span>[])</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>關於“新增檔案”及“確定是否有附加檔案”的方式是一樣的，只是記得avatar要用複數形式(avatars)</p>
+<p>附加完檔案了，如果是照片的話要如何顯示呢？</p>
+<h2 id="mini-magick"><a href="#mini-magick" class="headerlink" title="mini_magick"></a>mini_magick</h2><p>在Rails的 Gemfile 其實有內建一個套件 mini_magick，若要做圖片顯示的效果，可以把註解拿掉 bundle 後就可以用了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#Gemfile</span><br><span class="line"># Use ActiveStorage variant</span><br><span class="line">gem &apos;mini_magick&apos;, &apos;~&gt; 4.8&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= image_tag food.avatar.variant(<span class="symbol">resize:</span> <span class="string">'300x300'</span>), <span class="keyword">if</span> food.avatar.attached?%&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>variant</code>方法是用來改變上傳的圖片尺寸<br><code>if food.avatar.attached?</code> 有附加檔案的話就印出圖片。</p>
+<p>如果沒有加上這個判斷的話，今天頁面的某個檔案若剛好沒有附加檔案，就會噴錯，原因是“<code>food.avatar</code>是<code>nil</code>，不能對<code>nil</code>做<code>variant</code>方法”。</p>
+<p>參考資料：</p>
+<p><a href="https://guides.rubyonrails.org/active_storage_overview.html#attaching-files-to-records" target="_blank" rel="noopener">Rails Guides - Active Storage Overview</a><br><a href="https://5xruby.tw/posts/active-storage-review/" target="_blank" rel="noopener">Active Storage 開箱文</a><br><a href="https://pjchender.github.io/2018/05/25/rails-active-storage-overview/" target="_blank" rel="noopener">[Rails] Active Storage Overview</a></p>
+<blockquote>
+<p>“Don’t worry about failure; you only have to be right once.”</p>
+<p>— Drew Houston, Entrepreneur</p>
+</blockquote>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          最近做專案遇到了上傳檔案的問題，想針對這個主題簡單的做個介紹。
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>最近做專案遇到了上傳檔案的問題，想針對這個主題簡單的做個介紹。</p>
+<h2 id="Active-Storage"><a href="#Active-Storage" class="headerlink" title="Active Storage"></a>Active Storage</h2><blockquote>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -382,28 +522,91 @@
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前都在寫Rails相關的內容，其實版本控制也是重要的一環，就來換個口味寫個GitHub吧～</p>
+<p>登入GitHub後第一步</p>
+<p><img src="https://i.imgur.com/ftmo3TA.png" alt=""></p>
+<p>加號點開後，請點選紅框 <code>New repository</code> 新增專案</p>
+<p><img src="https://i.imgur.com/d1apkB8.png" alt=""></p>
+<p>輸入自訂的檔名，依照你想要公開(Public)或私人(Private)去選擇後，按下方 <code>Create repository</code></p>
+<p><img src="https://i.imgur.com/SC05mA2.png" alt=""></p>
+<p>選擇透過 HTTPS / SSH 的方式來上傳檔案</p>
+<blockquote>
+<p>HTTPS是加密網站，使用上囉嗦(每次都要輸入帳密)但設定上簡單。<br>SSH則是公鑰跟私鑰，但這設定上要key一些指令，這不是此次討論的範圍，有興趣請點<a href="https://git-scm.com/book/zh-tw/v1/%E4%BC%BA%E6%9C%8D%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%96%8B%E9%87%91%E9%91%B0" target="_blank" rel="noopener">這裡</a>設定。</p>
+</blockquote>
+<p>Create a new repository 顧名思義就是直接產生一個新的專案，而 Push an exisiting repository 意思是與直接本地端的專案做版控，此次我們選擇後者。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/LouiswuYJ/testing.git</span><br><span class="line">     遠端   新增 代名詞                   位置</span><br><span class="line">-&gt; 將本地端的git版本整包與GitHub上連結</span><br><span class="line"></span><br><span class="line">git push -u origin master</span><br><span class="line">             代名詞  分支</span><br><span class="line">-&gt; 新增一個代名詞節點，這裡的-u 代表設定上線(upstream)，把自己本地端的分支(master)推到網站上，且u設定一次之後，orign 就已經變成預設值，所以以後只要git push 即可。</span><br><span class="line"></span><br><span class="line">git remote -v</span><br><span class="line">-&gt;查看remote狀況</span><br></pre></td></tr></table></figure>
+
+<p>再開始之前，先隨便找一個有git版控的檔案，若沒有的話再建一個就好。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">開終端機到指定資料夾後:</span><br><span class="line">git init    -&gt; 初始化</span><br><span class="line">touch 檔案  -&gt;新增檔案</span><br><span class="line">git add .  -&gt;將全部檔案 add</span><br><span class="line">git commit -m &quot;自訂&quot; -&gt;commit後產生第一個分支</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/5Ryj38E.png" alt=""></p>
+<p>本地端我先設2個(commit)節點後，下上述兩個指令後就會與GitHub上做連結。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/LouiswuYJ/testing.git</span><br><span class="line">$ git push -u origin master</span><br><span class="line">Enumerating objects: 5, done.</span><br><span class="line">Counting objects: 100% (5/5), done.</span><br><span class="line">Delta compression using up to 4 threads</span><br><span class="line">Compressing objects: 100% (3/3), done.</span><br><span class="line">Writing objects: 100% (5/5), 407 bytes | 135.00 KiB/s, done.</span><br><span class="line">Total 5 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://github.com/LouiswuYJ/testing.git</span><br><span class="line">* [new branch]      master -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/3v9qw0k.png" alt=""></p>
+<h2 id="git-push-從本地推上遠端"><a href="#git-push-從本地推上遠端" class="headerlink" title="git push (從本地推上遠端)"></a>git push (從本地推上遠端)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br><span class="line">git push -f</span><br><span class="line">直接檔案蓋掉全部，建議要用之前最好先告知你的其他團隊成員，不然就...</span><br></pre></td></tr></table></figure>
+
+<p>新增了檔案03.html並commit後push到Github，本地端的 master 分支，推上GitHub origin 這個遠端節點，並且在遠端形成一個 master 分支，原本GitHub上的2個commit就變3個了。</p>
+<p><img src="https://i.imgur.com/mVaySeB.png" alt=""></p>
+<p><img src="https://i.imgur.com/CwI0e7O.png" alt=""></p>
+<h2 id="git-fetch-從遠端抓下來"><a href="#git-fetch-從遠端抓下來" class="headerlink" title="git fetch (從遠端抓下來)"></a>git fetch (從遠端抓下來)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin master</span><br></pre></td></tr></table></figure>
+
+<p>去 origin 這個遠端節點，抓上面 master 分支的內容，並且在我的電腦上建立一個 origin/master 分支，但並不會merge。<br>(白話文:把檔案抓過來，但不會主動合併)<br>情境1: 新增一個檔案後儲存commit變4個，此時用 fetch 後本地就會如下圖所示。</p>
+<p><img src="https://i.imgur.com/GqT3TDL.png" alt=""></p>
+<p>情境2:<br>這邊看到一個origin/master的節點(fetch抓下來)</p>
+<p><img src="https://i.imgur.com/yxvAI9g.png" alt=""></p>
+<p>這時候去merge，就會變這樣</p>
+<p><img src="https://i.imgur.com/7HMQusr.png" alt=""></p>
+<h2 id="git-pull-git-fetch-git-merge"><a href="#git-pull-git-fetch-git-merge" class="headerlink" title="git pull = git fetch + git merge"></a>git pull = git fetch + git merge</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<p>去 origin 這個遠端節點，去抓上面 master 分支的內容，並且在電腦上建立一個 origin/master 分支，同時與我本機的 master 分支進行合併<br>白話文: git pull 就是 fetch後再merge的結果。</p>
+<h2 id="git-clone-Git網址"><a href="#git-clone-Git網址" class="headerlink" title="git clone + Git網址"></a>git clone + Git網址</h2><p>把某個 Git 專案，整包檔案完整複製到自己電腦。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 網址</span><br></pre></td></tr></table></figure>
+
+<h2 id="共同合作"><a href="#共同合作" class="headerlink" title="共同合作"></a>共同合作</h2><p>在團隊分工若遇到不能push的時候，可能你團隊的某個人已經先commit過後push上去了，此時可以先pull到自己的檔案後再push上去就可以解決，但如果每次都要先拉再推，會不會顯得有點麻煩?</p>
+<h2 id="PR-Pull-Request"><a href="#PR-Pull-Request" class="headerlink" title="PR = Pull Request"></a>PR = Pull Request</h2><p>如果想幫忙做別人的專案時，=&gt;fork先複製一份到自己的帳號，改好了之後，再發送pull請求給原作者，這個簡易的過程就是大家耳熟能詳的”發PR”。</p>
+<blockquote>
+<p>“If I fail, I try again, and again, and again. If you fail, are you going to try again? The human spirit can handle much worse than we realize. It matters how you are going to finish.”</p>
+<p>— Nick Vujicic, Motivational Speaker</p>
+</blockquote>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          之前都在寫Rails相關的內容，其實版本控制也是重要的一環，就來換個口味寫個GitHub吧～
-登入GitHub後第一步
-
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>之前都在寫Rails相關的內容，其實版本控制也是重要的一環，就來換個口味寫個GitHub吧～</p>
+<p>登入GitHub後第一步</p>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Git/">Git</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/GitHub/" rel="tag">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -473,27 +676,63 @@
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/2zmCaE9.png" alt=""></p>
+<p>在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的<code>application_controller.rb</code>來取用。</p>
+<p>已正在進行的專案為例，每個User有一台購物車，除了devise給我們現有的<code>current_user</code>之外，我想在寫個<code>current_cart</code>給每個controller用，此時就可以把定義<code>current_cart</code>的方法寫在<code>application_controller.rb</code>。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ActionController::Base</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @current_cart <span class="params">||</span>= Cart.find_or_create_by(<span class="symbol">user:</span> current_user)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>但有時候並不是每個controller或Model都需要用到這個方法，尤其是把所有要用的方法寫在該類別的Model，會導致Model越來越肥，controller越來越瘦。</p>
+<h2 id="有需要的時候再拿進來"><a href="#有需要的時候再拿進來" class="headerlink" title="有需要的時候再拿進來"></a>有需要的時候再拿進來</h2><p>為了解決這個問題，rails在models下有個資料夾名稱<code>concerns</code>，把定義方法寫在這，在該controller有需要的時候再引入使用就好。</p>
+<p>新增一個檔案 usercart.rb</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Usercart</span></span></span><br><span class="line">  extend ActiveSupport::Concern</span><br><span class="line"></span><br><span class="line">  included <span class="keyword">do</span></span><br><span class="line">    has_one <span class="symbol">:cart</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">module</span> <span class="title">ClassMethods</span></span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(search)</span></span></span><br><span class="line">      <span class="keyword">if</span> search</span><br><span class="line">        where([<span class="string">'title || description || address LIKE ?'</span>, <span class="string">"%<span class="subst">#&#123;search&#125;</span>%"</span>])</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        all</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @current_cart <span class="params">||</span>= Cart.find_or_create_by(<span class="symbol">user:</span> current_user)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><code>included do ...end</code> 當這個module被include到Model時會做的事：(一對一)有一台購物車<br><code>ClassMethod</code> 在這裡定義的方法被include時會變成類別方法：可以直接針對該Model做搜尋的方法。<br><code>current_cart</code> 被include之後會變成該類別的實體方法：如果有找到車就用這台，沒有車就生一台給user。</p>
+<p>此時在User的Model加入：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ApplicationRecord</span></span><br><span class="line">    <span class="keyword">include</span> Usercart</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>就可以擁有在concern資料夾下內 usercart.rb 裡的方法可以用了，相對的如果你在其他的Model也想要用的話，再直接include進該Model就好。</p>
+<p>參考資料：<br><a href="https://stackoverflow.com/questions/14541823/how-to-use-concerns-in-rails-4" target="_blank" rel="noopener">How to use concerns in Rails 4</a><br><a href="https://railsbook.tw/chapters/25-organize-your-code.html" target="_blank" rel="noopener">Rails 程式碼整理術（入門）</a></p>
+<blockquote>
+<p>“Live today. Not yesterday. Not tomorrow. Inhabit your moments. Don’t rent them out to tomorrow.”</p>
+<p>– Jerry Spinelli, Writer</p>
+</blockquote>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          
-在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的application_controller.rb來取用。
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p><img src="https://i.imgur.com/2zmCaE9.png" alt=""></p>
+<p>在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的<code>application_controller.rb</code>來取用。</p>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -554,27 +793,83 @@
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/xvFLI1W.png" alt=""></p>
+<p>在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。</p>
+<h2 id="View拿不到controller裡的方法"><a href="#View拿不到controller裡的方法" class="headerlink" title="View拿不到controller裡的方法"></a>View拿不到controller裡的方法</h2><p>一般在rails裡，view拿不到controller裡的方法，只能拿到對應的action的實體變數，這時候我們就需要用到helper來將方法寫給view使用。</p>
+<p>helper的目的是要寫一段ruby code 協助整理資訊，並且可以做兩件事：</p>
+<ol>
+<li>在view頁面使用時就可直接使用</li>
+<li>也可 include 至 controller使用</li>
+</ol>
+<blockquote>
+<p>簡單來說，只要寫在helper裡的方法，view與comtroller都可以取用。</p>
+</blockquote>
+<p>最近寫專案有寫到購物車，每一個使用者擁有一台車，如果在每次想要撈使用者購物車的資料都要 <code>current_user.cart</code> 的方法去找感覺很麻煩，何不就自己寫個 <code>current_cart</code> 呢？</p>
+<p>解決方式有兩個：</p>
+<ol>
+<li>直接寫在helper</li>
+<li>方法寫在controller輸出給helper</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#_navbar.html.erb</span><br><span class="line">#加入</span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> "購物車(#&#123;<span class="attr">current_cart.items.count</span>&#125;)", "#" %&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/1ONJ9F8.png" alt=""></p>
+<p>噴出找不到方法 <code>current_cart</code>，因為還沒寫嘛！</p>
+<h2 id="直接寫在helper"><a href="#直接寫在helper" class="headerlink" title="直接寫在helper"></a>直接寫在helper</h2><h3 id="讓view取得helper方法"><a href="#讓view取得helper方法" class="headerlink" title="讓view取得helper方法"></a>讓view取得helper方法</h3><p>在寫helper之前，要先注意命名的對應，檔名如果是products_helper.rb，則檔案內的 module 後就得寫 ProductsHelper，跟 controller 的命名對應規則是一樣的。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#app/helpers/products_helper.rb</span></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">ProductsHelper</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @cart = @cart <span class="params">||</span> Cart.from_hash(session[<span class="symbol">:cart123</span>])</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果有車就用這台車，如果沒車就給他一台名叫 <code>cart123</code>的車並存在session，此時的 <code>product.html.erb</code> 就可以使用 <code>current_cart</code> 了。</p>
+<p>如果也想讓controller用</p>
+<h3 id="讓controller取得helper方法"><a href="#讓controller取得helper方法" class="headerlink" title="讓controller取得helper方法"></a>讓controller取得helper方法</h3><p>畢竟剛剛寫的helper是個模組，直接 include 進來就好了。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#products_controller.rb</span></span><br><span class="line"><span class="keyword">include</span> ProductsHelper</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法寫在controller輸出給helper"><a href="#方法寫在controller輸出給helper" class="headerlink" title="方法寫在controller輸出給helper"></a>方法寫在controller輸出給helper</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#products_controller.rb</span></span><br><span class="line">helper_method <span class="symbol">:current_cart</span></span><br><span class="line"><span class="comment">#方法寫在這</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @cart = @cart <span class="params">||</span> Cart.from_hash(session[<span class="symbol">:cart123</span>])</span><br><span class="line">  <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>在controller加入 <code>helper_method :current_cart</code> 就可以使helper擁有這個方法，當然view也可以一起使用了。</p>
+<p>但如果將方法寫在controller，只有在特定 controller 可以用，如果要全部的controller都可用的話，可貼在最上層的controller：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#application_controller.rb</span></span><br><span class="line">helper_method <span class="symbol">:current_cart</span></span><br><span class="line"><span class="comment">#方法寫在這</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @cart = @cart <span class="params">||</span> Cart.from_hash(session[<span class="symbol">:cart123</span>])</span><br><span class="line">  <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="那我該用哪個方式？"><a href="#那我該用哪個方式？" class="headerlink" title="那我該用哪個方式？"></a>那我該用哪個方式？</h2><p>這兩種方式都是在讓views拿到controller裡面的方法，至於要選擇哪種方法的判斷標準：<br><strong>Contorller 用得多就寫在 Contorller，view 用得多就寫在 view</strong>。</p>
+<p>參考資料：<br><a href="https://railsbook.tw/chapters/15-layout-render-and-view-helper.html" target="_blank" rel="noopener">Layout, Render 與 View Helper</a></p>
+<blockquote>
+<p>“When you find your path, you must not be afraid. You need to have sufficient courage to make mistakes.”</p>
+<p>– Paulo Coelho, Novelist</p>
+</blockquote>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          
-在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p><img src="https://i.imgur.com/xvFLI1W.png" alt=""></p>
+<p>在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。</p>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -635,27 +930,85 @@
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/wjqS1Dq.png" alt=""></p>
+<p>這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？</p>
+<p>但這真的是我第一次接觸這個名詞腦袋中第一個浮現的畫面XD<br>可能字真的太像了吧(還是只有我這樣覺得？)</p>
+<p><img src="https://i.imgur.com/xctRRHl.png" alt=""></p>
+<p>看來對我來說，不止中文字有這個問題，好像連英文單字都是…</p>
+<p>scope, scoop傻傻分不清楚(誤)</p>
+<h1 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h1><p>最近做專案常常發現，在撈資料的時候，常常一直點find點where一直點下去，但有發現有時候在同一個controller時，都在對特定Model做同一件事情，在Rails常常可以看到一個字<strong>DRY</strong>:</p>
+<blockquote>
+<p>Don’t Repeat Yourself</p>
+</blockquote>
+<p>為了能夠讓程式碼變得乾淨易讀且方便使用，我們就可以在該controller的Model寫<code>scope</code>。</p>
+<p>也許你會說，可一個一個寫也沒什麼不好啊？</p>
+<p>但如果今天需求變更(例如：原本出全部的資料改為撈價格小於100的資料)，那不就全站都需要跟著修改？非常不方便，所以這時候我們就需要用到<code>scope</code>。</p>
+<p>先來看個簡單的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>撈出所有Food Model的物件並依照建立時間排序，這時候如果要寫成scope來使用，就可以在Model寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>) &#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候的controller就可以這要取用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.show_all</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果後面的其他action也要做一樣的事情，就只要在Model名稱(此例為Food)後面加你寫 scope 的方法名稱就可以了。</p>
+<h3 id="小補充："><a href="#小補充：" class="headerlink" title="小補充："></a>小補充：</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  <span class="comment">#寫法一</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>) &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">#寫法二</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">show_all</span></span></span><br><span class="line">    order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>寫法一與寫法二的效果是相同的，至於何時該用哪個，其實就是看個人偏好了，我自己的感覺，如果是條件簡單的話就用scope寫，如果是條件較複雜的話就用類別方法寫。</p>
+<h2 id="如果想帶參數"><a href="#如果想帶參數" class="headerlink" title="如果想帶參數"></a>如果想帶參數</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:cheap_price</span>, -&gt;(price) &#123; where(<span class="string">"price &lt; ?"</span>, price)&#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候controller就可以拿來用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.cheap_price(price)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="scope本身可以帶入scope-串接"><a href="#scope本身可以帶入scope-串接" class="headerlink" title="scope本身可以帶入scope(串接)"></a>scope本身可以帶入scope(串接)</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>).cheap_price(<span class="number">100</span>) &#125;</span><br><span class="line">  scope <span class="symbol">:cheap_price</span>, -&gt;(price) &#123; where(<span class="string">"price &lt; ?"</span>, price)&#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.show_price(price)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣的寫法就可以撈出價格小於 price 且按照建立時間排序了。</p>
+<p>參考資料：<br><a href="https://rails.ruby.tw/active_record_querying.html#%E4%BD%9C%E7%94%A8%E5%9F%9F" target="_blank" rel="noopener">Rails Guide</a><br><a href="https://mgleon08.github.io/blog/2015/12/20/ruby-on-rails-scopes/" target="_blank" rel="noopener">Ruby on Rails - Scopes</a><br><a href="https://railsbook.tw/chapters/16-model-basic.html#scope-and-class-method" target="_blank" rel="noopener">為你自己學Ruby on Rails</a></p>
+<blockquote>
+<p>“Every challenge, every adversity, contains within it the seeds of opportunity and growth.”</p>
+<p>– Roy Bennett, Politician</p>
+</blockquote>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          
-這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p><img src="https://i.imgur.com/wjqS1Dq.png" alt=""></p>
+<p>這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？</p>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -716,28 +1069,97 @@
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/ZInCbYJ.png" alt=""></p>
+<p>在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。</p>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>找出單一筆資料，且只能透過id去搜尋。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找出id為1的購物車</span></span><br><span class="line">Cart.find(1)</span><br></pre></td></tr></table></figure>
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cart Load (0.4ms)  SELECT  <span class="string">"carts"</span>.* FROM <span class="string">"carts"</span> WHERE <span class="string">"carts"</span>.<span class="string">"id"</span> = <span class="variable">$1</span> LIMIT <span class="variable">$2</span>  [[<span class="string">"id"</span>, 1], [<span class="string">"LIMIT"</span>, 1]]</span><br></pre></td></tr></table></figure>
+
+<p>如果查詢不到該筆資料，就會回傳一個<code>ActiveRecord::RecordNotFound</code>的例外訊息，還記得之前的文章有提過例外處理的方法嗎？</p>
+<p>這時候就可以用<code>begin..rescue</code>來捕捉：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_cart</span></span></span><br><span class="line">   <span class="keyword">begin</span></span><br><span class="line">     @cart = Cart.find(params[<span class="symbol">:id</span>])</span><br><span class="line">   <span class="keyword">rescue</span></span><br><span class="line">     redirect_to carts_path, <span class="symbol">notice:</span> <span class="string">"沒有這台購物車喔"</span></span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line"> <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果找不到cart的話，就會直接執行rescue下的程式碼。</p>
+<p>若要找多筆資料又堅持用find，find()裡面還可以塞陣列：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">products = Product.find([2, 5])      <span class="comment"># 等同於 Client.find(2, 5)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#找id是2跟id是5的product</span></span><br></pre></td></tr></table></figure>
+<h2 id="find-by"><a href="#find-by" class="headerlink" title="find_by"></a>find_by</h2><p>找出單一筆資料，且可以透過自訂條件去搜尋。</p>
+<p><img src="https://i.imgur.com/1KOYaOX.png" alt=""></p>
+<p>找出id為5的食物:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Food.find_by(id: 5)</span><br><span class="line"></span><br><span class="line"><span class="comment">#等同於Food.find(5)</span></span><br></pre></td></tr></table></figure>
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food Load (0.4ms)  SELECT  <span class="string">"foods"</span>.* FROM <span class="string">"foods"</span> WHERE <span class="string">"foods"</span>.<span class="string">"id"</span> = <span class="variable">$1</span> LIMIT <span class="variable">$2</span>  [[<span class="string">"id"</span>, 5], [<span class="string">"LIMIT"</span>, 1]]</span><br></pre></td></tr></table></figure>
+
+
+<p>找id是2的使用者擁有的食物：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food.find_by(user_id: 2)</span><br></pre></td></tr></table></figure>
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food Load (0.2ms)  SELECT  <span class="string">"foods"</span>.* FROM <span class="string">"foods"</span> WHERE <span class="string">"foods"</span>.<span class="string">"user_id"</span> = <span class="variable">$1</span> LIMIT <span class="variable">$2</span>  [[<span class="string">"user_id"</span>, 2], [<span class="string">"LIMIT"</span>, 1]]</span><br></pre></td></tr></table></figure>
+
+<p>這裡可以注意的是，如果找不到該筆資料的話，<code>find_by</code>方法會回傳的值是<code>nil</code>而不是例外訊息。</p>
+<p><img src="https://i.imgur.com/190Aeer.png" alt=""></p>
+<p>若使用find_by方法撈資料但還是想要有回傳<code>ActiveRecord::RecordNotFound</code>，可以在find_by後面加個驚嘆號<code>!</code></p>
+<p><img src="https://i.imgur.com/jDBnzwK.png" alt=""></p>
+<p>就可以看到回傳的值不是<code>nil</code>而是可以捕捉的例外訊息了。</p>
+<h2 id="where"><a href="#where" class="headerlink" title="where"></a>where</h2><p>找出多筆資料，且可以透過自訂條件去搜尋，即代表了 SQL 語法 WHERE 的部分。</p>
+<p>條件可以是<strong>字串</strong>、<strong>陣列</strong>、或是 <strong>Hash</strong>。</p>
+<h3 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h3><p>如果我們要找的 orders_count 不是固定的值，則帶入變數<code>params[:orders]</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Client.where(<span class="string">"orders_count = ?"</span>, params[:orders])</span><br></pre></td></tr></table></figure>
+
+<p>根據Rails API文件：</p>
+<blockquote>
+<p>直接將變數插入條件字串裡，不論變數是什麼，都會直接存到資料庫裡。這表示從惡意使用者傳來的變數，會直接存到資料庫。這麼做是把資料庫放在風險裡不管啊！一旦有人知道，可以隨意將任何字串插入資料庫裡，就可以做任何想做的事。</p>
+</blockquote>
+<h3 id="絕對不要直接將變數插入條件字串裡。"><a href="#絕對不要直接將變數插入條件字串裡。" class="headerlink" title="絕對不要直接將變數插入條件字串裡。"></a>絕對不要直接將變數插入條件字串裡。</h3><h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p>找id是2的使用者全部擁有的食物：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food.where(user_id: 10)</span><br></pre></td></tr></table></figure>
+
+<p>對應的SQL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Food Load (0.4ms)  SELECT <span class="string">"foods"</span>.* FROM <span class="string">"foods"</span> WHERE <span class="string">"foods"</span>.<span class="string">"user_id"</span> = <span class="variable">$1</span>  [[<span class="string">"user_id"</span>, 10]]</span><br></pre></td></tr></table></figure>
+
+<p>若找不到該筆資料，則會回傳<code>#&lt;ActiveRecord::Relation []&gt;</code>。</p>
+<p>參考資料：<br><a href="http://justineyeah-blog.logdown.com/posts/1814190-jd-store-find-find-by-where-in-rails" target="_blank" rel="noopener">JD store find/find_by/where in Rails</a><br><a href="https://rails.ruby.tw/active_record_querying.html" target="_blank" rel="noopener">Active Record 查詢</a><br><a href="https://pjchender.github.io/2018/02/25/rails-active-record-query%EF%BC%88model-%E8%B3%87%E6%96%99%E6%9F%A5%E8%A9%A2%EF%BC%89/" target="_blank" rel="noopener">[Rails] Active Record Query（SQL Query）</a><br><a href="https://railsbook.tw/chapters/16-model-basic.html" target="_blank" rel="noopener">Model 基本操作</a></p>
+<blockquote>
+<p>“Most of our obstacles would melt away if instead of cowering before them we should make up our minds to walk boldly through them.”</p>
+<p>— Orison Marden, Writer</p>
+</blockquote>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          
-在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。
-find找出單一筆資料，且只能透過id去搜尋。
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p><img src="https://i.imgur.com/ZInCbYJ.png" alt=""></p>
+<p>在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。</p>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -798,27 +1220,79 @@ find找出單一筆資料，且只能透過id去搜尋。
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/x2SP56l.png" alt=""></p>
+<p>Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原因，造成在資料庫查詢的時候浪費許多記憶體，大部分的 ORM 預設使用 lazy-loading，一筆資料的查詢就會產生一筆 query，拖累了資料庫的效能。因此將預設的 lazy-loading 改成 Eager-loading 就可以解決N+1問題。</p>
+<p>其中 Eager-loading在 rails 提供了4種方式：</p>
+<ul>
+<li>preload</li>
+<li>eagerload</li>
+<li>includes</li>
+<li>joins</li>
+</ul>
+<p>這篇就拿最常見的inclundes及joins來討論。</p>
+<p>我們先建立兩個Model分別為<code>user.rb</code>及<code>product.rb</code>且為一對多關係：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#user.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ApplicationRecord</span></span><br><span class="line">  has_many <span class="symbol">:products</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#product.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span> &lt; ApplicationRecord</span></span><br><span class="line">  belongs_to <span class="symbol">:user</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>controller先將所有的Pdoduct撈出：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#products_controller.rb</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @products = Product.all</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>再一筆一筆印出來：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.erb.html --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">products.each</span> <span class="attr">do</span> |<span class="attr">product</span>| %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">product.user.name</span>%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">product.title</span>%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">product.price</span>%&gt;</span></span><br><span class="line">    ....</span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br></pre></td></tr></table></figure>
+<p>乍看之下好像很合理，如果說只有一筆product要查這樣寫沒問題，但一個網站怎麼可能只有一筆資料？</p>
+<p>若今天要找出product的擁有者、名字及價錢有10筆。在迭代每筆資料時，一邊呼叫 query 來從 Prdoduct 資料表中取資料，就會產生 10 + 1 次 query，其中後面的 1 指的是 User資料數量。</p>
+<p>資料的存取是rails的弱項，所以在設計時能夠避免 N+1問題就避免，將資料存取相關的事交給擅長的資料庫就好。</p>
+<h2 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h2><p>拿上面例子來看，會產生 10+1筆的資料存取，我們可以用includes的方式將所有資料在資料第一次存取時就“一次查完“因此在controller的部份我們可以這樣寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#products_controller.rb</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @products = Product.includes(<span class="symbol">:user</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>再 query 的部分就只會查詢2筆了。</p>
+<h2 id="joins與includes的差別"><a href="#joins與includes的差別" class="headerlink" title="joins與includes的差別"></a>joins與includes的差別</h2><p>:joins 使用 SQL 的 INNER JOIN 方法，不會真的把關聯的資料取出來。如果只是想要篩選結果，或是觀察關聯物件的某些屬性質，那麼使用 :joins 是最有效率的。不過有一點要注意，如果你想要做的事是存取關聯物件本身，那麼 :joins 還是會造成 N+1 問題。</p>
+<p>主要差別在於：</p>
+<ol>
+<li>join主要用於過濾model之間的關係，但對查詢筆數來說並無太大幫助</li>
+<li>include主要用於將大量資料在同一筆查詢內一次查好</li>
+</ol>
+<p>參考資料：</p>
+<p>部分內容擷取自以下連結<br><a href="https://blog.bigbinary.com/2013/07/01/preload-vs-eager-load-vs-joins-vs-includes.html" target="_blank" rel="noopener">Preload, Eagerload, Includes and Joins</a><br><a href="https://ithelp.ithome.com.tw/articles/10161667" target="_blank" rel="noopener">Rails使用include和join避免 N+1 queries</a><br><a href="https://medium.com/@jinghua.shih/rails-activerecord-%E6%95%88%E8%83%BD%E5%84%AA%E5%8C%96-%E4%B8%8A-%E9%97%9C%E8%81%AF%E6%9F%A5%E8%A9%A2-75ca79f510b3" target="_blank" rel="noopener">[Rails] N+1 Queries Problem</a><br><a href="https://rails.ruby.tw/active_record_querying.html" target="_blank" rel="noopener">Rails API</a></p>
+<blockquote>
+<p>“Tests are a gift. And great tests are a great gift. To fail the test is a misfortune. But to refuse the test is to refuse the gift, and something worse, more &gt;irrevocable, than misfortune.”</p>
+<p>– Lois McMaster Bujold, writer</p>
+</blockquote>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          
-Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原因，造成在資料庫查詢的時候浪費許多記憶體，大部分的 ORM 預設使用 lazy-loading，一筆資料的查詢就會產生一筆 query，拖累了資料庫的效能。
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p><img src="https://i.imgur.com/x2SP56l.png" alt=""></p>
+<p>Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原因，造成在資料庫查詢的時候浪費許多記憶體，大部分的 ORM 預設使用 lazy-loading，一筆資料的查詢就會產生一筆 query，拖累了資料庫的效能。因此將預設的 lazy-loading 改成 Eager-loading 就可以解決N+1問題。</p>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -879,27 +1353,103 @@ Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原�
 
       
     </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>上次講到了Strong Parameters，今天我們就從Flash開始吧！</p>
+<h2 id="快閃訊息flash"><a href="#快閃訊息flash" class="headerlink" title="快閃訊息flash"></a>快閃訊息flash</h2><p><img src="https://i.imgur.com/tjW0Pjy.png" alt=""></p>
+<p>在按下按鈕後，應該要有個訊息出現告知使用者是否有成功或失敗，並且只出現一次，這就是快閃訊息做的事。<br>在這個專案，我們希望如果 create 成功，會將網頁導向 首頁 並印出 “新增候選人成功!!”，反之若失敗，則印出”新增候選人失敗!!” (一樣false還沒寫入)</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#上略</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    clean_params = params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span>)</span><br><span class="line">    @candidate = Candidate.new(clean_params)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> @candidate.save</span><br><span class="line">      flash[<span class="symbol">:notice</span>] = <span class="string">"新增候選人成功!!"</span>         <span class="comment">#第7~8行可直接寫成 redirect_to root_path, notice: "新增候選人成功!!"</span></span><br><span class="line">      redirect_to root_path</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      flash[<span class="symbol">:notice</span>] = <span class="string">"新增候選人失敗!!"</span>         <span class="comment">#第10~11行可直接寫成 redirect_to root_path, notice: "新增候選人失敗!!"</span></span><br><span class="line">      redirect_to root_path</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#並在index.html.erb檔加入</span></span><br><span class="line"></span><br><span class="line">&lt;%= flash[<span class="symbol">:notice</span>] %&gt;   印出<span class="string">"新增候選人成功!"</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/59ON3bS.png" alt=""></p>
+<h2 id="首頁印出候選人列表"><a href="#首頁印出候選人列表" class="headerlink" title="首頁印出候選人列表"></a>首頁印出候選人列表</h2><p>想要在首頁做事情，那當然是去 <code>index</code> 做事，首先針對 candidate_controller.rb 裡的 index method寫入:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@candidates = Candidate.all</span><br><span class="line"></span><br><span class="line">注意<span class="symbol">:</span>這裡的實體變數故意列為<span class="string">"複數"</span>，因為是撈出全部候選人的資料</span><br></pre></td></tr></table></figure>
+
+<p>去抓所有使用者輸入的資料。<br>再來到 <code>index.html.erb</code> 利用each迴圈印出所有候選人的”姓名”。</p>
+<p><img src="https://i.imgur.com/dzMqxuK.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">flash</span>[<span class="attr">:notice</span>] %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>首頁:候選人列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># <span class="tag">&lt;<span class="name">%%</span>&gt;</span>不顯示在頁面</span><br><span class="line">#<span class="tag">&lt;<span class="name">=%%</span>&gt;</span>要顯示在頁面上</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">candidates.each</span> <span class="attr">do</span> |<span class="attr">candidate</span>| %&gt;</span>     #注意是@candidate"s"</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">candidate.name</span> %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '新增候選人', <span class="attr">new_candidate_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-danger</span> <span class="attr">btn-lg</span>' %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="驗證資料"><a href="#驗證資料" class="headerlink" title="驗證資料"></a>驗證資料</h2><p>人打字總偶爾有肥手指、眼睛業障或看錯欄位的狀況發生，所以每個輸入的資料都需要做進一步的認證才能進入資料庫。</p>
+<p>(總不可能候選人只有3歲吧!!!?)</p>
+<p>還記得剛剛寫的 <code>if else</code> 判斷總是忽略 <code>false</code> 的話怎麼辦對吧? 如果不寫入以下程式碼的話，永遠不會進入到 <code>else</code> 的判斷，到 candidate.rb 裡新增:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Candidate</span> &lt; ApplicationRecord</span></span><br><span class="line">  validates <span class="symbol">:name</span>, <span class="symbol">presence:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment">#腦補眼鏡</span></span><br><span class="line">  <span class="comment">#validates (:name, &#123;presence: true&#125;)</span></span><br><span class="line"></span><br><span class="line">  validates <span class="symbol">:age</span>, <span class="symbol">numericality:</span> &#123; <span class="symbol">greater_than_or_equal_to:</span> <span class="number">40</span> &#125;</span><br><span class="line">  <span class="comment">#腦補眼鏡</span></span><br><span class="line">  <span class="comment">#validates (:age, &#123;numericality: &#123; &#123;greater_than_or_equal_to: 40&#125; &#125;&#125;)</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>姓名欄位: 有資料才會會回傳true ; 年紀欄位: 必須大於或等於40歲<br>其實我們再 <code>create</code> 中的 <code>if else</code> 判斷式寫的較不人性化，若今天使用者打錯某字跳出”新增候選人失敗!!”，回到新增頁面後竟然還要重新打字，是不是太麻煩了? 所以我們要修正<code>else</code>後的輸出方式:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CandidatesController</span> &lt; ApplicationController</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">    @candidate = Candidate.all</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">new</span></span></span><br><span class="line">    @candidate = Candidate.new</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    clean_params = params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span>)</span><br><span class="line">    @candidate = Candidate.new(clean_params)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> @candidate.save</span><br><span class="line">      flash[<span class="symbol">:notice</span>] = <span class="string">"新增候選人成功!"</span></span><br><span class="line">      redirect_to root_path</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="comment">#原來寫法:flash[:notice] = "新增候選人失敗!"</span></span><br><span class="line">      <span class="comment">#原來寫法:redirect_to root_path</span></span><br><span class="line">      render <span class="symbol">:new</span>  <span class="comment"># 借new.html.erb這個檔案，並不是上方的new方法!!!</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>就解決了如果打錯字回到頁面後文字被洗掉的問題。</p>
+<h2 id="哪裡輸入錯誤"><a href="#哪裡輸入錯誤" class="headerlink" title="哪裡輸入錯誤?"></a>哪裡輸入錯誤?</h2><p>若輸入錯誤的話，總要告訴使用者是哪裡輸入錯誤吧?<br>new.html.erb內新增判斷式，就會印出Rails內建的<code>full_messages</code>資料庫訊息:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>新增候選人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> @<span class="attr">candidate.errors.any</span>? %&gt;</span>   #.errors.any? =&gt;有錯誤嗎?</span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">candidate.errors.full_messages.each</span> <span class="attr">do</span> |<span class="attr">message</span>| %&gt;</span> # .full_messages =&gt; Rails內建的錯誤訊息資料庫</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">message</span> %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">form_for</span>(@<span class="attr">candidate</span>) <span class="attr">do</span> |<span class="attr">form</span>| %&gt;</span></span><br><span class="line">#下略....</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看候選人詳細資料"><a href="#查看候選人詳細資料" class="headerlink" title="查看候選人詳細資料"></a>查看候選人詳細資料</h2><p>當然在看候選人的時候不可能只看名字吧?所以我們要做一個只要點選候選人姓名，就轉至候選人資料的頁面。<br>index.html.erb頁面:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#index.html.erb</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">flash</span>[<span class="attr">:notice</span>] %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>首頁:候選人列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&lt;ul&gt;</span></span><br><span class="line"><span class="comment">  &lt;% @candidate.each do |candidate| %&gt;</span></span><br><span class="line"><span class="comment">    &lt;li&gt;&lt;%= candidate.name %&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment">  &lt;% end %&gt;</span></span><br><span class="line"><span class="comment">&lt;/ul&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">candidate.each</span> <span class="attr">do</span> |<span class="attr">candidate</span>| %&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--路徑需查 rails routes --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> <span class="attr">candidate.name</span>, <span class="attr">candidate_path</span>(<span class="attr">candidate.id</span>) %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '新增候選人', <span class="attr">new_candidate_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-danger</span> <span class="attr">btn-lg</span>' %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/RzaZytg.png" alt=""></p>
+<p>就會是可以點選的狀態了，能夠預期若按下候選人姓名會發生什麼事嗎?</p>
+<p><img src="https://i.imgur.com/ca6Ldn5.png" alt=""></p>
+<p>因為我們還沒有建立在 show 方法:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span></span></span><br><span class="line">    @candidate = Candidate.find_by(<span class="symbol">id:</span> params[<span class="symbol">:id</span>])</span><br><span class="line">    <span class="comment">#Candidate.find_by =&gt; Rails內建尋找相對應資料的方法</span></span><br><span class="line">    <span class="comment">#腦補眼鏡(&#123;id: params[:id]&#125;)</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>({id: params[:id]}) :取<code>params</code>內key是<code>:id</code>的value當作外面<code>id:</code>的value<br>聽起來很像繞口令，讓我們一步一步拆開來看。</p>
+<p>params本身是Hash的資料型態，也就是上面有敘述過的一大串資料:</p>
+<blockquote>
+<p>{“utf8”=&gt;”✓”, “authenticity_token”=&gt;”0OHbZ7WkDs8NsrNHK2s7Dd9BxkITn/qegeFtUcMmE5ANKKiaxmRCOiPuChEAoKh4ho/taDYBB7GvIhTG0a1IHw==”, “candidate”=&gt;{“name”=&gt;”Louis”, “party”=&gt;”none”, “age”=&gt;”20”, “policy”=&gt;”Rails is Good”}, “commit”=&gt;”Create Candidate”, “controller”=&gt;”candidates”, “action”=&gt;”create”}</p>
+</blockquote>
+<p>上面有講過個例子，若我要拿到Louis，我需要寫<code>params[&#39;candidate&#39;][&#39;name&#39;]</code> 才能拿到對吧?</p>
+<blockquote>
+<p>params[‘candidate’][‘name’]<br>            ↓　　　　　↓<br>      ({   id:     　params[:id]})</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">假設 params = &#123; <span class="symbol">id:</span> <span class="number">5</span>, <span class="symbol">email:</span> <span class="string">'kk@5xruby.tw'</span>, <span class="symbol">name:</span> <span class="string">'Louis'</span> &#125;</span><br><span class="line">find_by(<span class="symbol">id:</span> params[<span class="symbol">:id</span>], <span class="symbol">email:</span> params[<span class="symbol">:email</span>], <span class="symbol">name:</span> params[<span class="symbol">:name</span>])</span><br><span class="line">find_by(        <span class="number">5</span>      ,      kk@5xruby.tw    ,     Louis          )</span><br><span class="line"></span><br><span class="line">這樣可以找到在候選人表格裡「id 是 <span class="number">5</span>，而且 email 是 kk@5xruby.tw，而且 name 是 Louis」的候選人</span><br></pre></td></tr></table></figure>
+
+<p>這樣對應著看，應該有比較容易理解吧!!</p>
+<p>但還是會出現錯誤(笑</p>
+<p><img src="https://i.imgur.com/JVlrNje.png" alt=""></p>
+<p>記得也要在views建立 show.html.erb</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> @<span class="attr">candidate</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.name</span> %&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>黨派: <span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.party</span>%&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>年紀: <span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.age</span>%&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>政見: <span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.policy</span>%&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">else</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>沒有這個人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/Tlc2w1n.png" alt=""></p>
+<p>就終於完成了簡易CRUD中的C跟R…</p>
+<h5 id="腦細胞少10-，皺褶增加0-001"><a href="#腦細胞少10-，皺褶增加0-001" class="headerlink" title="腦細胞少10%，皺褶增加0.001%"></a>腦細胞少10%，皺褶增加0.001%</h5><p>參考資料：</p>
+<p><a href="https://railsbook.tw/chapters/13-crud-part-1.html" target="_blank" rel="noopener">為你自己學Ruby on Rails</a></p>
+<blockquote>
+<p>“The difference in winning and losing is most often…not quitting.”</p>
+<p>— Walt Disney, Producer</p>
+</blockquote>
+
+      
+    </div> -->
+
     <div class="article-entry" itemprop="articleBody">
-      
+    
+    
         
-
-          
-          <div class="entry-summary">
-          上次講到了Strong Parameters，今天我們就從Flash開始吧！
-快閃訊息flash
-
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>上次講到了Strong Parameters，今天我們就從Flash開始吧！</p>
+<h2 id="快閃訊息flash"><a href="#快閃訊息flash" class="headerlink" title="快閃訊息flash"></a>快閃訊息flash</h2><p><img src="https://i.imgur.com/tjW0Pjy.png" alt=""></p>
+<p>
+            
         
-          <p class="article-more-link">
-            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/#more">Read More</a>
-          </p>
+    
+    
         </div>
-      
-    </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/#more">Read More</a>
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -1252,6 +1802,19 @@ Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原�
 <script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
 <script src="/LouiswuYJ.github.io/js/main.js"></script>
 
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151094658-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
 
 
 

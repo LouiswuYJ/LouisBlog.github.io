@@ -11,17 +11,17 @@
   
   
   
-  <meta name="description" content="我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：">
+  <meta name="description" content="我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：  覺得哇～原來寫程式也可以玩emoji(被打..) 現在想起來還真的是蠢到不行，我想就算是新手也沒像我這麼單(愚)純(蠢)吧XD 符號(Symbol)在Rails專案裡，我們常常看到冒號加上英文字母的用法，例如:name,age,party,policy 123def clean_params    params.require(:can">
 <meta name="keywords" content="鐵人賽,Ruby on Rails">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day 3: Ruby世界中的符號(Symbol)是什麼？與字串(String)有什麼差異？">
 <meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203&#x2F;index.html">
 <meta property="og:site_name" content="Louis&#39;s Blog">
-<meta property="og:description" content="我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：">
+<meta property="og:description" content="我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：  覺得哇～原來寫程式也可以玩emoji(被打..) 現在想起來還真的是蠢到不行，我想就算是新手也沒像我這麼單(愚)純(蠢)吧XD 符號(Symbol)在Rails專案裡，我們常常看到冒號加上英文字母的用法，例如:name,age,party,policy 123def clean_params    params.require(:can">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;aT4BBK6.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;PnKIdW5.png">
-<meta property="og:updated_time" content="2020-09-20T06:06:06.204Z">
+<meta property="og:updated_time" content="2020-09-29T08:53:49.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;aT4BBK6.png">
   
@@ -56,7 +56,7 @@
 
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+  <body data-spy="scroll" data-target="#toc" data-offset="50" style="overflow-y: 0">
 
 
   
@@ -155,11 +155,9 @@
 
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody">
       
         <p>我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：<br><img src="https://i.imgur.com/aT4BBK6.png" alt=""></p>
-<a id="more"></a>
-
 <p><img src="https://i.imgur.com/PnKIdW5.png" alt=""></p>
 <p>覺得哇～原來寫程式也可以玩<a href="https://zh.wikipedia.org/wiki/%E7%B9%AA%E6%96%87%E5%AD%97" target="_blank" rel="noopener">emoji</a>(被打..)</p>
 <p>現在想起來還真的是蠢到不行，我想就算是新手也沒像我這麼單(愚)純(蠢)吧XD</p>
@@ -190,12 +188,52 @@
 </blockquote>
 
       
-    </div>
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+    
+    
+        <p>我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：<br><img src="https://i.imgur.com/aT4BBK6.png" alt=""></p>
+<p><img src="https://i.imgur.com/PnKIdW5.png" alt=""></p>
+<p>覺得哇～原來寫程式也可以玩<a href="https://zh.wikipedia.org/wiki/%E7%B9%AA%E6%96%87%E5%AD%97" target="_blank" rel="noopener">emoji</a>(被打..)</p>
+<p>現在想起來還真的是蠢到不行，我想就算是新手也沒像我這麼單(愚)純(蠢)吧XD</p>
+<h1 id="符號-Symbol"><a href="#符號-Symbol" class="headerlink" title="符號(Symbol)"></a>符號(Symbol)</h1><p>在Rails專案裡，我們常常看到冒號加上英文字母的用法，例如<code>:name</code>,<code>age</code>,<code>party</code>,<code>policy</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clean_params</span></span></span><br><span class="line">    params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:party</span>, <span class="symbol">:policy</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>或是Hash</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">student = &#123;<span class="symbol">:name</span> =&gt; <span class="string">'Louis'</span>, <span class="symbol">:age</span> =&gt;<span class="string">'18'</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>冒號的後面其實也非必要加英文，你要變成<code>:やさしい</code>,<code>:帥哥</code>,<code>:123</code>也是會過的，只是在使用上很不方便且很少見，建議還是用英文字母就好。</p>
+<p>其實符號(Symbol)與變數(variable)的命名很像，只是符號前面有加冒號的差別而已。</p>
+<h3 id="有些人會認為，阿這東西不就記下來就好？幹嘛還要特別開一篇來寫？"><a href="#有些人會認為，阿這東西不就記下來就好？幹嘛還要特別開一篇來寫？" class="headerlink" title="有些人會認為，阿這東西不就記下來就好？幹嘛還要特別開一篇來寫？"></a>有些人會認為，阿這東西不就記下來就好？幹嘛還要特別開一篇來寫？</h3><p>符號在Ruby裡是很重要的存在，它並不只是像變數命名一樣，只是個’名字’的存在。可以想像成符號就是「有名字的物件」且「無法變更的字串(String)」。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">1</span>      <span class="comment">#數字物件</span></span><br><span class="line"></span><br><span class="line">x = <span class="string">'good'</span> <span class="comment">#字串物件</span></span><br><span class="line"></span><br><span class="line">x = <span class="symbol">:good</span>  <span class="comment">#符號物件</span></span><br></pre></td></tr></table></figure>
+<h1 id="字串-String-與符號-Symbol-有什麼不同？"><a href="#字串-String-與符號-Symbol-有什麼不同？" class="headerlink" title="字串(String)與符號(Symbol)有什麼不同？"></a>字串(String)與符號(Symbol)有什麼不同？</h1><h3 id="字串的內容可以被修正，但符號不行。"><a href="#字串的內容可以被修正，但符號不行。" class="headerlink" title="==字串的內容可以被修正，但符號不行。=="></a>==字串的內容可以被修正，但符號不行。==</h3><p>開啟irb來看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 改變字串</span><br><span class="line"></span><br><span class="line">2.6.3 :016 &gt; a = &apos;hello&apos;</span><br><span class="line"> =&gt; &quot;hello&quot;</span><br><span class="line">2.6.3 :017 &gt; a[0]</span><br><span class="line"> =&gt; &quot;h&quot;</span><br><span class="line">2.6.3 :018 &gt; b = :hello</span><br><span class="line"> =&gt; :hello</span><br><span class="line">2.6.3 :019 &gt; b[0]</span><br><span class="line"> =&gt; &quot;h&quot;</span><br><span class="line">2.6.3 :020 &gt; a[0] = &apos;f&apos;</span><br><span class="line"> =&gt; &quot;f&quot;</span><br><span class="line">2.6.3 :021 &gt; a</span><br><span class="line"> =&gt; &quot;fello&quot;         #字串的第一個字母&apos;h&apos;改成&apos;f&apos;</span><br><span class="line">2.6.3 :022 &gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 改變符號，出現error</span><br><span class="line"></span><br><span class="line">2.6.3 :022 &gt; b = :hello</span><br><span class="line"> =&gt; :hello</span><br><span class="line">2.6.3 :023 &gt; b[0]</span><br><span class="line"> =&gt; &quot;h&quot;</span><br><span class="line">2.6.3 :024 &gt; b[0] = &apos;f&apos;</span><br><span class="line"></span><br><span class="line">NoMethodError (undefined method `[]=&apos; for :hello:Symbol)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Symbol的效能比字串好"><a href="#Symbol的效能比字串好" class="headerlink" title="Symbol的效能比字串好"></a>Symbol的效能比字串好</h3><p>記憶體的存取方式也不同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 符號(Symbol)每次印出 :name 時，具有唯一性，佔用記憶體位址相同。</span><br><span class="line">2.6.3 :012 &gt; :name.object_id</span><br><span class="line"> =&gt; 88028</span><br><span class="line">2.6.3 :013 &gt; :name.object_id</span><br><span class="line"> =&gt; 88028</span><br><span class="line"></span><br><span class="line"># 字串(String)每次印出&quot;name&quot;時，他的object_id都會不同，佔用的記憶體位址也不同。</span><br><span class="line">2.6.3 :014 &gt; &apos;name&apos;.object_id</span><br><span class="line"> =&gt; 70183486959360</span><br><span class="line">2.6.3 :015 &gt; &apos;name&apos;.object_id</span><br><span class="line"> =&gt; 70183486974200</span><br></pre></td></tr></table></figure>
+<p>每個Symbol產生時，在Ruby裡就會產生一個獨立的object_id，直到程式結束為止，而字串在每次產生的時候，都會產生一個新的object_id，這也是為何「字串的內容可以被修正，但符號不行。」的原因。</p>
+<p>也因為每次取用一次String，就得產生一個新的object_id，很佔用記憶體空間，Symbol則是直接取用一開始建立的object_id，所以字串的效能稍微差一點。</p>
+<h2 id="String可以轉成Symbol，Symbol也可以轉成String"><a href="#String可以轉成Symbol，Symbol也可以轉成String" class="headerlink" title="String可以轉成Symbol，Symbol也可以轉成String"></a>String可以轉成Symbol，Symbol也可以轉成String</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 字串轉成 Symbol</span><br><span class="line">2.6.3 :025 &gt; &apos;name&apos;.to_sym</span><br><span class="line"> =&gt; :name</span><br><span class="line"></span><br><span class="line"># Symbol 轉成字串</span><br><span class="line">2.6.3 :026 &gt; :name.to_s</span><br><span class="line"> =&gt; &quot;name&quot;</span><br></pre></td></tr></table></figure>
+
+
+<p>參考資料：<br><a href="https://pjchender.github.io/" target="_blank" rel="noopener">PJChen的私房菜</a><br><a href="https://kaochenlong.com/" target="_blank" rel="noopener">Ruby語法放大鏡</a></p>
+<blockquote>
+<p>“When there’s that moment of ‘Wow, I’m not really sure I can do this,’ and you push through those moments, that’s when you have a breakthrough.”</p>
+<p>— Marissa Mayer, CEO of Yahoo</p>
+</blockquote>
+
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -228,6 +266,13 @@
     
 <nav id="article-nav">
   
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">previous post</strong>
+      <div class="article-nav-title">Day 2: 變數(variable)與常數(Constant)</div>
+    </a>
+  
+
+  
     <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">next post</strong>
       <div class="article-nav-title">
@@ -235,12 +280,6 @@
           Day4: Block程式碼區塊及Proc, Lambda差異
         
       </div>
-    </a>
-  
-  
-    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">previous post</strong>
-      <div class="article-nav-title">Day 2: 變數(variable)與常數(Constant)</div>
     </a>
   
 </nav>
@@ -346,6 +385,19 @@
 <script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
 <script src="/LouiswuYJ.github.io/js/main.js"></script>
 
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151094658-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
 
 
 

@@ -59,7 +59,7 @@
 
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+  <body data-spy="scroll" data-target="#toc" data-offset="50" style="overflow-y: 0">
 
 
   
@@ -158,7 +158,7 @@
 
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody">
       
         <p>五倍的課程進行將近一個月，終於有了第一次有小組討論XD<br>從來沒接觸過資料結構的我們，從老師訂的題目”購物車“開始發想：</p>
 <h2 id="我們討論經過的步驟："><a href="#我們討論經過的步驟：" class="headerlink" title="我們討論經過的步驟："></a>我們討論經過的步驟：</h2><p>1.列出所有購物車會有的功能<br>2.將同種類的進行分類<br>3.將重複的功能刪除<br>4.列出進入購物車選單後的順序流程<br>5.不會變動的功能與會變動的功能進行分類<br>6.會有value的用Objuect，不用特別輸入value的用Array<br>7.寫成code</p>
@@ -176,12 +176,37 @@
 <h1 id="結論："><a href="#結論：" class="headerlink" title="結論："></a>結論：</h1><p>1.若是同樣的東西，卻需要有多筆的時候，使用Array包住裡面的資料。<br>2.若只有單筆需要帶入key跟value的時候，使用Object。(第２９行)<br>3.避免key的命名與外部的變數名稱相同。<br>當然就算這樣設定，這樣的資料結構其實也還算是有問題的，但藉由此例大概可以對第一次寫資料結構的我們，有了一些些感受跟體驗。</p>
 
       
-    </div>
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+    
+    
+        <p>五倍的課程進行將近一個月，終於有了第一次有小組討論XD<br>從來沒接觸過資料結構的我們，從老師訂的題目”購物車“開始發想：</p>
+<h2 id="我們討論經過的步驟："><a href="#我們討論經過的步驟：" class="headerlink" title="我們討論經過的步驟："></a>我們討論經過的步驟：</h2><p>1.列出所有購物車會有的功能<br>2.將同種類的進行分類<br>3.將重複的功能刪除<br>4.列出進入購物車選單後的順序流程<br>5.不會變動的功能與會變動的功能進行分類<br>6.會有value的用Objuect，不用特別輸入value的用Array<br>7.寫成code</p>
+<h2 id="所以產出了以下基本結果："><a href="#所以產出了以下基本結果：" class="headerlink" title="所以產出了以下基本結果："></a>所以產出了以下基本結果：</h2><p>購物車：<br>{帳號、密碼}<br>購物車 {商品名稱、金額、特價、數量、尺寸、顏色、折扣{購物金、活動優惠、紅利折抵}、總件數<br>推薦商品、瀏覽紀錄}<br>待買清單<br>追蹤清單<br>商城規範<br>會員資料 {姓名、信箱、電話、地址、會員等級}<br>配送方式 {超商: 運費、宅配: 運費、郵局: 運費、面交: 免運費}<br>付款方式 [ATM、信用卡、貨到付款、第三方支付]<br>發票載具 [二聯、三聯、捐贈、電子發票]<br>訂單編號<br>(123代表型態是number, 0.7代表型態是float)</p>
+<h2 id="寫成code後產出以下結果："><a href="#寫成code後產出以下結果：" class="headerlink" title="寫成code後產出以下結果："></a>寫成code後產出以下結果：</h2><p><img src="https://i.imgur.com/uW38JGf.png" alt=""></p>
+<h2 id="泰安老師的評語："><a href="#泰安老師的評語：" class="headerlink" title="泰安老師的評語："></a>泰安老師的評語：</h2><p>1.第3行，問題零：<br>Ans: 最外面已經let card了，裡面的key要避免使用同樣名稱的命名。<br>2.第4行～第12行，問題一：<br>問：item這裡只有一個，如果今天有多個item的話，這樣子的資料結構可以寫在哪裡呢？<br>(我在台上空氣凝結…)<br>Ans: 這種寫法基本上可說是設計錯誤，應該會如下圖寫，用Array包住Object才能夠在資料上儲存多筆item。</p>
+<p><img src="https://i.imgur.com/CDDuftF.png" alt=""></p>
+<p>3.第13行，問題二：<br>問：那個總金額是…?直接輸入字串？<br>Ans:關於要做運算的事情，不需要寫在資料結構裡面，只要再外面用function運算完後再輸入回去就好。</p>
+<p><img src="https://i.imgur.com/7C4eIMK.png" alt=""></p>
+<p>4.第16行~第17行，問題三：<br>問：商品名稱跟瀏覽紀錄..?一個字串？<br>Ans:同問題一，應有多筆資料的儲存應用Array包住Object。</p>
+<p><img src="https://i.imgur.com/KY2qGTe.png" alt=""></p>
+<p>5.第20行～第21行，第22行～第27行，問題四：<br>Ans:同問題一，應有多筆資料的儲存應用Array包住Object。</p>
+<p><img src="https://i.imgur.com/zVaMpEG.png" alt=""></p>
+<p>補充：在item的部分，其實並不是你在Array裡寫幾個Object，就只能在購物車裡放幾個不同item，而是一開始的資料其實是個空陣列，當使用者按下”加入購物車”後，才會傳入一個資料進入Array。</p>
+<h1 id="結論："><a href="#結論：" class="headerlink" title="結論："></a>結論：</h1><p>1.若是同樣的東西，卻需要有多筆的時候，使用Array包住裡面的資料。<br>2.若只有單筆需要帶入key跟value的時候，使用Object。(第２９行)<br>3.避免key的命名與外部的變數名稱相同。<br>當然就算這樣設定，這樣的資料結構其實也還算是有問題的，但藉由此例大概可以對第一次寫資料結構的我們，有了一些些感受跟體驗。</p>
+
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/javascript/">javascript</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/javascript/" rel="tag">javascript</a></li></ul> -->
@@ -205,6 +230,8 @@
     
 <nav id="article-nav">
   
+
+  
     <a href="/LouiswuYJ.github.io/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">next post</strong>
       <div class="article-nav-title">
@@ -213,7 +240,6 @@
         
       </div>
     </a>
-  
   
 </nav>
 
@@ -318,6 +344,19 @@
 <script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
 <script src="/LouiswuYJ.github.io/js/main.js"></script>
 
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151094658-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
 
 
 

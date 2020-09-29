@@ -11,13 +11,13 @@
   
   
   
-  <meta name="description" content="在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：">
+  <meta name="description" content="在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：  在檔案區命名：snakecase     ex: candidate_controller在檔案內命名：camelcase     ex: CandidateController且“檔案名稱”與“類別名稱”必須相同，才不會在執行的時候出現error  什麼是MVC(Model、View">
 <meta name="keywords" content="鐵人賽,Ruby on Rails">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day20: 簡易Rails實作(上)">
 <meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020&#x2F;index.html">
 <meta property="og:site_name" content="Louis&#39;s Blog">
-<meta property="og:description" content="在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：">
+<meta property="og:description" content="在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：  在檔案區命名：snakecase     ex: candidate_controller在檔案內命名：camelcase     ex: CandidateController且“檔案名稱”與“類別名稱”必須相同，才不會在執行的時候出現error  什麼是MVC(Model、View">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;Pmy0rCh.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;xuSCyik.png">
@@ -30,7 +30,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;tFtIi8s.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;qhJJPAH.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;jmE6M2W.png">
-<meta property="og:updated_time" content="2020-09-20T06:07:32.299Z">
+<meta property="og:updated_time" content="2020-09-29T08:55:20.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;Pmy0rCh.png">
   
@@ -65,7 +65,7 @@
 
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+  <body data-spy="scroll" data-target="#toc" data-offset="50" style="overflow-y: 0">
 
 
   
@@ -164,11 +164,9 @@
 
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody">
       
         <p>在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：</p>
-<a id="more"></a>
-
 <blockquote>
 <p>在檔案區命名：snakecase     ex: candidate_controller<br>在檔案內命名：camelcase     ex: CandidateController<br>且“檔案名稱”與“類別名稱”必須相同，才不會在執行的時候出現error</p>
 </blockquote>
@@ -232,12 +230,85 @@
 </blockquote>
 
       
-    </div>
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+    
+    
+        <p>在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：</p>
+<blockquote>
+<p>在檔案區命名：snakecase     ex: candidate_controller<br>在檔案內命名：camelcase     ex: CandidateController<br>且“檔案名稱”與“類別名稱”必須相同，才不會在執行的時候出現error</p>
+</blockquote>
+<h2 id="什麼是MVC-Model、View、Controller"><a href="#什麼是MVC-Model、View、Controller" class="headerlink" title="什麼是MVC(Model、View、Controller)?"></a>什麼是MVC(Model、View、Controller)?</h2><p>在開始建立Rails之前，我們需要先了解<a href="https://railsbook.tw/chapters/10-mvc.html" target="_blank" rel="noopener">什麼是MVC</a></p>
+<p>MVC架構：由Route開始，到Controller結束。</p>
+<ol>
+<li>瀏覽器依據資源(resources)的設定，經由Route去找到Controller中，對應的action(method)。</li>
+<li>視需要透過Model向資料庫取得資料後，處理完再與對應的View(.html.erb)做結合。</li>
+<li>View處理完後再回傳給Controller，Controller再將結果轉交給瀏覽器。</li>
+</ol>
+<h2 id="建立Rails專案"><a href="#建立Rails專案" class="headerlink" title="建立Rails專案"></a>建立Rails專案</h2><p>在Terminal輸入，就會自動產生rails專案。（前提是要先安裝好Rails）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rails new 專案名稱</span><br></pre></td></tr></table></figure>
+<p>在這次的例子，我們試著產生一個名叫myvote的Rails檔案。</p>
+<h3 id="routes-rb"><a href="#routes-rb" class="headerlink" title="routes.rb"></a>routes.rb</h3><p>在Vscode開啟資料夾，用command+P尋找檔案“routes.rb”，並寫入：</p>
+<ol>
+<li>Rails 提供的 resources</li>
+<li>根目錄(首頁) candidates，且裡面有個方法index</li>
+</ol>
+<p><img src="https://i.imgur.com/Pmy0rCh.png" alt=""></p>
+<p>第2行：產生8種條路徑</p>
+<p><img src="https://i.imgur.com/xuSCyik.png" alt=""></p>
+<p>第3行：根目錄裡有個方法index</p>
+<p>備註：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root <span class="string">'candidates#index'</span></span><br><span class="line">get <span class="string">'/'</span>, to <span class="string">'candidates#index'</span></span><br><span class="line"><span class="comment">#因為是根目錄，以上兩種寫法都可以接受。</span></span><br></pre></td></tr></table></figure>
+
+<p>在此時在Terminal執行Rails：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rails server 或 rails s</span><br></pre></td></tr></table></figure>
+
+<p>至網址輸入localhost:3000(Terminal會寫3000)出現以下畫面:</p>
+<p><img src="https://i.imgur.com/qqJ4rG8.png" alt=""></p>
+<p>找不到method，故要建立一個給它。</p>
+<h2 id="建立Method"><a href="#建立Method" class="headerlink" title="建立Method"></a>建立Method</h2><p>在app &gt; controllers中新增檔案 “檔名_controller.rb” (此例檔名為candidates，需與你要連結的檔案名稱一樣)，並建立class 、繼承最原始的檔案“ApplicationController”：（其實此例的def index暫時不寫也沒關係）</p>
+<p><img src="https://i.imgur.com/W6ty2NU.png" alt=""></p>
+<p>但這樣還不夠，因為Rails的遊戲規則是要從views裡面找檔案，所以必須還要再 views 資料夾新增一個candidates資料夾，並建立 index.html.erb：</p>
+<p><img src="https://i.imgur.com/vev7ekj.png" alt=""></p>
+<p>才能印出：</p>
+<p><img src="https://i.imgur.com/0rQWk3A.png" alt=""></p>
+<p>基本上這樣就完成最最最基礎的第一步了(此例index裡沒寫東西只是因為要當範例而已，請原諒我沒放東西(跪)）</p>
+<h2 id="讓他稍微可以動"><a href="#讓他稍微可以動" class="headerlink" title="讓他稍微可以動"></a>讓他稍微可以動</h2><p>在index.html.erb加點東西：</p>
+<p><img src="https://i.imgur.com/4wcbTUc.png" alt=""></p>
+<blockquote>
+<p>Prefix :new_cadidates</p>
+</blockquote>
+<p>還記得剛剛的rails routes嗎？其中的new功能Rails已經有幫我們定義好的Prefix名字了</p>
+<p><img src="https://i.imgur.com/0tz8JhD.png" alt=""></p>
+<p>_path:產生相對應的路徑網址（站內路徑）-&gt; ／candidates</p>
+<p>*另一種方式：</p>
+<p>＿url:產生完整網址 -&gt; <a href="https://www.xxxx.com/candidates，在寄發mail的時候較常使用" target="_blank" rel="noopener">https://www.xxxx.com/candidates，在寄發mail的時候較常使用</a>)</p>
+<p>套用Bootstrap，套用方式可見<a href="https://medium.com/@louiswu0327/%E5%9C%A8rails%E8%A3%9Dboostrap%E5%A5%97%E4%BB%B6-fcb742a10376" target="_blank" rel="noopener">這篇</a>。</p>
+<h2 id="等等！！！views裡沒有new這個檔案啊！！？"><a href="#等等！！！views裡沒有new這個檔案啊！！？" class="headerlink" title="等等！！！views裡沒有new這個檔案啊！！？"></a>等等！！！views裡沒有new這個檔案啊！！？</h2><p>所以要記得在views &gt; candidates 裡再新增一個new.html.erb檔</p>
+<p><img src="https://i.imgur.com/tFtIi8s.png" alt=""></p>
+<p>這樣一來就可以有作用囉!!</p>
+<p><img src="https://i.imgur.com/qhJJPAH.png" alt=""></p>
+<p><img src="https://i.imgur.com/jmE6M2W.png" alt=""></p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>Rails這只是第一步而已，雖然現在有很多指令可以快速產出以上步驟做出的東西(scaffold)，但畢竟在使用套件之前，能夠先了解如何手刻及其背後觀念跟原理是非常重要的。</p>
+<p>也許文章內容寫的不正確也缺乏系統，也或許幾年後回來看自己寫的這篇文章會覺得”WTF這什麼鬼!!?”</p>
+<p>參考資料：<br><a href="https://railsbook.tw/chapters/11-routes.html#restful-routes" target="_blank" rel="noopener">為你自己學 Ruby on Rails</a></p>
+<blockquote>
+<p>“The pro is the person who has all the hassles, obstacles, and disappointing frustrations that everyone else has, yet continues to persist, does the job, and makes it look easy.”</p>
+<p>— David Cooper, Sales Trainer</p>
+</blockquote>
+
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -270,6 +341,13 @@
     
 <nav id="article-nav">
   
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">previous post</strong>
+      <div class="article-nav-title">Day19: Rails中神奇的spring stop</div>
+    </a>
+  
+
+  
     <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">next post</strong>
       <div class="article-nav-title">
@@ -277,12 +355,6 @@
           Day21: 簡易Rails實作(中)
         
       </div>
-    </a>
-  
-  
-    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">previous post</strong>
-      <div class="article-nav-title">Day19: Rails中神奇的spring stop</div>
     </a>
   
 </nav>
@@ -388,6 +460,19 @@
 <script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
 <script src="/LouiswuYJ.github.io/js/main.js"></script>
 
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151094658-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
 
 
 

@@ -11,16 +11,16 @@
   
   
   
-  <meta name="description" content="幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。">
+  <meta name="description" content="幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。 在Ruby例外處理的基本架構： 12345begin  #程式碼正常執行的地方 (可能出現例外的程式碼)rescue  #發生錯誤時執行的地方end  當Ruby執行程式發生錯誤時，會丟出一個Error類別產生的例外物件並停止程式，各種錯誤類型用架構的方式歸納： 圖">
 <meta name="keywords" content="鐵人賽,Ruby on Rails">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day12: Ruby的例外處理(Exceptions)：begin...rescue ...end">
 <meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012&#x2F;index.html">
 <meta property="og:site_name" content="Louis&#39;s Blog">
-<meta property="og:description" content="幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。">
+<meta property="og:description" content="幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。 在Ruby例外處理的基本架構： 12345begin  #程式碼正常執行的地方 (可能出現例外的程式碼)rescue  #發生錯誤時執行的地方end  當Ruby執行程式發生錯誤時，會丟出一個Error類別產生的例外物件並停止程式，各種錯誤類型用架構的方式歸納： 圖">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;AcWTC5W.png">
-<meta property="og:updated_time" content="2020-09-20T06:06:55.910Z">
+<meta property="og:updated_time" content="2020-09-29T08:54:50.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;AcWTC5W.png">
   
@@ -55,7 +55,7 @@
 
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+  <body data-spy="scroll" data-target="#toc" data-offset="50" style="overflow-y: 0">
 
 
   
@@ -154,12 +154,9 @@
 
       
     </div>
-    <div class="article-entry" itemprop="articleBody">
+    <!-- <div class="article-entry" itemprop="articleBody">
       
         <p>幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。</p>
-<a id="more"></a>
-
-
 <p>在Ruby例外處理的基本架構：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">#程式碼正常執行的地方 (可能出現例外的程式碼)</span></span><br><span class="line"><span class="keyword">rescue</span></span><br><span class="line">  <span class="comment">#發生錯誤時執行的地方</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
@@ -213,12 +210,75 @@
 </blockquote>
 
       
-    </div>
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+    
+    
+        <p>幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。</p>
+<p>在Ruby例外處理的基本架構：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">#程式碼正常執行的地方 (可能出現例外的程式碼)</span></span><br><span class="line"><span class="keyword">rescue</span></span><br><span class="line">  <span class="comment">#發生錯誤時執行的地方</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>當Ruby執行程式發生錯誤時，會丟出一個Error類別產生的例外物件並停止程式，各種錯誤類型用架構的方式歸納：</p>
+<p><img src="https://i.imgur.com/AcWTC5W.png" alt=""><br>圖片來源:Programming Ruby book</p>
+<p>有這麼多例外訊息的類別，要舉例可能舉不完，不過用起來大概像下面這種感覺：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment"># 可能出現例外的程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> SyntaxError</span><br><span class="line">  <span class="comment"># 出現SyntaxError時執行此行程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> ArgumentError</span><br><span class="line">  <span class="comment"># 出現ArgumentError時執行此行程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> RuntimeError</span><br><span class="line">  <span class="comment"># 出現RuntimeError時執行此行程式碼</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>所以可針對丟出的例外訊息，去處理該訊息的例外處理，當然最常見的還是<code>SyntaxError</code>, <code>ArgumentError</code>及<code>RuntimeError</code>。如果沒有在<code>rescue</code>後特別寫哪種類別的話，任何的錯誤類別都會被<code>rescue</code>給抓到。</p>
+<p>在舉例之前，我想先說說該如何用raise來產生例外處理。</p>
+<h2 id="raise"><a href="#raise" class="headerlink" title="raise"></a>raise</h2><p>一般在簡單的程式碼，比較不會有例外處理的狀況發生，但為了舉例，我們也可以透過手動產生例外處理來觸發我們想要的結果，那我們就可以用raise method來執行。</p>
+<h3 id="raise是什麼？"><a href="#raise是什麼？" class="headerlink" title="raise是什麼？"></a>raise是什麼？</h3><blockquote>
+<p>The raise method is from the Kernel module. By default, raise creates an exception of the RuntimeError class.</p>
+</blockquote>
+<p>raise是來自於Kernel這個module的method，”預設”會產生來自RuntimeError這個類別的exception實體。</p>
+<p>既然是預設，代表我們一定可以自己寫raise method後會產生哪個類別的實體。</p>
+<h4 id="預設：RuntimeError"><a href="#預設：RuntimeError" class="headerlink" title="預設：RuntimeError"></a>預設：RuntimeError</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之前'</span></span><br><span class="line">  raise <span class="string">'發生錯誤！'</span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之後'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br></pre></td></tr></table></figure>
+<p>印出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">這邊是執行到raise之前</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">	1: from test.rb:18:in `&lt;main&gt;&apos;</span><br><span class="line">test.rb:15:in `raise_exception&apos;: 發生錯誤！ (RuntimeError)</span><br><span class="line">                                           #預設類別</span><br></pre></td></tr></table></figure>
+<h4 id="指定其他類別-以ArgumentError為例"><a href="#指定其他類別-以ArgumentError為例" class="headerlink" title="指定其他類別(以ArgumentError為例)"></a>指定其他類別(以ArgumentError為例)</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之前'</span></span><br><span class="line">  raise ArgumentError, <span class="string">'發生錯誤！'</span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之後'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br></pre></td></tr></table></figure>
+<p>印出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">這邊是執行到raise之前</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">	1: from test.rb:18:in `&lt;main&gt;&apos;</span><br><span class="line">test.rb:15:in `raise_exception&apos;: 發生錯誤！ (ArgumentError)</span><br><span class="line">                                           #被指定類別</span><br></pre></td></tr></table></figure>
+<h2 id="begin…rescue…end"><a href="#begin…rescue…end" class="headerlink" title="begin…rescue…end"></a>begin…rescue…end</h2><h4 id="預設Exception"><a href="#預設Exception" class="headerlink" title="預設Exception"></a>預設Exception</h4><p>程式執行時先印出”發生例外之前”，之後遇到<code>raise</code>發生例外，故去找<code>rescue</code>底下的程式碼並執行，印出”已處理例外”。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise <span class="string">'發生例外！'</span>     <span class="comment">#沒指定Error類別，預設為RuntimeError</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span>                 <span class="comment">#預設RuntimeError，所有錯誤都會到這執行</span></span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    已處理例外</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="指定錯誤類別"><a href="#指定錯誤類別" class="headerlink" title="指定錯誤類別"></a>指定錯誤類別</h4><p>程式執行時先印出”發生例外之前”，之後遇到<code>raise</code>LoadError類別發生例外，因為已被指定是遇到LoadError產生的實體，rescue後並無指定要救援哪個類別，故印出”發生例外！ (LoadError)”。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise LoadError, <span class="string">'發生例外！'</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span></span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    發生例外！ (LoadError)</span></span><br></pre></td></tr></table></figure>
+
+<p>若要修正，只要將rescue後加入該發生例外訊息時的類別就可以了。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise LoadError, <span class="string">'發生例外！'</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span> LoadError</span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    已處理例外</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>其實以上範例的<code>begin</code>跟<code>end</code>，可以被同時省略，只要留下<code>rescue</code>就可以正常執行，讓程式碼看起來更精簡，但對於金魚腦的我來說，為了方便未來能夠容易閱(理)讀(解)，還是不會把它們省略。</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise LoadError, <span class="string">'發生例外！'</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span> LoadError</span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    已處理例外</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="總結："><a href="#總結：" class="headerlink" title="總結："></a>總結：</h2><p>其實這個主題可以寫出非常多東西，目前只針對自己可能會用到的部分做說明，如果有興趣的朋友可以到參考資料看更多關於Exceptions的介紹。</p>
+<ol>
+<li><code>begin...rescue...end</code>用來解決非預期的結果。<ul>
+<li>begin…rescue: 可能發生例外的程式碼</li>
+<li>rescue…end: 發生錯誤時執行的程式碼</li>
+</ul>
+</li>
+<li>可針對丟出的例外訊息，去處理該訊息的例外處理。</li>
+<li><code>begin</code> <code>end</code>可省略</li>
+</ol>
+<p>參考資料：<br><a href="https://ruby-doc.org/core-2.2.3/Kernel.html#method-i-raise" target="_blank" rel="noopener">Ruby Kernel</a><br><a href="http://rubylearning.com/satishtalim/ruby_exceptions.html" target="_blank" rel="noopener">Ruby Exceptions</a><br><a href="https://mgleon08.github.io/blog/2016/02/04/rescue-exception/" target="_blank" rel="noopener">例外處理 Rescue Exception, Error Handling, Custom Error Pages</a><br><a href="https://pjchender.github.io/2018/06/05/ruby-error-handling%EF%BC%88%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86%EF%BC%89/" target="_blank" rel="noopener">[Ruby] Error Handling（錯誤處理)</a><br><a href="https://medium.com/@eggyy1224/ruby-%E7%9A%84%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86%E6%A9%9F%E5%88%B6-106f829f280b" target="_blank" rel="noopener">Ruby 的例外處理機制</a><br><a href="https://medium.com/@pk60905/rails%E7%9A%84%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86%E6%A9%9F%E5%88%B6begin-rescue%E5%92%8Cexception-ab71156a24a2" target="_blank" rel="noopener">Rails的錯誤處理機制begin、rescue和Exception</a></p>
+<blockquote>
+<p>“The meaning of life is to find your gift. The purpose &gt;of life is to give it away.”</p>
+<p>– Pablo Picasso, Artist</p>
+</blockquote>
+
+        </div>
+    
+
     <footer class="entry-meta entry-footer">
-      <!-- 
+      
 	<span class="ico-folder"></span>
     <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
- -->
+
       
   <!-- <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
@@ -251,6 +311,13 @@
     
 <nav id="article-nav">
   
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">previous post</strong>
+      <div class="article-nav-title">Day11: Ruby中的Getter及Setter?</div>
+    </a>
+  
+
+  
     <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">next post</strong>
       <div class="article-nav-title">
@@ -258,12 +325,6 @@
           Day13: Ruby on Rails 的 .nil? .empty? .blank? .present? 
         
       </div>
-    </a>
-  
-  
-    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">previous post</strong>
-      <div class="article-nav-title">Day11: Ruby中的Getter及Setter?</div>
     </a>
   
 </nav>
@@ -369,6 +430,19 @@
 <script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
 <script src="/LouiswuYJ.github.io/js/main.js"></script>
 
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151094658-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
 
 
 

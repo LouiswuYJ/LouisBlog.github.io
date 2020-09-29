@@ -649,6 +649,7 @@ object {
 	margin: 0 0 30px;
 	} */
 .entry-footer {
+	text-align: right;
 	clear: both;
 	padding: 8px 0;
 	border: solid #333;
