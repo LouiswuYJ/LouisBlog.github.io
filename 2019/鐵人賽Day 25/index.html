@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Louis&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="鐵人賽Ruby on Rails" />
+  
+  
+  
+  
+  <meta name="description" content="這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？ 但這真的是我第一次接觸這個名詞腦袋中第一個浮現的畫面XD可能字真的太像了吧(還是只有我這樣覺得？)  看來對我來說，不止中文字有這個問題，好像連英文單字都是… scope, scoop傻傻分不清楚(誤) Scope最近做專案常常發現，在撈資料的時候，常常一直點find點where一直點下去，但有發現有時候在同一個controller時，都">
+<meta name="keywords" content="鐵人賽,Ruby on Rails">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day25: Rails中的一球冰淇淋 scope">
+<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025&#x2F;index.html">
+<meta property="og:site_name" content="Louis&#39;s Blog">
+<meta property="og:description" content="這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？ 但這真的是我第一次接觸這個名詞腦袋中第一個浮現的畫面XD可能字真的太像了吧(還是只有我這樣覺得？)  看來對我來說，不止中文字有這個問題，好像連英文單字都是… scope, scoop傻傻分不清楚(誤) Scope最近做專案常常發現，在撈資料的時候，常常一直點find點where一直點下去，但有發現有時候在同一個controller時，都">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;wjqS1Dq.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;xctRRHl.png">
+<meta property="og:updated_time" content="2020-09-29T08:55:39.750Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;wjqS1Dq.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Louis&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/LouiswuYJ.github.io/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/style.css">
+
+  <script src="/LouiswuYJ.github.io/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/bootstrap.css" >
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/fashion.css" >
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50" style="overflow-y: 0">
+
+
+  
+
+  <div class="site-header-image">
+    <!-- <img id="originBg" width="100%" alt="Hike News" src=""> -->
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <!-- <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src=""> -->
+  </div>
+
+  <!-- <script>
+      var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+        document.getElementById("blurBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/LouiswuYJ.github.io/' + imgUrls[random];
+        document.getElementById("blurBg").src='/LouiswuYJ.github.io/' + imgUrls[random];
+      }
+  </script> -->
+
+
+
+
+<header id="allheader" class="site-header" role="banner"
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/LouiswuYJ.github.io/" title="Louis&#39;s Blog" rel="home"> Louis&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Stressed is just desserts if you can reverse.</div>
+          
+
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-鐵人賽Day 25" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Day25: Rails中的一球冰淇淋 scope
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/" class="article-date">
+	  <time datetime="2019-10-08T04:10:40.000Z" itemprop="datePublished">October 8, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+    </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/wjqS1Dq.png" alt=""></p>
+<p>這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？</p>
+<p>但這真的是我第一次接觸這個名詞腦袋中第一個浮現的畫面XD<br>可能字真的太像了吧(還是只有我這樣覺得？)</p>
+<p><img src="https://i.imgur.com/xctRRHl.png" alt=""></p>
+<p>看來對我來說，不止中文字有這個問題，好像連英文單字都是…</p>
+<p>scope, scoop傻傻分不清楚(誤)</p>
+<h1 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h1><p>最近做專案常常發現，在撈資料的時候，常常一直點find點where一直點下去，但有發現有時候在同一個controller時，都在對特定Model做同一件事情，在Rails常常可以看到一個字<strong>DRY</strong>:</p>
+<blockquote>
+<p>Don’t Repeat Yourself</p>
+</blockquote>
+<p>為了能夠讓程式碼變得乾淨易讀且方便使用，我們就可以在該controller的Model寫<code>scope</code>。</p>
+<p>也許你會說，可一個一個寫也沒什麼不好啊？</p>
+<p>但如果今天需求變更(例如：原本出全部的資料改為撈價格小於100的資料)，那不就全站都需要跟著修改？非常不方便，所以這時候我們就需要用到<code>scope</code>。</p>
+<p>先來看個簡單的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>撈出所有Food Model的物件並依照建立時間排序，這時候如果要寫成scope來使用，就可以在Model寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>) &#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候的controller就可以這要取用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.show_all</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果後面的其他action也要做一樣的事情，就只要在Model名稱(此例為Food)後面加你寫 scope 的方法名稱就可以了。</p>
+<h3 id="小補充："><a href="#小補充：" class="headerlink" title="小補充："></a>小補充：</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  <span class="comment">#寫法一</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>) &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">#寫法二</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">show_all</span></span></span><br><span class="line">    order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>寫法一與寫法二的效果是相同的，至於何時該用哪個，其實就是看個人偏好了，我自己的感覺，如果是條件簡單的話就用scope寫，如果是條件較複雜的話就用類別方法寫。</p>
+<h2 id="如果想帶參數"><a href="#如果想帶參數" class="headerlink" title="如果想帶參數"></a>如果想帶參數</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:cheap_price</span>, -&gt;(price) &#123; where(<span class="string">"price &lt; ?"</span>, price)&#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候controller就可以拿來用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.cheap_price(price)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="scope本身可以帶入scope-串接"><a href="#scope本身可以帶入scope-串接" class="headerlink" title="scope本身可以帶入scope(串接)"></a>scope本身可以帶入scope(串接)</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>).cheap_price(<span class="number">100</span>) &#125;</span><br><span class="line">  scope <span class="symbol">:cheap_price</span>, -&gt;(price) &#123; where(<span class="string">"price &lt; ?"</span>, price)&#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.show_price(price)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣的寫法就可以撈出價格小於 price 且按照建立時間排序了。</p>
+<p>參考資料：<br><a href="https://rails.ruby.tw/active_record_querying.html#%E4%BD%9C%E7%94%A8%E5%9F%9F" target="_blank" rel="noopener">Rails Guide</a><br><a href="https://mgleon08.github.io/blog/2015/12/20/ruby-on-rails-scopes/" target="_blank" rel="noopener">Ruby on Rails - Scopes</a><br><a href="https://railsbook.tw/chapters/16-model-basic.html#scope-and-class-method" target="_blank" rel="noopener">為你自己學Ruby on Rails</a></p>
+<blockquote>
+<p>“Every challenge, every adversity, contains within it the seeds of opportunity and growth.”</p>
+<p>– Roy Bennett, Politician</p>
+</blockquote>
+
+      
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+    
+    
+        <p><img src="https://i.imgur.com/wjqS1Dq.png" alt=""></p>
+<p>這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？</p>
+<p>但這真的是我第一次接觸這個名詞腦袋中第一個浮現的畫面XD<br>可能字真的太像了吧(還是只有我這樣覺得？)</p>
+<p><img src="https://i.imgur.com/xctRRHl.png" alt=""></p>
+<p>看來對我來說，不止中文字有這個問題，好像連英文單字都是…</p>
+<p>scope, scoop傻傻分不清楚(誤)</p>
+<h1 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h1><p>最近做專案常常發現，在撈資料的時候，常常一直點find點where一直點下去，但有發現有時候在同一個controller時，都在對特定Model做同一件事情，在Rails常常可以看到一個字<strong>DRY</strong>:</p>
+<blockquote>
+<p>Don’t Repeat Yourself</p>
+</blockquote>
+<p>為了能夠讓程式碼變得乾淨易讀且方便使用，我們就可以在該controller的Model寫<code>scope</code>。</p>
+<p>也許你會說，可一個一個寫也沒什麼不好啊？</p>
+<p>但如果今天需求變更(例如：原本出全部的資料改為撈價格小於100的資料)，那不就全站都需要跟著修改？非常不方便，所以這時候我們就需要用到<code>scope</code>。</p>
+<p>先來看個簡單的例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>撈出所有Food Model的物件並依照建立時間排序，這時候如果要寫成scope來使用，就可以在Model寫：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>) &#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候的controller就可以這要取用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.show_all</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>如果後面的其他action也要做一樣的事情，就只要在Model名稱(此例為Food)後面加你寫 scope 的方法名稱就可以了。</p>
+<h3 id="小補充："><a href="#小補充：" class="headerlink" title="小補充："></a>小補充：</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  <span class="comment">#寫法一</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>) &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">#寫法二</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">show_all</span></span></span><br><span class="line">    order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>寫法一與寫法二的效果是相同的，至於何時該用哪個，其實就是看個人偏好了，我自己的感覺，如果是條件簡單的話就用scope寫，如果是條件較複雜的話就用類別方法寫。</p>
+<h2 id="如果想帶參數"><a href="#如果想帶參數" class="headerlink" title="如果想帶參數"></a>如果想帶參數</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:cheap_price</span>, -&gt;(price) &#123; where(<span class="string">"price &lt; ?"</span>, price)&#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候controller就可以拿來用：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.cheap_price(price)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="scope本身可以帶入scope-串接"><a href="#scope本身可以帶入scope-串接" class="headerlink" title="scope本身可以帶入scope(串接)"></a>scope本身可以帶入scope(串接)</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#food.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span> &lt; ApplicationRecord</span></span><br><span class="line">  scope <span class="symbol">:show_all</span>, -&gt; &#123; order(<span class="symbol">create_at:</span> <span class="symbol">:desc</span>).cheap_price(<span class="number">100</span>) &#125;</span><br><span class="line">  scope <span class="symbol">:cheap_price</span>, -&gt;(price) &#123; where(<span class="string">"price &lt; ?"</span>, price)&#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#foods_controller.rb</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">  @foods = Food.show_price(price)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣的寫法就可以撈出價格小於 price 且按照建立時間排序了。</p>
+<p>參考資料：<br><a href="https://rails.ruby.tw/active_record_querying.html#%E4%BD%9C%E7%94%A8%E5%9F%9F" target="_blank" rel="noopener">Rails Guide</a><br><a href="https://mgleon08.github.io/blog/2015/12/20/ruby-on-rails-scopes/" target="_blank" rel="noopener">Ruby on Rails - Scopes</a><br><a href="https://railsbook.tw/chapters/16-model-basic.html#scope-and-class-method" target="_blank" rel="noopener">為你自己學Ruby on Rails</a></p>
+<blockquote>
+<p>“Every challenge, every adversity, contains within it the seeds of opportunity and growth.”</p>
+<p>– Roy Bennett, Politician</p>
+</blockquote>
+
+        </div>
+    
+
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+  <!-- <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
+
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">
+          鐵人賽
+        </a>
+      </li>
+    </ul>
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">
+          Ruby on Rails
+        </a>
+      </li>
+    </ul>
+  
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">previous post</strong>
+      <div class="article-nav-title">Day24: Rails中的find? find_by? where?</div>
+    </a>
+  
+
+  
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">next post</strong>
+      <div class="article-nav-title">
+        
+          Day26: Rails中的view_helper
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Scope"><span class="nav-number">1.</span> <span class="nav-text">Scope</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小補充："><span class="nav-number">1.0.1.</span> <span class="nav-text">小補充：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果想帶參數"><span class="nav-number">1.1.</span> <span class="nav-text">如果想帶參數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scope本身可以帶入scope-串接"><span class="nav-number">1.2.</span> <span class="nav-text">scope本身可以帶入scope(串接)</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/LouiswuYJ.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/LouiswuYJ.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/LouiswuYJ.github.io/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/LouiswuYJ.github.io/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/LouiswuYJ.github.io/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 Louis&#39;s Blog All Rights Reserved.
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
+    
+
+</script>
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/fancybox/jquery.fancybox.css">
+  <script src="/LouiswuYJ.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/LouiswuYJ.github.io/js/script.js"></script>
+<script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
+<script src="/LouiswuYJ.github.io/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151094658-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

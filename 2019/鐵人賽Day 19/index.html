@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Louis&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="鐵人賽Ruby on Rails" />
+  
+  
+  
+  
+  <meta name="description" content="Day19: Rails中神奇的spring stop您有遇過rails g migration時卡住嗎？您有rails sever打不開的問題嗎？trivago 意外的查到的資料不多，所以這篇僅擷取Rails REARDME.md來簡單翻譯一下。 spring stop常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不">
+<meta name="keywords" content="鐵人賽,Ruby on Rails">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day19: Rails中神奇的spring stop">
+<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019&#x2F;index.html">
+<meta property="og:site_name" content="Louis&#39;s Blog">
+<meta property="og:description" content="Day19: Rails中神奇的spring stop您有遇過rails g migration時卡住嗎？您有rails sever打不開的問題嗎？trivago 意外的查到的資料不多，所以這篇僅擷取Rails REARDME.md來簡單翻譯一下。 spring stop常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-09-29T08:55:14.398Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Louis&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/LouiswuYJ.github.io/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/style.css">
+
+  <script src="/LouiswuYJ.github.io/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/bootstrap.css" >
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/fashion.css" >
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50" style="overflow-y: 0">
+
+
+  
+
+  <div class="site-header-image">
+    <!-- <img id="originBg" width="100%" alt="Hike News" src=""> -->
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <!-- <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src=""> -->
+  </div>
+
+  <!-- <script>
+      var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+        document.getElementById("blurBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/LouiswuYJ.github.io/' + imgUrls[random];
+        document.getElementById("blurBg").src='/LouiswuYJ.github.io/' + imgUrls[random];
+      }
+  </script> -->
+
+
+
+
+<header id="allheader" class="site-header" role="banner"
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/LouiswuYJ.github.io/" title="Louis&#39;s Blog" rel="home"> Louis&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Stressed is just desserts if you can reverse.</div>
+          
+
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-鐵人賽Day 19" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Day19: Rails中神奇的spring stop
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" class="article-date">
+	  <time datetime="2019-10-02T04:10:40.000Z" itemprop="datePublished">October 2, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+    </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day19-Rails中神奇的spring-stop"><a href="#Day19-Rails中神奇的spring-stop" class="headerlink" title="Day19: Rails中神奇的spring stop"></a>Day19: Rails中神奇的spring stop</h1><h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
+<p>意外的查到的資料不多，所以這篇僅擷取Rails <a href="https://github.com/rails/spring/blob/master/README.md" target="_blank" rel="noopener">REARDME.md</a>來簡單翻譯一下。</p>
+<h2 id="spring-stop"><a href="#spring-stop" class="headerlink" title="spring stop"></a>spring stop</h2><p>常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不出來這狀況，但只要下了<code>spring stop</code>通常就解了？</p>
+<p>Rails在4.1版本後新增了<code>srping stop</code>功能，來看看rails guide寫什麼：</p>
+<blockquote>
+<p>Spring 會預加載你的 Rails 應用程式。保持應用程式在背景執行，如此一來在執行 Rails 命令時：如跑測試、rake、migrate 時，不用每次都重啟 Rails 應用程式，加速你的開發流程。</p>
+</blockquote>
+<p>簡單來說就是應用程式預加載器，就像加速器一樣的概念。</p>
+<h2 id="spring-stop的特性"><a href="#spring-stop的特性" class="headerlink" title="spring stop的特性"></a>spring stop的特性</h2><ol>
+<li>在背景自動執行，只開啟終端機並進入rails資料夾就會自動執行</li>
+<li>每次執行時重新載入你的rails專案中的code</li>
+<li>當config、initializer、gem dependencies有更新時重新啟動</li>
+</ol>
+<h2 id="spring-stop的運行"><a href="#spring-stop的運行" class="headerlink" title="spring stop的運行"></a>spring stop的運行</h2><p>建立一個新的Rails專案並執行<code>rails generate scaffold post name:string</code></p>
+<p>打開終端機測試一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ time bin/rake <span class="built_in">test</span> <span class="built_in">test</span>/controllers/posts_controller_test.rb</span><br><span class="line">Running via Spring preloader <span class="keyword">in</span> process 2734</span><br><span class="line">Run options:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Running tests:</span></span><br><span class="line"></span><br><span class="line">.......</span><br><span class="line"></span><br><span class="line">Finished tests <span class="keyword">in</span> 0.127245s, 55.0121 tests/s, 78.5887 assertions/s.</span><br><span class="line"></span><br><span class="line">7 tests, 10 assertions, 0 failures, 0 errors, 0 skips</span><br><span class="line"></span><br><span class="line">real    0m2.165s</span><br><span class="line">user    0m0.281s</span><br><span class="line">sys     0m0.066s</span><br></pre></td></tr></table></figure>
+
+<p>跑的速度不算特別快，因為是第一次執行這個專案，所以花的時間會比較長</p>
+<p>來看一下spring的狀態：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ bin/spring status</span><br><span class="line">Spring is running:</span><br><span class="line"></span><br><span class="line">26150 spring server | spring-demo-app | started 3 secs ago</span><br><span class="line">26155 spring app    | spring-demo-app | started 3 secs ago | <span class="built_in">test</span> mode</span><br></pre></td></tr></table></figure>
+
+<p>再跑一次就可以發現速度快很多：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ time bin/rake <span class="built_in">test</span> <span class="built_in">test</span>/controllers/posts_controller_test.rb</span><br><span class="line">Running via Spring preloader <span class="keyword">in</span> process 8352</span><br><span class="line">Run options:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Running tests:</span></span><br><span class="line"></span><br><span class="line">.......</span><br><span class="line"></span><br><span class="line">Finished tests <span class="keyword">in</span> 0.176896s, 39.5714 tests/s, 56.5305 assertions/s.</span><br><span class="line"></span><br><span class="line">7 tests, 10 assertions, 0 failures, 0 errors, 0 skips</span><br><span class="line"></span><br><span class="line">real    0m0.610s</span><br><span class="line">user    0m0.276s</span><br><span class="line">sys     0m0.059s</span><br></pre></td></tr></table></figure>
+
+<p>在coding時做的變更，會根據你在更新哪個檔案去判別是否要重新啟動後台。</p>
+<p>舉例來說當我們修改application file或是test file時，相關的變更會再下一次執行時變更，你只需要重新刷瀏覽器，但後台系統不必重新啟動。</p>
+<p>但當如果我們修改啟動應用程式所需的檔案，例如：configs, initializers, gemfile時，則後台需要重新啟動應用程式，而且會自動執行。</p>
+<p>例如編輯<code>config/application.rb</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ touch config/application.rb</span><br><span class="line">$ bin/spring status</span><br><span class="line">Spring is running:</span><br><span class="line"></span><br><span class="line">26150 spring server | spring-demo-app | started 36 secs ago</span><br><span class="line">26556 spring app    | spring-demo-app | started 1 sec ago | <span class="built_in">test</span> mode</span><br></pre></td></tr></table></figure>
+
+<p>spring會偵測到config底下有檔案被更新後，就會自動啟動。</p>
+<hr>
+<p>也許是spring的關係，所以常常會將我們不需要的東西先預載入到後台，導致我們在執行migration, rails s等會發生問題，所以才會需要下<code>spring stop</code>來終止預先載入的行為。</p>
+<p>這只是我的推測…如果有錯的話歡迎指正。</p>
+<p>參考資料：</p>
+<p><a href="https://github.com/rails/spring/blob/master/README.md" target="_blank" rel="noopener">Rails/spring/REARDME.md</a><br><a href="https://rails.ruby.tw/4_1_release_notes.html#%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E9%A0%90%E5%8A%A0%E8%BC%89%E5%99%A8%EF%BC%9Aspring" target="_blank" rel="noopener">Ruby on Rails 4.1 發佈記</a></p>
+<blockquote>
+<p>“If you really want something, you have to be prepared to work very hard, take advantage of opportunity, and above all never give up.”</p>
+<p>— Jane Goodall, Ethologist</p>
+</blockquote>
+
+      
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+    
+    
+        <h1 id="Day19-Rails中神奇的spring-stop"><a href="#Day19-Rails中神奇的spring-stop" class="headerlink" title="Day19: Rails中神奇的spring stop"></a>Day19: Rails中神奇的spring stop</h1><h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
+<p>意外的查到的資料不多，所以這篇僅擷取Rails <a href="https://github.com/rails/spring/blob/master/README.md" target="_blank" rel="noopener">REARDME.md</a>來簡單翻譯一下。</p>
+<h2 id="spring-stop"><a href="#spring-stop" class="headerlink" title="spring stop"></a>spring stop</h2><p>常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不出來這狀況，但只要下了<code>spring stop</code>通常就解了？</p>
+<p>Rails在4.1版本後新增了<code>srping stop</code>功能，來看看rails guide寫什麼：</p>
+<blockquote>
+<p>Spring 會預加載你的 Rails 應用程式。保持應用程式在背景執行，如此一來在執行 Rails 命令時：如跑測試、rake、migrate 時，不用每次都重啟 Rails 應用程式，加速你的開發流程。</p>
+</blockquote>
+<p>簡單來說就是應用程式預加載器，就像加速器一樣的概念。</p>
+<h2 id="spring-stop的特性"><a href="#spring-stop的特性" class="headerlink" title="spring stop的特性"></a>spring stop的特性</h2><ol>
+<li>在背景自動執行，只開啟終端機並進入rails資料夾就會自動執行</li>
+<li>每次執行時重新載入你的rails專案中的code</li>
+<li>當config、initializer、gem dependencies有更新時重新啟動</li>
+</ol>
+<h2 id="spring-stop的運行"><a href="#spring-stop的運行" class="headerlink" title="spring stop的運行"></a>spring stop的運行</h2><p>建立一個新的Rails專案並執行<code>rails generate scaffold post name:string</code></p>
+<p>打開終端機測試一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ time bin/rake <span class="built_in">test</span> <span class="built_in">test</span>/controllers/posts_controller_test.rb</span><br><span class="line">Running via Spring preloader <span class="keyword">in</span> process 2734</span><br><span class="line">Run options:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Running tests:</span></span><br><span class="line"></span><br><span class="line">.......</span><br><span class="line"></span><br><span class="line">Finished tests <span class="keyword">in</span> 0.127245s, 55.0121 tests/s, 78.5887 assertions/s.</span><br><span class="line"></span><br><span class="line">7 tests, 10 assertions, 0 failures, 0 errors, 0 skips</span><br><span class="line"></span><br><span class="line">real    0m2.165s</span><br><span class="line">user    0m0.281s</span><br><span class="line">sys     0m0.066s</span><br></pre></td></tr></table></figure>
+
+<p>跑的速度不算特別快，因為是第一次執行這個專案，所以花的時間會比較長</p>
+<p>來看一下spring的狀態：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ bin/spring status</span><br><span class="line">Spring is running:</span><br><span class="line"></span><br><span class="line">26150 spring server | spring-demo-app | started 3 secs ago</span><br><span class="line">26155 spring app    | spring-demo-app | started 3 secs ago | <span class="built_in">test</span> mode</span><br></pre></td></tr></table></figure>
+
+<p>再跑一次就可以發現速度快很多：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ time bin/rake <span class="built_in">test</span> <span class="built_in">test</span>/controllers/posts_controller_test.rb</span><br><span class="line">Running via Spring preloader <span class="keyword">in</span> process 8352</span><br><span class="line">Run options:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Running tests:</span></span><br><span class="line"></span><br><span class="line">.......</span><br><span class="line"></span><br><span class="line">Finished tests <span class="keyword">in</span> 0.176896s, 39.5714 tests/s, 56.5305 assertions/s.</span><br><span class="line"></span><br><span class="line">7 tests, 10 assertions, 0 failures, 0 errors, 0 skips</span><br><span class="line"></span><br><span class="line">real    0m0.610s</span><br><span class="line">user    0m0.276s</span><br><span class="line">sys     0m0.059s</span><br></pre></td></tr></table></figure>
+
+<p>在coding時做的變更，會根據你在更新哪個檔案去判別是否要重新啟動後台。</p>
+<p>舉例來說當我們修改application file或是test file時，相關的變更會再下一次執行時變更，你只需要重新刷瀏覽器，但後台系統不必重新啟動。</p>
+<p>但當如果我們修改啟動應用程式所需的檔案，例如：configs, initializers, gemfile時，則後台需要重新啟動應用程式，而且會自動執行。</p>
+<p>例如編輯<code>config/application.rb</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ touch config/application.rb</span><br><span class="line">$ bin/spring status</span><br><span class="line">Spring is running:</span><br><span class="line"></span><br><span class="line">26150 spring server | spring-demo-app | started 36 secs ago</span><br><span class="line">26556 spring app    | spring-demo-app | started 1 sec ago | <span class="built_in">test</span> mode</span><br></pre></td></tr></table></figure>
+
+<p>spring會偵測到config底下有檔案被更新後，就會自動啟動。</p>
+<hr>
+<p>也許是spring的關係，所以常常會將我們不需要的東西先預載入到後台，導致我們在執行migration, rails s等會發生問題，所以才會需要下<code>spring stop</code>來終止預先載入的行為。</p>
+<p>這只是我的推測…如果有錯的話歡迎指正。</p>
+<p>參考資料：</p>
+<p><a href="https://github.com/rails/spring/blob/master/README.md" target="_blank" rel="noopener">Rails/spring/REARDME.md</a><br><a href="https://rails.ruby.tw/4_1_release_notes.html#%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E9%A0%90%E5%8A%A0%E8%BC%89%E5%99%A8%EF%BC%9Aspring" target="_blank" rel="noopener">Ruby on Rails 4.1 發佈記</a></p>
+<blockquote>
+<p>“If you really want something, you have to be prepared to work very hard, take advantage of opportunity, and above all never give up.”</p>
+<p>— Jane Goodall, Ethologist</p>
+</blockquote>
+
+        </div>
+    
+
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+  <!-- <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
+
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">
+          鐵人賽
+        </a>
+      </li>
+    </ul>
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">
+          Ruby on Rails
+        </a>
+      </li>
+    </ul>
+  
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">previous post</strong>
+      <div class="article-nav-title">Day18: 淺談Rails的表單: form_with</div>
+    </a>
+  
+
+  
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">next post</strong>
+      <div class="article-nav-title">
+        
+          Day20: 簡易Rails實作(上)
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day19-Rails中神奇的spring-stop"><span class="nav-number">1.</span> <span class="nav-text">Day19: Rails中神奇的spring stop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#您有遇過rails-g-migration時卡住嗎？"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">您有遇過rails g migration時卡住嗎？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#您有rails-sever打不開的問題嗎？"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">您有rails sever打不開的問題嗎？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-stop"><span class="nav-number">1.1.</span> <span class="nav-text">spring stop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-stop的特性"><span class="nav-number">1.2.</span> <span class="nav-text">spring stop的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-stop的運行"><span class="nav-number">1.3.</span> <span class="nav-text">spring stop的運行</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/LouiswuYJ.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/LouiswuYJ.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/LouiswuYJ.github.io/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/LouiswuYJ.github.io/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/LouiswuYJ.github.io/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 Louis&#39;s Blog All Rights Reserved.
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
+    
+
+</script>
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/fancybox/jquery.fancybox.css">
+  <script src="/LouiswuYJ.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/LouiswuYJ.github.io/js/script.js"></script>
+<script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
+<script src="/LouiswuYJ.github.io/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151094658-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

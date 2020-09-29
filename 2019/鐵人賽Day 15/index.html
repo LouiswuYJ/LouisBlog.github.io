@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Louis&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="鐵人賽Ruby on Rails" />
+  
+  
+  
+  
+  <meta name="description" content="在Ruby的宇宙裡，有很多用Ruby寫成的套件包或是框架可以使用，包含rails也是(第6行)。 Gemfile是Rails new一個新專案時附加的檔案(如上圖rails 5.2.3)，主要管理此Rails專案該會使用哪些gem檔案及版本號，在跑bundle install時就會安裝到這個專案，所以可以視為紀錄這個專案該使用哪些gem的檔案，讓專案被其他使用者pull下來時，都能根據Gemfi">
+<meta name="keywords" content="鐵人賽,Ruby on Rails">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day15: Rails中的Gemfile">
+<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015&#x2F;index.html">
+<meta property="og:site_name" content="Louis&#39;s Blog">
+<meta property="og:description" content="在Ruby的宇宙裡，有很多用Ruby寫成的套件包或是框架可以使用，包含rails也是(第6行)。 Gemfile是Rails new一個新專案時附加的檔案(如上圖rails 5.2.3)，主要管理此Rails專案該會使用哪些gem檔案及版本號，在跑bundle install時就會安裝到這個專案，所以可以視為紀錄這個專案該使用哪些gem的檔案，讓專案被其他使用者pull下來時，都能根據Gemfi">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;P3tMB5y.png">
+<meta property="og:updated_time" content="2020-09-29T08:55:02.179Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;P3tMB5y.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Louis&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/LouiswuYJ.github.io/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/style.css">
+
+  <script src="/LouiswuYJ.github.io/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/bootstrap.css" >
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/fashion.css" >
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50" style="overflow-y: 0">
+
+
+  
+
+  <div class="site-header-image">
+    <!-- <img id="originBg" width="100%" alt="Hike News" src=""> -->
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <!-- <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src=""> -->
+  </div>
+
+  <!-- <script>
+      var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+        document.getElementById("blurBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/LouiswuYJ.github.io/' + imgUrls[random];
+        document.getElementById("blurBg").src='/LouiswuYJ.github.io/' + imgUrls[random];
+      }
+  </script> -->
+
+
+
+
+<header id="allheader" class="site-header" role="banner"
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/LouiswuYJ.github.io/" title="Louis&#39;s Blog" rel="home"> Louis&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Stressed is just desserts if you can reverse.</div>
+          
+
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-鐵人賽Day 15" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Day15: Rails中的Gemfile
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/" class="article-date">
+	  <time datetime="2019-09-28T04:10:40.000Z" itemprop="datePublished">September 28, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+    </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/P3tMB5y.png" alt=""></p>
+<p>在Ruby的宇宙裡，有很多用Ruby寫成的套件包或是框架可以使用，包含rails也是(第6行)。</p>
+<p>Gemfile是Rails new一個新專案時附加的檔案(如上圖rails 5.2.3)，主要管理此Rails專案該會使用哪些gem檔案及版本號，在跑<code>bundle install</code>時就會安裝到這個專案，所以可以視為紀錄這個專案該使用哪些gem的檔案，讓專案被其他使用者pull下來時，都能根據Gemfile裡的gem去安裝。</p>
+<h2 id="裡面怎麼那麼多東西？"><a href="#裡面怎麼那麼多東西？" class="headerlink" title="裡面怎麼那麼多東西？"></a>裡面怎麼那麼多東西？</h2><p>讓我們來稍微檢視一下，預設的Gemfile到底有哪些東西，分別是做什麼用的？(抱歉可能沒辦法一個一個檢視…)</p>
+<p>告訴Rails該去哪裡抓Gem下來用，預設為 rubygems.org</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source &quot;https://rubygems.org”</span><br></pre></td></tr></table></figure>
+<p>還會再多設置一個GitHub的URL當做備用來源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git_source(:github) &#123; |repo| &quot;https://github.com/#&#123;repo&#125;.git” &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="版本號"><a href="#版本號" class="headerlink" title="版本號"></a>版本號</h3><p>在ruby gem常常會看到後面接”數字.數字.數字“，可以解讀為：<br>“#{major}.#{minor}.#{build}”</p>
+<blockquote>
+<p>主要版號(major)：功能大改，公開的 API 做了不少修正，通常沒辦法向下不相容<br>次要版號(minor)：加了某些新功能，但不影響其它功能，向下相容<br>修訂版號(build)：對現有的功能做了小幅度的修正，可向下相容</p>
+<p>by Ruby 語法放大鏡</p>
+</blockquote>
+<p>像最近rails從5.2.3更新為6.0.0，就是很大改版，就要相對注意相容性的問題。</p>
+<h3 id="gem的版本號"><a href="#gem的版本號" class="headerlink" title="gem的版本號"></a>gem的版本號</h3><p>可以看到有些gem的後面有加<code>~&gt;</code> <code>3.2.1</code> <code>&gt;=</code>或沒加等等這幾種：</p>
+<ul>
+<li><p>gem後沒加：安裝最新的”穩定”版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;kaminari&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‘ ‘：指定版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &quot;rails&quot;, &apos;5.2.3&apos;</span><br></pre></td></tr></table></figure></li>
+<li><p>“&gt;=, &lt;：安裝含1.1版本以上 ~ 不包含1.1.4版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;pg&apos;, &apos;&gt;= 1.1&apos;, &apos;&lt; 1.1.4&apos;</span><br></pre></td></tr></table></figure></li>
+<li><p>~&gt;：算是縮寫，使用1.9版本以上，但2.0以下(不包括2.0)的最新版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;omniauth&apos;, &apos;~&gt; 1.9&apos;</span><br><span class="line"></span><br><span class="line">#等同於</span><br><span class="line"></span><br><span class="line">gem &apos;omniauth&apos;, &apos;&gt;= 1.9&apos;, &apos;&lt; 2.0&apos;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Gemfile的Grop"><a href="#Gemfile的Grop" class="headerlink" title="Gemfile的Grop"></a>Gemfile的Grop</h3><p>大約分為三種，Product（上線/發佈）, Development（開發）, Test（測試）。</p>
+<p>Product 上線 / 發佈：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;rails&apos;, &apos;~&gt; 5.2.3&apos;</span><br><span class="line"></span><br><span class="line">沒有在grop裡代表上線/發佈時才會使用到</span><br></pre></td></tr></table></figure>
+<p>Development（開發）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group :development do</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">寫在Development，這裡的 gem 會在開發時使用，上線時不會用</span><br></pre></td></tr></table></figure>
+
+<p>Test (測試）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group :test do</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">寫在Test裡，這裡的 gem 會在開發時使用，上線時不會用</span><br></pre></td></tr></table></figure>
+
+<p>Development, Test（開發,測試）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group :development, :test do</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">寫在Development裡, Test，這裡的 gem 會在開發及測試時使用，上線時不會用</span><br></pre></td></tr></table></figure>
+
+<p>參考資料：<br><a href="https://tosbourn.com/what-is-the-gemfile/" target="_blank" rel="noopener">What is a Gemfile?</a><br><a href="https://kaochenlong.com/2016/05/02/gemfile/" target="_blank" rel="noopener">Ruby 語法放大鏡</a></p>
+<blockquote>
+<p>“If you’re walking down the right path and you’re willing to keep walking, eventually you’ll make progress.”</p>
+<p>— Barack Obama, the 44th U.S. President</p>
+</blockquote>
+
+      
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+    
+    
+        <p><img src="https://i.imgur.com/P3tMB5y.png" alt=""></p>
+<p>在Ruby的宇宙裡，有很多用Ruby寫成的套件包或是框架可以使用，包含rails也是(第6行)。</p>
+<p>Gemfile是Rails new一個新專案時附加的檔案(如上圖rails 5.2.3)，主要管理此Rails專案該會使用哪些gem檔案及版本號，在跑<code>bundle install</code>時就會安裝到這個專案，所以可以視為紀錄這個專案該使用哪些gem的檔案，讓專案被其他使用者pull下來時，都能根據Gemfile裡的gem去安裝。</p>
+<h2 id="裡面怎麼那麼多東西？"><a href="#裡面怎麼那麼多東西？" class="headerlink" title="裡面怎麼那麼多東西？"></a>裡面怎麼那麼多東西？</h2><p>讓我們來稍微檢視一下，預設的Gemfile到底有哪些東西，分別是做什麼用的？(抱歉可能沒辦法一個一個檢視…)</p>
+<p>告訴Rails該去哪裡抓Gem下來用，預設為 rubygems.org</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source &quot;https://rubygems.org”</span><br></pre></td></tr></table></figure>
+<p>還會再多設置一個GitHub的URL當做備用來源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git_source(:github) &#123; |repo| &quot;https://github.com/#&#123;repo&#125;.git” &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="版本號"><a href="#版本號" class="headerlink" title="版本號"></a>版本號</h3><p>在ruby gem常常會看到後面接”數字.數字.數字“，可以解讀為：<br>“#{major}.#{minor}.#{build}”</p>
+<blockquote>
+<p>主要版號(major)：功能大改，公開的 API 做了不少修正，通常沒辦法向下不相容<br>次要版號(minor)：加了某些新功能，但不影響其它功能，向下相容<br>修訂版號(build)：對現有的功能做了小幅度的修正，可向下相容</p>
+<p>by Ruby 語法放大鏡</p>
+</blockquote>
+<p>像最近rails從5.2.3更新為6.0.0，就是很大改版，就要相對注意相容性的問題。</p>
+<h3 id="gem的版本號"><a href="#gem的版本號" class="headerlink" title="gem的版本號"></a>gem的版本號</h3><p>可以看到有些gem的後面有加<code>~&gt;</code> <code>3.2.1</code> <code>&gt;=</code>或沒加等等這幾種：</p>
+<ul>
+<li><p>gem後沒加：安裝最新的”穩定”版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;kaminari&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>‘ ‘：指定版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &quot;rails&quot;, &apos;5.2.3&apos;</span><br></pre></td></tr></table></figure></li>
+<li><p>“&gt;=, &lt;：安裝含1.1版本以上 ~ 不包含1.1.4版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;pg&apos;, &apos;&gt;= 1.1&apos;, &apos;&lt; 1.1.4&apos;</span><br></pre></td></tr></table></figure></li>
+<li><p>~&gt;：算是縮寫，使用1.9版本以上，但2.0以下(不包括2.0)的最新版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;omniauth&apos;, &apos;~&gt; 1.9&apos;</span><br><span class="line"></span><br><span class="line">#等同於</span><br><span class="line"></span><br><span class="line">gem &apos;omniauth&apos;, &apos;&gt;= 1.9&apos;, &apos;&lt; 2.0&apos;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Gemfile的Grop"><a href="#Gemfile的Grop" class="headerlink" title="Gemfile的Grop"></a>Gemfile的Grop</h3><p>大約分為三種，Product（上線/發佈）, Development（開發）, Test（測試）。</p>
+<p>Product 上線 / 發佈：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;rails&apos;, &apos;~&gt; 5.2.3&apos;</span><br><span class="line"></span><br><span class="line">沒有在grop裡代表上線/發佈時才會使用到</span><br></pre></td></tr></table></figure>
+<p>Development（開發）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group :development do</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">寫在Development，這裡的 gem 會在開發時使用，上線時不會用</span><br></pre></td></tr></table></figure>
+
+<p>Test (測試）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group :test do</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">寫在Test裡，這裡的 gem 會在開發時使用，上線時不會用</span><br></pre></td></tr></table></figure>
+
+<p>Development, Test（開發,測試）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group :development, :test do</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">寫在Development裡, Test，這裡的 gem 會在開發及測試時使用，上線時不會用</span><br></pre></td></tr></table></figure>
+
+<p>參考資料：<br><a href="https://tosbourn.com/what-is-the-gemfile/" target="_blank" rel="noopener">What is a Gemfile?</a><br><a href="https://kaochenlong.com/2016/05/02/gemfile/" target="_blank" rel="noopener">Ruby 語法放大鏡</a></p>
+<blockquote>
+<p>“If you’re walking down the right path and you’re willing to keep walking, eventually you’ll make progress.”</p>
+<p>— Barack Obama, the 44th U.S. President</p>
+</blockquote>
+
+        </div>
+    
+
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+  <!-- <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
+
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">
+          鐵人賽
+        </a>
+      </li>
+    </ul>
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">
+          Ruby on Rails
+        </a>
+      </li>
+    </ul>
+  
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">previous post</strong>
+      <div class="article-nav-title">Day14: 淺談Model資料表關聯</div>
+    </a>
+  
+
+  
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">next post</strong>
+      <div class="article-nav-title">
+        
+          Day16: 淺談Rails裡的resources
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#裡面怎麼那麼多東西？"><span class="nav-number">1.</span> <span class="nav-text">裡面怎麼那麼多東西？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本號"><span class="nav-number">1.1.</span> <span class="nav-text">版本號</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gem的版本號"><span class="nav-number">1.2.</span> <span class="nav-text">gem的版本號</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gemfile的Grop"><span class="nav-number">1.3.</span> <span class="nav-text">Gemfile的Grop</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/LouiswuYJ.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/LouiswuYJ.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/LouiswuYJ.github.io/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/LouiswuYJ.github.io/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/LouiswuYJ.github.io/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 Louis&#39;s Blog All Rights Reserved.
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
+    
+
+</script>
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/fancybox/jquery.fancybox.css">
+  <script src="/LouiswuYJ.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/LouiswuYJ.github.io/js/script.js"></script>
+<script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
+<script src="/LouiswuYJ.github.io/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151094658-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

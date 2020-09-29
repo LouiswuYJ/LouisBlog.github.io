@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Louis&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="鐵人賽Ruby on Rails" />
+  
+  
+  
+  
+  <meta name="description" content="在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的application_controller.rb來取用。 已正在進行的專案為例，每個User有一台購物車，除了devise給我們現有的current_user之外，我想在寫個current_cart給每個controller用，此時就可以把定義current_cart的方法寫在application_">
+<meta name="keywords" content="鐵人賽,Ruby on Rails">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day27: Rails關心你的胖Model - concern">
+<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027&#x2F;index.html">
+<meta property="og:site_name" content="Louis&#39;s Blog">
+<meta property="og:description" content="在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的application_controller.rb來取用。 已正在進行的專案為例，每個User有一台購物車，除了devise給我們現有的current_user之外，我想在寫個current_cart給每個controller用，此時就可以把定義current_cart的方法寫在application_">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;2zmCaE9.png">
+<meta property="og:updated_time" content="2020-09-29T08:55:44.689Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;2zmCaE9.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Louis&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/LouiswuYJ.github.io/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/style.css">
+
+  <script src="/LouiswuYJ.github.io/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/bootstrap.css" >
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/fashion.css" >
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50" style="overflow-y: 0">
+
+
+  
+
+  <div class="site-header-image">
+    <!-- <img id="originBg" width="100%" alt="Hike News" src=""> -->
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <!-- <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src=""> -->
+  </div>
+
+  <!-- <script>
+      var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+        document.getElementById("blurBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/LouiswuYJ.github.io/' + imgUrls[random];
+        document.getElementById("blurBg").src='/LouiswuYJ.github.io/' + imgUrls[random];
+      }
+  </script> -->
+
+
+
+
+<header id="allheader" class="site-header" role="banner"
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/LouiswuYJ.github.io/" title="Louis&#39;s Blog" rel="home"> Louis&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Stressed is just desserts if you can reverse.</div>
+          
+
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-鐵人賽Day 27" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Day27: Rails關心你的胖Model - concern
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/" class="article-date">
+	  <time datetime="2019-10-10T04:10:40.000Z" itemprop="datePublished">October 10, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+    </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.imgur.com/2zmCaE9.png" alt=""></p>
+<p>在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的<code>application_controller.rb</code>來取用。</p>
+<p>已正在進行的專案為例，每個User有一台購物車，除了devise給我們現有的<code>current_user</code>之外，我想在寫個<code>current_cart</code>給每個controller用，此時就可以把定義<code>current_cart</code>的方法寫在<code>application_controller.rb</code>。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ActionController::Base</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @current_cart <span class="params">||</span>= Cart.find_or_create_by(<span class="symbol">user:</span> current_user)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>但有時候並不是每個controller或Model都需要用到這個方法，尤其是把所有要用的方法寫在該類別的Model，會導致Model越來越肥，controller越來越瘦。</p>
+<h2 id="有需要的時候再拿進來"><a href="#有需要的時候再拿進來" class="headerlink" title="有需要的時候再拿進來"></a>有需要的時候再拿進來</h2><p>為了解決這個問題，rails在models下有個資料夾名稱<code>concerns</code>，把定義方法寫在這，在該controller有需要的時候再引入使用就好。</p>
+<p>新增一個檔案 usercart.rb</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Usercart</span></span></span><br><span class="line">  extend ActiveSupport::Concern</span><br><span class="line"></span><br><span class="line">  included <span class="keyword">do</span></span><br><span class="line">    has_one <span class="symbol">:cart</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">module</span> <span class="title">ClassMethods</span></span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(search)</span></span></span><br><span class="line">      <span class="keyword">if</span> search</span><br><span class="line">        where([<span class="string">'title || description || address LIKE ?'</span>, <span class="string">"%<span class="subst">#&#123;search&#125;</span>%"</span>])</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        all</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @current_cart <span class="params">||</span>= Cart.find_or_create_by(<span class="symbol">user:</span> current_user)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><code>included do ...end</code> 當這個module被include到Model時會做的事：(一對一)有一台購物車<br><code>ClassMethod</code> 在這裡定義的方法被include時會變成類別方法：可以直接針對該Model做搜尋的方法。<br><code>current_cart</code> 被include之後會變成該類別的實體方法：如果有找到車就用這台，沒有車就生一台給user。</p>
+<p>此時在User的Model加入：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ApplicationRecord</span></span><br><span class="line">    <span class="keyword">include</span> Usercart</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>就可以擁有在concern資料夾下內 usercart.rb 裡的方法可以用了，相對的如果你在其他的Model也想要用的話，再直接include進該Model就好。</p>
+<p>參考資料：<br><a href="https://stackoverflow.com/questions/14541823/how-to-use-concerns-in-rails-4" target="_blank" rel="noopener">How to use concerns in Rails 4</a><br><a href="https://railsbook.tw/chapters/25-organize-your-code.html" target="_blank" rel="noopener">Rails 程式碼整理術（入門）</a></p>
+<blockquote>
+<p>“Live today. Not yesterday. Not tomorrow. Inhabit your moments. Don’t rent them out to tomorrow.”</p>
+<p>– Jerry Spinelli, Writer</p>
+</blockquote>
+
+      
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+    
+    
+        <p><img src="https://i.imgur.com/2zmCaE9.png" alt=""></p>
+<p>在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的<code>application_controller.rb</code>來取用。</p>
+<p>已正在進行的專案為例，每個User有一台購物車，除了devise給我們現有的<code>current_user</code>之外，我想在寫個<code>current_cart</code>給每個controller用，此時就可以把定義<code>current_cart</code>的方法寫在<code>application_controller.rb</code>。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ActionController::Base</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @current_cart <span class="params">||</span>= Cart.find_or_create_by(<span class="symbol">user:</span> current_user)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>但有時候並不是每個controller或Model都需要用到這個方法，尤其是把所有要用的方法寫在該類別的Model，會導致Model越來越肥，controller越來越瘦。</p>
+<h2 id="有需要的時候再拿進來"><a href="#有需要的時候再拿進來" class="headerlink" title="有需要的時候再拿進來"></a>有需要的時候再拿進來</h2><p>為了解決這個問題，rails在models下有個資料夾名稱<code>concerns</code>，把定義方法寫在這，在該controller有需要的時候再引入使用就好。</p>
+<p>新增一個檔案 usercart.rb</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Usercart</span></span></span><br><span class="line">  extend ActiveSupport::Concern</span><br><span class="line"></span><br><span class="line">  included <span class="keyword">do</span></span><br><span class="line">    has_one <span class="symbol">:cart</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">module</span> <span class="title">ClassMethods</span></span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(search)</span></span></span><br><span class="line">      <span class="keyword">if</span> search</span><br><span class="line">        where([<span class="string">'title || description || address LIKE ?'</span>, <span class="string">"%<span class="subst">#&#123;search&#125;</span>%"</span>])</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        all</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_cart</span></span></span><br><span class="line">    @current_cart <span class="params">||</span>= Cart.find_or_create_by(<span class="symbol">user:</span> current_user)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><code>included do ...end</code> 當這個module被include到Model時會做的事：(一對一)有一台購物車<br><code>ClassMethod</code> 在這裡定義的方法被include時會變成類別方法：可以直接針對該Model做搜尋的方法。<br><code>current_cart</code> 被include之後會變成該類別的實體方法：如果有找到車就用這台，沒有車就生一台給user。</p>
+<p>此時在User的Model加入：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ApplicationRecord</span></span><br><span class="line">    <span class="keyword">include</span> Usercart</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>就可以擁有在concern資料夾下內 usercart.rb 裡的方法可以用了，相對的如果你在其他的Model也想要用的話，再直接include進該Model就好。</p>
+<p>參考資料：<br><a href="https://stackoverflow.com/questions/14541823/how-to-use-concerns-in-rails-4" target="_blank" rel="noopener">How to use concerns in Rails 4</a><br><a href="https://railsbook.tw/chapters/25-organize-your-code.html" target="_blank" rel="noopener">Rails 程式碼整理術（入門）</a></p>
+<blockquote>
+<p>“Live today. Not yesterday. Not tomorrow. Inhabit your moments. Don’t rent them out to tomorrow.”</p>
+<p>– Jerry Spinelli, Writer</p>
+</blockquote>
+
+        </div>
+    
+
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+  <!-- <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
+
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">
+          鐵人賽
+        </a>
+      </li>
+    </ul>
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">
+          Ruby on Rails
+        </a>
+      </li>
+    </ul>
+  
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">previous post</strong>
+      <div class="article-nav-title">Day26: Rails中的view_helper</div>
+    </a>
+  
+
+  
+    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">next post</strong>
+      <div class="article-nav-title">
+        
+          Day28: 用個Github來版本控制吧 
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有需要的時候再拿進來"><span class="nav-number">1.</span> <span class="nav-text">有需要的時候再拿進來</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/LouiswuYJ.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/LouiswuYJ.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/LouiswuYJ.github.io/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/LouiswuYJ.github.io/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/LouiswuYJ.github.io/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 Louis&#39;s Blog All Rights Reserved.
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
+    
+
+</script>
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/LouiswuYJ.github.io/fancybox/jquery.fancybox.css">
+  <script src="/LouiswuYJ.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/LouiswuYJ.github.io/js/script.js"></script>
+<script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
+<script src="/LouiswuYJ.github.io/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151094658-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
