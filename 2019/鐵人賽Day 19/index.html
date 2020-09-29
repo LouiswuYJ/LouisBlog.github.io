@@ -11,15 +11,15 @@
   
   
   
-  <meta name="description" content="Day19: Rails中神奇的spring stop您有遇過rails g migration時卡住嗎？您有rails sever打不開的問題嗎？trivago 意外的查到的資料不多，所以這篇僅擷取Rails REARDME.md來簡單翻譯一下。 spring stop常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不">
+  <meta name="description" content="您有遇過rails g migration時卡住嗎？您有rails sever打不開的問題嗎？trivago 意外的查到的資料不多，所以這篇僅擷取Rails REARDME.md來簡單翻譯一下。 spring stop常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不出來這狀況，但只要下了spring stop通常就解了">
 <meta name="keywords" content="鐵人賽,Ruby on Rails">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day19: Rails中神奇的spring stop">
-<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;louiswuyj.site&#x2F;2019&#x2F;%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019&#x2F;index.html">
 <meta property="og:site_name" content="Louis&#39;s Blog">
-<meta property="og:description" content="Day19: Rails中神奇的spring stop您有遇過rails g migration時卡住嗎？您有rails sever打不開的問題嗎？trivago 意外的查到的資料不多，所以這篇僅擷取Rails REARDME.md來簡單翻譯一下。 spring stop常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不">
+<meta property="og:description" content="您有遇過rails g migration時卡住嗎？您有rails sever打不開的問題嗎？trivago 意外的查到的資料不多，所以這篇僅擷取Rails REARDME.md來簡單翻譯一下。 spring stop常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不出來這狀況，但只要下了spring stop通常就解了">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-09-29T08:55:14.398Z">
+<meta property="og:updated_time" content="2020-09-29T09:19:39.260Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Louis&#39;s Blog" type="application/atom+xml">
@@ -126,7 +126,7 @@
     <div id="wrap">
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-鐵人賽Day 19" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-2019/鐵人賽Day 19" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -142,7 +142,7 @@
     
     <div class="article-meta">
       
-	<a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" class="article-date">
+	<a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" class="article-date">
 	  <time datetime="2019-10-02T04:10:40.000Z" itemprop="datePublished">October 2, 2019</time>
 	</a>
 
@@ -154,7 +154,7 @@
     </div>
     <!-- <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Day19-Rails中神奇的spring-stop"><a href="#Day19-Rails中神奇的spring-stop" class="headerlink" title="Day19: Rails中神奇的spring stop"></a>Day19: Rails中神奇的spring stop</h1><h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
+        <h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
 <p>意外的查到的資料不多，所以這篇僅擷取Rails <a href="https://github.com/rails/spring/blob/master/README.md" target="_blank" rel="noopener">REARDME.md</a>來簡單翻譯一下。</p>
 <h2 id="spring-stop"><a href="#spring-stop" class="headerlink" title="spring stop"></a>spring stop</h2><p>常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不出來這狀況，但只要下了<code>spring stop</code>通常就解了？</p>
 <p>Rails在4.1版本後新增了<code>srping stop</code>功能，來看看rails guide寫什麼：</p>
@@ -204,7 +204,7 @@
         
     
     
-        <h1 id="Day19-Rails中神奇的spring-stop"><a href="#Day19-Rails中神奇的spring-stop" class="headerlink" title="Day19: Rails中神奇的spring stop"></a>Day19: Rails中神奇的spring stop</h1><h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
+        <h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
 <p>意外的查到的資料不多，所以這篇僅擷取Rails <a href="https://github.com/rails/spring/blob/master/README.md" target="_blank" rel="noopener">REARDME.md</a>來簡單翻譯一下。</p>
 <h2 id="spring-stop"><a href="#spring-stop" class="headerlink" title="spring stop"></a>spring stop</h2><p>常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不出來這狀況，但只要下了<code>spring stop</code>通常就解了？</p>
 <p>Rails在4.1版本後新增了<code>srping stop</code>功能，來看看rails guide寫什麼：</p>
@@ -285,14 +285,14 @@
     
 <nav id="article-nav">
   
-    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">previous post</strong>
       <div class="article-nav-title">Day18: 淺談Rails的表單: form_with</div>
     </a>
   
 
   
-    <a href="/LouiswuYJ.github.io/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">next post</strong>
       <div class="article-nav-title">
         
@@ -312,7 +312,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day19-Rails中神奇的spring-stop"><span class="nav-number">1.</span> <span class="nav-text">Day19: Rails中神奇的spring stop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#您有遇過rails-g-migration時卡住嗎？"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">您有遇過rails g migration時卡住嗎？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#您有rails-sever打不開的問題嗎？"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">您有rails sever打不開的問題嗎？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-stop"><span class="nav-number">1.1.</span> <span class="nav-text">spring stop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-stop的特性"><span class="nav-number">1.2.</span> <span class="nav-text">spring stop的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-stop的運行"><span class="nav-number">1.3.</span> <span class="nav-text">spring stop的運行</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#您有遇過rails-g-migration時卡住嗎？"><span class="nav-number">1.</span> <span class="nav-text">您有遇過rails g migration時卡住嗎？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#您有rails-sever打不開的問題嗎？"><span class="nav-number">2.</span> <span class="nav-text">您有rails sever打不開的問題嗎？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-stop"><span class="nav-number"></span> <span class="nav-text">spring stop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-stop的特性"><span class="nav-number"></span> <span class="nav-text">spring stop的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-stop的運行"><span class="nav-number"></span> <span class="nav-text">spring stop的運行</span></a>
     
     </div>
   </aside>
