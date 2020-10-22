@@ -3,7 +3,7 @@
   <entry>
     <title>簡介 OpenStruct 跟 Struct</title>
     <url>/LouiswuYJ.github.io/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/</url>
-    <content><![CDATA[<h1 id="簡介-OpenStruct-跟-Struct"><a href="#簡介-OpenStruct-跟-Struct" class="headerlink" title="簡介 OpenStruct 跟 Struct"></a>簡介 OpenStruct 跟 Struct</h1><p>還記得龍哥說，Ruby 是個物件化很徹底的程式語言，幾乎全部的東西都是物件(除了 block），我們更常使用 class 來實現物件導向，但若只是想做個小東西的話，其實也不一定需要寫到 polo 去解決。</p>
+    <content><![CDATA[<p>還記得龍哥說，Ruby 是個物件化很徹底的程式語言，幾乎全部的東西都是物件(除了 block），我們更常使用 class 來實現物件導向，但若只是想做個小東西的話，其實也不一定需要寫到 polo 去解決。</p>
 <h2 id="為什麼我們需要模擬class物件呢？"><a href="#為什麼我們需要模擬class物件呢？" class="headerlink" title="為什麼我們需要模擬class物件呢？"></a>為什麼我們需要模擬class物件呢？</h2><p>主要是一個物件有一些些屬性需要存取，例如一篇文章Post底下只需要title和content兩個屬性，用class來存取就是用牛刀殺雞，太過複雜，用簡單的Hash存取即可。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">post = &#123;<span class="string">'title'</span>: <span class="string">'為什麼一直單身？'</span>, <span class="string">'content'</span>: <span class="string">'憑實力的你不懂!!'</span>&#125;</span><br><span class="line"></span><br><span class="line">[<span class="number">4</span>] pry(main)&gt; post[<span class="symbol">:title</span>]</span><br><span class="line">=&gt; <span class="string">"小菜為什麼一直單身？"</span></span><br><span class="line">[<span class="number">5</span>] pry(main)&gt; post[<span class="symbol">:content</span>]</span><br><span class="line">=&gt; <span class="string">"憑實力你不懂!!"</span></span><br></pre></td></tr></table></figure>
 
