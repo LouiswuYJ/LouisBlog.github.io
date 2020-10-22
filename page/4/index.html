@@ -124,6 +124,134 @@
         
           <section id="main">
   
+    <article id="post-2019/鐵人賽Day 2"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/">Day 2: 變數(variable)與常數(Constant)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/" class="article-date">
+	  <time datetime="2019-09-15T04:10:40.000Z" itemprop="datePublished">September 15, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+    </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>從開班到現在學了兩個月，只知道這兩個東西每天都在用，但要直接解釋出”變數”與”常數”是什麼？還是得稍微轉一下才能夠說明，所以就特別針對這個主題來寫一下吧！</p>
+<h2 id="什麼是變數-variable-？"><a href="#什麼是變數-variable-？" class="headerlink" title="什麼是變數(variable)？"></a>什麼是變數(variable)？</h2><p>變數在數學上的定義，被用來表示值的一個’符號’(此指數學符號)，且這個值可以是指定的或是未被指定的。</p>
+<p>但程式中的變數呢？</p>
+<h4 id="變數：類似代名詞，有點像幫某個東西命名，其實就像標籤。這樣講可能很抽象，但可以試著這樣理解"><a href="#變數：類似代名詞，有點像幫某個東西命名，其實就像標籤。這樣講可能很抽象，但可以試著這樣理解" class="headerlink" title="變數：類似代名詞，有點像幫某個東西命名，其實就像標籤。這樣講可能很抽象，但可以試著這樣理解:"></a>變數：類似代名詞，有點像<strong>幫</strong>某個東西命名，其實就像標籤。這樣講可能很抽象，但可以試著這樣理解:</h4><p>一個籃子裡面裝了一個值是2(指定)，再給籃子一個標籤(變數)命名叫做X, X = 2</p>
+<p>當然這個值我們要放什麼型態的資料都可以，這裡只是舉例給它個Integer型態，下篇會來解釋Ruby的型態有哪些。</p>
+<p><img src="https://i.imgur.com/YaSjaYg.png" alt=""><br>圖片來源：<a href="https://www.complexsql.com/" target="_blank" rel="noopener">https://www.complexsql.com/</a></p>
+<h3 id="變數的種類"><a href="#變數的種類" class="headerlink" title="變數的種類"></a>變數的種類</h3><ul>
+<li>區域變數（local Variable)：定義在方法(method)裡面的變數，只能在method裡使用。<br>預設值：沒有<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span></span></span><br><span class="line"> x = <span class="number">2</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">p x <span class="comment">#印出2</span></span><br></pre></td></tr></table></figure></li>
+<li>實體變數（instance variable):<br>預設值：nil<br>在類別(class)裡通常會有不只一個method，但一般的變數只能在自己的method中取用，故使用實體變數，讓class裡的每個method都可以取用這個變數，且變數的值(value)會根據不同的method儲存不同的value。<ul>
+<li>另外，實體變數要在class中互相取值前有個先決條件：必須將物件實體化(initialize)之後才能互相使用。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(item)</span></span>   <span class="comment">#類似’創角色(item)‘的概念</span></span><br><span class="line">    @item = item</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">calculate</span>          <span class="comment">#實體方法</span></span></span><br><span class="line">    @item * <span class="number">2</span>            <span class="comment">#取用實體變數前面要加'@'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">kitty = Cat.new(<span class="number">2</span>)</span><br><span class="line">p kitty.calculate        <span class="comment">#印出4</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>類別變數（class variable）:<br>預設值：沒有<br>可以在同一個類別(class)或子類別中共用的變數，所以翻譯成白話文，“實體變數”只能遊走在自己class中的method，而“類別變數”除了可以遊走自己的class之外，還可以去其他的子類別被使用。</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Language</span></span></span><br><span class="line">  @@name = <span class="string">'english'</span> <span class="comment">#類別變數前面要加'@@'</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">speak</span>     <span class="comment">#要做用在類別上，所以要用類別方法</span></span></span><br><span class="line">    puts @@name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Language.speak       <span class="comment">#印出english</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>全域變數（global variable）：<br>預設值：nil<br>全域變數以$開頭，可以從程式裡的任何地方開始。也因為可以寫在任何地方的特性，故在使用的時候也相對危險。</li>
+</ul>
+<h2 id="什麼是常數-Constant"><a href="#什麼是常數-Constant" class="headerlink" title="什麼是常數(Constant)?"></a>什麼是常數(Constant)?</h2><p>一張有寫著名字的標籤，貼在某個東西上面。其中常數本身不帶任何型態，且最重要的一點，在Ruby裡面的常數，第一個英文字母要<strong>大寫</strong>，這也是為何我在標故意把variable跟Constant的第一個字母做大小寫區別的原因。</p>
+<p>另外，常數是可以被修改的</p>
+<p><img src="https://i.imgur.com/Uj5nH71.png" alt=""></p>
+<blockquote>
+<p>“The secret of success is constancy to purpose.”</p>
+<p>– Benjamin Disraeli, British Prime Minister</p>
+</blockquote>
+
+      
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>從開班到現在學了兩個月，只知道這兩個東西每天都在用，但要直接解釋出”變數”與”常數”是什麼？還是得稍微轉一下才能夠說明，所以就特別針對這個主題來寫一下吧！</p>
+<h2 id="什麼是變數-variable-？"><a href="#什麼是變數-variable-？" class="headerlink" title="什麼是變數(variable)？"></a>什麼是變數(variable)？</h2><p>變數在數學上的定義，被用來表示值的一個’符號’(此指數學符號)，且這個值可以是指定的或是未被指定的。</p>
+<p>
+            
+        
+    
+    
+        </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/#more">Read More</a>
+        </div>
+    
+
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+  <!-- <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
+
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">
+          鐵人賽
+        </a>
+      </li>
+    </ul>
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">
+          Ruby on Rails
+        </a>
+      </li>
+    </ul>
+  
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-2019/鐵人賽Day 1"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -577,6 +705,22 @@
             
 
               <h6 style="margin: 0;">
+                <a href="/LouiswuYJ.github.io/2019/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/">
+                  簡介 OpenStruct 跟 Struct
+                </a>
+              </h6>
+              <span>October 22, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;">
                 <a href="/LouiswuYJ.github.io/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/">
                   如何把 iterm2 oh-my-zsh 的路徑變短
                 </a>
@@ -650,22 +794,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;">
-                <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/">
-                  Day26: Rails中的view_helper
-                </a>
-              </h6>
-              <span>October 9, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -675,7 +803,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E5%BF%83%E5%BE%97%E7%9B%B8%E9%97%9C/">心得相關</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/">開發相關</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E5%BF%83%E5%BE%97%E7%9B%B8%E9%97%9C/">心得相關</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/">開發相關</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -685,7 +813,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/iterm2/" rel="tag">iterm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" rel="tag">上課心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a><span class="tag-list-count">30</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/iterm2/" rel="tag">iterm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" rel="tag">上課心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a><span class="tag-list-count">30</span></li></ul>
     </div>
   </div>
 
@@ -696,7 +824,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/10/">October 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/09/">September 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/10/">October 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/09/">September 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 

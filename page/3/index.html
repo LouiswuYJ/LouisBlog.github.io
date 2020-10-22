@@ -124,6 +124,156 @@
         
           <section id="main">
   
+    <article id="post-2019/鐵人賽Day 12"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/">Day12: Ruby的例外處理(Exceptions)：begin...rescue ...end</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/" class="article-date">
+	  <time datetime="2019-09-25T04:10:40.000Z" itemprop="datePublished">September 25, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+    </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。</p>
+<p>在Ruby例外處理的基本架構：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">#程式碼正常執行的地方 (可能出現例外的程式碼)</span></span><br><span class="line"><span class="keyword">rescue</span></span><br><span class="line">  <span class="comment">#發生錯誤時執行的地方</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>當Ruby執行程式發生錯誤時，會丟出一個Error類別產生的例外物件並停止程式，各種錯誤類型用架構的方式歸納：</p>
+<p><img src="https://i.imgur.com/AcWTC5W.png" alt=""><br>圖片來源:Programming Ruby book</p>
+<p>有這麼多例外訊息的類別，要舉例可能舉不完，不過用起來大概像下面這種感覺：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment"># 可能出現例外的程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> SyntaxError</span><br><span class="line">  <span class="comment"># 出現SyntaxError時執行此行程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> ArgumentError</span><br><span class="line">  <span class="comment"># 出現ArgumentError時執行此行程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> RuntimeError</span><br><span class="line">  <span class="comment"># 出現RuntimeError時執行此行程式碼</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>所以可針對丟出的例外訊息，去處理該訊息的例外處理，當然最常見的還是<code>SyntaxError</code>, <code>ArgumentError</code>及<code>RuntimeError</code>。如果沒有在<code>rescue</code>後特別寫哪種類別的話，任何的錯誤類別都會被<code>rescue</code>給抓到。</p>
+<p>在舉例之前，我想先說說該如何用raise來產生例外處理。</p>
+<h2 id="raise"><a href="#raise" class="headerlink" title="raise"></a>raise</h2><p>一般在簡單的程式碼，比較不會有例外處理的狀況發生，但為了舉例，我們也可以透過手動產生例外處理來觸發我們想要的結果，那我們就可以用raise method來執行。</p>
+<h3 id="raise是什麼？"><a href="#raise是什麼？" class="headerlink" title="raise是什麼？"></a>raise是什麼？</h3><blockquote>
+<p>The raise method is from the Kernel module. By default, raise creates an exception of the RuntimeError class.</p>
+</blockquote>
+<p>raise是來自於Kernel這個module的method，”預設”會產生來自RuntimeError這個類別的exception實體。</p>
+<p>既然是預設，代表我們一定可以自己寫raise method後會產生哪個類別的實體。</p>
+<h4 id="預設：RuntimeError"><a href="#預設：RuntimeError" class="headerlink" title="預設：RuntimeError"></a>預設：RuntimeError</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之前'</span></span><br><span class="line">  raise <span class="string">'發生錯誤！'</span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之後'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br></pre></td></tr></table></figure>
+<p>印出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">這邊是執行到raise之前</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">	1: from test.rb:18:in `&lt;main&gt;&apos;</span><br><span class="line">test.rb:15:in `raise_exception&apos;: 發生錯誤！ (RuntimeError)</span><br><span class="line">                                           #預設類別</span><br></pre></td></tr></table></figure>
+<h4 id="指定其他類別-以ArgumentError為例"><a href="#指定其他類別-以ArgumentError為例" class="headerlink" title="指定其他類別(以ArgumentError為例)"></a>指定其他類別(以ArgumentError為例)</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之前'</span></span><br><span class="line">  raise ArgumentError, <span class="string">'發生錯誤！'</span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之後'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br></pre></td></tr></table></figure>
+<p>印出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">這邊是執行到raise之前</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">	1: from test.rb:18:in `&lt;main&gt;&apos;</span><br><span class="line">test.rb:15:in `raise_exception&apos;: 發生錯誤！ (ArgumentError)</span><br><span class="line">                                           #被指定類別</span><br></pre></td></tr></table></figure>
+<h2 id="begin…rescue…end"><a href="#begin…rescue…end" class="headerlink" title="begin…rescue…end"></a>begin…rescue…end</h2><h4 id="預設Exception"><a href="#預設Exception" class="headerlink" title="預設Exception"></a>預設Exception</h4><p>程式執行時先印出”發生例外之前”，之後遇到<code>raise</code>發生例外，故去找<code>rescue</code>底下的程式碼並執行，印出”已處理例外”。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise <span class="string">'發生例外！'</span>     <span class="comment">#沒指定Error類別，預設為RuntimeError</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span>                 <span class="comment">#預設RuntimeError，所有錯誤都會到這執行</span></span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    已處理例外</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="指定錯誤類別"><a href="#指定錯誤類別" class="headerlink" title="指定錯誤類別"></a>指定錯誤類別</h4><p>程式執行時先印出”發生例外之前”，之後遇到<code>raise</code>LoadError類別發生例外，因為已被指定是遇到LoadError產生的實體，rescue後並無指定要救援哪個類別，故印出”發生例外！ (LoadError)”。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise LoadError, <span class="string">'發生例外！'</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span></span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    發生例外！ (LoadError)</span></span><br></pre></td></tr></table></figure>
+
+<p>若要修正，只要將rescue後加入該發生例外訊息時的類別就可以了。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise LoadError, <span class="string">'發生例外！'</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span> LoadError</span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    已處理例外</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>其實以上範例的<code>begin</code>跟<code>end</code>，可以被同時省略，只要留下<code>rescue</code>就可以正常執行，讓程式碼看起來更精簡，但對於金魚腦的我來說，為了方便未來能夠容易閱(理)讀(解)，還是不會把它們省略。</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise LoadError, <span class="string">'發生例外！'</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span> LoadError</span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    已處理例外</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="總結："><a href="#總結：" class="headerlink" title="總結："></a>總結：</h2><p>其實這個主題可以寫出非常多東西，目前只針對自己可能會用到的部分做說明，如果有興趣的朋友可以到參考資料看更多關於Exceptions的介紹。</p>
+<ol>
+<li><code>begin...rescue...end</code>用來解決非預期的結果。<ul>
+<li>begin…rescue: 可能發生例外的程式碼</li>
+<li>rescue…end: 發生錯誤時執行的程式碼</li>
+</ul>
+</li>
+<li>可針對丟出的例外訊息，去處理該訊息的例外處理。</li>
+<li><code>begin</code> <code>end</code>可省略</li>
+</ol>
+<p>參考資料：<br><a href="https://ruby-doc.org/core-2.2.3/Kernel.html#method-i-raise" target="_blank" rel="noopener">Ruby Kernel</a><br><a href="http://rubylearning.com/satishtalim/ruby_exceptions.html" target="_blank" rel="noopener">Ruby Exceptions</a><br><a href="https://mgleon08.github.io/blog/2016/02/04/rescue-exception/" target="_blank" rel="noopener">例外處理 Rescue Exception, Error Handling, Custom Error Pages</a><br><a href="https://pjchender.github.io/2018/06/05/ruby-error-handling%EF%BC%88%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86%EF%BC%89/" target="_blank" rel="noopener">[Ruby] Error Handling（錯誤處理)</a><br><a href="https://medium.com/@eggyy1224/ruby-%E7%9A%84%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86%E6%A9%9F%E5%88%B6-106f829f280b" target="_blank" rel="noopener">Ruby 的例外處理機制</a><br><a href="https://medium.com/@pk60905/rails%E7%9A%84%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86%E6%A9%9F%E5%88%B6begin-rescue%E5%92%8Cexception-ab71156a24a2" target="_blank" rel="noopener">Rails的錯誤處理機制begin、rescue和Exception</a></p>
+<blockquote>
+<p>“The meaning of life is to find your gift. The purpose &gt;of life is to give it away.”</p>
+<p>– Pablo Picasso, Artist</p>
+</blockquote>
+
+      
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。</p>
+<p>在Ruby例外處理的基本架構：</p>
+<p>
+            
+        
+    
+    
+        </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/#more">Read More</a>
+        </div>
+    
+
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+  <!-- <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
+
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">
+          鐵人賽
+        </a>
+      </li>
+    </ul>
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">
+          Ruby on Rails
+        </a>
+      </li>
+    </ul>
+  
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-2019/鐵人賽Day 11"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -1395,134 +1545,6 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-2019/鐵人賽Day 2"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/">Day 2: 變數(variable)與常數(Constant)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/" class="article-date">
-	  <time datetime="2019-09-15T04:10:40.000Z" itemprop="datePublished">September 15, 2019</time>
-	</a>
-
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
-
-      
-    </div>
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p>從開班到現在學了兩個月，只知道這兩個東西每天都在用，但要直接解釋出”變數”與”常數”是什麼？還是得稍微轉一下才能夠說明，所以就特別針對這個主題來寫一下吧！</p>
-<h2 id="什麼是變數-variable-？"><a href="#什麼是變數-variable-？" class="headerlink" title="什麼是變數(variable)？"></a>什麼是變數(variable)？</h2><p>變數在數學上的定義，被用來表示值的一個’符號’(此指數學符號)，且這個值可以是指定的或是未被指定的。</p>
-<p>但程式中的變數呢？</p>
-<h4 id="變數：類似代名詞，有點像幫某個東西命名，其實就像標籤。這樣講可能很抽象，但可以試著這樣理解"><a href="#變數：類似代名詞，有點像幫某個東西命名，其實就像標籤。這樣講可能很抽象，但可以試著這樣理解" class="headerlink" title="變數：類似代名詞，有點像幫某個東西命名，其實就像標籤。這樣講可能很抽象，但可以試著這樣理解:"></a>變數：類似代名詞，有點像<strong>幫</strong>某個東西命名，其實就像標籤。這樣講可能很抽象，但可以試著這樣理解:</h4><p>一個籃子裡面裝了一個值是2(指定)，再給籃子一個標籤(變數)命名叫做X, X = 2</p>
-<p>當然這個值我們要放什麼型態的資料都可以，這裡只是舉例給它個Integer型態，下篇會來解釋Ruby的型態有哪些。</p>
-<p><img src="https://i.imgur.com/YaSjaYg.png" alt=""><br>圖片來源：<a href="https://www.complexsql.com/" target="_blank" rel="noopener">https://www.complexsql.com/</a></p>
-<h3 id="變數的種類"><a href="#變數的種類" class="headerlink" title="變數的種類"></a>變數的種類</h3><ul>
-<li>區域變數（local Variable)：定義在方法(method)裡面的變數，只能在method裡使用。<br>預設值：沒有<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span></span></span><br><span class="line"> x = <span class="number">2</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">p x <span class="comment">#印出2</span></span><br></pre></td></tr></table></figure></li>
-<li>實體變數（instance variable):<br>預設值：nil<br>在類別(class)裡通常會有不只一個method，但一般的變數只能在自己的method中取用，故使用實體變數，讓class裡的每個method都可以取用這個變數，且變數的值(value)會根據不同的method儲存不同的value。<ul>
-<li>另外，實體變數要在class中互相取值前有個先決條件：必須將物件實體化(initialize)之後才能互相使用。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(item)</span></span>   <span class="comment">#類似’創角色(item)‘的概念</span></span><br><span class="line">    @item = item</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">calculate</span>          <span class="comment">#實體方法</span></span></span><br><span class="line">    @item * <span class="number">2</span>            <span class="comment">#取用實體變數前面要加'@'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">kitty = Cat.new(<span class="number">2</span>)</span><br><span class="line">p kitty.calculate        <span class="comment">#印出4</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>類別變數（class variable）:<br>預設值：沒有<br>可以在同一個類別(class)或子類別中共用的變數，所以翻譯成白話文，“實體變數”只能遊走在自己class中的method，而“類別變數”除了可以遊走自己的class之外，還可以去其他的子類別被使用。</li>
-</ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Language</span></span></span><br><span class="line">  @@name = <span class="string">'english'</span> <span class="comment">#類別變數前面要加'@@'</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">speak</span>     <span class="comment">#要做用在類別上，所以要用類別方法</span></span></span><br><span class="line">    puts @@name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Language.speak       <span class="comment">#印出english</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>全域變數（global variable）：<br>預設值：nil<br>全域變數以$開頭，可以從程式裡的任何地方開始。也因為可以寫在任何地方的特性，故在使用的時候也相對危險。</li>
-</ul>
-<h2 id="什麼是常數-Constant"><a href="#什麼是常數-Constant" class="headerlink" title="什麼是常數(Constant)?"></a>什麼是常數(Constant)?</h2><p>一張有寫著名字的標籤，貼在某個東西上面。其中常數本身不帶任何型態，且最重要的一點，在Ruby裡面的常數，第一個英文字母要<strong>大寫</strong>，這也是為何我在標故意把variable跟Constant的第一個字母做大小寫區別的原因。</p>
-<p>另外，常數是可以被修改的</p>
-<p><img src="https://i.imgur.com/Uj5nH71.png" alt=""></p>
-<blockquote>
-<p>“The secret of success is constancy to purpose.”</p>
-<p>– Benjamin Disraeli, British Prime Minister</p>
-</blockquote>
-
-      
-    </div> -->
-
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p>從開班到現在學了兩個月，只知道這兩個東西每天都在用，但要直接解釋出”變數”與”常數”是什麼？還是得稍微轉一下才能夠說明，所以就特別針對這個主題來寫一下吧！</p>
-<h2 id="什麼是變數-variable-？"><a href="#什麼是變數-variable-？" class="headerlink" title="什麼是變數(variable)？"></a>什麼是變數(variable)？</h2><p>變數在數學上的定義，被用來表示值的一個’符號’(此指數學符號)，且這個值可以是指定的或是未被指定的。</p>
-<p>
-            
-        
-    
-    
-        </div>
-        <div class="article-more-link">
-            <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/#more">Read More</a>
-        </div>
-    
-
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
-
-      
-  <!-- <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
-
-  
-    <span class="ico-tags"></span>
-    <ul class="article-tag-list" itemprop="keywords">
-      <li class="article-tag-list-item">
-        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">
-          鐵人賽
-        </a>
-      </li>
-    </ul>
-  
-    <span class="ico-tags"></span>
-    <ul class="article-tag-list" itemprop="keywords">
-      <li class="article-tag-list-item">
-        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">
-          Ruby on Rails
-        </a>
-      </li>
-    </ul>
-  
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -1628,6 +1650,22 @@
             
 
               <h6 style="margin: 0;">
+                <a href="/LouiswuYJ.github.io/2019/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/">
+                  簡介 OpenStruct 跟 Struct
+                </a>
+              </h6>
+              <span>October 22, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;">
                 <a href="/LouiswuYJ.github.io/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/">
                   如何把 iterm2 oh-my-zsh 的路徑變短
                 </a>
@@ -1701,22 +1739,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;">
-                <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/">
-                  Day26: Rails中的view_helper
-                </a>
-              </h6>
-              <span>October 9, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1726,7 +1748,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E5%BF%83%E5%BE%97%E7%9B%B8%E9%97%9C/">心得相關</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/">開發相關</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E5%BF%83%E5%BE%97%E7%9B%B8%E9%97%9C/">心得相關</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/">開發相關</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1736,7 +1758,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/iterm2/" rel="tag">iterm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" rel="tag">上課心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a><span class="tag-list-count">30</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/iterm2/" rel="tag">iterm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" rel="tag">上課心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a><span class="tag-list-count">30</span></li></ul>
     </div>
   </div>
 
@@ -1747,7 +1769,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/10/">October 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/09/">September 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/10/">October 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/09/">September 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 

@@ -124,6 +124,163 @@
         
           <section id="main">
   
+    <article id="post-2019/鐵人賽Day 22"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/">Day22: 簡易Rails實作(下)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/" class="article-date">
+	  <time datetime="2019-10-05T04:10:40.000Z" itemprop="datePublished">October 5, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+    </div>
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>上次講到了Strong Parameters，今天我們就從Flash開始吧！</p>
+<h2 id="快閃訊息flash"><a href="#快閃訊息flash" class="headerlink" title="快閃訊息flash"></a>快閃訊息flash</h2><p><img src="https://i.imgur.com/tjW0Pjy.png" alt=""></p>
+<p>在按下按鈕後，應該要有個訊息出現告知使用者是否有成功或失敗，並且只出現一次，這就是快閃訊息做的事。<br>在這個專案，我們希望如果 create 成功，會將網頁導向 首頁 並印出 “新增候選人成功!!”，反之若失敗，則印出”新增候選人失敗!!” (一樣false還沒寫入)</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#上略</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    clean_params = params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span>)</span><br><span class="line">    @candidate = Candidate.new(clean_params)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> @candidate.save</span><br><span class="line">      flash[<span class="symbol">:notice</span>] = <span class="string">"新增候選人成功!!"</span>         <span class="comment">#第7~8行可直接寫成 redirect_to root_path, notice: "新增候選人成功!!"</span></span><br><span class="line">      redirect_to root_path</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      flash[<span class="symbol">:notice</span>] = <span class="string">"新增候選人失敗!!"</span>         <span class="comment">#第10~11行可直接寫成 redirect_to root_path, notice: "新增候選人失敗!!"</span></span><br><span class="line">      redirect_to root_path</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#並在index.html.erb檔加入</span></span><br><span class="line"></span><br><span class="line">&lt;%= flash[<span class="symbol">:notice</span>] %&gt;   印出<span class="string">"新增候選人成功!"</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/59ON3bS.png" alt=""></p>
+<h2 id="首頁印出候選人列表"><a href="#首頁印出候選人列表" class="headerlink" title="首頁印出候選人列表"></a>首頁印出候選人列表</h2><p>想要在首頁做事情，那當然是去 <code>index</code> 做事，首先針對 candidate_controller.rb 裡的 index method寫入:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@candidates = Candidate.all</span><br><span class="line"></span><br><span class="line">注意<span class="symbol">:</span>這裡的實體變數故意列為<span class="string">"複數"</span>，因為是撈出全部候選人的資料</span><br></pre></td></tr></table></figure>
+
+<p>去抓所有使用者輸入的資料。<br>再來到 <code>index.html.erb</code> 利用each迴圈印出所有候選人的”姓名”。</p>
+<p><img src="https://i.imgur.com/dzMqxuK.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">flash</span>[<span class="attr">:notice</span>] %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>首頁:候選人列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># <span class="tag">&lt;<span class="name">%%</span>&gt;</span>不顯示在頁面</span><br><span class="line">#<span class="tag">&lt;<span class="name">=%%</span>&gt;</span>要顯示在頁面上</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">candidates.each</span> <span class="attr">do</span> |<span class="attr">candidate</span>| %&gt;</span>     #注意是@candidate"s"</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">candidate.name</span> %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '新增候選人', <span class="attr">new_candidate_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-danger</span> <span class="attr">btn-lg</span>' %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="驗證資料"><a href="#驗證資料" class="headerlink" title="驗證資料"></a>驗證資料</h2><p>人打字總偶爾有肥手指、眼睛業障或看錯欄位的狀況發生，所以每個輸入的資料都需要做進一步的認證才能進入資料庫。</p>
+<p>(總不可能候選人只有3歲吧!!!?)</p>
+<p>還記得剛剛寫的 <code>if else</code> 判斷總是忽略 <code>false</code> 的話怎麼辦對吧? 如果不寫入以下程式碼的話，永遠不會進入到 <code>else</code> 的判斷，到 candidate.rb 裡新增:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Candidate</span> &lt; ApplicationRecord</span></span><br><span class="line">  validates <span class="symbol">:name</span>, <span class="symbol">presence:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment">#腦補眼鏡</span></span><br><span class="line">  <span class="comment">#validates (:name, &#123;presence: true&#125;)</span></span><br><span class="line"></span><br><span class="line">  validates <span class="symbol">:age</span>, <span class="symbol">numericality:</span> &#123; <span class="symbol">greater_than_or_equal_to:</span> <span class="number">40</span> &#125;</span><br><span class="line">  <span class="comment">#腦補眼鏡</span></span><br><span class="line">  <span class="comment">#validates (:age, &#123;numericality: &#123; &#123;greater_than_or_equal_to: 40&#125; &#125;&#125;)</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>姓名欄位: 有資料才會會回傳true ; 年紀欄位: 必須大於或等於40歲<br>其實我們再 <code>create</code> 中的 <code>if else</code> 判斷式寫的較不人性化，若今天使用者打錯某字跳出”新增候選人失敗!!”，回到新增頁面後竟然還要重新打字，是不是太麻煩了? 所以我們要修正<code>else</code>後的輸出方式:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CandidatesController</span> &lt; ApplicationController</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">    @candidate = Candidate.all</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">new</span></span></span><br><span class="line">    @candidate = Candidate.new</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    clean_params = params.<span class="keyword">require</span>(<span class="symbol">:candidate</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:policy</span>, <span class="symbol">:party</span>)</span><br><span class="line">    @candidate = Candidate.new(clean_params)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> @candidate.save</span><br><span class="line">      flash[<span class="symbol">:notice</span>] = <span class="string">"新增候選人成功!"</span></span><br><span class="line">      redirect_to root_path</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="comment">#原來寫法:flash[:notice] = "新增候選人失敗!"</span></span><br><span class="line">      <span class="comment">#原來寫法:redirect_to root_path</span></span><br><span class="line">      render <span class="symbol">:new</span>  <span class="comment"># 借new.html.erb這個檔案，並不是上方的new方法!!!</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>就解決了如果打錯字回到頁面後文字被洗掉的問題。</p>
+<h2 id="哪裡輸入錯誤"><a href="#哪裡輸入錯誤" class="headerlink" title="哪裡輸入錯誤?"></a>哪裡輸入錯誤?</h2><p>若輸入錯誤的話，總要告訴使用者是哪裡輸入錯誤吧?<br>new.html.erb內新增判斷式，就會印出Rails內建的<code>full_messages</code>資料庫訊息:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>新增候選人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> @<span class="attr">candidate.errors.any</span>? %&gt;</span>   #.errors.any? =&gt;有錯誤嗎?</span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">candidate.errors.full_messages.each</span> <span class="attr">do</span> |<span class="attr">message</span>| %&gt;</span> # .full_messages =&gt; Rails內建的錯誤訊息資料庫</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">message</span> %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">form_for</span>(@<span class="attr">candidate</span>) <span class="attr">do</span> |<span class="attr">form</span>| %&gt;</span></span><br><span class="line">#下略....</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看候選人詳細資料"><a href="#查看候選人詳細資料" class="headerlink" title="查看候選人詳細資料"></a>查看候選人詳細資料</h2><p>當然在看候選人的時候不可能只看名字吧?所以我們要做一個只要點選候選人姓名，就轉至候選人資料的頁面。<br>index.html.erb頁面:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#index.html.erb</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">flash</span>[<span class="attr">:notice</span>] %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>首頁:候選人列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&lt;ul&gt;</span></span><br><span class="line"><span class="comment">  &lt;% @candidate.each do |candidate| %&gt;</span></span><br><span class="line"><span class="comment">    &lt;li&gt;&lt;%= candidate.name %&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment">  &lt;% end %&gt;</span></span><br><span class="line"><span class="comment">&lt;/ul&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> @<span class="attr">candidate.each</span> <span class="attr">do</span> |<span class="attr">candidate</span>| %&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--路徑需查 rails routes --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> <span class="attr">candidate.name</span>, <span class="attr">candidate_path</span>(<span class="attr">candidate.id</span>) %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '新增候選人', <span class="attr">new_candidate_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-danger</span> <span class="attr">btn-lg</span>' %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/RzaZytg.png" alt=""></p>
+<p>就會是可以點選的狀態了，能夠預期若按下候選人姓名會發生什麼事嗎?</p>
+<p><img src="https://i.imgur.com/ca6Ldn5.png" alt=""></p>
+<p>因為我們還沒有建立在 show 方法:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span></span></span><br><span class="line">    @candidate = Candidate.find_by(<span class="symbol">id:</span> params[<span class="symbol">:id</span>])</span><br><span class="line">    <span class="comment">#Candidate.find_by =&gt; Rails內建尋找相對應資料的方法</span></span><br><span class="line">    <span class="comment">#腦補眼鏡(&#123;id: params[:id]&#125;)</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>({id: params[:id]}) :取<code>params</code>內key是<code>:id</code>的value當作外面<code>id:</code>的value<br>聽起來很像繞口令，讓我們一步一步拆開來看。</p>
+<p>params本身是Hash的資料型態，也就是上面有敘述過的一大串資料:</p>
+<blockquote>
+<p>{“utf8”=&gt;”✓”, “authenticity_token”=&gt;”0OHbZ7WkDs8NsrNHK2s7Dd9BxkITn/qegeFtUcMmE5ANKKiaxmRCOiPuChEAoKh4ho/taDYBB7GvIhTG0a1IHw==”, “candidate”=&gt;{“name”=&gt;”Louis”, “party”=&gt;”none”, “age”=&gt;”20”, “policy”=&gt;”Rails is Good”}, “commit”=&gt;”Create Candidate”, “controller”=&gt;”candidates”, “action”=&gt;”create”}</p>
+</blockquote>
+<p>上面有講過個例子，若我要拿到Louis，我需要寫<code>params[&#39;candidate&#39;][&#39;name&#39;]</code> 才能拿到對吧?</p>
+<blockquote>
+<p>params[‘candidate’][‘name’]<br>            ↓　　　　　↓<br>      ({   id:     　params[:id]})</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">假設 params = &#123; <span class="symbol">id:</span> <span class="number">5</span>, <span class="symbol">email:</span> <span class="string">'kk@5xruby.tw'</span>, <span class="symbol">name:</span> <span class="string">'Louis'</span> &#125;</span><br><span class="line">find_by(<span class="symbol">id:</span> params[<span class="symbol">:id</span>], <span class="symbol">email:</span> params[<span class="symbol">:email</span>], <span class="symbol">name:</span> params[<span class="symbol">:name</span>])</span><br><span class="line">find_by(        <span class="number">5</span>      ,      kk@5xruby.tw    ,     Louis          )</span><br><span class="line"></span><br><span class="line">這樣可以找到在候選人表格裡「id 是 <span class="number">5</span>，而且 email 是 kk@5xruby.tw，而且 name 是 Louis」的候選人</span><br></pre></td></tr></table></figure>
+
+<p>這樣對應著看，應該有比較容易理解吧!!</p>
+<p>但還是會出現錯誤(笑</p>
+<p><img src="https://i.imgur.com/JVlrNje.png" alt=""></p>
+<p>記得也要在views建立 show.html.erb</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> @<span class="attr">candidate</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.name</span> %&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>黨派: <span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.party</span>%&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>年紀: <span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.age</span>%&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>政見: <span class="tag">&lt;<span class="name">%=</span> @<span class="attr">candidate.policy</span>%&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">else</span> %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>沒有這個人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">end</span> %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/Tlc2w1n.png" alt=""></p>
+<p>就終於完成了簡易CRUD中的C跟R…</p>
+<h5 id="腦細胞少10-，皺褶增加0-001"><a href="#腦細胞少10-，皺褶增加0-001" class="headerlink" title="腦細胞少10%，皺褶增加0.001%"></a>腦細胞少10%，皺褶增加0.001%</h5><p>參考資料：</p>
+<p><a href="https://railsbook.tw/chapters/13-crud-part-1.html" target="_blank" rel="noopener">為你自己學Ruby on Rails</a></p>
+<blockquote>
+<p>“The difference in winning and losing is most often…not quitting.”</p>
+<p>— Walt Disney, Producer</p>
+</blockquote>
+
+      
+    </div> -->
+
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>上次講到了Strong Parameters，今天我們就從Flash開始吧！</p>
+<h2 id="快閃訊息flash"><a href="#快閃訊息flash" class="headerlink" title="快閃訊息flash"></a>快閃訊息flash</h2><p><img src="https://i.imgur.com/tjW0Pjy.png" alt=""></p>
+<p>
+            
+        
+    
+    
+        </div>
+        <div class="article-more-link">
+            <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/#more">Read More</a>
+        </div>
+    
+
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+      
+  <!-- <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
+
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">
+          鐵人賽
+        </a>
+      </li>
+    </ul>
+  
+    <span class="ico-tags"></span>
+    <ul class="article-tag-list" itemprop="keywords">
+      <li class="article-tag-list-item">
+        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">
+          Ruby on Rails
+        </a>
+      </li>
+    </ul>
+  
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-2019/鐵人賽Day 21"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -502,7 +659,7 @@
     </div>
     <!-- <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
+        <h1 id="Day19-Rails中神奇的spring-stop"><a href="#Day19-Rails中神奇的spring-stop" class="headerlink" title="Day19: Rails中神奇的spring stop"></a>Day19: Rails中神奇的spring stop</h1><h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
 <p>意外的查到的資料不多，所以這篇僅擷取Rails <a href="https://github.com/rails/spring/blob/master/README.md" target="_blank" rel="noopener">REARDME.md</a>來簡單翻譯一下。</p>
 <h2 id="spring-stop"><a href="#spring-stop" class="headerlink" title="spring stop"></a>spring stop</h2><p>常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不出來這狀況，但只要下了<code>spring stop</code>通常就解了？</p>
 <p>Rails在4.1版本後新增了<code>srping stop</code>功能，來看看rails guide寫什麼：</p>
@@ -560,7 +717,7 @@
             
             
                 
-                <p><h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
+                <p><h1 id="Day19-Rails中神奇的spring-stop"><a href="#Day19-Rails中神奇的spring-stop" class="headerlink" title="Day19: Rails中神奇的spring stop"></a>Day19: Rails中神奇的spring stop</h1><h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
 <p>意外的查到的資料不多，所以這篇僅擷取Rails <a href="https://github.com/rails/spring/blob/master/README.md" target="_blank" rel="noopener">REARDME.md</a>來簡單翻譯一下。</p>
 <p>
             
@@ -1433,156 +1590,6 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-2019/鐵人賽Day 12"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/">Day12: Ruby的例外處理(Exceptions)：begin...rescue ...end</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/" class="article-date">
-	  <time datetime="2019-09-25T04:10:40.000Z" itemprop="datePublished">September 25, 2019</time>
-	</a>
-
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
-
-      
-    </div>
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p>幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。</p>
-<p>在Ruby例外處理的基本架構：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">#程式碼正常執行的地方 (可能出現例外的程式碼)</span></span><br><span class="line"><span class="keyword">rescue</span></span><br><span class="line">  <span class="comment">#發生錯誤時執行的地方</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<p>當Ruby執行程式發生錯誤時，會丟出一個Error類別產生的例外物件並停止程式，各種錯誤類型用架構的方式歸納：</p>
-<p><img src="https://i.imgur.com/AcWTC5W.png" alt=""><br>圖片來源:Programming Ruby book</p>
-<p>有這麼多例外訊息的類別，要舉例可能舉不完，不過用起來大概像下面這種感覺：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment"># 可能出現例外的程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> SyntaxError</span><br><span class="line">  <span class="comment"># 出現SyntaxError時執行此行程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> ArgumentError</span><br><span class="line">  <span class="comment"># 出現ArgumentError時執行此行程式碼</span></span><br><span class="line"><span class="keyword">rescue</span> RuntimeError</span><br><span class="line">  <span class="comment"># 出現RuntimeError時執行此行程式碼</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<p>所以可針對丟出的例外訊息，去處理該訊息的例外處理，當然最常見的還是<code>SyntaxError</code>, <code>ArgumentError</code>及<code>RuntimeError</code>。如果沒有在<code>rescue</code>後特別寫哪種類別的話，任何的錯誤類別都會被<code>rescue</code>給抓到。</p>
-<p>在舉例之前，我想先說說該如何用raise來產生例外處理。</p>
-<h2 id="raise"><a href="#raise" class="headerlink" title="raise"></a>raise</h2><p>一般在簡單的程式碼，比較不會有例外處理的狀況發生，但為了舉例，我們也可以透過手動產生例外處理來觸發我們想要的結果，那我們就可以用raise method來執行。</p>
-<h3 id="raise是什麼？"><a href="#raise是什麼？" class="headerlink" title="raise是什麼？"></a>raise是什麼？</h3><blockquote>
-<p>The raise method is from the Kernel module. By default, raise creates an exception of the RuntimeError class.</p>
-</blockquote>
-<p>raise是來自於Kernel這個module的method，”預設”會產生來自RuntimeError這個類別的exception實體。</p>
-<p>既然是預設，代表我們一定可以自己寫raise method後會產生哪個類別的實體。</p>
-<h4 id="預設：RuntimeError"><a href="#預設：RuntimeError" class="headerlink" title="預設：RuntimeError"></a>預設：RuntimeError</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之前'</span></span><br><span class="line">  raise <span class="string">'發生錯誤！'</span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之後'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br></pre></td></tr></table></figure>
-<p>印出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">這邊是執行到raise之前</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">	1: from test.rb:18:in `&lt;main&gt;&apos;</span><br><span class="line">test.rb:15:in `raise_exception&apos;: 發生錯誤！ (RuntimeError)</span><br><span class="line">                                           #預設類別</span><br></pre></td></tr></table></figure>
-<h4 id="指定其他類別-以ArgumentError為例"><a href="#指定其他類別-以ArgumentError為例" class="headerlink" title="指定其他類別(以ArgumentError為例)"></a>指定其他類別(以ArgumentError為例)</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之前'</span></span><br><span class="line">  raise ArgumentError, <span class="string">'發生錯誤！'</span></span><br><span class="line">  puts <span class="string">'這邊是執行到raise之後'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br></pre></td></tr></table></figure>
-<p>印出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">這邊是執行到raise之前</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">	1: from test.rb:18:in `&lt;main&gt;&apos;</span><br><span class="line">test.rb:15:in `raise_exception&apos;: 發生錯誤！ (ArgumentError)</span><br><span class="line">                                           #被指定類別</span><br></pre></td></tr></table></figure>
-<h2 id="begin…rescue…end"><a href="#begin…rescue…end" class="headerlink" title="begin…rescue…end"></a>begin…rescue…end</h2><h4 id="預設Exception"><a href="#預設Exception" class="headerlink" title="預設Exception"></a>預設Exception</h4><p>程式執行時先印出”發生例外之前”，之後遇到<code>raise</code>發生例外，故去找<code>rescue</code>底下的程式碼並執行，印出”已處理例外”。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise <span class="string">'發生例外！'</span>     <span class="comment">#沒指定Error類別，預設為RuntimeError</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span>                 <span class="comment">#預設RuntimeError，所有錯誤都會到這執行</span></span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    已處理例外</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="指定錯誤類別"><a href="#指定錯誤類別" class="headerlink" title="指定錯誤類別"></a>指定錯誤類別</h4><p>程式執行時先印出”發生例外之前”，之後遇到<code>raise</code>LoadError類別發生例外，因為已被指定是遇到LoadError產生的實體，rescue後並無指定要救援哪個類別，故印出”發生例外！ (LoadError)”。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise LoadError, <span class="string">'發生例外！'</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span></span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    發生例外！ (LoadError)</span></span><br></pre></td></tr></table></figure>
-
-<p>若要修正，只要將rescue後加入該發生例外訊息時的類別就可以了。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise LoadError, <span class="string">'發生例外！'</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span> LoadError</span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    已處理例外</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>其實以上範例的<code>begin</code>跟<code>end</code>，可以被同時省略，只要留下<code>rescue</code>就可以正常執行，讓程式碼看起來更精簡，但對於金魚腦的我來說，為了方便未來能夠容易閱(理)讀(解)，還是不會把它們省略。</strong></p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raise_exception</span></span></span><br><span class="line">    puts <span class="string">'發生例外之前'</span></span><br><span class="line">    raise LoadError, <span class="string">'發生例外！'</span></span><br><span class="line">    puts <span class="string">'發生例外之後'</span></span><br><span class="line">  <span class="keyword">rescue</span> LoadError</span><br><span class="line">    puts <span class="string">'已處理例外'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">raise_exception</span><br><span class="line"></span><br><span class="line"><span class="comment"># =&gt; 發生例外之前</span></span><br><span class="line"><span class="comment">#    已處理例外</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="總結："><a href="#總結：" class="headerlink" title="總結："></a>總結：</h2><p>其實這個主題可以寫出非常多東西，目前只針對自己可能會用到的部分做說明，如果有興趣的朋友可以到參考資料看更多關於Exceptions的介紹。</p>
-<ol>
-<li><code>begin...rescue...end</code>用來解決非預期的結果。<ul>
-<li>begin…rescue: 可能發生例外的程式碼</li>
-<li>rescue…end: 發生錯誤時執行的程式碼</li>
-</ul>
-</li>
-<li>可針對丟出的例外訊息，去處理該訊息的例外處理。</li>
-<li><code>begin</code> <code>end</code>可省略</li>
-</ol>
-<p>參考資料：<br><a href="https://ruby-doc.org/core-2.2.3/Kernel.html#method-i-raise" target="_blank" rel="noopener">Ruby Kernel</a><br><a href="http://rubylearning.com/satishtalim/ruby_exceptions.html" target="_blank" rel="noopener">Ruby Exceptions</a><br><a href="https://mgleon08.github.io/blog/2016/02/04/rescue-exception/" target="_blank" rel="noopener">例外處理 Rescue Exception, Error Handling, Custom Error Pages</a><br><a href="https://pjchender.github.io/2018/06/05/ruby-error-handling%EF%BC%88%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86%EF%BC%89/" target="_blank" rel="noopener">[Ruby] Error Handling（錯誤處理)</a><br><a href="https://medium.com/@eggyy1224/ruby-%E7%9A%84%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86%E6%A9%9F%E5%88%B6-106f829f280b" target="_blank" rel="noopener">Ruby 的例外處理機制</a><br><a href="https://medium.com/@pk60905/rails%E7%9A%84%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86%E6%A9%9F%E5%88%B6begin-rescue%E5%92%8Cexception-ab71156a24a2" target="_blank" rel="noopener">Rails的錯誤處理機制begin、rescue和Exception</a></p>
-<blockquote>
-<p>“The meaning of life is to find your gift. The purpose &gt;of life is to give it away.”</p>
-<p>– Pablo Picasso, Artist</p>
-</blockquote>
-
-      
-    </div> -->
-
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p>幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。</p>
-<p>在Ruby例外處理的基本架構：</p>
-<p>
-            
-        
-    
-    
-        </div>
-        <div class="article-more-link">
-            <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/#more">Read More</a>
-        </div>
-    
-
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a>
-
-      
-  <!-- <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul> -->
-
-  
-    <span class="ico-tags"></span>
-    <ul class="article-tag-list" itemprop="keywords">
-      <li class="article-tag-list-item">
-        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">
-          鐵人賽
-        </a>
-      </li>
-    </ul>
-  
-    <span class="ico-tags"></span>
-    <ul class="article-tag-list" itemprop="keywords">
-      <li class="article-tag-list-item">
-        <a class="article-tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">
-          Ruby on Rails
-        </a>
-      </li>
-    </ul>
-  
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -1688,6 +1695,22 @@
             
 
               <h6 style="margin: 0;">
+                <a href="/LouiswuYJ.github.io/2019/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/">
+                  簡介 OpenStruct 跟 Struct
+                </a>
+              </h6>
+              <span>October 22, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;">
                 <a href="/LouiswuYJ.github.io/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/">
                   如何把 iterm2 oh-my-zsh 的路徑變短
                 </a>
@@ -1761,22 +1784,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;">
-                <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/">
-                  Day26: Rails中的view_helper
-                </a>
-              </h6>
-              <span>October 9, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1786,7 +1793,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E5%BF%83%E5%BE%97%E7%9B%B8%E9%97%9C/">心得相關</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/">開發相關</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E5%BF%83%E5%BE%97%E7%9B%B8%E9%97%9C/">心得相關</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/">開發相關</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1796,7 +1803,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/iterm2/" rel="tag">iterm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" rel="tag">上課心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a><span class="tag-list-count">30</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/iterm2/" rel="tag">iterm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" rel="tag">上課心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a><span class="tag-list-count">30</span></li></ul>
     </div>
   </div>
 
@@ -1807,7 +1814,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/10/">October 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/09/">September 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/10/">October 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/09/">September 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
