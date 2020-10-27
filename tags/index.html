@@ -21,7 +21,7 @@
   
     <link rel="alternate" href="/atom.xml" title="Louis&#39;s Blog" type="application/atom+xml">
   
-  <link rel="icon" href="/LouiswuYJ.github.io/css/images/favicon.ico">
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -37,14 +37,14 @@
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 
-  <script src="/LouiswuYJ.github.io/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/bootstrap.css" >
-  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/fashion.css" >
-  <link rel="stylesheet" href="/LouiswuYJ.github.io/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
 
@@ -55,15 +55,37 @@
 
   
 
+  <div class="site-header-image">
+    <!-- <img id="originBg" width="100%" alt="Hike News" src=""> -->
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <!-- <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src=""> -->
+  </div>
+
+  <!-- <script>
+      var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+        document.getElementById("blurBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+        document.getElementById("blurBg").src='/' + imgUrls[random];
+      }
+  </script> -->
+
+
+
 
 <header id="allheader" class="site-header" role="banner"
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
           <h1 class="site-title">
             
-              <a href="/LouiswuYJ.github.io/" title="Louis&#39;s Blog" rel="home"> Louis&#39;s Blog </a>
+              <a href="/" title="Louis&#39;s Blog" rel="home"> Louis&#39;s Blog </a>
             
           </h1>
 
@@ -78,15 +100,15 @@
             <div class="clearfix sf-menu">
               <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/">Home</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/archives">Archives</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/categories">Categories</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/tags">Tags</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/LouiswuYJ.github.io/about">About</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
                     
               </ul>
             </div>
@@ -107,7 +129,7 @@
         <div class="archives-tags-wrap">
             
                 <blockquote>
-                <a href="/LouiswuYJ.github.io/tags/Git/" style="font-size: 14px;">Git</a> <a href="/LouiswuYJ.github.io/tags/GitHub/" style="font-size: 14px;">GitHub</a> <a href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" style="font-size: 28px;">Ruby on Rails</a> <a href="/LouiswuYJ.github.io/tags/iterm2/" style="font-size: 14px;">iterm2</a> <a href="/LouiswuYJ.github.io/tags/javascript/" style="font-size: 14px;">javascript</a> <a href="/LouiswuYJ.github.io/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" style="font-size: 14px;">上課心得</a> <a href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 28px;">鐵人賽</a>
+                <a href="/tags/Git/" style="font-size: 14px;">Git</a> <a href="/tags/GitHub/" style="font-size: 14px;">GitHub</a> <a href="/tags/Ruby-on-Rails/" style="font-size: 28px;">Ruby on Rails</a> <a href="/tags/iterm2/" style="font-size: 14px;">iterm2</a> <a href="/tags/javascript/" style="font-size: 14px;">javascript</a> <a href="/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" style="font-size: 14px;">上課心得</a> <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 28px;">鐵人賽</a>
                 </blockquote>
             
         </div>
@@ -146,13 +168,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/" class="archive-article-date">
 		  <time datetime="2019-10-11T04:10:40.000Z" itemprop="datePublished">Oct 11, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/">Day28: 用個Github來版本控制吧 </a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/">Day28: 用個Github來版本控制吧 </a>
     </h1>
   
 
@@ -174,13 +196,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/" class="archive-article-date">
 		  <time datetime="2019-10-11T04:10:40.000Z" itemprop="datePublished">Oct 11, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/">Day28: 用個Github來版本控制吧 </a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/">Day28: 用個Github來版本控制吧 </a>
     </h1>
   
 
@@ -202,13 +224,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/" class="archive-article-date">
+      <a href="/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/" class="archive-article-date">
 		  <time datetime="2020-10-22T10:00:00.000Z" itemprop="datePublished">Oct 22, 2020</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/">簡介 OpenStruct 跟 Struct</a>
+      <a class="archive-article-title" href="/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/">簡介 OpenStruct 跟 Struct</a>
     </h1>
   
 
@@ -221,13 +243,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/" class="archive-article-date">
 		  <time datetime="2019-10-13T04:10:40.000Z" itemprop="datePublished">Oct 13, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/">Day30: 我竟然完賽了？</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/">Day30: 我竟然完賽了？</a>
     </h1>
   
 
@@ -240,13 +262,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/" class="archive-article-date">
 		  <time datetime="2019-10-12T04:10:40.000Z" itemprop="datePublished">Oct 12, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/">Day29: Rails - Active Storage</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/">Day29: Rails - Active Storage</a>
     </h1>
   
 
@@ -259,13 +281,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/" class="archive-article-date">
 		  <time datetime="2019-10-10T04:10:40.000Z" itemprop="datePublished">Oct 10, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/">Day27: Rails關心你的胖Model - concern</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/">Day27: Rails關心你的胖Model - concern</a>
     </h1>
   
 
@@ -278,13 +300,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/" class="archive-article-date">
 		  <time datetime="2019-10-09T04:10:40.000Z" itemprop="datePublished">Oct 09, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/">Day26: Rails中的view_helper</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/">Day26: Rails中的view_helper</a>
     </h1>
   
 
@@ -297,13 +319,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/" class="archive-article-date">
 		  <time datetime="2019-10-08T04:10:40.000Z" itemprop="datePublished">Oct 08, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/">Day25: Rails中的一球冰淇淋 scope</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/">Day25: Rails中的一球冰淇淋 scope</a>
     </h1>
   
 
@@ -316,13 +338,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/" class="archive-article-date">
 		  <time datetime="2019-10-07T04:10:40.000Z" itemprop="datePublished">Oct 07, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/">Day24: Rails中的find? find_by? where?</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/">Day24: Rails中的find? find_by? where?</a>
     </h1>
   
 
@@ -335,13 +357,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/" class="archive-article-date">
 		  <time datetime="2019-10-06T04:10:40.000Z" itemprop="datePublished">Oct 06, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/">Day23: Rails中的N+1問題</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/">Day23: Rails中的N+1問題</a>
     </h1>
   
 
@@ -354,13 +376,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/" class="archive-article-date">
 		  <time datetime="2019-10-05T04:10:40.000Z" itemprop="datePublished">Oct 05, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/">Day22: 簡易Rails實作(下)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/">Day22: 簡易Rails實作(下)</a>
     </h1>
   
 
@@ -373,13 +395,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/" class="archive-article-date">
 		  <time datetime="2019-10-04T04:10:40.000Z" itemprop="datePublished">Oct 04, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/">Day21: 簡易Rails實作(中)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/">Day21: 簡易Rails實作(中)</a>
     </h1>
   
 
@@ -392,13 +414,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/" class="archive-article-date">
 		  <time datetime="2019-10-03T04:10:40.000Z" itemprop="datePublished">Oct 03, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/">Day20: 簡易Rails實作(上)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/">Day20: 簡易Rails實作(上)</a>
     </h1>
   
 
@@ -411,13 +433,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" class="archive-article-date">
 		  <time datetime="2019-10-02T04:10:40.000Z" itemprop="datePublished">Oct 02, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/">Day19: Rails中神奇的spring stop</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/">Day19: Rails中神奇的spring stop</a>
     </h1>
   
 
@@ -430,13 +452,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/" class="archive-article-date">
 		  <time datetime="2019-10-01T04:10:40.000Z" itemprop="datePublished">Oct 01, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/">Day18: 淺談Rails的表單: form_with</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/">Day18: 淺談Rails的表單: form_with</a>
     </h1>
   
 
@@ -449,13 +471,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/" class="archive-article-date">
 		  <time datetime="2019-09-30T04:10:40.000Z" itemprop="datePublished">Sep 30, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/">Day17:  淺談Rails的表單: form_for? form_tag? </a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/">Day17:  淺談Rails的表單: form_for? form_tag? </a>
     </h1>
   
 
@@ -468,13 +490,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/" class="archive-article-date">
 		  <time datetime="2019-09-29T04:10:40.000Z" itemprop="datePublished">Sep 29, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/">Day16: 淺談Rails裡的resources</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/">Day16: 淺談Rails裡的resources</a>
     </h1>
   
 
@@ -487,13 +509,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/" class="archive-article-date">
 		  <time datetime="2019-09-28T04:10:40.000Z" itemprop="datePublished">Sep 28, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/">Day15: Rails中的Gemfile</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/">Day15: Rails中的Gemfile</a>
     </h1>
   
 
@@ -506,13 +528,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/" class="archive-article-date">
 		  <time datetime="2019-09-27T04:10:40.000Z" itemprop="datePublished">Sep 27, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/">Day14: 淺談Model資料表關聯</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/">Day14: 淺談Model資料表關聯</a>
     </h1>
   
 
@@ -525,13 +547,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/" class="archive-article-date">
 		  <time datetime="2019-09-26T04:10:40.000Z" itemprop="datePublished">Sep 26, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/">Day13: Ruby on Rails 的 .nil? .empty? .blank? .present? </a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/">Day13: Ruby on Rails 的 .nil? .empty? .blank? .present? </a>
     </h1>
   
 
@@ -544,13 +566,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/" class="archive-article-date">
 		  <time datetime="2019-09-25T04:10:40.000Z" itemprop="datePublished">Sep 25, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/">Day12: Ruby的例外處理(Exceptions)：begin...rescue ...end</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/">Day12: Ruby的例外處理(Exceptions)：begin...rescue ...end</a>
     </h1>
   
 
@@ -563,13 +585,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/" class="archive-article-date">
 		  <time datetime="2019-09-24T04:10:40.000Z" itemprop="datePublished">Sep 24, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/">Day11: Ruby中的Getter及Setter?</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/">Day11: Ruby中的Getter及Setter?</a>
     </h1>
   
 
@@ -582,13 +604,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/" class="archive-article-date">
 		  <time datetime="2019-09-23T04:10:40.000Z" itemprop="datePublished">Sep 23, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/">Day10: Ruby中的Conditional Assignment Operator: x ||= y(or-equals)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/">Day10: Ruby中的Conditional Assignment Operator: x ||= y(or-equals)</a>
     </h1>
   
 
@@ -601,13 +623,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/" class="archive-article-date">
 		  <time datetime="2019-09-22T04:10:40.000Z" itemprop="datePublished">Sep 22, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/">Day9: Ruby的三種存取控制Public, Private, Protected</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/">Day9: Ruby的三種存取控制Public, Private, Protected</a>
     </h1>
   
 
@@ -620,13 +642,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/" class="archive-article-date">
 		  <time datetime="2019-09-21T04:10:40.000Z" itemprop="datePublished">Sep 21, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/">Day8: Module的引入include和extend</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/">Day8: Module的引入include和extend</a>
     </h1>
   
 
@@ -639,13 +661,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/" class="archive-article-date">
 		  <time datetime="2019-09-20T04:10:40.000Z" itemprop="datePublished">Sep 20, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/">Day7: Ruby裡的self是什麼？</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/">Day7: Ruby裡的self是什麼？</a>
     </h1>
   
 
@@ -658,13 +680,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/" class="archive-article-date">
 		  <time datetime="2019-09-19T04:10:40.000Z" itemprop="datePublished">Sep 19, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/">Day6: 類別(Class)與模組(Module)的差異</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/">Day6: 類別(Class)與模組(Module)的差異</a>
     </h1>
   
 
@@ -677,13 +699,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/" class="archive-article-date">
 		  <time datetime="2019-09-18T04:10:40.000Z" itemprop="datePublished">Sep 18, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/">Day5: yield在method裡的角色</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/">Day5: yield在method裡的角色</a>
     </h1>
   
 
@@ -696,13 +718,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/" class="archive-article-date">
 		  <time datetime="2019-09-17T04:10:40.000Z" itemprop="datePublished">Sep 17, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/">Day4: Block程式碼區塊及Proc, Lambda差異</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/">Day4: Block程式碼區塊及Proc, Lambda差異</a>
     </h1>
   
 
@@ -715,13 +737,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/" class="archive-article-date">
 		  <time datetime="2019-09-16T04:10:40.000Z" itemprop="datePublished">Sep 16, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/">Day 3: Ruby世界中的符號(Symbol)是什麼？與字串(String)有什麼差異？</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/">Day 3: Ruby世界中的符號(Symbol)是什麼？與字串(String)有什麼差異？</a>
     </h1>
   
 
@@ -734,13 +756,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/" class="archive-article-date">
 		  <time datetime="2019-09-15T04:10:40.000Z" itemprop="datePublished">Sep 15, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/">Day 2: 變數(variable)與常數(Constant)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/">Day 2: 變數(variable)與常數(Constant)</a>
     </h1>
   
 
@@ -753,13 +775,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/" class="archive-article-date">
 		  <time datetime="2019-09-14T04:10:40.000Z" itemprop="datePublished">Sep 14, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/">鐵人賽Day 1: 參賽起始文</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/">鐵人賽Day 1: 參賽起始文</a>
     </h1>
   
 
@@ -781,13 +803,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/" class="archive-article-date">
+      <a href="/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/" class="archive-article-date">
 		  <time datetime="2019-11-15T04:10:40.000Z" itemprop="datePublished">Nov 15, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/">如何把 iterm2 oh-my-zsh 的路徑變短</a>
+      <a class="archive-article-title" href="/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/">如何把 iterm2 oh-my-zsh 的路徑變短</a>
     </h1>
   
 
@@ -809,13 +831,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E5%AF%ABjavascript-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%88%9D%E9%AB%94%E9%A9%97%20copy/" class="archive-article-date">
+      <a href="/2019/%E5%AF%ABjavascript-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%88%9D%E9%AB%94%E9%A9%97%20copy/" class="archive-article-date">
 		  <time datetime="2019-08-15T04:10:40.000Z" itemprop="datePublished">Aug 15, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E5%AF%ABjavascript-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%88%9D%E9%AB%94%E9%A9%97%20copy/">寫javascript-資料結構初體驗</a>
+      <a class="archive-article-title" href="/2019/%E5%AF%ABjavascript-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%88%9D%E9%AB%94%E9%A9%97%20copy/">寫javascript-資料結構初體驗</a>
     </h1>
   
 
@@ -837,13 +859,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88/" class="archive-article-date">
+      <a href="/2019/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88/" class="archive-article-date">
 		  <time datetime="2019-08-16T04:10:40.000Z" itemprop="datePublished">Aug 16, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88/">5xRuby：滿一個月</a>
+      <a class="archive-article-title" href="/2019/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88/">5xRuby：滿一個月</a>
     </h1>
   
 
@@ -865,13 +887,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/" class="archive-article-date">
 		  <time datetime="2019-10-13T04:10:40.000Z" itemprop="datePublished">Oct 13, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/">Day30: 我竟然完賽了？</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/">Day30: 我竟然完賽了？</a>
     </h1>
   
 
@@ -884,13 +906,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/" class="archive-article-date">
 		  <time datetime="2019-10-12T04:10:40.000Z" itemprop="datePublished">Oct 12, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/">Day29: Rails - Active Storage</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/">Day29: Rails - Active Storage</a>
     </h1>
   
 
@@ -903,13 +925,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/" class="archive-article-date">
 		  <time datetime="2019-10-11T04:10:40.000Z" itemprop="datePublished">Oct 11, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/">Day28: 用個Github來版本控制吧 </a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/">Day28: 用個Github來版本控制吧 </a>
     </h1>
   
 
@@ -922,13 +944,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/" class="archive-article-date">
 		  <time datetime="2019-10-10T04:10:40.000Z" itemprop="datePublished">Oct 10, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/">Day27: Rails關心你的胖Model - concern</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/">Day27: Rails關心你的胖Model - concern</a>
     </h1>
   
 
@@ -941,13 +963,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/" class="archive-article-date">
 		  <time datetime="2019-10-09T04:10:40.000Z" itemprop="datePublished">Oct 09, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/">Day26: Rails中的view_helper</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/">Day26: Rails中的view_helper</a>
     </h1>
   
 
@@ -960,13 +982,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/" class="archive-article-date">
 		  <time datetime="2019-10-08T04:10:40.000Z" itemprop="datePublished">Oct 08, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/">Day25: Rails中的一球冰淇淋 scope</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/">Day25: Rails中的一球冰淇淋 scope</a>
     </h1>
   
 
@@ -979,13 +1001,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/" class="archive-article-date">
 		  <time datetime="2019-10-07T04:10:40.000Z" itemprop="datePublished">Oct 07, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/">Day24: Rails中的find? find_by? where?</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/">Day24: Rails中的find? find_by? where?</a>
     </h1>
   
 
@@ -998,13 +1020,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/" class="archive-article-date">
 		  <time datetime="2019-10-06T04:10:40.000Z" itemprop="datePublished">Oct 06, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/">Day23: Rails中的N+1問題</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/">Day23: Rails中的N+1問題</a>
     </h1>
   
 
@@ -1017,13 +1039,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/" class="archive-article-date">
 		  <time datetime="2019-10-05T04:10:40.000Z" itemprop="datePublished">Oct 05, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/">Day22: 簡易Rails實作(下)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/">Day22: 簡易Rails實作(下)</a>
     </h1>
   
 
@@ -1036,13 +1058,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/" class="archive-article-date">
 		  <time datetime="2019-10-04T04:10:40.000Z" itemprop="datePublished">Oct 04, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/">Day21: 簡易Rails實作(中)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/">Day21: 簡易Rails實作(中)</a>
     </h1>
   
 
@@ -1055,13 +1077,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/" class="archive-article-date">
 		  <time datetime="2019-10-03T04:10:40.000Z" itemprop="datePublished">Oct 03, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/">Day20: 簡易Rails實作(上)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/">Day20: 簡易Rails實作(上)</a>
     </h1>
   
 
@@ -1074,13 +1096,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/" class="archive-article-date">
 		  <time datetime="2019-10-02T04:10:40.000Z" itemprop="datePublished">Oct 02, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/">Day19: Rails中神奇的spring stop</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/">Day19: Rails中神奇的spring stop</a>
     </h1>
   
 
@@ -1093,13 +1115,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/" class="archive-article-date">
 		  <time datetime="2019-10-01T04:10:40.000Z" itemprop="datePublished">Oct 01, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/">Day18: 淺談Rails的表單: form_with</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/">Day18: 淺談Rails的表單: form_with</a>
     </h1>
   
 
@@ -1112,13 +1134,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/" class="archive-article-date">
 		  <time datetime="2019-09-30T04:10:40.000Z" itemprop="datePublished">Sep 30, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/">Day17:  淺談Rails的表單: form_for? form_tag? </a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/">Day17:  淺談Rails的表單: form_for? form_tag? </a>
     </h1>
   
 
@@ -1131,13 +1153,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/" class="archive-article-date">
 		  <time datetime="2019-09-29T04:10:40.000Z" itemprop="datePublished">Sep 29, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/">Day16: 淺談Rails裡的resources</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/">Day16: 淺談Rails裡的resources</a>
     </h1>
   
 
@@ -1150,13 +1172,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/" class="archive-article-date">
 		  <time datetime="2019-09-28T04:10:40.000Z" itemprop="datePublished">Sep 28, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/">Day15: Rails中的Gemfile</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/">Day15: Rails中的Gemfile</a>
     </h1>
   
 
@@ -1169,13 +1191,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/" class="archive-article-date">
 		  <time datetime="2019-09-27T04:10:40.000Z" itemprop="datePublished">Sep 27, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/">Day14: 淺談Model資料表關聯</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/">Day14: 淺談Model資料表關聯</a>
     </h1>
   
 
@@ -1188,13 +1210,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/" class="archive-article-date">
 		  <time datetime="2019-09-26T04:10:40.000Z" itemprop="datePublished">Sep 26, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/">Day13: Ruby on Rails 的 .nil? .empty? .blank? .present? </a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/">Day13: Ruby on Rails 的 .nil? .empty? .blank? .present? </a>
     </h1>
   
 
@@ -1207,13 +1229,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/" class="archive-article-date">
 		  <time datetime="2019-09-25T04:10:40.000Z" itemprop="datePublished">Sep 25, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/">Day12: Ruby的例外處理(Exceptions)：begin...rescue ...end</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/">Day12: Ruby的例外處理(Exceptions)：begin...rescue ...end</a>
     </h1>
   
 
@@ -1226,13 +1248,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/" class="archive-article-date">
 		  <time datetime="2019-09-24T04:10:40.000Z" itemprop="datePublished">Sep 24, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/">Day11: Ruby中的Getter及Setter?</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/">Day11: Ruby中的Getter及Setter?</a>
     </h1>
   
 
@@ -1245,13 +1267,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/" class="archive-article-date">
 		  <time datetime="2019-09-23T04:10:40.000Z" itemprop="datePublished">Sep 23, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/">Day10: Ruby中的Conditional Assignment Operator: x ||= y(or-equals)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/">Day10: Ruby中的Conditional Assignment Operator: x ||= y(or-equals)</a>
     </h1>
   
 
@@ -1264,13 +1286,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/" class="archive-article-date">
 		  <time datetime="2019-09-22T04:10:40.000Z" itemprop="datePublished">Sep 22, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/">Day9: Ruby的三種存取控制Public, Private, Protected</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/">Day9: Ruby的三種存取控制Public, Private, Protected</a>
     </h1>
   
 
@@ -1283,13 +1305,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/" class="archive-article-date">
 		  <time datetime="2019-09-21T04:10:40.000Z" itemprop="datePublished">Sep 21, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/">Day8: Module的引入include和extend</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/">Day8: Module的引入include和extend</a>
     </h1>
   
 
@@ -1302,13 +1324,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/" class="archive-article-date">
 		  <time datetime="2019-09-20T04:10:40.000Z" itemprop="datePublished">Sep 20, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/">Day7: Ruby裡的self是什麼？</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/">Day7: Ruby裡的self是什麼？</a>
     </h1>
   
 
@@ -1321,13 +1343,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/" class="archive-article-date">
 		  <time datetime="2019-09-19T04:10:40.000Z" itemprop="datePublished">Sep 19, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/">Day6: 類別(Class)與模組(Module)的差異</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/">Day6: 類別(Class)與模組(Module)的差異</a>
     </h1>
   
 
@@ -1340,13 +1362,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/" class="archive-article-date">
 		  <time datetime="2019-09-18T04:10:40.000Z" itemprop="datePublished">Sep 18, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/">Day5: yield在method裡的角色</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/">Day5: yield在method裡的角色</a>
     </h1>
   
 
@@ -1359,13 +1381,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/" class="archive-article-date">
 		  <time datetime="2019-09-17T04:10:40.000Z" itemprop="datePublished">Sep 17, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/">Day4: Block程式碼區塊及Proc, Lambda差異</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/">Day4: Block程式碼區塊及Proc, Lambda差異</a>
     </h1>
   
 
@@ -1378,13 +1400,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/" class="archive-article-date">
 		  <time datetime="2019-09-16T04:10:40.000Z" itemprop="datePublished">Sep 16, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/">Day 3: Ruby世界中的符號(Symbol)是什麼？與字串(String)有什麼差異？</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/">Day 3: Ruby世界中的符號(Symbol)是什麼？與字串(String)有什麼差異？</a>
     </h1>
   
 
@@ -1397,13 +1419,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/" class="archive-article-date">
 		  <time datetime="2019-09-15T04:10:40.000Z" itemprop="datePublished">Sep 15, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/">Day 2: 變數(variable)與常數(Constant)</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/">Day 2: 變數(variable)與常數(Constant)</a>
     </h1>
   
 
@@ -1416,13 +1438,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/" class="archive-article-date">
+      <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/" class="archive-article-date">
 		  <time datetime="2019-09-14T04:10:40.000Z" itemprop="datePublished">Sep 14, 2019</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/">鐵人賽Day 1: 參賽起始文</a>
+      <a class="archive-article-title" href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/">鐵人賽Day 1: 參賽起始文</a>
     </h1>
   
 
@@ -1472,13 +1494,13 @@
             // TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
-        ROOT_URL: '/LouiswuYJ.github.io/',
-        CONTENT_URL: '/LouiswuYJ.github.io/content.json',
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
     };
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
-<script src="/LouiswuYJ.github.io/js/insight.js"></script>
+<script src="/js/insight.js"></script>
 
 </div>
 </div>
@@ -1535,7 +1557,7 @@
             
 
               <h6 style="margin: 0;">
-                <a href="/LouiswuYJ.github.io/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/">
+                <a href="/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/">
                   簡介 OpenStruct 跟 Struct
                 </a>
               </h6>
@@ -1551,7 +1573,7 @@
             
 
               <h6 style="margin: 0;">
-                <a href="/LouiswuYJ.github.io/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/">
+                <a href="/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/">
                   如何把 iterm2 oh-my-zsh 的路徑變短
                 </a>
               </h6>
@@ -1567,7 +1589,7 @@
             
 
               <h6 style="margin: 0;">
-                <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/">
+                <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/">
                   Day30: 我竟然完賽了？
                 </a>
               </h6>
@@ -1583,7 +1605,7 @@
             
 
               <h6 style="margin: 0;">
-                <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/">
+                <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/">
                   Day29: Rails - Active Storage
                 </a>
               </h6>
@@ -1599,7 +1621,7 @@
             
 
               <h6 style="margin: 0;">
-                <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/">
+                <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/">
                   Day28: 用個Github來版本控制吧 
                 </a>
               </h6>
@@ -1615,7 +1637,7 @@
             
 
               <h6 style="margin: 0;">
-                <a href="/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/">
+                <a href="/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/">
                   Day27: Rails關心你的胖Model - concern
                 </a>
               </h6>
@@ -1633,7 +1655,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E5%BF%83%E5%BE%97%E7%9B%B8%E9%97%9C/">心得相關</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/LouiswuYJ.github.io/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/">開發相關</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E5%BE%97%E7%9B%B8%E9%97%9C/">心得相關</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/">開發相關</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1643,7 +1665,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/iterm2/" rel="tag">iterm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" rel="tag">上課心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/LouiswuYJ.github.io/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a><span class="tag-list-count">30</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iterm2/" rel="tag">iterm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97/" rel="tag">上課心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a><span class="tag-list-count">30</span></li></ul>
     </div>
   </div>
 
@@ -1654,7 +1676,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/10/">October 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/09/">September 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/LouiswuYJ.github.io/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1667,15 +1689,15 @@
     </div>
     <!-- <nav id="mobile-nav">
   
-    <a href="/LouiswuYJ.github.io/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/LouiswuYJ.github.io/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">Archives</a>
   
-    <a href="/LouiswuYJ.github.io/categories" class="mobile-nav-link">Categories</a>
+    <a href="/categories" class="mobile-nav-link">Categories</a>
   
-    <a href="/LouiswuYJ.github.io/tags" class="mobile-nav-link">Tags</a>
+    <a href="/tags" class="mobile-nav-link">Tags</a>
   
-    <a href="/LouiswuYJ.github.io/about" class="mobile-nav-link">About</a>
+    <a href="/about" class="mobile-nav-link">About</a>
   
 </nav> -->
     <footer id="footer" class="site-footer">
@@ -1700,6 +1722,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
 
 </script>
@@ -1737,13 +1762,13 @@
 </script>
 
 
-  <link rel="stylesheet" href="/LouiswuYJ.github.io/fancybox/jquery.fancybox.css">
-  <script src="/LouiswuYJ.github.io/fancybox/jquery.fancybox.pack.js"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/LouiswuYJ.github.io/js/script.js"></script>
-<script src="/LouiswuYJ.github.io/js/bootstrap.js"></script>
-<script src="/LouiswuYJ.github.io/js/main.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
 
 
 <!-- Google Analytics -->

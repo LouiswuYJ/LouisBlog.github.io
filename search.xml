@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>簡介 OpenStruct 跟 Struct</title>
-    <url>/LouiswuYJ.github.io/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/</url>
+    <url>/2020/%E7%B0%A1%E4%BB%8B%20OpenStruct%20%E8%B7%9F%20Struct/</url>
     <content><![CDATA[<p>還記得龍哥說，Ruby 是個物件化很徹底的程式語言，幾乎全部的東西都是物件(除了 block），我們更常使用 class 來實現物件導向，但若只是想做個小東西的話，其實也不一定需要寫到 polo 去解決。</p>
 <h2 id="為什麼我們需要模擬class物件呢？"><a href="#為什麼我們需要模擬class物件呢？" class="headerlink" title="為什麼我們需要模擬class物件呢？"></a>為什麼我們需要模擬class物件呢？</h2><p>主要是一個物件有一些些屬性需要存取，例如一篇文章Post底下只需要title和content兩個屬性，用class來存取就是用牛刀殺雞，太過複雜，用簡單的Hash存取即可。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">post = &#123;<span class="string">'title'</span>: <span class="string">'為什麼一直單身？'</span>, <span class="string">'content'</span>: <span class="string">'憑實力的你不懂!!'</span>&#125;</span><br><span class="line"></span><br><span class="line">[<span class="number">4</span>] pry(main)&gt; post[<span class="symbol">:title</span>]</span><br><span class="line">=&gt; <span class="string">"小菜為什麼一直單身？"</span></span><br><span class="line">[<span class="number">5</span>] pry(main)&gt; post[<span class="symbol">:content</span>]</span><br><span class="line">=&gt; <span class="string">"憑實力你不懂!!"</span></span><br></pre></td></tr></table></figure>
@@ -40,7 +40,7 @@
   </entry>
   <entry>
     <title>如何把 iterm2 oh-my-zsh 的路徑變短</title>
-    <url>/LouiswuYJ.github.io/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/</url>
+    <url>/2019/%E5%A6%82%E4%BD%95%E6%8A%8A%20iterm2%20oh-my-zsh%20%E7%9A%84%E8%B7%AF%E5%BE%91%E8%AE%8A%E7%9F%AD/</url>
     <content><![CDATA[<p>若擔心改壞的話，建議可以先備份原始的 agnoster.zsh-theme 檔後再進行編輯。</p>
 <p>查了很多方法都不可行，後來發現只要按照以下步驟的話，就可以順利把路徑縮短。</p>
 <h3 id="步驟1-找到-oh-my-zsh-themes-資料夾"><a href="#步驟1-找到-oh-my-zsh-themes-資料夾" class="headerlink" title="步驟1. 找到 .oh-my-zsh/themes 資料夾"></a>步驟1. 找到 .oh-my-zsh/themes 資料夾</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open ~/.oh-my-zsh/themes</span><br></pre></td></tr></table></figure>
@@ -66,7 +66,7 @@
   </entry>
   <entry>
     <title>Day30: 我竟然完賽了？</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2030/</url>
     <content><![CDATA[<p>在這裡，我要感謝我的父母#%#$@!@^&amp;（誤</p>
 <p>看第1天的“參賽起始文”，還清楚記得發文當下的感覺：</p>
 <h3 id="“我自己真的能做到嗎？”"><a href="#“我自己真的能做到嗎？”" class="headerlink" title="“我自己真的能做到嗎？”"></a>“我自己真的能做到嗎？”</h3><p>寫到了第30天，真的不敢相信自己竟然真的完賽了!? 過程中真的頗痛苦，但好像已經默默的養成每天早上起來看文件的習慣，說進步嗎..?</p>
@@ -96,7 +96,7 @@
   </entry>
   <entry>
     <title>Day29: Rails - Active Storage</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2029/</url>
     <content><![CDATA[<p>最近做專案遇到了上傳檔案的問題，想針對這個主題簡單的做個介紹。</p>
 <h2 id="Active-Storage"><a href="#Active-Storage" class="headerlink" title="Active Storage"></a>Active Storage</h2><blockquote>
 <p>Active Storage可以將文件上傳到Amazon S3，Google Cloud Storage或Microsoft Azure Storage等雲存儲服務，並將這些文件附加到Active Record。</p>
@@ -162,7 +162,7 @@
   </entry>
   <entry>
     <title>Day28: 用個Github來版本控制吧 </title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2028/</url>
     <content><![CDATA[<p>之前都在寫Rails相關的內容，其實版本控制也是重要的一環，就來換個口味寫個GitHub吧～</p>
 <p>登入GitHub後第一步</p>
 <p><img src="https://i.imgur.com/ftmo3TA.png" alt=""></p>
@@ -222,7 +222,7 @@
   </entry>
   <entry>
     <title>Day27: Rails關心你的胖Model - concern</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2027/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/2zmCaE9.png" alt=""></p>
 <p>在controller寫方法時，若常常需要用到某個方法，我們會將方法直接寫在Model或上層的<code>application_controller.rb</code>來取用。</p>
 <p>已正在進行的專案為例，每個User有一台購物車，除了devise給我們現有的<code>current_user</code>之外，我想在寫個<code>current_cart</code>給每個controller用，此時就可以把定義<code>current_cart</code>的方法寫在<code>application_controller.rb</code>。</p>
@@ -253,7 +253,7 @@
   </entry>
   <entry>
     <title>Day26: Rails中的view_helper</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2026/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/xvFLI1W.png" alt=""></p>
 <p>在寫view時，常常會因為過多的邏輯判斷，導致整個view的程式碼非常冗長且難以維護，其實view只是將處理好的資料呈現出來而已，不應該把複雜的邏輯寫在view裡面，此時我們就可以用到helper來解決。</p>
 <h2 id="View拿不到controller裡的方法"><a href="#View拿不到controller裡的方法" class="headerlink" title="View拿不到controller裡的方法"></a>View拿不到controller裡的方法</h2><p>一般在rails裡，view拿不到controller裡的方法，只能拿到對應的action的實體變數，這時候我們就需要用到helper來將方法寫給view使用。</p>
@@ -304,7 +304,7 @@
   </entry>
   <entry>
     <title>Day25: Rails中的一球冰淇淋 scope</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2025/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/wjqS1Dq.png" alt=""></p>
 <p>這個標題、這個圖片，難道是要講什麼吃冰淇淋的感言分享嗎？</p>
 <p>但這真的是我第一次接觸這個名詞腦袋中第一個浮現的畫面XD<br>可能字真的太像了吧(還是只有我這樣覺得？)</p>
@@ -357,7 +357,7 @@
   </entry>
   <entry>
     <title>Day24: Rails中的find? find_by? where?</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2024/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/ZInCbYJ.png" alt=""></p>
 <p>在rails中有多種方法可以去查詢我們要的record，今天就來分別探討最常見的三種方法。</p>
 <h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>找出單一筆資料，且只能透過id去搜尋。</p>
@@ -422,7 +422,7 @@
   </entry>
   <entry>
     <title>Day23: Rails中的N+1問題</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2023/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/x2SP56l.png" alt=""></p>
 <p>Rails要建立關聯非常簡單(one-to-one, one-to-many)，但也是這個原因，造成在資料庫查詢的時候浪費許多記憶體，大部分的 ORM 預設使用 lazy-loading，一筆資料的查詢就會產生一筆 query，拖累了資料庫的效能。因此將預設的 lazy-loading 改成 Eager-loading 就可以解決N+1問題。</p>
 <p>其中 Eager-loading在 rails 提供了4種方式：</p>
@@ -469,7 +469,7 @@
   </entry>
   <entry>
     <title>Day22: 簡易Rails實作(下)</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2022/</url>
     <content><![CDATA[<p>上次講到了Strong Parameters，今天我們就從Flash開始吧！</p>
 <h2 id="快閃訊息flash"><a href="#快閃訊息flash" class="headerlink" title="快閃訊息flash"></a>快閃訊息flash</h2><p><img src="https://i.imgur.com/tjW0Pjy.png" alt=""></p>
 <p>在按下按鈕後，應該要有個訊息出現告知使用者是否有成功或失敗，並且只出現一次，這就是快閃訊息做的事。<br>在這個專案，我們希望如果 create 成功，會將網頁導向 首頁 並印出 “新增候選人成功!!”，反之若失敗，則印出”新增候選人失敗!!” (一樣false還沒寫入)</p>
@@ -540,7 +540,7 @@
   </entry>
   <entry>
     <title>Day21: 簡易Rails實作(中)</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2021/</url>
     <content><![CDATA[<p>上次透過簡單首頁、分頁製作了第一個rails專案，了解到其中MVC的運作原理及routes與controller之間的關聯性，這次我們將延續上次的內容添加一些功能，並透過CRUD 中（Create、 Read、 Update、 Delete）C跟R的流程來建立專案，U和D的部分就暫時有機會的時候再說明了，現在就來做做看吧！</p>
 <h2 id="新增候選人至表單"><a href="#新增候選人至表單" class="headerlink" title="新增候選人至表單"></a>新增候選人至表單</h2><p>在new.html.erb檔案中，我們需要一個表單讓使用者輸入，輸入後把資料丟到我們想要去的地方，先來建立表單吧!</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>新增候選人<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/candidates"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">link_to</span> '回首頁', <span class="attr">candidates_path</span>, <span class="attr">class:</span> '<span class="attr">btn</span> <span class="attr">btn-primary</span> <span class="attr">btn-lg</span>'%&gt;</span></span><br></pre></td></tr></table></figure>
@@ -644,7 +644,7 @@
   </entry>
   <entry>
     <title>Day20: 簡易Rails實作(上)</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2020/</url>
     <content><![CDATA[<p>在開始之前，要先知道用Rails的慣例，並且盡量遵守才不會造成後面要接手的人的困擾。尤其是以下說明需特別注意：</p>
 <blockquote>
 <p>在檔案區命名：snakecase     ex: candidate_controller<br>在檔案內命名：camelcase     ex: CandidateController<br>且“檔案名稱”與“類別名稱”必須相同，才不會在執行的時候出現error</p>
@@ -718,7 +718,7 @@
   </entry>
   <entry>
     <title>Day19: Rails中神奇的spring stop</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2019/</url>
     <content><![CDATA[<h1 id="Day19-Rails中神奇的spring-stop"><a href="#Day19-Rails中神奇的spring-stop" class="headerlink" title="Day19: Rails中神奇的spring stop"></a>Day19: Rails中神奇的spring stop</h1><h4 id="您有遇過rails-g-migration時卡住嗎？"><a href="#您有遇過rails-g-migration時卡住嗎？" class="headerlink" title="您有遇過rails g migration時卡住嗎？"></a>您有遇過rails g migration時卡住嗎？</h4><h4 id="您有rails-sever打不開的問題嗎？"><a href="#您有rails-sever打不開的問題嗎？" class="headerlink" title="您有rails sever打不開的問題嗎？"></a>您有rails sever打不開的問題嗎？</h4><p><del>trivago</del></p>
 <p>意外的查到的資料不多，所以這篇僅擷取Rails <a href="https://github.com/rails/spring/blob/master/README.md" target="_blank" rel="noopener">REARDME.md</a>來簡單翻譯一下。</p>
 <h2 id="spring-stop"><a href="#spring-stop" class="headerlink" title="spring stop"></a>spring stop</h2><p>常常在跑rail時，都會遇到一些很奇怪的狀況導致migration, rails sever, rails db:seed等跑不出來這狀況，但只要下了<code>spring stop</code>通常就解了？</p>
@@ -770,7 +770,7 @@
   </entry>
   <entry>
     <title>Day18: 淺談Rails的表單: form_with</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2018/</url>
     <content><![CDATA[<blockquote>
 <p>form內 <strong>有</strong> model實體時，用<code>form_for</code>，主要用於新增或修改。</p>
 <p>form內 <strong>無</strong> model實體時，用<code>form_tag</code>，主要用於登入一筆資料。</p>
@@ -828,7 +828,7 @@
   </entry>
   <entry>
     <title>Day17:  淺談Rails的表單: form_for? form_tag? </title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2017/</url>
     <content><![CDATA[<p>在Rails中，常常會用到表單(form)將資料傳入資料庫，其中在Rails 5.1版本之前，常用的就是<code>form_tag</code>與<code>form_for</code>，我們來看看他們的分別該在何時使用：</p>
 <p>先說結論：</p>
 <blockquote>
@@ -878,7 +878,7 @@
   </entry>
   <entry>
     <title>Day16: 淺談Rails裡的resources</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2016/</url>
     <content><![CDATA[<h2 id="resources"><a href="#resources" class="headerlink" title="resources:"></a>resources:</h2><p>可以一次新8條路徑，7個方法，當然也可以一條一條自己新增(get, post)，但若剛好你要做的專案需要這8條路徑的話，用這種內建方式做可以省去不少時間且也會更有系統。</p>
 <p>如果resources後面沒加s，在路徑的部分會有些action就不需要帶id，但會少一個路徑。</p>
 <h4 id="resource"><a href="#resource" class="headerlink" title="resource"></a>resource</h4><p><img src="https://i.imgur.com/nPCHhiK.png" alt=""></p>
@@ -914,7 +914,7 @@
   </entry>
   <entry>
     <title>Day15: Rails中的Gemfile</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2015/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/P3tMB5y.png" alt=""></p>
 <p>在Ruby的宇宙裡，有很多用Ruby寫成的套件包或是框架可以使用，包含rails也是(第6行)。</p>
 <p>Gemfile是Rails new一個新專案時附加的檔案(如上圖rails 5.2.3)，主要管理此Rails專案該會使用哪些gem檔案及版本號，在跑<code>bundle install</code>時就會安裝到這個專案，所以可以視為紀錄這個專案該使用哪些gem的檔案，讓專案被其他使用者pull下來時，都能根據Gemfile裡的gem去安裝。</p>
@@ -974,7 +974,7 @@
   </entry>
   <entry>
     <title>Day14: 淺談Model資料表關聯</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2014/</url>
     <content><![CDATA[<p>不管用哪個程式語言或框架寫網站，多數會有資料庫的應用，資料與資料之間一定會有關聯性，那要如何在不同Model設立資料關係，這裏會用很簡單的例子去試著理解什麼是資料表關聯。</p>
 <h2 id="Active-Record"><a href="#Active-Record" class="headerlink" title="Active Record"></a>Active Record</h2><p>根據手冊：「Active Record 是 MVC 的 M（Model），表現商業邏輯與資料的層級，負責新增與操作需要持久存在資料庫裡的資料」</p>
 <p>看起來有點抽象，在我的理解大概就是這個概念：</p>
@@ -1042,7 +1042,7 @@
   </entry>
   <entry>
     <title>Day13: Ruby on Rails 的 .nil? .empty? .blank? .present? </title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2013/</url>
     <content><![CDATA[<p>在Ruby on Rails有很多神奇又好用的黑魔法，但有幾個類似的方法會搞不清楚到底在哪個狀況時要用哪個method…</p>
 <p>我在寫rails的時候曾經踩過一個小雷：<br><img src="https://i.imgur.com/TAhp77y.png" alt=""></p>
 <p>現在這個使用者的name欄位是空的，所以回傳的是<code>nil</code>，如果此時在<code>current_user.name</code>後接的是<code>.empty?</code>就會噴錯，所以要用<code>.nil?</code></p>
@@ -1075,7 +1075,7 @@
   </entry>
   <entry>
     <title>Day12: Ruby的例外處理(Exceptions)：begin...rescue ...end</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2012/</url>
     <content><![CDATA[<p>幾乎每個程式語言都有例外處理的功能，當程式在執行時，不免都會遇到非工程師預期的狀況發生，我們可以針對不同例外訊息設計不同的例外處理。</p>
 <p>在Ruby例外處理的基本架構：</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">#程式碼正常執行的地方 (可能出現例外的程式碼)</span></span><br><span class="line"><span class="keyword">rescue</span></span><br><span class="line">  <span class="comment">#發生錯誤時執行的地方</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -1139,7 +1139,7 @@
   </entry>
   <entry>
     <title>Day11: Ruby中的Getter及Setter?</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2011/</url>
     <content><![CDATA[<p>在最近的練習中，只有印象自己大量的在用<code>attr_reader :somthing</code>，在完成這篇文章前，我完全不知道其實它就是getter method…</p>
 <p>關於setter就真的更陌生了，也有在專案或練習的時候有用到，但也一樣完全不知道其實在用的就是setter method，所以決定寫個一篇文章來釐清一下觀念。</p>
 <h2 id="Ruby沒有「屬性-property-attribute-」"><a href="#Ruby沒有「屬性-property-attribute-」" class="headerlink" title="Ruby沒有「屬性(property/attribute)」"></a>Ruby沒有「屬性(property/attribute)」</h2><p>Ruby沒有屬性這件事，跟其他程式語言不一樣，下面的例子：</p>
@@ -1208,7 +1208,7 @@
   </entry>
   <entry>
     <title>Day10: Ruby中的Conditional Assignment Operator: x ||= y(or-equals)</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%2010/</url>
     <content><![CDATA[<p>最近的rails專案裡，看到了這行：</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">@cart = @cart <span class="params">||</span> Cart.from_hash(session[<span class="symbol">:cart9527</span>])</span><br></pre></td></tr></table></figure>
 
@@ -1258,7 +1258,7 @@
   </entry>
   <entry>
     <title>Day9: Ruby的三種存取控制Public, Private, Protected</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%209/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/qHDe6Du.jpg" alt=""><br><a href="https://www.pinterest.com/pin/35254809565990906" target="_blank" rel="noopener">圖片來源</a></p>
 <p>前面有提過，Ruby是一門相當徹底的物件導向語言，幾乎所有的東西都是物件，但block除外。要改變物件的狀態，在ruby最常見的方式就是.method，要拿這個method來用，就要從class內來存取，這個行為就是「存取控制」。</p>
 <blockquote>
@@ -1318,7 +1318,7 @@
   </entry>
   <entry>
     <title>Day8: Module的引入include和extend</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%208/</url>
     <content><![CDATA[<p>上次提到了類別(class)與模組(module)的差異，今天針對module如何引入進class使用來特別說明。</p>
 <table>
 <thead>
@@ -1370,7 +1370,7 @@
   </entry>
   <entry>
     <title>Day7: Ruby裡的self是什麼？</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%207/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/zCYMgTN.png" alt=""></p>
 <p>之前的文章有提過一句話「在Ruby裡，幾乎所有的東西都是物件」，這是否也代表每一行我們所打的code是否都屬於物件呢？</p>
 <p><code>self</code>在Ruby是一個非常特別的存在，且永遠指向目前正在執行的物件，換句話說，就是<code>self</code>會根據現在放在哪個context(class、method..)的不同，指的當下就是物件自己。</p>
@@ -1414,7 +1414,7 @@
   </entry>
   <entry>
     <title>Day6: 類別(Class)與模組(Module)的差異</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%206/</url>
     <content><![CDATA[<p>在寫這篇文章前，自認如果今天面試被問到這題，預期腦袋裡會一片空白，只知道這兩個物件都長得非常像但說不出哪裡不同。</p>
 <p>google一下，看到最多次的一句話：</p>
 <blockquote>
@@ -1485,7 +1485,7 @@
   </entry>
   <entry>
     <title>Day5: yield在method裡的角色</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%205/</url>
     <content><![CDATA[<p><img src="https://i.imgur.com/zjTTCe0.png" alt=""></p>
 <p><a href="https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/yield" target="_blank" rel="noopener">yield</a>的中文翻譯有很多意思，在程式裡可以翻做「讓」的意思。</p>
 <p>那在程式裡，到底是「讓」出什麼東西呢？</p>
@@ -1532,7 +1532,7 @@
   </entry>
   <entry>
     <title>Day4: Block程式碼區塊及Proc, Lambda差異</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%204/</url>
     <content><![CDATA[<p><a href="https://en.wikipedia.org/wiki/Block_(basketball)" target="_blank" rel="noopener">Block in Basketball</a><br><img src="https://i.imgur.com/rPG1IaY.png" alt=""></p>
 <p>Ruby是一個「物件導向」相當徹底的一門程式語言，幾乎所有的東西都是物件，例如：</p>
 <ul>
@@ -1595,7 +1595,7 @@
   </entry>
   <entry>
     <title>Day 3: Ruby世界中的符號(Symbol)是什麼？與字串(String)有什麼差異？</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%203/</url>
     <content><![CDATA[<p>我在剛接觸符號(Symbol)這個名詞的時候，心裡想的是：<br><img src="https://i.imgur.com/aT4BBK6.png" alt=""></p>
 <p><img src="https://i.imgur.com/PnKIdW5.png" alt=""></p>
 <p>覺得哇～原來寫程式也可以玩<a href="https://zh.wikipedia.org/wiki/%E7%B9%AA%E6%96%87%E5%AD%97" target="_blank" rel="noopener">emoji</a>(被打..)</p>
@@ -1636,7 +1636,7 @@
   </entry>
   <entry>
     <title>Day 2: 變數(variable)與常數(Constant)</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%202/</url>
     <content><![CDATA[<p>從開班到現在學了兩個月，只知道這兩個東西每天都在用，但要直接解釋出”變數”與”常數”是什麼？還是得稍微轉一下才能夠說明，所以就特別針對這個主題來寫一下吧！</p>
 <h2 id="什麼是變數-variable-？"><a href="#什麼是變數-variable-？" class="headerlink" title="什麼是變數(variable)？"></a>什麼是變數(variable)？</h2><p>變數在數學上的定義，被用來表示值的一個’符號’(此指數學符號)，且這個值可以是指定的或是未被指定的。</p>
 <p>但程式中的變數呢？</p>
@@ -1678,7 +1678,7 @@
   </entry>
   <entry>
     <title>鐵人賽Day 1: 參賽起始文</title>
-    <url>/LouiswuYJ.github.io/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/</url>
+    <url>/2019/%E9%90%B5%E4%BA%BA%E8%B3%BDDay%201/</url>
     <content><![CDATA[<p>其實自認自己是個對文字有恐懼的人，更別說是寫文章了。算是給自己的一次挑戰，並養成將學到的新知識轉換成文字的習慣，除了能幫助自己回頭看學習的歷程當筆記用外，也許也能夠幫助一些人吧（應該吧？</p>
 <h2 id="參賽動-衝-機-動"><a href="#參賽動-衝-機-動" class="headerlink" title="參賽動(衝)機(動)"></a>參賽動(衝)機(動)</h2><p>「沒時間啦….我光每天吸收新知識、複習課程內容都應付不來了，還要開始run專案，而且$%#$<em>#)$</em>@…」<br>「寫文章又沒人看，搞不好還給別人見笑咧～」<br>「如果志在參加隨便發文，我不就只是花了30天發了30篇廢文嗎？」<br>「但我只是小嫩嫩阿…寫出來的東西真的能看嗎？」</p>
 <p>以上這些都是我報名前的心聲，我想一定有很多人都有跟我一樣的想法，但為何我還是會報名？</p>
@@ -1706,7 +1706,7 @@
   </entry>
   <entry>
     <title>5xRuby：滿一個月</title>
-    <url>/LouiswuYJ.github.io/2019/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88/</url>
+    <url>/2019/5xRuby%EF%BC%9A%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88/</url>
     <content><![CDATA[<h1 id="啟程"><a href="#啟程" class="headerlink" title="啟程"></a>啟程</h1><p>還記得07/15開課當天，早上還在東京趕飛機的我，匆匆忙忙在下課前一小時衝進教室，滿頭大汗地隨便抓個位置坐在教室裡，根本不敢相信自己真的正式準備踏入這圈子了，心情既興奮又擔心，但既然都已經下定決心要挑戰，不管最後的結果如何，自己的選擇，就要對自己負責，不畏挫折踏實努力的走完這三個月的精實訓練，看看自己的最大能耐會走到多遠吧！</p>
 <h1 id="過程"><a href="#過程" class="headerlink" title="過程"></a>過程</h1><blockquote>
 <p>第一週：</p>
@@ -1759,7 +1759,7 @@
   </entry>
   <entry>
     <title>寫javascript-資料結構初體驗</title>
-    <url>/LouiswuYJ.github.io/2019/%E5%AF%ABjavascript-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%88%9D%E9%AB%94%E9%A9%97%20copy/</url>
+    <url>/2019/%E5%AF%ABjavascript-%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%88%9D%E9%AB%94%E9%A9%97%20copy/</url>
     <content><![CDATA[<p>五倍的課程進行將近一個月，終於有了第一次有小組討論XD<br>從來沒接觸過資料結構的我們，從老師訂的題目”購物車“開始發想：</p>
 <h2 id="我們討論經過的步驟："><a href="#我們討論經過的步驟：" class="headerlink" title="我們討論經過的步驟："></a>我們討論經過的步驟：</h2><p>1.列出所有購物車會有的功能<br>2.將同種類的進行分類<br>3.將重複的功能刪除<br>4.列出進入購物車選單後的順序流程<br>5.不會變動的功能與會變動的功能進行分類<br>6.會有value的用Objuect，不用特別輸入value的用Array<br>7.寫成code</p>
 <h2 id="所以產出了以下基本結果："><a href="#所以產出了以下基本結果：" class="headerlink" title="所以產出了以下基本結果："></a>所以產出了以下基本結果：</h2><p>購物車：<br>{帳號、密碼}<br>購物車 {商品名稱、金額、特價、數量、尺寸、顏色、折扣{購物金、活動優惠、紅利折抵}、總件數<br>推薦商品、瀏覽紀錄}<br>待買清單<br>追蹤清單<br>商城規範<br>會員資料 {姓名、信箱、電話、地址、會員等級}<br>配送方式 {超商: 運費、宅配: 運費、郵局: 運費、面交: 免運費}<br>付款方式 [ATM、信用卡、貨到付款、第三方支付]<br>發票載具 [二聯、三聯、捐贈、電子發票]<br>訂單編號<br>(123代表型態是number, 0.7代表型態是float)</p>
