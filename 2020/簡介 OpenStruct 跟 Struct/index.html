@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Louis&#39;s Blog">
 <meta property="og:description" content="還記得龍哥說，Ruby 是個物件化很徹底的程式語言，幾乎全部的東西都是物件(除了 block），我們更常使用 class 來實現物件導向，但若只是想做個小東西的話，其實也不一定需要寫到 polo 去解決。 為什麼我們需要模擬class物件呢？主要是一個物件有一些些屬性需要存取，例如一篇文章Post底下只需要title和content兩個屬性，用class來存取就是用牛刀殺雞，太過複雜，用簡單的Ha">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-10-22T06:53:20.414Z">
+<meta property="og:updated_time" content="2020-11-06T09:44:34.944Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Louis&#39;s Blog" type="application/atom+xml">
@@ -179,7 +179,7 @@
 <p>但 Struct 很好用的是可以在定義時帶入block，並寫 method：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Post = Struct.new(<span class="symbol">:title</span>, <span class="symbol">:content</span>) <span class="keyword">do</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say</span></span></span><br><span class="line">        <span class="string">"<span class="subst">#&#123;title&#125;</span>: <span class="subst">#&#123;content&#125;</span>"</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">post = Post.new(<span class="string">"丁丁"</span>, <span class="string">"我只有午休跟下班的時候"</span>)</span><br><span class="line">post.say <span class="comment"># =&gt; "丁丁: 我只有午休跟下班的時候"</span></span><br></pre></td></tr></table></figure>
 
-<p>未完待續..</p>
+
 <p>參考資料:<br><a href="https://www.rubyguides.com/2017/06/ruby-struct-and-openstruct/" target="_blank" rel="noopener">How to Use Struct &amp; OpenStruct in Ruby</a><br><a href="https://mgleon08.github.io/blog/2016/05/29/struct-vs-openstruct/" target="_blank" rel="noopener">Ruby - Struct vs OpenStruct</a><br><a href="https://adlerhsieh.com/blog/20150406-ruby-struct-and-ostruct" target="_blank" rel="noopener">模擬class物件：Ruby當中Struct及OpenStruct的使用</a></p>
 
       
@@ -216,7 +216,7 @@
 <p>但 Struct 很好用的是可以在定義時帶入block，並寫 method：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Post = Struct.new(<span class="symbol">:title</span>, <span class="symbol">:content</span>) <span class="keyword">do</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say</span></span></span><br><span class="line">        <span class="string">"<span class="subst">#&#123;title&#125;</span>: <span class="subst">#&#123;content&#125;</span>"</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">post = Post.new(<span class="string">"丁丁"</span>, <span class="string">"我只有午休跟下班的時候"</span>)</span><br><span class="line">post.say <span class="comment"># =&gt; "丁丁: 我只有午休跟下班的時候"</span></span><br></pre></td></tr></table></figure>
 
-<p>未完待續..</p>
+
 <p>參考資料:<br><a href="https://www.rubyguides.com/2017/06/ruby-struct-and-openstruct/" target="_blank" rel="noopener">How to Use Struct &amp; OpenStruct in Ruby</a><br><a href="https://mgleon08.github.io/blog/2016/05/29/struct-vs-openstruct/" target="_blank" rel="noopener">Ruby - Struct vs OpenStruct</a><br><a href="https://adlerhsieh.com/blog/20150406-ruby-struct-and-ostruct" target="_blank" rel="noopener">模擬class物件：Ruby當中Struct及OpenStruct的使用</a></p>
 
         </div>
